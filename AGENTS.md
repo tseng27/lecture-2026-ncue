@@ -63,7 +63,8 @@ node tools/smoke-test.js            # 需 Playwright；會走完 20 頁、檢查
 
 ## 7. 發布
 - 預覽（私人）：Claude 專案「講座簡報製作」內的 Artifact。
-- 公開：GitHub Pages（repo 名稱待講者建立，建議 `tseng27/lecture-2026-ncue`）。**不要動 `tseng27/ai-teaching-observatory`**，那是現行網站。
+- 主要版本：GitHub `tseng27/lecture-2026-ncue` 的 main 分支。公開網址（Pages 開啟後）：https://tseng27.github.io/lecture-2026-ncue/
+- 備份：Google Drive「1-3 講座資料 > 20261127 彰師大講座_互動網站交接」，不會自動同步，改完要重新上傳。**不要動 `tseng27/ai-teaching-observatory`**，那是現行網站。
 - 任何公開發布前，先讓講者看過預覽並同意。
 
 ## 8. 交接紀錄格式（寫在 HANDOFF_LOG.md 最上方）

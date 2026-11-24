@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 07:05（Asia/Taipei）｜Claude
+- 任務：講者要求「放到 GitHub」，並把交接紀錄存到 Google Drive。
+- 改了什麼：建立 repo 內容（index.html、img、交接包、.nojekyll）推到 tseng27/lecture-2026-ncue 的 main。Drive 備份：「1-3 講座資料 > 20261127 彰師大講座_互動網站交接」。
+- 驗證：push 成功；smoke-test 11 項 PASS（內容與前次相同）。
+- 沒做完／阻礙：GitHub Pages 需講者在 repo 的 Settings → Pages 手動開啟（Claude 的環境無權限呼叫 Pages API）。
+- 下一步建議：Pages 開啟後確認 https://tseng27.github.io/lecture-2026-ncue/ 可開；之後以 GitHub 為主要版本，Drive 為備份。
+- 是否已同步 artifact-source.html／已發布：是（Artifact v2）。
+
 ## 2026-11-25 07:00（Asia/Taipei）｜Claude
 - 任務：講者要求「寫一個說明包讓 Codex、Grok 或其他 Agent 也能繼續執行，並寫能接續的工作交接紀錄」。
 - 改了什麼：新增 AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。網站本身未改。

@@ -7,7 +7,7 @@
 
 ## 進行中／等待
 - [x] GitHub repo：https://github.com/tseng27/lecture-2026-ncue （main 為主要版本）
-- [ ] 講者在 Settings → Pages 選 Deploy from a branch：main /(root)。網址會是 https://tseng27.github.io/lecture-2026-ncue/
+- [x] GitHub Pages 已開啟（2026-11-25 07:01 部署成功）：https://tseng27.github.io/lecture-2026-ncue/
 - 備份：Google Drive「1-3 講座資料 > 20261127 彰師大講座_互動網站交接」（不會自動同步）
 
 ## 待補素材（詳見 待補素材清單.md）

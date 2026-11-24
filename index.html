@@ -1,0 +1,901 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style></head><body>
+<title>AI 時代的藝術與教育</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: Bauhaus chapter app. Sticky bar has two faces: 講座模式 (time strip + timer + stops) and 自由探索 (grouped menu). One view on screen at a time. */
+:root{
+  --bg:#F2F2F0; --paper:#FFFFFF; --ink:#17191F; --muted:#5A606C; --line:#D8D8D4;
+  --red:#E63946; --navy:#1D3557; --yellow:#F4D35E; --on-navy:#FFFFFF; --on-yellow:#17191F;
+  --accent-ink:#C62835; --navy-ink:#1D3557; --chip:#E7E7E3;
+  --ok:#2E7D4F; --ok-bg:#E3F1E8; --warn:#8A5A00; --warn-bg:#FBF0D3; --plan:#4A5578; --plan-bg:#E6E9F2;
+  --f-body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --f-serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --f-num:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141B; --paper:#19202B; --ink:#EEEDE8; --muted:#A3AAB6; --line:#2C3542;
+  --red:#EF4B57; --navy:#2B4C7E; --yellow:#F4D35E; --on-navy:#FFFFFF; --on-yellow:#17191F;
+  --accent-ink:#FF7A83; --navy-ink:#9DBBEA; --chip:#232B37;
+  --ok:#7BD39E; --ok-bg:#183326; --warn:#F2C56B; --warn-bg:#3A2E12; --plan:#AEB9DA; --plan-bg:#262E45; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141B; --paper:#19202B; --ink:#EEEDE8; --muted:#A3AAB6; --line:#2C3542;
+  --red:#EF4B57; --navy:#2B4C7E; --yellow:#F4D35E; --on-navy:#FFFFFF; --on-yellow:#17191F;
+  --accent-ink:#FF7A83; --navy-ink:#9DBBEA; --chip:#232B37;
+  --ok:#7BD39E; --ok-bg:#183326; --warn:#F2C56B; --warn-bg:#3A2E12; --plan:#AEB9DA; --plan-bg:#262E45; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.7}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+h1,h2,h3{line-height:1.25;text-wrap:balance;margin:0}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* ===== bar ===== */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar .row{display:flex;align-items:center;gap:12px;padding-block:8px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:7px;text-decoration:none;font-weight:900;font-size:15px;white-space:nowrap;border:0;background:none;padding:0}
+.logo i{display:inline-block;width:13px;height:13px}
+.logo .c{border-radius:50%;background:var(--red)}.logo .s{background:var(--navy)}
+.logo .t{width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:13px solid var(--yellow)}
+.modes{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;flex:none}
+.modes button{border:0;background:transparent;padding:4px 14px;font-weight:700;font-size:14px}
+.modes button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.spacer{flex:1}
+.tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.ibtn{border:1px solid var(--line);background:var(--paper);border-radius:999px;height:34px;min-width:34px;padding:0 12px;font-size:14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ibtn:hover{border-color:var(--ink)}
+.ibtn.go{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.len{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.len button{border:0;background:var(--paper);padding:5px 10px;font-family:var(--f-num);font-weight:700;font-size:13px}
+.len button[aria-pressed="true"]{background:var(--yellow);color:var(--on-yellow)}
+.clock{font-size:14px;font-weight:700;white-space:nowrap;padding:0 4px;cursor:default}
+.clock small{color:var(--muted);font-weight:500;margin-right:4px;font-family:var(--f-body)}
+.clock.late{color:var(--accent-ink)}
+.strip{display:flex;height:30px;border-radius:4px;overflow:hidden;background:var(--chip);position:relative;margin-bottom:8px}
+.strip button{border:0;padding:0;background:transparent;position:relative;border-right:2px solid var(--paper);min-width:0;overflow:hidden}
+.strip button:last-of-type{border-right:0}
+.strip button::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--sc)}
+.strip button.on{background:var(--ink)}
+.strip button.done{background:var(--line)}
+.strip button:hover{background:var(--line)}
+.strip button.on:hover{background:var(--ink)}
+.strip .now{position:absolute;top:0;bottom:0;width:2px;background:var(--red);pointer-events:none;transition:left .5s;z-index:2}
+.seglbl{display:flex;margin-bottom:6px;font-size:11px;font-weight:700;color:var(--muted)}
+.seglbl span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;padding-right:6px;min-width:0}
+@media (max-width:700px){.seglbl{display:none}}
+.menu{display:flex;gap:4px 18px;flex-wrap:wrap;padding-bottom:8px;align-items:baseline}
+.menu .grp{display:flex;gap:2px;align-items:baseline;flex-wrap:wrap}
+.menu .grp b{font-size:11px;letter-spacing:.14em;color:var(--muted);margin-right:4px}
+.menu button{border:0;background:none;padding:3px 7px;border-radius:4px;font-size:14px;font-weight:500}
+.menu button:hover{background:var(--chip)}
+.menu button[aria-current="page"]{background:var(--ink);color:var(--bg);font-weight:700}
+
+/* ===== stop banner ===== */
+.stop{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:18px;padding:10px 14px;border:1px dashed var(--line);border-radius:6px;font-size:14px;color:var(--muted)}
+.stop b{color:var(--ink)}
+.stop .cue{flex:1 1 260px}
+.stop .plus{background:var(--yellow);color:var(--on-yellow);padding:0 6px;border-radius:2px;font-weight:700}
+
+/* ===== view basics ===== */
+main{padding-bottom:80px}
+.view{padding-block:30px 20px;animation:in .4s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.view{animation:none}.strip .now{transition:none}}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--muted);margin-bottom:14px}
+.tag{background:var(--ink);color:var(--bg);padding:2px 10px;border-radius:2px;letter-spacing:.06em;font-size:13px;font-weight:700}
+.tag.r{background:var(--red);color:#fff}.tag.n{background:var(--navy);color:var(--on-navy)}.tag.y{background:var(--yellow);color:var(--on-yellow)}
+.chno{font-family:var(--f-num);font-weight:700;font-size:clamp(64px,10vw,120px);line-height:.85;letter-spacing:-.04em;color:var(--red)}
+.chno.n{color:var(--navy-ink)}
+.chhead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px 26px;align-items:end;margin-bottom:26px}
+.chhead h2{font-size:clamp(28px,4vw,48px);font-weight:900}
+.chhead h2 small{display:block;font-size:.5em;font-weight:700;color:var(--muted);margin-top:6px}
+.chhead .lead{grid-column:1/-1;font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:46em}
+@media (max-width:640px){.chhead{grid-template-columns:1fr}}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:980px){.g4,.g5{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:620px){.g2,.g3,.g4,.g5{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:20px;min-width:0}
+.card h3{font-size:19px;font-weight:900;margin-bottom:6px}
+.card p,.card li{color:var(--muted);font-size:15.5px}
+.card ul,.card ol{margin:6px 0 0;padding-left:1.2em}
+.sec{font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--muted);margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+.photo{border-radius:6px;overflow:hidden;background:var(--chip);position:relative;min-height:220px}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.photo .cap{position:absolute;left:8px;bottom:8px;font-size:11px;background:rgba(0,0,0,.55);color:#fff;padding:1px 6px;border-radius:2px}
+.split{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:26px;align-items:stretch}
+@media (max-width:860px){.split{grid-template-columns:1fr}.split .photo{min-height:220px}}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.lk{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;border:2px solid var(--ink);font-weight:700;font-size:15px;text-decoration:none;background:var(--paper)}
+.lk:hover{background:var(--ink);color:var(--bg)}
+.lk.todo{border-style:dashed;border-color:var(--muted);color:var(--muted);cursor:default}
+.lk.todo:hover{background:var(--paper);color:var(--muted)}
+.q{font-weight:900;font-size:clamp(22px,2.8vw,34px);line-height:1.4;border-left:10px solid var(--yellow);padding-left:18px}
+.q small{display:block;font-size:15px;font-weight:500;color:var(--muted);margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--chip);border-radius:999px;padding:5px 13px;font-size:14.5px;font-weight:500}
+.note{font-size:13px;color:var(--muted)}
+/* status badges: text + color, never color alone */
+.st{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;padding:2px 8px;border-radius:3px;white-space:nowrap;vertical-align:middle;letter-spacing:.02em}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st.ok{background:var(--ok-bg);color:var(--ok)}
+.st.wip{background:var(--warn-bg);color:var(--warn)}
+.st.plan{background:var(--plan-bg);color:var(--plan)}
+.st.chk{background:var(--chip);color:var(--muted)}
+.st.sug{background:var(--yellow);color:var(--on-yellow)}
+.shape{width:42px;height:42px;flex:none}
+.shape.c{border-radius:50%;background:var(--red)}
+.shape.s{background:var(--navy)}
+.shape.t{width:0;height:0;border-left:23px solid transparent;border-right:23px solid transparent;border-bottom:40px solid var(--yellow)}
+
+/* tabs / toggles */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 15px;font-weight:700;font-size:15px}
+.tab[aria-selected="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;margin-bottom:16px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;padding:7px 18px;font-weight:700}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+
+/* ===== cover ===== */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:center;padding-block:14px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(40px,6.4vw,84px);font-weight:900;line-height:1.12}
+.hero h1 .hl{background:linear-gradient(transparent 62%,var(--yellow) 62%);padding:0 4px}
+.hero .sub{font-size:clamp(17px,1.8vw,22px);color:var(--muted);margin-top:18px;max-width:30em}
+.hero .who{margin-top:22px;display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700}
+.composition{aspect-ratio:1/1;position:relative;width:min(500px,100%);justify-self:center}
+.composition>*{position:absolute}
+.comp-photo{inset:9% 9% 20% 20%;border-radius:0 0 0 999px;overflow:hidden}
+.comp-photo img{width:100%;height:100%;object-fit:cover}
+.comp-c{width:30%;aspect-ratio:1;border-radius:50%;background:var(--red);left:0;top:0}
+.comp-s{width:22%;aspect-ratio:1;background:var(--navy);right:0;bottom:0}
+.comp-t{left:12%;bottom:2%;width:0;height:0;border-left:54px solid transparent;border-right:54px solid transparent;border-bottom:92px solid var(--yellow)}
+.comp-bar{right:30%;bottom:13%;width:34%;height:10px;background:var(--ink)}
+.entry{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+@media (max-width:620px){.entry{grid-template-columns:1fr}}
+.entry button{text-align:left;border:2px solid var(--ink);background:var(--paper);border-radius:6px;padding:18px 20px;display:grid;gap:4px}
+.entry button:hover{box-shadow:5px 5px 0 var(--ink)}
+.entry b{font-size:20px}
+.entry span{font-size:14px;color:var(--muted)}
+
+/* themes list */
+.themes{display:grid;gap:0;border-top:2px solid var(--ink)}
+.theme{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:14px;align-items:center;padding:14px 4px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;width:100%}
+.theme:hover{background:var(--paper)}
+.theme .k{font-family:var(--f-num);font-weight:700;font-size:28px;color:var(--accent-ink)}
+.theme b{font-size:18px}
+.theme small{display:block;color:var(--muted);font-size:14px}
+.theme .ord{font-size:12px;color:var(--muted);font-weight:700}
+
+/* agenda */
+.ag{border-top:2px solid var(--ink)}
+.ag-row{display:grid;grid-template-columns:80px 70px minmax(0,1fr) 60px;gap:12px;align-items:center;padding:10px 4px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;width:100%}
+.ag-row:hover{background:var(--paper)}
+.ag-row.segh{background:var(--chip);font-weight:900;cursor:default}
+.ag-row .t{font-family:var(--f-num);font-weight:700}
+.ag-row .m{font-family:var(--f-num);font-weight:700;font-size:14px}
+.ag-row .x{font-size:12px;font-weight:700;color:var(--warn)}
+@media (max-width:620px){.ag-row{grid-template-columns:56px minmax(0,1fr) 44px}.ag-row .t{display:none}}
+
+/* poll */
+.poll{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.poll{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pbtn{border:2px solid var(--ink);background:var(--paper);border-radius:6px;padding:14px;text-align:left;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.pbtn b{font-size:18px}
+.pbtn .cnt{font-family:var(--f-num);font-size:32px;font-weight:700;line-height:1}
+.pbtn .fill{position:absolute;left:0;bottom:0;height:8px;background:var(--red);transition:width .3s}
+.pbtn:nth-child(2) .fill{background:var(--navy)}.pbtn:nth-child(3) .fill{background:var(--yellow)}.pbtn:nth-child(4) .fill{background:var(--muted)}
+.mini{font-size:13px;color:var(--muted);margin-top:10px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.mini button{border:0;background:none;text-decoration:underline;color:var(--muted);padding:0;font-size:13px}
+
+/* steps */
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.steps button{border:2px solid var(--ink);background:var(--paper);border-radius:4px;padding:6px 12px;font-weight:700;font-size:15px;display:inline-flex;gap:6px;align-items:baseline}
+.steps button span{font-family:var(--f-num);font-size:12px;color:var(--muted)}
+.steps button[aria-selected="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.steps button[aria-selected="true"] span{color:#fff}
+.stepbox{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:2px solid var(--ink);border-radius:6px;overflow:hidden;background:var(--paper)}
+.stepbox>div{padding:18px;border-right:1px solid var(--line);min-width:0}
+.stepbox>div:last-child{border-right:0}
+.stepbox .k{font-size:12px;letter-spacing:.12em;font-weight:700;color:var(--muted)}
+.stepbox p{font-size:17px;margin-top:4px}
+@media (max-width:760px){.stepbox{grid-template-columns:1fr}.stepbox>div{border-right:0;border-bottom:1px solid var(--line)}}
+.seven{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0}
+@media (max-width:900px){.seven{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.seven div{padding:14px 12px;border-top:6px solid var(--sc);background:var(--paper);border-right:1px solid var(--line);min-width:0}
+.seven .k{font-family:var(--f-num);font-weight:700;font-size:12px;color:var(--muted)}
+.seven b{display:block;font-size:17px}
+.seven p{font-size:13.5px;color:var(--muted)}
+.ba{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);gap:10px;align-items:center}
+.ba .arrow{font-family:var(--f-num);font-size:30px;font-weight:700;color:var(--red);text-align:center}
+@media (max-width:700px){.ba{grid-template-columns:1fr}.ba .arrow{transform:rotate(90deg)}}
+
+/* practice */
+.prac{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.prac{grid-template-columns:1fr}}
+.prac label{font-size:13px;font-weight:700;letter-spacing:.08em;color:var(--muted);display:block;margin-bottom:6px}
+.prac input[type=text],.prac textarea{width:100%;font:inherit;font-size:16px;padding:8px 10px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink)}
+.prac textarea{min-height:84px;resize:vertical}
+.slider{display:grid;grid-template-columns:54px minmax(0,1fr) 54px;gap:8px;align-items:center;font-size:13px;color:var(--muted);margin-bottom:8px}
+.slider input{width:100%;accent-color:var(--red)}
+.slider span:last-child{text-align:right}
+.soundcard{margin-top:16px;background:var(--navy);color:var(--on-navy);border-radius:6px;padding:22px 24px;display:grid;gap:8px}
+.soundcard .k{font-size:12px;letter-spacing:.14em;font-weight:700;opacity:.8}
+.soundcard b{font-size:22px}
+.soundcard p{opacity:.9}
+
+/* tables */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+.tbl table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{font-size:12px;letter-spacing:.1em;color:var(--muted);background:var(--chip)}
+.tbl tr:last-child td{border-bottom:0}
+
+/* cases */
+.filters{display:flex;flex-wrap:wrap;gap:8px 18px;margin-bottom:16px;align-items:center}
+.filters .grpf{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.filters b{font-size:12px;letter-spacing:.12em;color:var(--muted)}
+.fbtn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 12px;font-size:14px;font-weight:700}
+.fbtn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.ccard{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px;text-align:left;display:flex;flex-direction:column;gap:8px;min-width:0}
+.ccard:hover,.ccard[aria-pressed="true"]{border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.ccard .top{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.ccard .id{font-family:var(--f-num);font-weight:700;font-size:13px;color:var(--muted)}
+.ccard b{font-size:17px;line-height:1.35}
+.ccard p{font-size:14px;color:var(--muted)}
+.detail{margin-top:16px;border-left:6px solid var(--red);background:var(--paper);padding:20px 24px;border-radius:0 6px 6px 0;display:grid;gap:10px}
+.detail h3{font-size:24px;font-weight:900}
+.detail dl{display:grid;grid-template-columns:110px minmax(0,1fr);gap:6px 14px;margin:0}
+.detail dt{font-size:13px;font-weight:700;color:var(--muted)}
+.detail dd{margin:0}
+@media (max-width:560px){.detail dl{grid-template-columns:1fr}}
+
+/* placeholder media */
+.ph{aspect-ratio:4/3;background:var(--chip);border-radius:6px;display:grid;place-items:center;text-align:center;padding:14px;border:1px dashed var(--line);max-width:100%}
+.ph span{font-size:13px;color:var(--muted)}
+.ph i{display:block;margin:0 auto 8px}
+.works{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.work{display:grid;gap:6px;min-width:0}
+.work b{font-size:15px}
+.work small{font-size:12.5px;color:var(--muted)}
+
+/* bars */
+.bar100{display:flex;height:46px;border-radius:4px;overflow:hidden;font-weight:900;color:#fff}
+.bar100 div{display:flex;align-items:center;padding:0 12px;min-width:0;white-space:nowrap;overflow:hidden}
+
+/* elara */
+.members{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.members{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mem{background:var(--paper);border:1px solid var(--line);border-radius:6px;overflow:hidden;min-width:0}
+.mem .sw{height:90px;display:grid;place-items:center;font-family:var(--f-num);font-weight:700;font-size:26px;letter-spacing:.06em;color:#fff}
+.mem .bd{padding:12px 14px;display:grid;gap:4px}
+.mem .bd p{font-size:14px;color:var(--muted)}
+.check{display:grid;gap:6px}
+.check label{display:flex;gap:10px;align-items:center;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:8px 12px;cursor:pointer}
+.check input{accent-color:var(--red);width:18px;height:18px}
+
+/* break & closing */
+.bigtime{font-family:var(--f-num);font-weight:700;font-size:clamp(96px,16vw,200px);line-height:1;letter-spacing:-.04em}
+.bigtime.done{color:var(--accent-ink)}
+.quote{font-family:var(--f-serif);font-weight:900;font-size:clamp(40px,7.2vw,96px);line-height:1.25;text-wrap:balance}
+.quote span{color:var(--accent-ink)}
+.vnav{display:flex;justify-content:space-between;gap:12px;margin-top:40px;padding-top:16px;border-top:1px solid var(--line)}
+.vnav button{border:0;background:none;text-align:left;padding:6px 0;font-weight:700;max-width:48%}
+.vnav button span{display:block;font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.1em}
+.vnav button.nx{text-align:right;margin-left:auto}
+.foot{font-size:12px;color:var(--muted);margin-top:26px;line-height:1.6}
+kbd{font-family:var(--f-num);border:1px solid var(--line);border-radius:3px;padding:0 5px;background:var(--paper)}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="row">
+      <button class="logo" type="button" data-go="cover" aria-label="回到封面"><i class="c"></i><i class="s"></i><i class="t"></i>AI × 藝術 × 教育</button>
+      <div class="modes" role="group" aria-label="模式">
+        <button type="button" data-mode="talk" aria-pressed="true">講座模式</button>
+        <button type="button" data-mode="explore" aria-pressed="false">自由探索</button>
+      </div>
+      <span class="spacer"></span>
+      <div class="tools" id="talkTools">
+        <div class="len" role="group" aria-label="講座長度"><button type="button" data-len="110" aria-pressed="false">110′</button><button type="button" data-len="120" aria-pressed="true">120′</button></div>
+        <span class="clock num" id="clock">00:00</span>
+        <button class="ibtn go" id="timerBtn" type="button">開始</button>
+        <span class="note num" id="stopNo"></span>
+      </div>
+      <button class="ibtn" id="prevBtn" type="button" aria-label="上一頁">←</button>
+      <button class="ibtn" id="nextBtn" type="button" aria-label="下一頁">→</button>
+      <button class="ibtn" id="fsBtn" type="button" aria-label="全螢幕">⛶</button>
+    </div>
+    <div id="talkNav"><div class="seglbl" id="seglbl"></div><div class="strip" id="strip"></div></div>
+    <nav class="menu" id="menu" aria-label="網站選單" hidden></nav>
+  </div>
+</header>
+
+<main class="wrap" id="main"></main>
+
+<script>
+/* =====================================================================
+   講者可修改區。資料來源：ChatGPT 整理的研究資料包 v1.0（2026-11-25）
+   url 留空 = 顯示「待補」；img 留空 = 顯示素材待補卡（不以生成圖冒充成果）
+   ===================================================================== */
+const CONFIG = {
+  speaker:"曾國正", role:"高中美術教師・藝術創作者",
+  title:"AI 時代的藝術與教育", sub:"從創作突破到教學新模式",
+  tagline:"一位高中美術教師的 AI 創作實踐、教學探索與反思",
+  place:"國立彰化師範大學", date:"2026.11.27", audience:"師培生・大學生・碩士班學生",
+  photo:"",
+  links:{
+    site:     { label:"AI 教學觀察所網站", url:"https://kuocheng-art-education.tseng27.chatgpt.site" },
+    fanpage:  { label:"AI 教學觀察所 Facebook", url:"https://www.facebook.com/educationforfuture/" },
+    art:      { label:"藝術創作 Facebook", url:"https://www.facebook.com/tsengkuocheng" },
+    elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/profile.php?id=61584961148067" },
+    github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
+    unesco:   { label:"UNESCO AI 能力框架", url:"https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=195885" },
+    bastani:  { label:"Bastani 等（2025）原始研究", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/" },
+    instagram:{ label:"Instagram", url:"" },
+    youtube:  { label:"YouTube／ELARA 官方頻道", url:"" }
+  }
+};
+
+/* ===== 講座段落與頁序（110 為基礎，x = 120 版增加的分鐘） ===== */
+const SEGS = [
+  { n:"開場與教育反思", c:"var(--red)" },
+  { n:"AI 教學設計與實踐", c:"var(--red)" },
+  { n:"中場休息", c:"var(--yellow)" },
+  { n:"AI 藝術與影音創作", c:"var(--navy)" },
+  { n:"結語與交流", c:"var(--ink)" }
+];
+const STOPS = [
+  { v:"cover",   s:0, m:1,  t:"開場", cue:"問候，說明今天兩條線：教學實踐與藝術創作。" },
+  { v:"home",    s:0, m:4,  t:"關於我", cue:"三個身分；用《我的美好人生》帶出最後那句話。" },
+  { v:"s01",     s:0, m:5,  t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？" },
+  { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
+  { v:"method",  s:1, m:8,  t:"05 不只是 AI 備課", cue:"七步學習與四個設計決定。" },
+  { v:"sensory", s:1, m:4,  t:"感官轉譯｜觀看與理解", tab:"flow", cue:"投影鑑賞原稿：哪些句子是學生原本的？" },
+  { v:"sensory", s:1, m:6,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇。120 版加 4 分鐘聆聽與速寫互動。" },
+  { v:"sensory", s:1, m:4,  t:"感官轉譯｜證據與反思", tab:"evidence", cue:"三種證據狀態分開說；生成的是素材，選擇形成作品。" },
+  { v:"cases",   s:1, m:3,  t:"攝影探索", c:"T06", cue:"把觀察轉成有理由的形式選擇。" },
+  { v:"learning",s:1, m:8,  t:"學習歷程與評量", cue:"一份資料多次累積；配分 70／20／10 是既有規定。" },
+  { v:"cases",   s:1, m:2,  t:"公共藝術", c:"T09", cue:"延伸案例，2 分鐘帶過。" },
+  { v:"cases",   s:1, m:3,  t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
+  { v:"lab",     s:1, m:2,  t:"AI 教學實驗室", cue:"只展示已驗證的功能；未驗證的標「待核」。" },
+  { v:"break",   s:2, m:5,  t:"中場休息" },
+  { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
+  { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
+  { v:"elara",   s:3, m:12, x:3, t:"ELARA 影音創作", cue:"五位角色與一致性。120 版加 3 分鐘 MIA 候選版本比較。" },
+  { v:"workflow",s:3, m:6,  t:"跨 AI 協作與工作台", cue:"FRAMEFLOW 是原型，不演示生成。" },
+  { v:"s06",     s:4, m:6,  t:"06 未來美術教師", cue:"帶著一個問題離開。" },
+  { v:"closing", s:4, m:4,  x:3, t:"結語與交流", cue:"原句不變。120 版加 3 分鐘問答。" }
+];
+
+/* ===== 自由探索選單 ===== */
+const MENU = [
+  ["認識", [["home","關於我"],["lecture","講座導覽"]]],
+  ["主題", [["s01","01"],["s02","02"],["method","05"],["art","03"],["practice","04"],["s06","06"]]],
+  ["教學", [["sensory","感官轉譯"],["cases","教學案例"],["learning","學習歷程"],["lab","教學實驗室"]]],
+  ["創作", [["elara","ELARA"],["workflow","工作流程"]]],
+  ["資源", [["resources","連結與來源"]]]
+];
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 不只是 AI 備課", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學實驗室", art:"03 突破創作邊界", practice:"04 從 AI 生成到自主創作", elara:"ELARA", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
+const EXPLORE_ORDER = ["cover","home","lecture","s01","s02","method","sensory","cases","learning","lab","art","practice","elara","workflow","s06","closing","resources"];
+
+/* ===== 六大正式主題（標題不改） ===== */
+const THEMES = [
+  ["01","AI 浪潮來襲：危機，還是轉機？","s01"],
+  ["02","全球 AI 教育革命：重新想像未來學校","s02"],
+  ["03","突破創作邊界：一個人也能實現藝術夢想","art"],
+  ["04","從 AI 生成到自主創作：我的藝術實驗與實踐","practice"],
+  ["05","不只是 AI 備課：重新探索美術教學的可能","method"],
+  ["06","未來美術教師：在 AI 時代找到自己的教學模式","s06"]
+];
+
+/* ===== 教學案例（狀態依資料包保守標記） ===== */
+const ST = { ok:["ok","有教材與紀錄"], part:["wip","資料部分待補"], plan:["plan","規劃中"], chk:["chk","待核"] };
+const CASES = [
+  { id:"T01", g:"觀看與轉譯", st:"ok", t:"感官轉譯 × 藝術再創作", d:"名畫鑑賞 → 音樂 → 影音再創作。講座核心案例。", ev:"教材 27 頁與成果報告；四件學生 MV 尚未播放驗證與確認授權。", go:"sensory" },
+  { id:"T04", g:"生活與自我", st:"ok", t:"我的美好人生", d:"從感受與價值選擇走向視覺表達，呼應「你的人生，就是你的藝術品」。", ev:"課程資料與成果紀錄。" },
+  { id:"", g:"生活與自我", st:"chk", t:"色彩九宮格與幸福感", d:"用色彩整理情緒與生活經驗。", ev:"實施狀態待核。" },
+  { id:"T06", g:"觀看與轉譯", st:"ok", t:"攝影探索", d:"曝光三角、取景與光線：把觀察轉成有理由的形式選擇。", ev:"教材與成果紀錄；講座正式介紹 3 分鐘。" },
+  { id:"", g:"觀看與轉譯", st:"chk", t:"田中達也與議題", d:"從微型攝影出發，連結生活物件與社會議題。", ev:"實施狀態待核。" },
+  { id:"", g:"觀看與轉譯", st:"chk", t:"藝術鑑賞", d:"區分觀察、史實與推測的鑑賞練習。", ev:"實施狀態待核。" },
+  { id:"T09", g:"設計與場域", st:"ok", t:"公共藝術", d:"考慮使用者、場域、材料與觀看方式。", ev:"資料較完整；講座延伸 2 分鐘。" },
+  { id:"T10", g:"設計與場域", st:"part", t:"藝術杯墊", d:"把藝術轉化為日常用品的設計任務。", ev:"成果資料待補，網站延伸。" },
+  { id:"T11", g:"設計與場域", st:"part", t:"品牌包裝", d:"品牌概念、視覺與包裝設計。", ev:"不同版本分開保存，資料待補。" },
+  { id:"T12", g:"設計與場域", st:"part", t:"住宅設計", d:"以居住需求出發的空間設計。", ev:"成果資料待補，網站延伸。" },
+  { id:"", g:"空間與未來", st:"chk", t:"360 攝影", d:"用全景影像探索空間敘事。", ev:"實施狀態待核。" },
+  { id:"T13", g:"空間與未來", st:"part", t:"VR 策展", d:"在虛擬空間中策劃展覽。", ev:"成果待補。" },
+  { id:"T14", g:"空間與未來", st:"plan", t:"職涯公仔", d:"把職涯想像做成角色公仔。", ev:"規劃案例，尚非已完成學生作品。" },
+  { id:"T15", g:"空間與未來", st:"chk", t:"多媒體專題", d:"跨媒材整合的期末專題。", ev:"備用案例，原報告待核。" }
+];
+const TOOLS = [
+  { id:"G05", st:"wip", s:"部分可用・待測", t:"AI 自學中心", d:"學生依任務自學並保存輸入、比較與輸出。", ev:"離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步尚待現版測試。" },
+  { id:"", st:"chk", s:"待核", t:"學習歷程網頁", d:"保留原始回答、比較、修正與反思。", ev:"離線版與雲端版分開，不能互相推定功能。" },
+  { id:"", st:"chk", s:"現版待驗", t:"相機模擬器", d:"以操作理解光圈、快門、ISO。", ev:"自製工具，與第三方 CameraSim 分開。" },
+  { id:"", st:"chk", s:"待找原檔", t:"歐元建築立體書", d:"可翻頁、彈出的互動建築立體書。", ev:"有簡報線索，原專案位置待確認。" },
+  { id:"", st:"chk", s:"待找原檔", t:"BrandLab AI", d:"品牌設計輔助工具。", ev:"未找到原檔，保留條目。" },
+  { id:"", st:"chk", s:"待找原檔", t:"繪畫歷程記錄", d:"記錄繪畫過程的工具。", ev:"未找到原檔，保留條目。" },
+  { id:"", st:"chk", s:"待找原檔", t:"地景互動", d:"地景主題的互動教材。", ev:"未找到原檔，保留條目。" },
+  { id:"", st:"chk", s:"待核", t:"VR 平台", d:"VR 策展與空間展示平台。", ev:"功能待驗證。" },
+  { id:"", st:"plan", s:"原型", t:"FRAMEFLOW 工作台", d:"MV 製作工作台：分鏡、素材、版本。", ev:"有介面與流程原型；文字顯示生成服務尚未設定，不是全自動製作系統。" }
+];
+
+/* ===== helpers ===== */
+const $ = (s,el=document)=>el.querySelector(s);
+const $$ = (s,el=document)=>[...el.querySelectorAll(s)];
+const esc = s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = { get(k,d){try{const v=localStorage.getItem("lec2:"+k);return v==null?d:JSON.parse(v)}catch(e){return d}}, set(k,v){try{localStorage.setItem("lec2:"+k,JSON.stringify(v))}catch(e){}} };
+const lk = l => l && l.url ? `<a class="lk" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>` : `<span class="lk todo">${esc(l.label)} <span class="st chk">待補</span></span>`;
+const st = k => `<span class="st ${ST[k][0]}">${ST[k][1]}</span>`;
+const SH = ['<i class="shape c" style="width:30px;height:30px"></i>','<i class="shape s" style="width:28px;height:28px"></i>','<i style="width:0;height:0;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:30px solid var(--yellow)"></i>'];
+const ph = (label,i=0)=>`<div class="ph">${SH[i%3]}<span>${esc(label)}</span></div>`;
+const work = (t,s,i,need="素材待補")=>`<div class="work">${ph(need,i)}<b>${esc(t)}</b><small>${esc(s)}</small></div>`;
+function head(no,title,sub,lead,tag,navy){
+  return `<div class="eyebrow">${tag||""}</div><div class="chhead">${no?`<div class="chno ${navy?'n':''}">${no}</div>`:''}<h2 ${no?'':'style="grid-column:1/-1"'}>${title}${sub?`<small>${sub}</small>`:''}</h2>${lead?`<p class="lead">${lead}</p>`:''}</div>`;
+}
+
+/* ===== views ===== */
+const V = {}, M = {};
+
+V.cover = ()=>`
+  <section class="hero">
+    <div>
+      <div class="eyebrow"><span class="tag">${esc(CONFIG.place)}</span><span class="num">${esc(CONFIG.date)}</span><span>${esc(CONFIG.audience)}</span></div>
+      <h1>AI 時代的<br><span class="hl">藝術與教育</span></h1>
+      <p class="sub"><b>${esc(CONFIG.sub)}</b><br>${esc(CONFIG.tagline)}</p>
+      <div class="who"><span>講者｜${esc(CONFIG.speaker)}</span><span style="color:var(--muted)">${esc(CONFIG.role)}</span></div>
+      <div class="entry">
+        <button type="button" data-start="talk"><b>開始講座 →</b><span>依講座順序一頁一頁走，含計時與 110／120 分鐘切換</span></button>
+        <button type="button" data-start="explore"><b>自由探索</b><span>講座後回來看：案例、作品、工具與資源</span></button>
+      </div>
+    </div>
+    <div class="composition" aria-hidden="true">
+      <div class="comp-photo"><img src="img/s1.jpg" alt=""></div>
+      <div class="comp-c"></div><div class="comp-s"></div><div class="comp-t"></div><div class="comp-bar"></div>
+    </div>
+  </section>`;
+
+V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在高中美術課堂與藝術創作之間持續學習的教師","我關心的，是如何讓每個人找到自己的表達方式。",'<span class="tag r">開場</span><span>關於我與核心理念</span>')}
+  <div class="grid g3">
+    <div class="card"><div class="shape c" style="margin-bottom:12px"></div><h3>美術教師</h3><p>教學讓我理解不同的學習需要。</p></div>
+    <div class="card"><div class="shape s" style="margin-bottom:12px"></div><h3>藝術創作者</h3><p>創作讓我親身經歷想像、失敗、選擇與修正。</p></div>
+    <div class="card"><div class="shape t" style="margin-bottom:12px"></div><h3>持續學習的人</h3><p>找出符合自己、學科與學生的教學模式，需要長期試驗與反思。</p></div>
+  </div>
+  <div class="sec">這三個身分延伸出的工作</div>
+  <div class="chips"><span class="chip">AI 教學研究與實踐（AI 教學觀察所）</span><span class="chip">AI 藝術創作</span><span class="chip">虛擬女團 ELARA 創作者</span><span class="chip">數位教材與創作平台開發</span></div>
+  <div class="split" style="margin-top:26px">
+    <div class="card" style="display:grid;gap:10px;align-content:start">
+      <span class="eyebrow" style="margin:0"><span class="tag y">T04</span>我的美好人生</span>
+      <h3 style="font-size:24px">你的人生，就是你的藝術品</h3>
+      <p>藝術不只存在於完成的作品，也存在於我們如何觀察生活、理解自己、做出選擇。AI 擴充了表達的可能，人的經驗與判斷仍是創作的核心。</p>
+    </div>
+    ${CONFIG.photo?`<div class="photo"><img src="${esc(CONFIG.photo)}" alt="${esc(CONFIG.speaker)}"></div>`:ph("本人照片與真實課堂照待補（授權確認後放入）",1)}
+  </div>
+  <div class="sec">延伸連結</div>
+  <div class="links">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div>`;
+
+V.lecture = ()=>`${head("","講座導覽","六大主題與時間安排","正式六大主題作為索引；實際講述順序是 01 → 02 → 05 → 03 → 04 → 06，先從教育反思出發，再看課堂與創作中的具體選擇。",'<span class="tag">講座</span>')}
+  <div class="themes">${THEMES.map((t,i)=>`<button class="theme" type="button" data-view="${t[2]}"><span class="k">${t[0]}</span><span><b>${t[1]}</b></span><span class="ord">第 ${[1,2,5,6,3,4][i]} 個講</span></button>`).join("")}</div>
+  <div class="sec">時間表</div>
+  <div class="filters">
+    <div class="len" role="group" aria-label="表格長度"><button type="button" data-tlen="110">110 分鐘</button><button type="button" data-tlen="120">120 分鐘</button></div>
+    <label class="note" for="startAt">開始時間</label><input id="startAt" type="time" style="font:inherit;font-family:var(--f-num);padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)">
+    <span class="note">實際開講時間未定，請自行調整</span>
+  </div>
+  <div class="ag" id="agTable"></div>
+  <p class="note" style="margin-top:12px">120 分鐘版不加新案例，而是讓既有案例更深入：感官轉譯聆聽速寫＋4、MIA 候選鏡頭比較＋3、問答＋3。</p>
+  <div class="sec">帶著一個問題離開</div>
+  <div class="q">你想讓學生保留哪一個自己的決定？<small>用什麼證據確認他正在學習？</small></div>`;
+
+V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI 之前，先回到一個更早的問題：我們為什麼想當老師？",'<span class="tag r">主題 01</span>')}
+  <div class="split">
+    <div style="display:grid;gap:22px;align-content:start">
+      <div class="q">面對 AI，你的第一個感覺是？<small>現場舉手，講者點按計數（只存在這台電腦）</small></div>
+      <div class="poll" id="poll">${["危機","轉機","兩者都是","還說不上來"].map((o,i)=>`<button class="pbtn" type="button" data-p="${i}"><b>${o}</b><span class="cnt num">0</span><span class="fill" style="width:0"></span></button>`).join("")}</div>
+      <div class="mini"><span id="pollTotal">0 人</span><button type="button" id="pollUndo">減一</button><button type="button" id="pollReset">清除</button></div>
+    </div>
+    <div class="photo"><img src="img/s1.jpg" alt=""><span class="cap">示意圖</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>為什麼想當老師？</h3><p>讓你走上教職的，是一位老師、一堂課，還是一件作品？</p></div>
+    <div class="card"><h3>如何讓教學生涯不無聊？</h3><p>一份要做很多年的工作，靠什麼一直保有好奇與熱情？</p></div>
+    <div class="card"><h3>技術與藝術史</h3><p>每一次新媒材出現，藝術都被迫重新回答「什麼是創作」。這一次，我們要回答什麼？</p></div>
+  </div>`;
+
+V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","這兩項外部研究是提問框架，不是本人美術課已證實的成效，也不代表「全世界都已如此」。",'<span class="tag r">主題 02</span>')}
+  <div class="grid g2">
+    <div class="card" style="display:grid;gap:8px;align-content:start">
+      <span class="eyebrow" style="margin:0"><span class="tag n">R001</span>UNESCO（2024）</span>
+      <h3>學生與教師的 AI 能力框架</h3>
+      <p>以人本思維、倫理、AI 基礎與應用、教學與教師專業學習來定位能力發展。</p>
+      <p class="note">這是官方能力框架，不能當作某個工具有效的證明。</p>
+      <div class="links">${lk(CONFIG.links.unesco)}</div>
+    </div>
+    <div class="card" style="display:grid;gap:8px;align-content:start">
+      <span class="eyebrow" style="margin:0"><span class="tag n">R002</span>Bastani 等（2025）</span>
+      <h3>沒有護欄的生成式 AI，可能傷害學習</h3>
+      <p>高中數學研究：無適當護欄的生成式 AI 可能損害之後的獨立表現。</p>
+      <p class="note">研究情境是數學不是美術，不直接外推效應量。</p>
+      <div class="links">${lk(CONFIG.links.bastani)}</div>
+    </div>
+  </div>
+  <div class="sec">要分開看的兩件事</div>
+  <div class="seg" role="group" aria-label="切換"><button type="button" data-ai="with" aria-pressed="true">有 AI 時</button><button type="button" data-ai="without" aria-pressed="false">把 AI 拿走後</button></div>
+  <div class="card" id="aiBox" style="font-size:20px"></div>`;
+
+V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的可能","美術是表達自己。AI 融入教學的目的，是讓學生更有能力觀察、思考與創作。",'<span class="tag r">主題 05</span>')}
+  <div class="grid g4">
+    <div class="card"><h3>從生活出發</h3><p>從一個顏色、一張校園照片、一件令自己感動的事開始。</p></div>
+    <div class="card"><h3>趣味與意義</h3><p>趣味不只來自特效，也來自看見自己的想法逐步成形。</p></div>
+    <div class="card"><h3>教師的位置</h3><p>設計學習條件、提供提問與鷹架。AI 提供方案，學生保有選擇與說明。</p></div>
+    <div class="card"><h3>持續創造生活</h3><p>教師也是終身學習者。</p></div>
+  </div>
+  <div class="sec">七步學習</div>
+  <div class="seven">${[["觀察","辨認具體線索","var(--red)"],["感受","說出個人回應","var(--yellow)"],["思考","查證並建立關係","var(--navy)"],["視覺轉化","文字、速寫與構圖外化","var(--ink)"],["創作","實作、比較與修正","var(--red)"],["分享","說明選擇","var(--yellow)"],["反思","回看自己如何改變","var(--navy)"]].map((s,i)=>`<div style="--sc:${s[2]}"><span class="k">0${i+1}</span><b>${s[0]}</b><p>${s[1]}</p></div>`).join("")}</div>
+  <div class="sec">四個設計決定</div>
+  <div class="grid g4">${["學生要學會什麼？","學生要自己決定什麼？","教師在哪裡提供鷹架？","最後留下什麼證據？"].map((q,i)=>`<div class="card"><span class="num" style="font-weight:700;color:var(--accent-ink)">Q${i+1}</span><h3 style="margin-top:4px">${q}</h3></div>`).join("")}</div>
+  <div class="sec">試改一個任務 <span class="st sug">建議</span></div>
+  <div class="ba">
+    <div class="card"><span class="note">原本</span><h3>生成一張好看的圖</h3></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card" style="border:2px solid var(--red)"><span class="note">改寫</span><h3>提出兩個構圖，依主題選一個並解釋理由</h3></div>
+  </div>
+  <p class="note" style="margin-top:8px">這是建議做法，並非宣稱所有課程都已如此實施。</p>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><h3>自主學習與共學</h3><p>先個人觀察與作答，再組內比較不同看法，最後由教師釐清概念。形成性評量嵌入各階段，不等成品完成才給回饋。</p></div>
+    <div class="card"><h3>教學反思</h3><p>留意工具切換、重複繳交與操作挫折。課程可以刪減功能、增加手繪與討論，讓注意力回到理解。</p></div>
+  </div>`;
+
+const STEPS11 = [
+  ["觀看","先安靜看作品，指出三項細節","原始觀察","看見的事實與想到的故事分開"],
+  ["認識背景","查藝術家、作品與來源","來源及查閱日期","作者動機需要文獻，不讓 AI 代猜"],
+  ["構成分析","找主體、視線、色彩、空間與節奏","註記圖","用畫面細節支持觀點"],
+  ["感受","三個情緒詞與一句生活連結","本人原答","沒有唯一正確的感受"],
+  ["速寫／文字","畫構圖骨架或寫核心句","草圖","速寫是理解，不要求畫得像"],
+  ["視覺到音樂","決定速度、音色、疏密與聲部","選擇理由","這個聲音如何對應你的感受？"],
+  ["聆聽","比較兩個候選片段","採納／捨棄理由","不只問哪首好聽"],
+  ["新的感受","聽完重寫感受與想像","前後差異","音樂帶來了原畫沒有的什麼？"],
+  ["聽覺到視覺","畫新草圖，決定保留與改變","第二張草圖","新圖像可以不同，但關係須說得出來"],
+  ["動態作品","分鏡、素材、節奏、剪輯","分鏡與版本","鏡頭服務敘事；設備不足就用靜態影像"],
+  ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
+];
+V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例 T01</span><span>講座 14 分鐘</span>')}
+  <div class="tabs" role="tablist">${[["flow","十一步流程"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div id="sbox"></div>`;
+
+const SENS_TABS = {
+  flow:()=>`<div class="steps" role="tablist">${STEPS11.map((s,i)=>`<button type="button" role="tab" data-s11="${i}"><span>${i+1}</span>${s[0]}</button>`).join("")}</div>
+    <div class="stepbox" id="s11box" aria-live="polite"></div>
+    <p class="note" style="margin-top:10px">既有方法整合，不是單一班級的實施紀錄。觀察時先保留學生自己的回答，再用不同顏色記錄 AI 補充，區分史實、觀察與推測。</p>`,
+  practice:()=>`<p style="margin-bottom:14px">一起試一次：看一幅畫，用三個詞記下感受，再決定它會是什麼聲音。<b>沒有固定公式</b>，冷色也可以是明亮的節奏，重點是說得出理由。</p>
+    <div class="prac">
+      <div class="card"><label for="pw">① 三個情緒詞</label><input type="text" id="pw" placeholder="例：寂靜、溫暖、等待"><label for="pl" style="margin-top:12px">一句生活連結</label><textarea id="pl" placeholder="它讓我想起……"></textarea></div>
+      <div class="card"><label>② 聲音的選擇</label>
+        ${[["sp","速度","慢","快"],["tn","音色","柔","銳"],["dn","密度","疏","密"]].map(s=>`<div class="slider"><span>${s[2]}</span><input type="range" id="${s[0]}" min="0" max="4" value="2" aria-label="${s[1]}"><span>${s[3]}</span></div>`).join("")}
+        <label for="pr" style="margin-top:6px">為什麼這樣選？</label><textarea id="pr" placeholder="因為畫面裡……"></textarea></div>
+      <div class="card"><label for="pn">③ 聽完後的新畫面</label><textarea id="pn" style="min-height:150px" placeholder="聆聽後，我想像的畫面是……保留了原畫的什麼？改變了什麼？"></textarea></div>
+    </div>
+    <div class="soundcard" id="scard" aria-live="polite"></div>
+    <p class="note" style="margin-top:8px">輸入只存在這台裝置的瀏覽器裡，不會上傳。</p>`,
+  evidence:()=>`<div class="tbl"><table><thead><tr><th>脈絡</th><th>狀態</th><th>可以說</th><th>還不能說</th></tr></thead><tbody>
+    <tr><td><b>西洋名畫 → 音樂 → MV</b></td><td><span class="st ok">有教材與成果紀錄</span></td><td>教材 27 頁已有鑑賞、音樂、影音流程與 A–E 規準</td><td>所有班級都完成同樣流程</td></tr>
+    <tr><td><b>《星夜》</b></td><td><span class="st wip">教師實驗</span></td><td>啟發文字、音樂、影像實驗《藍色放了輕》</td><td>這是學生作品；母帶待補</td></tr>
+    <tr><td><b>《蓮池》</b></td><td><span class="st plan">課程發展中</span></td><td>已提出簡化構圖、生活連結與跨媒材流程</td><td>學生 MV 已全數完成</td></tr>
+    </tbody></table></div>
+    <div class="sec">學生作品（教材標示為學生 MV）</div>
+    <div class="works">${["拾穗","吶喊","人子","戴珍珠耳環的少女"].map((t,i)=>work(t+" MV","待播放驗證與作者授權，暫不公開連結",i,"影片待授權")).join("")}</div>
+    <div class="sec">分享與反思</div>
+    <div class="grid g3">${["我從原畫保留了什麼？","音樂讓我產生什麼新感受？","哪個修改最能代表自己的判斷？"].map(q=>`<div class="card"><h3>${q}</h3></div>`).join("")}</div>
+    <div class="q" style="margin-top:22px">生成的是素材，選擇形成作品。</div>`,
+  script:()=>`<div class="ag">${[["2′","投影鑑賞原稿與異色補充的局部","問：哪些句子是學生原本的？"],["3′","用三個情緒詞展示聲音選擇","不播放整首歌；原音檔未取得就用文字與分鏡說明"],["3′","播放一段已授權、可離線的學生 MV","原稿 → 候選 → 修正版；授權未齊就改用教材流程"],["3′","聽覺再轉視覺","請聽眾用一句話說自己的畫面；《星夜》與《蓮池》狀態分開說"],["3′","比較保留、改變、理由","回到：生成的是素材，選擇形成作品"]].map(r=>`<div class="ag-row" style="grid-template-columns:50px minmax(0,1fr)"><span class="m">${r[0]}</span><span><b>${r[1]}</b><br><span class="note">${r[2]}</span></span></div>`).join("")}</div>
+    <p class="note" style="margin-top:10px">120 分鐘版在聆聽與速寫加 4 分鐘，讓台下真的畫一次。</p>`,
+  fix:()=>`<div class="grid g3">
+    <div class="card"><h3>色彩與聲音不是固定公式</h3><p>舊教材寫「冷色＝低音、慢、憂鬱；暖色＝高音、輕快」。改為可討論的例子，允許冷色產生明亮節奏，要求說明個人詮釋。</p></div>
+    <div class="card"><h3>鏡長依條件決定</h3><p>舊教材把 6 秒寫成 AI 影片極限，那是當時工具設定。現在依音樂與現場工具條件決定鏡長。</p></div>
+    <div class="card"><h3>不用過強的說法</h3><p>「徹底消除焦慮」「無版權疑慮」「一鍵完整 MV」改成可核對的功能、觀察與待驗證狀態。AI 生成不自動代表可以公開。</p></div>
+  </div>`
+};
+
+V.cases = ()=>`${head("","教學案例","完整課程資料庫","已實施、正在試驗與規劃中的課程分開呈現，讓課程發展的過程也能被看見。規劃中的活動不列為已完成的學生作品。",'<span class="tag r">教學</span>')}
+  <div class="filters">
+    <div class="grpf"><b>主題</b>${["全部","生活與自我","觀看與轉譯","設計與場域","空間與未來"].map((g,i)=>`<button class="fbtn" type="button" data-fg="${g}" aria-pressed="${i===0}">${g}</button>`).join("")}</div>
+    <div class="grpf"><b>狀態</b>${[["all","全部"],["ok","有教材與紀錄"],["part","資料部分待補"],["plan","規劃中"],["chk","待核"]].map((s,i)=>`<button class="fbtn" type="button" data-fs="${s[0]}" aria-pressed="${i===0}">${s[1]}</button>`).join("")}</div>
+  </div>
+  <div class="cgrid" id="cgrid"></div>
+  <div class="detail" id="cdetail" hidden></div>
+  <p class="note" style="margin-top:14px">每個案例缺圖時以文字狀態卡呈現，不用生成圖取代真實成果。案例編號沿用資料庫，未標編號者待對照。</p>`;
+
+V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與配分","把課堂中的原始回答、比較、修正與反思留下來，學生完成學習的同時，也逐步形成可展示的成果。",'<span class="tag r">教學</span><span>G05・G10・T01</span>')}
+  <div class="sec">一份資料，多次累積</div>
+  <div class="seven" style="grid-template-columns:repeat(4,minmax(0,1fr))">${[["原始感受與草圖","var(--red)"],["AI 協助與版本比較","var(--yellow)"],["選擇理由","var(--navy)"],["作品說明與反思","var(--ink)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">成果檔不是下課後重新抄寫一次。</p>
+  <div class="sec">現行配分 <span class="st ok">既有規定</span></div>
+  <div class="bar100"><div style="flex:70;background:var(--red)">作業及學習成果 70%</div><div style="flex:20;background:var(--navy)">期末紙筆 20%</div><div style="flex:10;background:var(--ink);color:var(--bg)">課堂 10%</div></div>
+  <div class="sec">在「作業」裡觀察什麼 <span class="st sug">建議</span></div>
+  <div class="grid g5">${["原始構想","理解","選擇與修正","最終表達","反思"].map(x=>`<div class="card"><h3>${x}</h3></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">用短訪談與過程證據補足成品無法呈現的學習。這是建議規準，尚未全面使用。</p>
+  <div class="grid g2" style="margin-top:22px">
+    <div class="card"><h3>AI 自學中心 <span class="st wip">部分可用・待測</span></h3><p>離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步需另做現版測試。展示時清楚標示是哪個版本。</p></div>
+    <div class="card"><h3>保護學習者</h3><p>公開版不含姓名、學號、帳號、成績及可辨識影像。學生可選擇不公開私人生命經驗，替代材料不影響正常評量。</p></div>
+  </div>`;
+
+V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學卡住的地方開始開發：讓抽象概念可以操作，讓學習資料能被保留。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
+  <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">${t.id||"—"}</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
+  <div class="sec">每張工具卡固定記錄</div>
+  <div class="chips">${["原問題","開發動機","介面","操作流程","教學用途","證據","限制","下一步"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+  <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
+  <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>`;
+
+const SERIES = {
+  "凝形—自然":{ d:"透過凝固與消逝的張力，感覺時間與自然的脆弱。", w:["冰凍的過往","永恆的美麗","消逝的風景","冰原的記憶"] },
+  "溫柔巨物":{ d:"巨大尺度與柔軟材質，構成安撫、共生與靠近的想像。", w:["編織溫暖的夢","共生","幸福樂園","寧靜與豐盛"] },
+  "透明與居所":{ d:"觀看身體、空間、身份與阻隔之間的關係。", w:["透明的距離","肉身與靈魂的透明界限","無面之人"] },
+  "發展中":{ d:"影像完成、實體製作、公開發表、展出是不同狀態，分別確認。", w:["墨‧林","The Child After War","灰燼之後的方舟","餘燼之舟"] }
+};
+V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想","從冰、編織、透明材質到森林與居所，作品探索自然、記憶、身體與情感的關係。",'<span class="tag n">主題 03</span>',true)}
+  <div class="tabs" role="tablist">${Object.keys(SERIES).map((k,i)=>`<button class="tab" role="tab" type="button" data-ser="${k}" aria-selected="${i===0}">${k}</button>`).join("")}</div>
+  <div id="serbox"></div>
+  <div class="links" style="margin-top:18px">${lk(CONFIG.links.art)}</div>`;
+
+const P5 = [["動機","從生活經驗、情感或問題出發，而不是從工具出發。"],["概念","整理成清楚的藝術概念：想說什麼、想讓觀者感受什麼。"],["生成","用 AI 產生大量可能性，當作素描本與實驗室。"],["選擇","在大量結果中做判斷。選擇本身就是創作者的美感與觀點。"],["再創作","修改、拼貼、重繪或轉換媒材，讓作品回到自己手上。"]];
+V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 擴充了表達的可能；人的經驗與判斷仍是創作的核心。",'<span class="tag n">主題 04</span>',true)}
+  <div class="steps" role="tablist">${P5.map((s,i)=>`<button type="button" role="tab" data-p5="${i}"><span>0${i+1}</span>${s[0]}</button>`).join("")}</div>
+  <div class="split"><div class="card" id="p5box" aria-live="polite" style="display:grid;gap:10px;align-content:start"></div><div class="photo"><img src="img/s9.jpg" alt=""><span class="cap">示意圖</span></div></div>
+  <div class="sec">作品案例</div>
+  <div class="works">${work("從動機到作品","作品原檔與創作自述待補",0)}${work("生成與選擇的過程","候選圖對照待補",1)}${work("再創作的版本","修改前後對照待補",2)}</div>
+  <div class="sec">作品狀態與展歷</div>
+  <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>`;
+
+const MEMBERS = [["HANA","黑色中分長直髮","#2B2B33"],["MIA","栗棕色下巴短鮑伯","#8A5A3C"],["ZOE","粉紅長直髮、空氣瀏海","#D9668A"],["LENA","白金側分長直髮，右眼下小痣","#B9A77A"],["CHLOE","黑色長波浪、側分","#3B3350"]];
+V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色、歌曲、影像與敘事整合成可持續發展的創作世界。跨領域的核心，是在每個環節做出一致而有理由的選擇。",'<span class="tag n">創作</span><span>E01–E06</span>')}
+  <div class="members">${MEMBERS.map(m=>`<div class="mem"><div class="sw" style="background:${m[2]}">${m[0]}</div><div class="bd"><b>${m[0]}</b><p>${m[1]}</p><span class="st chk">官方參考圖待補</span></div></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">當前官方圖是角色的依據（Identity Anchor），不重新設計、不用生成圖替代。LENA 的痣在右眼下，不可鏡像。</p>
+  <div class="sec">單曲狀態</div>
+  <div class="tbl"><table><thead><tr><th>角色</th><th>單曲</th><th>狀態</th></tr></thead><tbody>
+    <tr><td>HANA</td><td>《我醒在世界之前》</td><td><span class="st ok">有發布證據</span></td></tr>
+    <tr><td>MIA</td><td>《我把春天帶著走》</td><td><span class="st wip">版本未對齊</span></td></tr>
+    <tr><td>ZOE・CHLOE・LENA</td><td>—</td><td><span class="st plan">發展中，不推定已發布</span></td></tr>
+  </tbody></table></div>
+  <div class="sec">MIA 候選版本比較 <span class="note">（120 版 +3 分鐘）</span></div>
+  <div class="seg" role="group" aria-label="MIA 版本"><button type="button" data-mia="a" aria-pressed="true">版本 A</button><button type="button" data-mia="b" aria-pressed="false">版本 B</button></div>
+  <div class="split"><div class="card" id="miaBox"></div>${ph("候選鏡頭截圖待補（需確認母帶與分鏡版次）",2)}</div>
+  <div class="sec">逐鏡一致性檢查（現場可一起勾）</div>
+  <div class="grid g2"><div class="check" id="chk">${["臉孔","髮型","配件","服裝","身高比例","空間","光線"].map((x,i)=>`<label><input type="checkbox" id="ck${i}">${x}</label>`).join("")}</div>
+    <div class="card"><h3>音樂到視覺</h3><p>先確認歌曲版本與角色聲線，再發展視覺概念、服裝、分鏡、運鏡、剪輯與字幕。候選比較與修正，就是創作歷程。</p><h3 style="margin-top:14px">創作能力的累積</h3><p>從不熟悉的音樂、攝影與剪輯知識開始，透過試作與比較建立自己的流程。工具只是輔助，不取代作品敘事。</p></div></div>
+  <div class="sec">影音</div>
+  <div class="works">${work("HANA《我醒在世界之前》MV","影片檔或公開連結待補",0,"影片待補")}${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
+  <div class="links" style="margin-top:16px">${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
+
+V.workflow = ()=>`${head("","工作流程","跨 AI 協作與創作平台","從一次問答走向可以接續的專案，需要清楚的來源、設定、版本、驗收結果與下一步。",'<span class="tag n">創作</span><span>G09・J01</span>')}
+  <div class="seven" style="grid-template-columns:repeat(6,minmax(0,1fr))">${[["定義需求","var(--red)"],["整理資料","var(--yellow)"],["製作內容","var(--navy)"],["實作","var(--ink)"],["檢查","var(--red)"],["記錄","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">每一步留下可閱讀的產出，避免只靠對話記憶。</p>
+  <div class="grid g3" style="margin-top:20px">
+    <div class="card"><h3>跨平台協作</h3><p>ChatGPT、Gemini、Claude、Codex 與 ComfyUI 出現在不同環節，但不宣稱所有平台已自動串接。</p></div>
+    <div class="card"><h3>FRAMEFLOW 工作台 <span class="st plan">原型</span></h3><p>有介面與流程原型，生成服務尚未設定。把它當作可改善的工作設計，不是已驗證的全自動系統。</p></div>
+    <div class="card"><h3>交接最小集合</h3><p>來源清單、固定設定、已完成、版本差異、阻礙、驗收、下一步。</p></div>
+  </div>`;
+
+V.s06 = ()=>`${head("06","未來美術教師","在 AI 時代找到自己的教學模式","找出符合自己的特質、學科內容及學生需要的教學模式，需要長期試驗與反思。",'<span class="tag">主題 06</span>')}
+  <div class="split">
+    <div class="grid" style="align-content:start">
+      <div class="card"><h3>評量</h3><p>從看成品走向看歷程：原始構想、選擇與修正、反思都是證據。</p></div>
+      <div class="card"><h3>反思</h3><p>哪些事 AI 做得比我好？哪些事只有老師能做？</p></div>
+      <div class="card"><h3>行動</h3><p>從改寫一個任務開始：讓學生保留一個自己的決定。</p></div>
+    </div>
+    <div class="photo"><img src="img/s3.jpg" alt=""><span class="cap">示意圖</span></div>
+  </div>
+  <div class="q" style="margin-top:26px">你想讓學生保留哪一個自己的決定？<small>用什麼證據確認他正在學習？</small></div>`;
+
+V.break = ()=>`${head("","中場休息","5 分鐘","下半場：AI 藝術與影音創作。",'<span class="tag y">休息</span>')}
+  <div class="split">
+    <div><div class="bigtime" id="brkTime">05:00</div>
+      <div class="links" style="margin-top:16px"><button class="lk" type="button" id="brkStart">開始倒數</button><button class="lk" type="button" id="brkReset">重設</button></div>
+      <p class="note" style="margin-top:16px">休息時可以先逛逛：</p><div class="links" style="margin-top:8px">${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.elara)}</div></div>
+    <div class="photo" style="min-height:320px"><img src="img/s5.jpg" alt=""></div>
+  </div>`;
+
+V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></div>
+  <div style="display:flex;gap:12px;margin:20px 0" aria-hidden="true"><div class="shape c"></div><div class="shape s"></div><div class="shape t"></div></div>
+  <p class="quote">你的人生，<br>就是你的<span>藝術品</span>。</p>
+  <div class="grid g2" style="margin-top:30px">
+    <div class="card"><h3>交流</h3><p>你想在未來的美術課裡，讓學生保留哪一個自己的決定？</p></div>
+    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
+  </div>`;
+
+V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能找到網址，不代表已讀完全部內容；私人研究來源不出現在公開網站。",'<span class="tag">資源</span>')}
+  <div class="tbl"><table><thead><tr><th>類別</th><th>連結</th><th>查核狀態</th></tr></thead><tbody>
+    <tr><td>教學</td><td>${lk(CONFIG.links.site)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
+    <tr><td>教學</td><td>${lk(CONFIG.links.fanpage)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
+    <tr><td>教學</td><td>${lk(CONFIG.links.github)}</td><td><span class="st chk">與現行網站的部署關係待核</span></td></tr>
+    <tr><td>藝術</td><td>${lk(CONFIG.links.art)}</td><td><span class="st ok">頁面已查核</span></td></tr>
+    <tr><td>ELARA</td><td>${lk(CONFIG.links.elara)}</td><td><span class="st ok">頁面已查核</span></td></tr>
+    <tr><td>其他</td><td>${lk(CONFIG.links.instagram)} ${lk(CONFIG.links.youtube)}</td><td><span class="st chk">未定位</span></td></tr>
+    <tr><td>研究</td><td>${lk(CONFIG.links.unesco)}</td><td><span class="st ok">外部參照</span></td></tr>
+    <tr><td>研究</td><td>${lk(CONFIG.links.bastani)}</td><td><span class="st ok">外部參照（數學情境）</span></td></tr>
+  </tbody></table></div>
+  <div class="sec">網站內容的標記方式</div>
+  <div class="chips"><span class="st ok">有教材與紀錄</span><span class="st wip">部分可用／資料待補</span><span class="st plan">規劃中／原型</span><span class="st chk">待核</span><span class="st sug">建議</span></div>
+  <p class="foot">內容整理自講者的研究資料包 v1.0（2026-11-25）。文件存在不等於功能可用，成果報告不等於學習成效的因果證明。學生姓名、成績與未授權影像不在本網站。</p>`;
+
+/* ===== mounts (interactions) ===== */
+M.lecture = ()=>{
+  let L = store.get("len",120); const inp=$("#startAt"); inp.value = store.get("start","");
+  const draw=()=>{
+    $$("[data-tlen]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.tlen===L));
+    const [h,m]=(inp.value||"00:00").split(":").map(Number); let t=h*60+m;
+    const f=x=>inp.value?String(Math.floor(x/60)%24).padStart(2,"0")+":"+String(x%60).padStart(2,"0"):"+"+String(x-(h*60+m)).padStart(3," ");
+    let html="", last=-1;
+    STOPS.forEach((s,i)=>{
+      if(s.s!==last){ last=s.s; const sm=STOPS.filter(z=>z.s===s.s).reduce((a,z)=>a+z.m+(L===120?(z.x||0):0),0); html+=`<div class="ag-row segh"><span class="t"></span><span class="m">${sm}′</span><span><i style="display:inline-block;width:10px;height:10px;background:${SEGS[s.s].c};margin-right:8px"></i>${SEGS[s.s].n}</span><span></span></div>`; }
+      const mm=s.m+(L===120?(s.x||0):0);
+      html+=`<button class="ag-row" type="button" data-stop="${i}"><span class="t">${f(t)}</span><span class="m">${mm}′</span><span>${esc(s.t)}</span><span class="x">${L===120&&s.x?"+"+s.x:""}</span></button>`; t+=mm;
+    });
+    html+=`<div class="ag-row"><span class="t">${f(t)}</span><span class="m"></span><span><b>結束</b></span><span></span></div>`;
+    $("#agTable").innerHTML=html;
+  };
+  $$("[data-tlen]").forEach(b=>b.addEventListener("click",()=>{L=+b.dataset.tlen;draw()}));
+  inp.addEventListener("change",()=>{store.set("start",inp.value);draw()});
+  draw();
+};
+M.s01 = ()=>{
+  let v=store.get("poll",[0,0,0,0]), hist=[];
+  const draw=()=>{const tot=v.reduce((a,b)=>a+b,0),mx=Math.max(1,...v);$$(".pbtn").forEach((b,i)=>{b.querySelector(".cnt").textContent=v[i];b.querySelector(".fill").style.width=(v[i]/mx*100)+"%"});$("#pollTotal").textContent=tot+" 人";store.set("poll",v)};
+  $$(".pbtn").forEach(b=>b.addEventListener("click",()=>{v[+b.dataset.p]++;hist.push(+b.dataset.p);draw()}));
+  $("#pollUndo").addEventListener("click",()=>{const i=hist.pop();if(i!=null&&v[i]>0){v[i]--;draw()}});
+  $("#pollReset").addEventListener("click",()=>{v=[0,0,0,0];hist=[];draw()});
+  draw();
+};
+M.s02 = ()=>{
+  const T={with:"<b>任務完成了</b><br><span class='note'>作品看起來不錯、作業準時繳交。但這不一定代表學生學會了。</span>",without:"<b>學生自己還做得到嗎？</b><br><span class='note'>教學設計要區分「有 AI 時完成任務」和「移除 AI 後的學習」，並在過程中設計護欄與鷹架。</span>"};
+  const set=k=>{$$("[data-ai]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ai===k));$("#aiBox").innerHTML=T[k]};
+  $$("[data-ai]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.ai)));set("with");
+};
+M.sensory = (opt)=>{
+  const set=k=>{
+    $$("[data-stab]").forEach(b=>b.setAttribute("aria-selected",b.dataset.stab===k));
+    $("#sbox").innerHTML=SENS_TABS[k]();
+    if(k==="flow"){const d=i=>{const s=STEPS11[i];$("#s11box").innerHTML=`<div><span class="k">步驟 ${i+1}・學生任務</span><p><b>${s[0]}</b>｜${s[1]}</p></div><div><span class="k">保留的證據</span><p>${s[2]}</p></div><div><span class="k">教師引導</span><p>${s[3]}</p></div>`;$$("[data-s11]").forEach(b=>b.setAttribute("aria-selected",+b.dataset.s11===i))};$$("[data-s11]").forEach(b=>b.addEventListener("click",()=>d(+b.dataset.s11)));d(0)}
+    if(k==="practice"){
+      const ids=["pw","pl","sp","tn","dn","pr","pn"], saved=store.get("prac",{});
+      ids.forEach(id=>{ if(saved[id]!=null) $("#"+id).value=saved[id]; });
+      const W={sp:["很慢","慢","中速","快","很快"],tn:["很柔","柔和","中性","明亮","銳利"],dn:["很疏","稀疏","適中","飽滿","很密"]};
+      const draw=()=>{const o={};ids.forEach(id=>o[id]=$("#"+id).value);store.set("prac",o);
+        $("#scard").innerHTML=`<span class="k">我的聲音設計卡</span><b>${esc(o.pw||"（三個情緒詞）")}</b><p>${W.sp[o.sp]}・${W.tn[o.tn]}・${W.dn[o.dn]}</p><p>${o.pr?"理由："+esc(o.pr):"寫下理由，才算完成一次轉譯。"}</p>${o.pn?`<p>新畫面：${esc(o.pn)}</p>`:""}`};
+      ids.forEach(id=>$("#"+id).addEventListener("input",draw));draw();
+    }
+  };
+  $$("[data-stab]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.stab)));
+  set(opt.tab||"flow");
+};
+M.cases = (opt)=>{
+  let g="全部", s="all";
+  const show=id=>{const c=CASES.find(x=>(x.id||x.t)===id);const box=$("#cdetail");if(!c){box.hidden=true;return}
+    box.hidden=false;box.innerHTML=`<span class="eyebrow" style="margin:0">${c.id?`<span class="tag r">${c.id}</span>`:""}${esc(c.g)}</span><h3>${esc(c.t)}</h3><dl><dt>內容</dt><dd>${esc(c.d)}</dd><dt>狀態</dt><dd>${st(c.st)}</dd><dt>證據與限制</dt><dd>${esc(c.ev)}</dd><dt>媒體</dt><dd><span class="note">代表圖待補（去識別、授權確認後放入）</span></dd></dl>${c.go?`<div class="links"><button class="lk" type="button" data-view="${c.go}">打開完整案例 →</button></div>`:""}`;
+    $$(".ccard").forEach(b=>b.setAttribute("aria-pressed",b.dataset.cid===id));};
+  const draw=()=>{$("#cgrid").innerHTML=CASES.filter(c=>(g==="全部"||c.g===g)&&(s==="all"||c.st===s)).map(c=>`<button class="ccard" type="button" data-cid="${esc(c.id||c.t)}"><span class="top"><span class="id">${c.id||"—"}・${esc(c.g)}</span>${st(c.st)}</span><b>${esc(c.t)}</b><p>${esc(c.d)}</p></button>`).join("")||'<p class="note">沒有符合條件的案例。</p>';
+    $$(".ccard").forEach(b=>b.addEventListener("click",()=>show(b.dataset.cid)))};
+  $$("[data-fg]").forEach(b=>b.addEventListener("click",()=>{g=b.dataset.fg;$$("[data-fg]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+  $$("[data-fs]").forEach(b=>b.addEventListener("click",()=>{s=b.dataset.fs;$$("[data-fs]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
+  draw(); if(opt.c) show(opt.c);
+};
+M.art = ()=>{
+  const set=k=>{const S=SERIES[k];$$("[data-ser]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ser===k));
+    $("#serbox").innerHTML=`<p style="font-size:19px;margin-bottom:16px">${S.d}</p><div class="works">${S.w.map((w,i)=>work(w,k==="發展中"?"狀態分別確認中":"年份、媒材、尺寸待核",i,"作品圖待補")).join("")}</div>`};
+  $$("[data-ser]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.ser)));set("凝形—自然");
+};
+M.practice = ()=>{
+  const d=i=>{$("#p5box").innerHTML=`<span class="chno n" style="font-size:68px">0${i+1}</span><h3 style="font-size:28px">${P5[i][0]}</h3><p style="font-size:17px">${P5[i][1]}</p>`;$$("[data-p5]").forEach(b=>b.setAttribute("aria-selected",+b.dataset.p5===i))};
+  $$("[data-p5]").forEach(b=>b.addEventListener("click",()=>d(+b.dataset.p5)));d(0);
+};
+M.elara = ()=>{
+  const T={a:"<h3>版本 A：220 秒・40 鏡</h3><p>鏡頭切得細，節奏密集。來源：MV 交接紀錄。</p><p class='note'>哪一版是定稿尚未確認，兩版都保留。</p>",b:"<h3>版本 B：216 秒・19 鏡</h3><p>鏡頭較長，讓單一畫面停留。來源：簡報紀錄。</p><p class='note'>哪一版是定稿尚未確認，兩版都保留。</p>"};
+  const set=k=>{$$("[data-mia]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mia===k));$("#miaBox").innerHTML=T[k]};
+  $$("[data-mia]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.mia)));set("a");
+};
+let brk={left:300,t:null};
+M.break = ()=>{
+  const el=$("#brkTime"),btn=$("#brkStart"),fmt=x=>String(Math.floor(x/60)).padStart(2,"0")+":"+String(x%60).padStart(2,"0");
+  const draw=()=>{if(!document.body.contains(el))return;el.textContent=fmt(brk.left);el.classList.toggle("done",brk.left===0);btn.textContent=brk.t?"暫停":"開始倒數"};
+  btn.addEventListener("click",()=>{if(brk.t){clearInterval(brk.t);brk.t=null;draw();return}brk.t=setInterval(()=>{brk.left=Math.max(0,brk.left-1);if(!brk.left){clearInterval(brk.t);brk.t=null}draw()},1000);draw()});
+  $("#brkReset").addEventListener("click",()=>{clearInterval(brk.t);brk.t=null;brk.left=300;draw()});draw();
+};
+
+/* ===== routing: #talk-01..#talk-20 = 講座模式；其他 = 自由探索 ===== */
+let mode="talk", stopIdx=0, view="cover", LEN=store.get("len",120);
+const main=$("#main");
+const mins=s=>s.m+(LEN===120?(s.x||0):0);
+function render(v,opt={}){
+  view=v;
+  let banner="";
+  if(mode==="talk"){const s=STOPS[stopIdx];banner=`<div class="stop"><b class="num">${String(stopIdx+1).padStart(2,"0")} / ${STOPS.length}</b><span>${esc(SEGS[s.s].n)}</span><b class="num">本頁 ${mins(s)}′</b>${LEN===120&&s.x?`<span class="plus num">120 版 +${s.x}′</span>`:""}${s.cue?`<span class="cue">講者提示：${esc(s.cue)}</span>`:""}</div>`;}
+  const nav = mode==="talk" ? navBtns(stopIdx>0?STOPS[stopIdx-1].t:null, stopIdx<STOPS.length-1?STOPS[stopIdx+1].t:null)
+    : (()=>{const i=EXPLORE_ORDER.indexOf(v);return navBtns(i>0?TITLES[EXPLORE_ORDER[i-1]]:null,i>=0&&i<EXPLORE_ORDER.length-1?TITLES[EXPLORE_ORDER[i+1]]:null)})();
+  main.innerHTML=`${v!=="cover"?banner:""}<section class="view">${V[v]()}</section>${nav}${v==="cover"&&mode==="talk"?banner:""}`;
+  M[v]&&M[v](opt);
+  window.scrollTo({top:0});
+  updateBar();
+  document.title=(v==="cover"?"":TITLES[v]+"｜")+"AI 時代的藝術與教育";
+}
+const navBtns=(p,n)=>`<nav class="vnav">${p?`<button type="button" data-step="-1"><span>← 上一頁</span>${esc(p)}</button>`:""}${n?`<button class="nx" type="button" data-step="1"><span>下一頁 →</span>${esc(n)}</button>`:""}</nav>`;
+function setHash(h){try{history.replaceState(null,"","#"+h)}catch(e){}}
+function goStop(i){mode="talk";stopIdx=Math.max(0,Math.min(STOPS.length-1,i));const s=STOPS[stopIdx];setHash("talk-"+String(stopIdx+1).padStart(2,"0"));store.set("mode","talk");render(s.v,{tab:s.tab,c:s.c})}
+function goView(v,opt){mode="explore";if(!V[v]||v==="break")v="home";setHash(v);store.set("mode","explore");render(v,opt||{})}
+function step(d){ if(mode==="talk") goStop(stopIdx+d); else {const i=EXPLORE_ORDER.indexOf(view);const j=Math.max(0,Math.min(EXPLORE_ORDER.length-1,(i<0?0:i)+d));goView(EXPLORE_ORDER[j])} }
+function route(){
+  const h=location.hash.slice(1); const m=h.match(/^talk-(\d+)$/);
+  if(m) goStop(+m[1]-1); else if(h && V[h]) goView(h); else { mode=store.get("mode","talk"); mode==="talk"?goStop(0):goView("cover"); }
+}
+
+/* ===== bar ===== */
+const strip=$("#strip"), menu=$("#menu");
+function buildStrip(){
+  strip.innerHTML=STOPS.map((s,i)=>`<button type="button" data-stop="${i}" style="flex:${mins(s)} 1 0;--sc:${SEGS[s.s].c}" title="${esc((i+1)+". "+s.t+"（"+mins(s)+" 分鐘）")}" aria-label="${esc(s.t)}"></button>`).join("")+'<span class="now" id="nowLine" hidden></span>';
+  const segM=SEGS.map((_,k)=>STOPS.filter(s=>s.s===k).reduce((a,s)=>a+mins(s),0));
+  $("#seglbl").innerHTML=SEGS.map((g,k)=>`<span style="flex:${segM[k]} 1 0">${g.n} ${segM[k]}′</span>`).join("");
+}
+menu.innerHTML=MENU.map(([g,items])=>`<span class="grp"><b>${g}</b>${items.map(([v,l])=>`<button type="button" data-view="${v}">${l}</button>`).join("")}</span>`).join("");
+function updateBar(){
+  const talk=mode==="talk";
+  $$("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.mode===mode));
+  $("#talkTools").hidden=!talk; $("#talkNav").hidden=!talk; menu.hidden=talk;
+  $$("[data-len]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.len===LEN));
+  $$("#strip button").forEach((b,i)=>{b.classList.toggle("on",talk&&i===stopIdx);b.classList.toggle("done",talk&&i<stopIdx)});
+  $$("#menu button").forEach(b=>b.toggleAttribute("aria-current",false));
+  if(!talk){const b=menu.querySelector(`[data-view="${view}"]`);b&&b.setAttribute("aria-current","page")}
+  $("#stopNo").textContent=talk?`${stopIdx+1}/${STOPS.length}`:"";
+}
+
+/* ===== events ===== */
+document.addEventListener("click",e=>{
+  const t=e.target.closest("[data-stop],[data-view],[data-step],[data-mode],[data-start],[data-go],[data-len]"); if(!t) return;
+  if(t.dataset.stop!=null) goStop(+t.dataset.stop);
+  else if(t.dataset.view) goView(t.dataset.view);
+  else if(t.dataset.step) step(+t.dataset.step);
+  else if(t.dataset.mode) t.dataset.mode==="talk"?goStop(stopIdx):goView(view==="break"?"home":view);
+  else if(t.dataset.start) t.dataset.start==="talk"?goStop(1):goView("home");
+  else if(t.dataset.go) mode==="talk"?goStop(0):goView("cover");
+  else if(t.dataset.len){LEN=+t.dataset.len;store.set("len",LEN);buildStrip();render(view,{tab:STOPS[stopIdx].tab,c:STOPS[stopIdx].c});tick()}
+});
+$("#prevBtn").addEventListener("click",()=>step(-1));
+$("#nextBtn").addEventListener("click",()=>step(1));
+$("#fsBtn").addEventListener("click",()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}});
+document.addEventListener("keydown",e=>{
+  if(e.target.closest("input,textarea,select")) return;
+  if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();step(1)}
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();step(-1)}
+  else if((e.key==="t"||e.key==="T")&&mode==="talk"){$("#timerBtn").click()}
+  else if(e.key==="f"||e.key==="F"){$("#fsBtn").click()}
+});
+window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);const cur=mode==="talk"?"talk-"+String(stopIdx+1).padStart(2,"0"):view;if(h&&h!==cur)route()});
+
+/* ===== timer ===== */
+let timer=store.get("timer",{running:false,startedAt:0,acc:0});
+const elapsed=()=>timer.acc+(timer.running?Date.now()-timer.startedAt:0);
+function tick(){
+  const ms=elapsed(),sec=Math.floor(ms/1000),min=ms/60000,c=$("#clock");
+  c.innerHTML=`<small>${timer.running?"進行":"計時"}</small>${String(Math.floor(sec/60)).padStart(2,"0")}:${String(sec%60).padStart(2,"0")}<small style="margin-left:4px">/ ${LEN}</small>`;
+  let acc=0,plan=STOPS.length-1;for(let i=0;i<STOPS.length;i++){if(min<acc+mins(STOPS[i])){plan=i;break}acc+=mins(STOPS[i])}
+  c.classList.toggle("late",ms>0&&mode==="talk"&&stopIdx<plan);
+  c.title=ms>0?`依時間應在：${STOPS[plan].t}（雙擊歸零）`:"講座計時（雙擊歸零）";
+  const line=$("#nowLine");if(line){line.hidden=ms===0;line.style.left=Math.min(100,min/LEN*100)+"%"}
+  $("#timerBtn").textContent=timer.running?"暫停":(ms>0?"繼續":"開始");
+}
+$("#timerBtn").addEventListener("click",()=>{if(timer.running){timer.acc=elapsed();timer.running=false}else{timer.startedAt=Date.now();timer.running=true}store.set("timer",timer);tick()});
+$("#clock").addEventListener("dblclick",()=>{timer={running:false,startedAt:0,acc:0};store.set("timer",timer);tick()});
+setInterval(tick,1000);
+
+buildStrip(); route(); tick();
+</script>
+
+</body></html>

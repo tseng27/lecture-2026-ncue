@@ -2,6 +2,16 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 21:37（Asia/Taipei）｜Grok
+- 任務：講者要求在主題 02「全球 AI 教育革命」新增 R003，連結 https://www.facebook.com/share/p/1HtpuXEEQG/；並補 Instagram 帳號名稱：@tseng27tw＝AI藝術創作 IG、@elara5girls＝ELARA 虛擬女子團體 IG、@art27tw＝個人 IG。
+- 改了什麼：
+  - `index.html` V.s02：在 R001／R002 下方新增 R003 卡片，連結至講者提供的 Facebook 貼文。WebFetch 逾時、curl 回傳 Facebook 錯誤頁，讀不到標題或內文，故標籤與按鈕皆為「Facebook 貼文（講者提供）」，不臆造貼文內容。附註說明此為補充連結、不是課程成效證明，也不與兩項已查核研究並列。開頭「這兩項外部研究是提問框架」未改。`CONFIG.links.r003` 已新增。
+  - Instagram：`CONFIG.social.instagram` 標籤改為「AI藝術創作 IG（@tseng27tw）」「ELARA 虛擬女子團體 IG（@elara5girls）」「個人 IG（@art27tw）」；`CONFIG.links.instagram` 改為「個人 Instagram」→ `https://www.instagram.com/art27tw/`。
+- 驗證：smoke-test.js 11 項 PASS；#home／#s02／#resources 400px 無水平捲動、無 console 錯誤；截圖已目視檢查。
+- 沒做完／阻礙：R003 貼文內容無法讀取，若講者提供標題可再改標籤。排版與社群連結變更仍待講者確認後推送。
+- 下一步建議：講者確認預覽後再推 GitHub Pages。
+- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；**待講者確認後推送**。
+
 ## 2026-11-25 21:35（Asia/Taipei）｜Grok
 - 任務：講者看過關於我頁說「這樣左邊很空 幫我重新排版」；接著提供 YouTube／Instagram／Facebook 連結，要求底部「延伸連結」改成三組。
 - 改了什麼：

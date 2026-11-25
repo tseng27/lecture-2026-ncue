@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 20:20（Asia/Taipei）｜Claude
+- 任務：講者傳了畫廊／美術館網站截圖，說「我喜歡這些風格幫我修改」。
+- 改了什麼：index.html 的 <style> 全面改為畫廊風格（石白牆面底色、Cormorant Garamond＋Noto Serif TC 細體標題、Inter 小字間距標籤、細線取代色塊、作品以掛畫框呈現、深色模式為黑盒放映室）；V.cover 改為左圖右文的展廳式封面。內容、講座流程、規則都沒改。
+- 驗證：tools/smoke-test.js 11 項 PASS；桌機淺色／深色截圖檢查。
+- 沒做完／阻礙：無。
+- 下一步建議：講者確認風格；收到真實作品圖後，作品會以畫框呈現。
+- 是否已同步 artifact-source.html／已發布：是，Artifact v3、GitHub main。
+
 ## 2026-11-25 07:05（Asia/Taipei）｜Claude
 - 任務：講者要求「放到 GitHub」，並把交接紀錄存到 Google Drive。
 - 改了什麼：建立 repo 內容（index.html、img、交接包、.nojekyll）推到 tseng27/lecture-2026-ncue 的 main。Drive 備份：「1-3 講座資料 > 20261127 彰師大講座_互動網站交接」。

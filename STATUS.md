@@ -1,6 +1,7 @@
-# STATUS（最後更新：2026-11-25 07:05 Asia/Taipei，Claude）
+# STATUS（最後更新：2026-11-25 20:20 Asia/Taipei，Claude）
 
 ## 已完成
+- 2026-11-25：視覺改為畫廊／美術館風格（Artifact v3）。
 - v2 網站：講座模式 20 頁（110/120）＋自由探索 17 個視圖，依 ChatGPT 資料包 v1.0 撰寫。
 - 私人預覽已發布（Claude Artifact）。
 - 交接包：AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。

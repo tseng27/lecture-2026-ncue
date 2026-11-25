@@ -2,6 +2,17 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 21:06（Asia/Taipei）｜Grok
+- 任務：講者在自由探索「關於我」（#home）說「右邊的圖片用這幾張填滿」，並提供 9 張（去重後）自己的 AI 公仔形象圖；稍後再改同一頁的標題、三張身分卡、區塊標題與四個標籤文字（原文見講者訊息）。
+- 改了什麼：
+  - `img/about-01.jpg`～`about-09.jpg`：講者提供的 9 張彩色公仔圖，縮為高 800px、JPEG 品質 82。順序為畫家、Design Master、Art Pro、Sound Genius、Code Pro、Coffee Artist、Green Thumb、Lab Guru、Sky Captain（第 2、3 張原檔重複，只留一張）。
+  - `index.html` 在 CONFIG 旁新增 `ABOUT_IMGS`；V.home 右側佔位卡改為 3×3 紙膠帶拍立得牆（彩色、`object-fit:contain`、不裁切、不套灰階），標題「AI 公仔實驗：如果我是…」，註記「AI 生成形象圖（講者本人提供）」；點擊開燈箱，Esc／背景／關閉鈕可關。樣式寫在 `<style>` 覆寫區塊末端。
+  - 同一 V.home 文案（未改其他視圖；講座提示與主題 06 維持原句）：標題「我是曾國正」；紅字副標「一位在美術教學、藝術創作與生活中持續探索的終身學習者」；引言「我相信，美術不只是創作作品，更是觀察生活、表達自己，探索人生的方式。」；三卡改為美術教師／藝術創作者／終身學習者及對應說明（圓／方／三角圖示保留）；區塊標題改「從教學、創作到實踐」；四個標籤改為「AI 教學觀察所｜藝術教育研究與實踐」「AI 藝術與跨媒材創作」「ELARA 虛擬女團創作計畫」「數位教材與創作平台開發」。頁首標籤仍是「開場｜關於我與核心理念」。
+- 驗證：`NODE_PATH=/workspace/pwtools/node_modules node tools/smoke-test.js` 11 項 PASS；#home 在 400px 寬 `scrollWidth=400`（無水平捲動）；燈箱可開、Esc 可關；桌機／手機截圖已目視檢查。
+- 沒做完／阻礙：本人真實照片與課堂照仍未放入（右側是 AI 公仔，已標示生成圖，不冒充課堂照）。作品卡、IG／YouTube 仍待補。變更尚未推送，等講者確認。
+- 下一步建議：講者確認預覽後再推 GitHub Pages；若要調公仔排列或標籤用語可再改 `ABOUT_IMGS`。
+- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；**待講者確認後推送**。
+
 ## 2026-11-25 20:55（Asia/Taipei）｜Grok
 - 任務：講者要求封面（#talk-01）那行文字「改成 曾國正/國立屏北高級中學　線上講座/國立彰化師範大學」。
 - 改了什麼：index.html CONFIG 新增 school:"國立屏北高級中學"、format:"線上講座"；V.cover 的 p.c-who 改為「曾國正／國立屏北高級中學　　線上講座／國立彰化師範大學」（原本的對象文字從這行移除，CONFIG.audience 保留未刪）。

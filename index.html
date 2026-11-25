@@ -531,6 +531,11 @@ body::before{background:var(--bg)}
 .memimg{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--chip)}
 .memimg img{width:100%;height:100%;object-fit:cover;object-position:30% 18%;display:block;transition:transform .3s}
 .memimg:hover img{transform:scale(1.04)}
+/* MIA 創作流程 */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:10px;align-content:start}
+.flow li{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start;background:var(--paper);padding:12px 14px;box-shadow:0 1px 1px rgba(0,0,0,.08),0 8px 18px -10px rgba(0,0,0,.3)}
+.flow .k{font-family:var(--f-num);font-size:26px;font-weight:700;color:var(--red);line-height:1}
+.flow b{font-size:17px}.flow p{margin:2px 0 0;font-size:15px;line-height:1.6}
 </style>
 
 <header class="bar">
@@ -947,15 +952,51 @@ V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想
   <p class="note" style="margin-top:14px">作品圖、年代與系列說明取自講者作品集網站；點作品可開啟該作品頁。</p>
   <div class="links" style="margin-top:12px">${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.art)}</div>`;
 
-const P5 = [["動機","從生活經驗、情感或問題出發，而不是從工具出發。"],["概念","整理成清楚的藝術概念：想說什麼、想讓觀者感受什麼。"],["生成","用 AI 產生大量可能性，當作素描本與實驗室。"],["選擇","在大量結果中做判斷。選擇本身就是創作者的美感與觀點。"],["再創作","修改、拼貼、重繪或轉換媒材，讓作品回到自己手上。"]];
+/* 主題 04：藝術創作流程，取自講者 2024-08-26 公視講座〈藝術的力量與未來〉簡報的「創作說明」與相關頁 */
+const P5 = [
+  ["生活圖像","從自己拍的照片、生活裡的場景出發，而不是從工具出發。"],
+  ["提示詞","讓 AI 讀這張圖，把畫面轉成一段文字描述，當作第一份提示詞。"],
+  ["分析","比對幾組描述：哪些詞在講材質、色彩、比例、環境、元素？哪些是 AI 誤讀？"],
+  ["提取","留下想要的關鍵詞，刪掉不需要的，整理成自己的句子。"],
+  ["生成","用整理後的提示詞大量生成：先發散，看見更多可能。"],
+  ["增加","加入自己的概念、材質或風格參考（例如 --sref），調整形式與議題。"],
+  ["再生成","再次生成並挑選、修改，收斂成作品；選擇本身就是創作者的觀點。"]
+];
+const PROMPT_EX = 'A highly detailed model of the H llertmer Reiheleyhofen is displayed on an old wooden table, surrounded by miniature figures dressed in traditional German and carrying beer barrels. The building has red brick walls with white windows and doors decorated with black tiles… --ar 16:9';
+const AI_VIDEO = ["Luma Dream Machine","Kling","Pika","PixVerse","Runway","Haiper"];
 V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 擴充了表達的可能；人的經驗與判斷仍是創作的核心。",'<span class="tag n">主題 04</span>',true)}
+  <div class="sec">我的創作流程：生活圖像 → 提示詞 → 分析 → 提取 → 生成 → 增加 → 再生成</div>
   <div class="steps" role="tablist">${P5.map((s,i)=>`<button type="button" role="tab" data-p5="${i}"><span>0${i+1}</span>${s[0]}</button>`).join("")}</div>
-  <div class="split"><div class="card" id="p5box" aria-live="polite" style="display:grid;gap:10px;align-content:start"></div><div class="photo"><img src="img/s9.jpg" alt=""><span class="cap">示意圖</span></div></div>
+  <div class="split"><div class="card" id="p5box" aria-live="polite" style="display:grid;gap:10px;align-content:start"></div>
+    <div class="card"><h3>發散與收斂</h3><p>前半段讓 AI 幫忙打開可能性（發散）；後半段由自己判斷、刪減、調整（收斂）。兩段都要有，作品才會回到自己手上。</p>
+      <h3 style="margin-top:16px">提示詞的五個要素</h3><div class="chips" style="margin-top:6px">${["材質","色彩","比例","環境","元素"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+      <p class="note" style="margin-top:10px">調整提示詞時，一次只改一個要素，比較前後差異。</p></div></div>
+  <div class="sec">一段真實的提示詞（2024/08/23）</div>
+  <div class="q" style="font-family:var(--f-num,monospace);font-size:15px;line-height:1.7">${esc(PROMPT_EX)}<small>從一張生活照片反推出的描述：AI 會誤讀招牌文字，這正是「分析」與「提取」要處理的地方。</small></div>
+  <div class="sec">從作品到發表</div>
+  <div class="grid g3">
+    <div class="card"><h3>形式與議題</h3><p>決定作品的形式（平面、裝置、影像）以及想談的議題，再回頭調整生成內容。</p></div>
+    <div class="card"><h3>主題策展練習</h3><p>為一組作品寫展覽文字，例如「鳥與家」「墨・黑」，用 AI 協助整理成策展論述。<span class="st chk">策展練習，不列為展歷</span></p></div>
+    <div class="card"><h3>發布</h3><p>在臉書「AI藝術創新實驗室」與作品集網站發表，留下每一件作品的時間與版本。</p></div>
+  </div>
   <div class="sec">作品案例</div>
-  <div class="works">${work("從動機到作品","作品原檔與創作自述待補",0)}${work("生成與選擇的過程","候選圖對照待補",1)}${work("再創作的版本","修改前後對照待補",2)}</div>
+  <div class="works">${[["幸福樂園","happiness-paradise","happiness-paradise.jpg","羊毛編織的巨大動物，傳遞寧靜與幸福"],["寧靜與豐盛","tranquility-abundance","portfolio-13.jpeg","溫柔巨物系列"],["肉身與靈魂的透明界限","transparent-boundaries","portfolio-16.jpeg","透明材質與身體"]].map(([t,slug,img,d])=>`<a class="work wk" href="${PORT}/works/${slug}/" target="_blank" rel="noopener"><div class="ph wkimg"><img src="${PORT}/assets/${img}" alt="${esc(t)}" loading="lazy"><span>${esc(t)}</span></div><small>${esc(d)}・作品頁 ↗</small></a>`).join("")}</div>
+  <div class="sec">影像生成工具（2024 講座使用）</div>
+  <div class="chips">${AI_VIDEO.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+  <p class="note" style="margin-top:8px">文字轉影片、圖片轉影片工具更新很快，現在的版本與方案待核。</p>
   <div class="sec">作品狀態與展歷</div>
   <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>`;
 
+const MIA_FLOW = [
+  ["角色定錨","以官方形象圖為依據：栗棕色下巴短鮑伯、米白粗花呢外套、蕾絲長裙、棕色手提包與種子吊飾。之後每一鏡都回來對照。"],
+  ["歌曲與聲線","先確認《我把春天帶著走》的歌曲版本與 MIA 的聲線，視覺才跟著音樂走。"],
+  ["視覺概念","從歌名與角色個性找出畫面方向：溫柔、日常、把春天帶在身上。"],
+  ["服裝與場景","延續官方圖的服裝、配件與暖色調，決定每一段的場景。"],
+  ["分鏡與運鏡","把歌曲切成段落，排出鏡頭順序與運鏡。目前有兩版分鏡：220 秒 40 鏡、216 秒 19 鏡。"],
+  ["生成與逐鏡檢查","逐鏡檢查臉孔、髮型、配件、服裝、身高比例、空間與光線；不一致就重做。"],
+  ["剪輯與字幕","依音樂節奏剪輯，加上字幕，輸出母帶。"],
+  ["版本紀錄","記下每一版的長度、鏡數與差異，比較之後再決定定稿。"]
+];
 const MEMBERS = [["HANA","黑色中分長直髮","#2B2B33"],["MIA","栗棕色下巴短鮑伯","#8A5A3C"],["ZOE","粉紅長直髮、空氣瀏海","#D9668A"],["LENA","白金側分長直髮，右眼下小痣","#B9A77A"],["CHLOE","黑色長波浪、側分","#3B3350"]];
 V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色、歌曲、影像與敘事整合成可持續發展的創作世界。跨領域的核心，是在每個環節做出一致而有理由的選擇。",'<span class="tag n">創作</span><span>E01–E06</span>')}
   <div class="members">${MEMBERS.map(m=>`<div class="mem"><a class="memimg" href="img/elara-${m[0].toLowerCase()}.jpg" target="_blank" rel="noopener" aria-label="${m[0]} 官方形象圖（開新分頁看大圖）"><img src="img/elara-${m[0].toLowerCase()}.jpg" alt="ELARA ${m[0]} 官方形象圖" loading="lazy"></a><div class="bd"><b>${m[0]}</b><p>${m[1]}</p><span class="st ok">官方形象圖</span></div></div>`).join("")}</div>
@@ -966,6 +1007,12 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
     <tr><td>MIA</td><td>《我把春天帶著走》</td><td><span class="st wip">版本未對齊</span></td></tr>
     <tr><td>ZOE・CHLOE・LENA</td><td>—</td><td><span class="st plan">發展中，不推定已發布</span></td></tr>
   </tbody></table></div>
+  <div class="sec">MIA《我把春天帶著走》創作流程</div>
+  <div class="split">
+    <ol class="flow">${MIA_FLOW.map((f,i)=>`<li><span class="k">0${i+1}</span><div><b>${f[0]}</b><p>${f[1]}</p></div></li>`).join("")}</ol>
+    <a class="memimg" style="border-radius:2px;box-shadow:0 10px 22px -10px rgba(0,0,0,.4)" href="img/elara-mia.jpg" target="_blank" rel="noopener"><img src="img/elara-mia.jpg" alt="ELARA MIA 官方形象圖"></a>
+  </div>
+  <p class="note" style="margin-top:8px">每一步使用的工具與檔案版本待講者補充；定稿版本尚未確認，兩個候選版本都保留。</p>
   <div class="sec">MIA 候選版本比較 <span class="note">（120 版 +3 分鐘）</span></div>
   <div class="seg" role="group" aria-label="MIA 版本"><button type="button" data-mia="a" aria-pressed="true">版本 A</button><button type="button" data-mia="b" aria-pressed="false">版本 B</button></div>
   <div class="split"><div class="card" id="miaBox"></div>${ph("候選鏡頭截圖待補（需確認母帶與分鏡版次）",2)}</div>
@@ -1098,6 +1145,7 @@ M.art = ()=>{
 M.practice = ()=>{
   const d=i=>{$("#p5box").innerHTML=`<span class="chno n" style="font-size:68px">0${i+1}</span><h3 style="font-size:28px">${P5[i][0]}</h3><p style="font-size:17px">${P5[i][1]}</p>`;$$("[data-p5]").forEach(b=>b.setAttribute("aria-selected",+b.dataset.p5===i))};
   $$("[data-p5]").forEach(b=>b.addEventListener("click",()=>d(+b.dataset.p5)));d(0);
+  $$(".wkimg img").forEach(im=>im.addEventListener("error",()=>{im.style.display="none"}));
 };
 M.elara = ()=>{
   const T={a:"<h3>版本 A：220 秒・40 鏡</h3><p>鏡頭切得細，節奏密集。來源：MV 交接紀錄。</p><p class='note'>哪一版是定稿尚未確認，兩版都保留。</p>",b:"<h3>版本 B：216 秒・19 鏡</h3><p>鏡頭較長，讓單一畫面停留。來源：簡報紀錄。</p><p class='note'>哪一版是定稿尚未確認，兩版都保留。</p>"};

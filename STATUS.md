@@ -1,4 +1,4 @@
-# STATUS（最後更新：2026-11-25 23:15 Asia/Taipei，Claude）
+# STATUS（最後更新：2026-11-25 23:30 Asia/Taipei，Claude）
 
 ## 已完成
 - 2026-11-25 21:37：主題 02 新增 R003（Facebook 貼文，因無法讀取內文而用中性標籤）；Instagram 三個帳號改為講者提供的名稱，CONFIG.links.instagram 改為個人帳號 @art27tw（Grok）。尚未推送。
@@ -10,6 +10,8 @@
 - v2 網站：講座模式 20 頁（110/120）＋自由探索 17 個視圖，依 ChatGPT 資料包 v1.0 撰寫。
 - 私人預覽已發布（Claude Artifact）。
 - 交接包：AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。
+
+- 2026-11-25 23:30：主題 04 改為講者 2024 公視講座的七步創作流程；ELARA 新增 MIA 創作流程（工具待補）。
 
 ## 進行中／等待
 - [x] GitHub repo：https://github.com/tseng27/lecture-2026-ncue （main 為主要版本）

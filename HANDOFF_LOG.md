@@ -4,7 +4,7 @@
 
 ## 2026-11-26 06:25（Asia/Taipei）｜Claude
 - 任務：講者要求把 YouTube 影片〈114優高亮點課程-高一美術〉https://youtu.be/3QZlTPCcTmA 嵌入主題 05「不只是 AI 備課」。
-- 改了什麼：V.method 在四張卡片後新增「課程影片」區塊（youtube-nocookie 嵌入，16:9，.vid 樣式）與 CONFIG.links.lesson114 按鈕。
+- 改了什麼：V.method 頁尾新增小尺寸影片列 .vidrow（左側 360px 寬 youtube-nocookie 嵌入，右側標題與 CONFIG.links.lesson114 按鈕）。講者要求「畫面縮小，以原來的文字架構為主」，所以影片放在所有文字內容之後。
 - 驗證：smoke-test 11 項 PASS；版面截圖已看過（沙箱連不到 YouTube，播放需在一般瀏覽器確認）。
 - 沒做完／阻礙：講者另要求主題 04 用公視講座簡報中的圖片做插圖，目前只收到 PDF 轉出的文字，等原檔。
 - 下一步建議：收到簡報原檔後擷取相關頁面放進主題 04 七步流程。

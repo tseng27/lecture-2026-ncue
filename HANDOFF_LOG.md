@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 06:45（Asia/Taipei）｜Claude
+- 任務：講者要一個獨立章節說明「如何用 AI 準備課程與製作教材」與「AI Agent 的概念」，且不刪減其他段落，時間由講者自行掌控。
+- 改了什麼：新增視圖 V.aiprep（#aiprep，講座模式 #talk-14，8 分鐘，接在 AI 教學實驗室之後）：備課五步（定目標→NotebookLM→Gemini Canvas→Claude→老師檢查）、聊天機器人 vs AI Agent、以本講座網站為 Agent 實例、老師要握住的三件事。加入 MENU 教學群組、EXPLORE_ORDER、TITLES。講座模式變 21 頁；上半場 48／52 分鐘，總長 110 版 118、120 版 128（按鈕名稱不變）。smoke-test 與文件同步更新。
+- 驗證：smoke-test 12 項 PASS；#talk-14 截圖已看過。
+- 沒做完／阻礙：工具箱三個連結仍待講者提供。
+- 下一步建議：若講者要縮回 110／120，可把 aiprep 分鐘數從其他頁調出。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main。
+
 ## 2026-11-26 06:35（Asia/Taipei）｜Claude
 - 任務：講者想在講座中加入「用 Claude 製作的教材、Gemini Canvas 課程示範、如何使用 NotebookLM」，選定放在「AI 教學實驗室」頁。
 - 改了什麼：V.lab 開頭新增「教師的 AI 工具箱」三張卡（Claude 教材／Gemini Canvas／NotebookLM），連結放在 CONFIG.links.claudeKit、geminiCanvas、notebooklm（目前空白，顯示待補）。原工具卡改在「自建工具」小標下。講座時間：實驗室 2→5 分鐘、公共藝術 2→1、更多案例 3→1，上半場仍為 40／44 分鐘。

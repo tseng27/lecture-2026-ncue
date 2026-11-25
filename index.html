@@ -543,6 +543,9 @@ body::before{background:var(--bg)}
 .vid{position:relative;aspect-ratio:16/9;background:#111;box-shadow:0 1px 1px rgba(0,0,0,.08),0 10px 20px -12px rgba(0,0,0,.45);border:6px solid #fff}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .toolbox .tbno{font-family:var(--f-num);font-size:34px;font-weight:700;color:var(--red);line-height:1;display:block;margin-bottom:6px}
+.steps5{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:900px){.steps5{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.steps5{grid-template-columns:1fr}}
 </style>
 
 <header class="bar">
@@ -654,6 +657,7 @@ const STOPS = [
   { v:"cases",   s:1, m:1,  t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
   { v:"cases",   s:1, m:1,  t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
   { v:"lab",     s:1, m:5,  t:"AI 教學實驗室｜教師的 AI 工具箱", cue:"回答「明天可以用什麼工具」：Claude 做教材、Gemini Canvas 做課程示範、NotebookLM 備課。只展示已驗證的功能。" },
+  { v:"aiprep",  s:1, m:8,  t:"用 AI 備課・認識 AI Agent", cue:"先講備課五步：目標由老師定，最後由老師驗收。再講 Agent：會規劃、用工具、檢查、留紀錄。用這個講座網站當實例。" },
   { v:"break",   s:2, m:5,  t:"中場休息" },
   { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
   { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
@@ -667,12 +671,12 @@ const STOPS = [
 const MENU = [
   ["認識", [["home","關於我"],["lecture","講座導覽"]]],
   ["主題", [["s01","01"],["s02","02"],["method","05"],["art","03"],["practice","04"],["s06","06"]]],
-  ["教學", [["sensory","感官轉譯"],["cases","教學案例"],["learning","學習歷程"],["lab","教學實驗室"]]],
+  ["教學", [["sensory","感官轉譯"],["cases","教學案例"],["learning","學習歷程"],["lab","教學實驗室"],["aiprep","AI 備課與 Agent"]]],
   ["創作", [["elara","ELARA"],["workflow","工作流程"]]],
   ["資源", [["resources","連結與來源"]]]
 ];
-const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 不只是 AI 備課", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學實驗室", art:"03 突破創作邊界", practice:"04 從 AI 生成到自主創作", elara:"ELARA", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
-const EXPLORE_ORDER = ["cover","home","lecture","s01","s02","method","sensory","cases","learning","lab","art","practice","elara","workflow","s06","closing","resources"];
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 不只是 AI 備課", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學實驗室", aiprep:"用 AI 備課・認識 AI Agent", art:"03 突破創作邊界", practice:"04 從 AI 生成到自主創作", elara:"ELARA", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
+const EXPLORE_ORDER = ["cover","home","lecture","s01","s02","method","sensory","cases","learning","lab","aiprep","art","practice","elara","workflow","s06","closing","resources"];
 
 /* ===== 六大正式主題（標題不改） ===== */
 const THEMES = [
@@ -954,6 +958,34 @@ V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學�
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
   <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>`;
 
+V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人到會做事的助手","AI 可以幫忙整理資料、做示範、寫教材；但教學目標、內容判斷與最後驗收，仍然是老師的工作。",'<span class="tag r">教學</span>')}
+  <div class="sec">一、用 AI 備課與製作教材：五個步驟</div>
+  <div class="grid g3 toolbox steps5">
+    <div class="card"><span class="tbno">1</span><h3>定目標</h3><p>先寫下這堂課學生要會什麼、用什麼證據看得出來。</p><p class="note">老師負責</p></div>
+    <div class="card"><span class="tbno">2</span><h3>整理資料</h3><p>把課本、講義、文章放進 NotebookLM，整理重點、找出處、列出提問。</p><p class="note">NotebookLM</p></div>
+    <div class="card"><span class="tbno">3</span><h3>做課堂示範</h3><p>用 Gemini Canvas 把一個抽象概念做成可以現場操作、邊講邊改的示範頁。</p><p class="note">Gemini Canvas</p></div>
+    <div class="card"><span class="tbno">4</span><h3>製作教材</h3><p>請 Claude 把需求寫成互動網頁、學習單或課程網站，再一輪一輪修改。</p><p class="note">Claude</p></div>
+    <div class="card"><span class="tbno">5</span><h3>檢查與修改</h3><p>逐項核對內容是否正確、是否符合學生程度、來源是否可查。</p><p class="note">老師負責</p></div>
+  </div>
+  <div class="sec">二、什麼是 AI Agent？</div>
+  <div class="grid g2">
+    <div class="card"><h3>聊天機器人</h3><p>你問一句，它答一句。每一步都要你自己接手：複製、貼上、存檔、再問。</p></div>
+    <div class="card"><h3>AI Agent（代理）</h3><p>你交給它一個目標，它會自己拆步驟、使用工具（讀檔、寫檔、執行、搜尋）、檢查結果，並把做過的事記錄下來，讓下一位能接手。</p></div>
+  </div>
+  <div class="chips" style="margin-top:14px">${["目標","規劃步驟","用工具執行","檢查結果","記錄與交接"].map((x,i)=>`<span class="chip">${i+1}. ${x}</span>`).join("")}</div>
+  <div class="sec">三、實例：這個講座網站怎麼做出來</div>
+  <div class="grid g2">
+    <div class="card"><h3>Agent 做的事</h3><p>Claude 依照講者的需求寫網頁、自動測試每一頁（smoke test）、上傳到 GitHub 發布，並寫下工作規則（AGENTS.md）與交接紀錄（HANDOFF_LOG）。另一個 AI（Grok）讀了紀錄後，可以接著做。</p></div>
+    <div class="card"><h3>講者做的事</h3><p>決定講什麼、用哪些作品、哪一種風格；看過畫面後提出修改，例如「不要裁切」「影片縮小，以文字為主」。每次改動都要講者看過才算數。</p></div>
+  </div>
+  <div class="sec">老師要握住的三件事</div>
+  <div class="grid g3">
+    <div class="card"><h3>目標與判斷</h3><p>學什麼、為什麼學、好的作品長什麼樣，不交給 AI 決定。</p></div>
+    <div class="card"><h3>紀錄可交接</h3><p>把規則與進度寫下來，換工具、換人都能接著做。</p></div>
+    <div class="card"><h3>驗收</h3><p>AI 說「完成了」不算數；老師親自看過、試過才算。</p></div>
+  </div>
+  <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.claudeKit)}${lk(CONFIG.links.geminiCanvas)}${lk(CONFIG.links.notebooklm)}</div>`;
+
 /* 主題 03：系列、作品、年代與圖片皆取自講者作品集網站 /series/ 與各作品頁（2026-11-25 讀取）。圖片直接連到作品集網站。 */
 const PORT = "https://tseng-kuo-cheng-art.tseng27.chatgpt.site";
 const SERIES = {
@@ -1182,7 +1214,7 @@ M.break = ()=>{
   $("#brkReset").addEventListener("click",()=>{clearInterval(brk.t);brk.t=null;brk.left=300;draw()});draw();
 };
 
-/* ===== routing: #talk-01..#talk-20 = 講座模式；其他 = 自由探索 ===== */
+/* ===== routing: #talk-01..#talk-21 = 講座模式；其他 = 自由探索 ===== */
 let mode="talk", stopIdx=0, view="cover", LEN=store.get("len",120);
 const main=$("#main");
 const mins=s=>s.m+(LEN===120?(s.x||0):0);

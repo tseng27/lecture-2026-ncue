@@ -1,4 +1,4 @@
-# STATUS（最後更新：2026-11-26 06:25 Asia/Taipei，Claude）
+# STATUS（最後更新：2026-11-26 06:35 Asia/Taipei，Claude）
 
 ## 已完成
 - 2026-11-25 21:37：主題 02 新增 R003（Facebook 貼文，因無法讀取內文而用中性標籤）；Instagram 三個帳號改為講者提供的名稱，CONFIG.links.instagram 改為個人帳號 @art27tw（Grok）。尚未推送。
@@ -16,6 +16,7 @@
 - 2026-11-26 06:25：主題 05 嵌入 114 優高亮點課程影片。
 
 ## 進行中／等待
+- AI 教學實驗室「教師的 AI 工具箱」：等講者提供 Claude 教材、Gemini Canvas、NotebookLM 的連結或截圖。
 - 主題 04 插圖：等講者提供公視講座簡報原檔（PDF／PPT）。
 - [x] GitHub repo：https://github.com/tseng27/lecture-2026-ncue （main 為主要版本）
 - [x] GitHub Pages 已開啟（2026-11-25 07:01 部署成功）：https://tseng27.github.io/lecture-2026-ncue/

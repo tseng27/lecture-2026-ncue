@@ -542,6 +542,7 @@ body::before{background:var(--bg)}
 @media (max-width:760px){.vidrow{grid-template-columns:1fr}}
 .vid{position:relative;aspect-ratio:16/9;background:#111;box-shadow:0 1px 1px rgba(0,0,0,.08),0 10px 20px -12px rgba(0,0,0,.45);border:6px solid #fff}
 .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.toolbox .tbno{font-family:var(--f-num);font-size:34px;font-weight:700;color:var(--red);line-height:1;display:block;margin-bottom:6px}
 </style>
 
 <header class="bar">
@@ -586,6 +587,9 @@ const CONFIG = {
     fanpage:  { label:"AI 教學觀察所 Facebook", url:"https://www.facebook.com/educationforfuture/" },
     art:      { label:"AI藝術創新實驗室 Facebook", url:"https://www.facebook.com/tsengkuocheng/" },
     lesson114:{ label:"在 YouTube 觀看：114 優高亮點課程－高一美術", url:"https://youtu.be/3QZlTPCcTmA" },
+    claudeKit:   { label:"Claude 製作的教材範例", url:"" },
+    geminiCanvas:{ label:"Gemini Canvas 課程示範", url:"" },
+    notebooklm:  { label:"NotebookLM 備課步驟", url:"" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
@@ -647,9 +651,9 @@ const STOPS = [
   { v:"sensory", s:1, m:4,  t:"感官轉譯｜證據與反思", tab:"evidence", cue:"三種證據狀態分開說；生成的是素材，選擇形成作品。" },
   { v:"cases",   s:1, m:3,  t:"攝影探索", c:"T06", cue:"把觀察轉成有理由的形式選擇。" },
   { v:"learning",s:1, m:8,  t:"學習歷程與評量", cue:"一份資料多次累積；配分 70／20／10 是既有規定。" },
-  { v:"cases",   s:1, m:2,  t:"公共藝術", c:"T09", cue:"延伸案例，2 分鐘帶過。" },
-  { v:"cases",   s:1, m:3,  t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
-  { v:"lab",     s:1, m:2,  t:"AI 教學實驗室", cue:"只展示已驗證的功能；未驗證的標「待核」。" },
+  { v:"cases",   s:1, m:1,  t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
+  { v:"cases",   s:1, m:1,  t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
+  { v:"lab",     s:1, m:5,  t:"AI 教學實驗室｜教師的 AI 工具箱", cue:"回答「明天可以用什麼工具」：Claude 做教材、Gemini Canvas 做課程示範、NotebookLM 備課。只展示已驗證的功能。" },
   { v:"break",   s:2, m:5,  t:"中場休息" },
   { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
   { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
@@ -937,6 +941,13 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
   </div>`;
 
 V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學卡住的地方開始開發：讓抽象概念可以操作，讓學習資料能被保留。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
+  <div class="sec">教師的 AI 工具箱：明天就可以用的三種方式</div>
+  <div class="grid g3 toolbox">
+    <div class="card"><span class="tbno">01</span><h3>用 Claude 製作教材</h3><p>把教學需求說清楚，讓 AI 協助寫成可操作的互動網頁、學習單或課程網站。這個講座網站就是一個例子。</p><p class="note">重點：老師決定內容與結構，AI 負責實作與修改。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.claudeKit)}</div></div>
+    <div class="card"><span class="tbno">02</span><h3>Gemini Canvas 課程示範</h3><p>在 Canvas 裡把一個概念做成可以現場操作的示範頁，上課時邊講邊調整，學生看得到變化。</p><p class="note">重點：示範頁服務一個學習目標，不追求功能多。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.geminiCanvas)}</div></div>
+    <div class="card"><span class="tbno">03</span><h3>NotebookLM 備課</h3><p>把課本、講義、文章放進同一個筆記本，請它整理重點、找出處、產生提問與學習單草稿。</p><p class="note">重點：回答都要能回到來源；學生要學的判斷仍由老師設計。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.notebooklm)}</div></div>
+  </div>
+  <div class="sec">自建工具</div>
   <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">${t.id||"—"}</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
   <div class="sec">每張工具卡固定記錄</div>
   <div class="chips">${["原問題","開發動機","介面","操作流程","教學用途","證據","限制","下一步"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>

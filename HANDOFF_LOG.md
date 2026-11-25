@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 06:35（Asia/Taipei）｜Claude
+- 任務：講者想在講座中加入「用 Claude 製作的教材、Gemini Canvas 課程示範、如何使用 NotebookLM」，選定放在「AI 教學實驗室」頁。
+- 改了什麼：V.lab 開頭新增「教師的 AI 工具箱」三張卡（Claude 教材／Gemini Canvas／NotebookLM），連結放在 CONFIG.links.claudeKit、geminiCanvas、notebooklm（目前空白，顯示待補）。原工具卡改在「自建工具」小標下。講座時間：實驗室 2→5 分鐘、公共藝術 2→1、更多案例 3→1，上半場仍為 40／44 分鐘。
+- 驗證：smoke-test 11 項 PASS（五段時間不變）；#talk-13 截圖已看過。
+- 沒做完／阻礙：三項的連結或截圖待講者提供。
+- 下一步建議：收到後填 CONFIG.links，必要時加截圖。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main。
+
 ## 2026-11-26 06:25（Asia/Taipei）｜Claude
 - 任務：講者要求把 YouTube 影片〈114優高亮點課程-高一美術〉https://youtu.be/3QZlTPCcTmA 嵌入主題 05「不只是 AI 備課」。
 - 改了什麼：V.method 頁尾新增小尺寸影片列 .vidrow（左側 360px 寬 youtube-nocookie 嵌入，右側標題與 CONFIG.links.lesson114 按鈕）。講者要求「畫面縮小，以原來的文字架構為主」，所以影片放在所有文字內容之後。

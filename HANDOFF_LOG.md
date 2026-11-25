@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 06:25（Asia/Taipei）｜Claude
+- 任務：講者要求把 YouTube 影片〈114優高亮點課程-高一美術〉https://youtu.be/3QZlTPCcTmA 嵌入主題 05「不只是 AI 備課」。
+- 改了什麼：V.method 在四張卡片後新增「課程影片」區塊（youtube-nocookie 嵌入，16:9，.vid 樣式）與 CONFIG.links.lesson114 按鈕。
+- 驗證：smoke-test 11 項 PASS；版面截圖已看過（沙箱連不到 YouTube，播放需在一般瀏覽器確認）。
+- 沒做完／阻礙：講者另要求主題 04 用公視講座簡報中的圖片做插圖，目前只收到 PDF 轉出的文字，等原檔。
+- 下一步建議：收到簡報原檔後擷取相關頁面放進主題 04 七步流程。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main。
+
 ## 2026-11-25 23:20（Asia/Taipei）｜Claude
 - 任務：講者補充 MIA 使用的工具：作曲 Suno AI；歌詞與風格 ChatGPT；生圖 Flow；生影片 Runway 平台中的 Seedance 2.5；剪輯剪映。
 - 改了什麼：MIA_FLOW 第 02、04、06、07 步加入工具與工具標籤（.tooltag），流程下方註記改為工具組合。

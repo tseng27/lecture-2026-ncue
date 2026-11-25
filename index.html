@@ -537,6 +537,9 @@ body::before{background:var(--bg)}
 .flow .k{font-family:var(--f-num);font-size:26px;font-weight:700;color:var(--red);line-height:1}
 .flow b{font-size:17px}.flow p{margin:2px 0 0;font-size:15px;line-height:1.6}
 .flow .tooltag{display:inline-block;margin-left:8px;padding:1px 8px;font-size:12px;font-weight:700;background:var(--navy);color:#fff;vertical-align:2px}
+/* 主題 05 課程影片 */
+.vid{position:relative;aspect-ratio:16/9;background:#111;box-shadow:0 1px 1px rgba(0,0,0,.08),0 14px 28px -14px rgba(0,0,0,.45);border:10px solid #fff}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
 
 <header class="bar">
@@ -580,6 +583,7 @@ const CONFIG = {
     site:     { label:"AI 教學觀察所網站", url:"https://kuocheng-art-education.tseng27.chatgpt.site" },
     fanpage:  { label:"AI 教學觀察所 Facebook", url:"https://www.facebook.com/educationforfuture/" },
     art:      { label:"AI藝術創新實驗室 Facebook", url:"https://www.facebook.com/tsengkuocheng/" },
+    lesson114:{ label:"在 YouTube 觀看：114 優高亮點課程－高一美術", url:"https://youtu.be/3QZlTPCcTmA" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
@@ -837,6 +841,9 @@ V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的�
     <div class="card"><h3>教師的位置</h3><p>設計學習條件、提供提問與鷹架。AI 提供方案，學生保有選擇與說明。</p></div>
     <div class="card"><h3>持續創造生活</h3><p>教師也是終身學習者。</p></div>
   </div>
+  <div class="sec">課程影片：114 優高亮點課程・高一美術</div>
+  <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3QZlTPCcTmA?rel=0" title="114 優高亮點課程－高一美術" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  <div class="links" style="margin-top:10px">${lk(CONFIG.links.lesson114)}</div>
   <div class="sec">七步學習</div>
   <div class="seven">${[["觀察","辨認具體線索","var(--red)"],["感受","說出個人回應","var(--yellow)"],["思考","查證並建立關係","var(--navy)"],["視覺轉化","文字、速寫與構圖外化","var(--ink)"],["創作","實作、比較與修正","var(--red)"],["分享","說明選擇","var(--yellow)"],["反思","回看自己如何改變","var(--navy)"]].map((s,i)=>`<div style="--sc:${s[2]}"><span class="k">0${i+1}</span><b>${s[0]}</b><p>${s[1]}</p></div>`).join("")}</div>
   <div class="sec">四個設計決定</div>

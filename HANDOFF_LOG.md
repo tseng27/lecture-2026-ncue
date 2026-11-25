@@ -11,7 +11,7 @@
 - 驗證：`NODE_PATH=/workspace/pwtools/node_modules node tools/smoke-test.js` 11 項 PASS；#home 在 400px 寬 `scrollWidth=400`（無水平捲動）；燈箱可開、Esc 可關；桌機／手機截圖已目視檢查。
 - 沒做完／阻礙：本人真實照片與課堂照仍未放入（右側是 AI 公仔，已標示生成圖，不冒充課堂照）。作品卡、IG／YouTube 仍待補。變更尚未推送，等講者確認。
 - 下一步建議：講者確認預覽後再推 GitHub Pages；若要調公仔排列或標籤用語可再改 `ABOUT_IMGS`。
-- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；**待講者確認後推送**。
+- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；**已推送 GitHub main**。
 
 ## 2026-11-25 20:55（Asia/Taipei）｜Grok
 - 任務：講者要求封面（#talk-01）那行文字「改成 曾國正/國立屏北高級中學　線上講座/國立彰化師範大學」。

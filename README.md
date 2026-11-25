@@ -6,4 +6,4 @@
 
 使用：直接用瀏覽器開 `index.html`。鍵盤 ← → 換頁、T 計時、F 全螢幕。
 
-接手修改的 AI 或人：請先讀 [AGENTS.md](AGENTS.md)。
+接手修改的 AI 或人：請先讀 [AGENTS.md（Grok 請先讀 GROK_START.md）](AGENTS.md)。

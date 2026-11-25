@@ -1,7 +1,8 @@
-# STATUS（最後更新：2026-11-25 20:35 Asia/Taipei，Claude）
+# STATUS（最後更新：2026-11-25 20:50 Asia/Taipei，Claude）
 
 ## 已完成
-- 2026-11-25 晚：視覺定案為「立體黏土・超現實」風格（Artifact v4）。畫廊版 v3 已被取代。
+- 2026-11-25 20:50：視覺改為「拼貼作品集」風格（含封面版型），封面中間為講者海報 img/cover-me.jpg（Artifact v5）。立體黏土版可從 git 509514e 取回。
+- 下一位接手：Grok（請讀 GROK_START.md）。
 - v2 網站：講座模式 20 頁（110/120）＋自由探索 17 個視圖，依 ChatGPT 資料包 v1.0 撰寫。
 - 私人預覽已發布（Claude Artifact）。
 - 交接包：AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。
@@ -13,7 +14,7 @@
 
 ## 待補素材（詳見 待補素材清單.md）
 - P0：已授權的學生感官轉譯案例、MIA 定稿版本、ELARA 五人官方圖、現場影片離線檔。
-- P1：本人照片、藝術作品圖與資料、工具現版網址、IG／YouTube 網址。
+- P1：（本人照片已收到，用於封面）藝術作品圖與資料、工具現版網址、IG／YouTube 網址。
 
 ## 已知限制
 - 所有作品與影音目前是「待補」卡片。

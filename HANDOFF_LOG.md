@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 20:50（Asia/Taipei）｜Claude
+- 任務：講者傳 Pinterest 拼貼作品集參考圖，要求「連版型一起改」；看過預覽後選「換上線」，並指定封面中間放他的 IG 個人海報（不要裁切），之後交接給 Grok 繼續製作。
+- 改了什麼：index.html 改為「拼貼作品集」風格：<head> 加 Caveat＋Oswald 字型；<style> 最後是拼貼覆寫區塊（膠帶紙片卡片、黑白拍立得、黃便條、紅螢光筆章節號）；V.cover 改成拼貼封面 section.collage（手寫標、藍標籤＋簡介、今日路線筆記本、黃便利貼、紅底大標）。封面中間是 img/cover-me.jpg（講者提供的完整海報，原比例、不裁切、不去色）。拍立得 .c-pola 在桌機隱藏。
+- 驗證：tools/smoke-test.js 11 項 PASS；桌機與手機截圖檢查。
+- 沒做完／阻礙：無。
+- 下一步建議：見 GROK_START.md。
+- 是否已同步 artifact-source.html／已發布：是，Artifact v5、GitHub main。
+
 ## 2026-11-25 20:35（Asia/Taipei）｜Claude
 - 任務：講者覺得畫廊版（v3）「沒有風格、閱讀吃力」，要求提供三種風格選擇；之後改傳「立體黏土＋超現實」參考圖說「這一種做看看」，看過截圖後選「換上線」。
 - 改了什麼：index.html 回到 v2 版面與字級為基礎，在 <style> 結尾加上「立體黏土・超現實」覆寫（暖白瓷面、浮雕陰影、不規則圓角外框、白色凸緣、金＋藏青、Nunito 細數字）。單一淺色主題。三種備選風格 CSS 在專案 previews/（style_A/B/C/D.css），不在 repo。

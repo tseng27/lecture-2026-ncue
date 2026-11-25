@@ -2,6 +2,19 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 23:15（Asia/Taipei）｜Claude
+- 任務：講者提供藝術作品集網站 https://tseng-kuo-cheng-art.tseng27.chatgpt.site （主題 03「突破創作邊界」的資料來源），說「這裡可以找」；並上傳 ELARA 五位成員的官方形象圖。
+- 改了什麼：
+  - 主題 03（V.art／M.art／SERIES）：改用作品集網站 /series/ 的五個系列（01 凝形・自然、02 溫柔巨物、03 居所・記憶・身份、04 文明・集體記憶、05 身體・存在），系列說明照網站原文，17 件作品的年代照各作品頁。作品卡顯示作品圖（直接連到作品集網站 /assets/…，常數 PORT），點擊開該作品頁。舊的「發展中」分組與《灰燼之後的方舟》《餘燼之舟》已移除，因為作品集網站沒有列出。
+  - 新增 CONFIG.links.portfolio，放在主題 03、結語「講座之後」、資源頁。
+  - ELARA：五張官方形象圖存為 img/elara-hana／mia／zoe／lena／chloe.jpg，成員卡改成顯示圖片（點擊看大圖），狀態改為「官方形象圖」。
+  - 社群連結：講者再次提供的 YouTube／IG／臉書清單，與 Grok 已填的 CONFIG.social 一致，未改。
+  - tools/smoke-test.js：console 檢查忽略 net::ERR_TUNNEL 等離線錯誤（沙箱連不到作品集網站的圖）。
+- 驗證：smoke-test 11 項 PASS；主題 03 以替代圖測版面、ELARA 桌機與手機截圖已看過。作品集圖片在沙箱連不到，實際載入要在一般瀏覽器確認。
+- 沒做完／阻礙：無。
+- 下一步建議：在一般瀏覽器打開 #art 確認 17 張作品圖都有出現。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main（含 Grok 前兩筆的修改）。
+
 ## 2026-11-25 21:37（Asia/Taipei）｜Grok
 - 任務：講者要求在主題 02「全球 AI 教育革命」新增 R003，連結 https://www.facebook.com/share/p/1HtpuXEEQG/；並補 Instagram 帳號名稱：@tseng27tw＝AI藝術創作 IG、@elara5girls＝ELARA 虛擬女子團體 IG、@art27tw＝個人 IG。
 - 改了什麼：

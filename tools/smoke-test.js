@@ -4,7 +4,7 @@ const { chromium } = require('playwright');
 (async () => {
   const file = 'file://' + path.resolve(__dirname, '..', 'index.html');
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
-  const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (m.type() === 'error') errs.push(m.text()); });
+  const errs = []; p.on('pageerror', e => errs.push(e.message)); p.on('console', m => { if (m.type() === 'error' && !/net::ERR_(TUNNEL|NAME|INTERNET|CONNECTION|PROXY)/.test(m.text())) errs.push(m.text()); });
   let fail = 0; const ok = (c, msg) => { console.log((c ? 'PASS ' : 'FAIL ') + msg); if (!c) fail++; };
   await p.goto(file + '#talk-01');
   for (let i = 0; i < 19; i++) { await p.keyboard.press('ArrowRight'); await p.waitForTimeout(50); }

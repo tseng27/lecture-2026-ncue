@@ -521,6 +521,16 @@ body::before{background:var(--bg)}
   .about-quote{padding:16px 14px 16px;margin:22px 0 20px}
   .about-quote-k{font-size:28px}
 }
+/* 主題 03 作品圖（連到作品集網站） */
+.wk{display:flex;flex-direction:column;gap:4px;color:inherit;text-decoration:none}
+.wk .wkimg{overflow:hidden}
+.wk .wkimg img{position:absolute;left:12px;top:12px;width:calc(100% - 24px);height:calc(100% - 56px);object-fit:cover;z-index:1}
+.wk:hover .wkimg{transform:rotate(0) scale(1.02)}
+.wk small{color:var(--muted)}
+/* ELARA 五人官方形象圖（講者提供 2026-11-25） */
+.memimg{display:block;aspect-ratio:4/5;overflow:hidden;background:var(--chip)}
+.memimg img{width:100%;height:100%;object-fit:cover;object-position:30% 18%;display:block;transition:transform .3s}
+.memimg:hover img{transform:scale(1.04)}
 </style>
 
 <header class="bar">
@@ -563,7 +573,8 @@ const CONFIG = {
   links:{
     site:     { label:"AI 教學觀察所網站", url:"https://kuocheng-art-education.tseng27.chatgpt.site" },
     fanpage:  { label:"AI 教學觀察所 Facebook", url:"https://www.facebook.com/educationforfuture/" },
-    art:      { label:"AI藝術創新實驗室 Facebook", url:"https://www.facebook.com/tsengkuocheng" },
+    art:      { label:"AI藝術創新實驗室 Facebook", url:"https://www.facebook.com/tsengkuocheng/" },
+    portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
     unesco:   { label:"UNESCO AI 能力框架", url:"https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=195885" },
@@ -916,16 +927,25 @@ V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學�
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
   <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>`;
 
+/* 主題 03：系列、作品、年代與圖片皆取自講者作品集網站 /series/ 與各作品頁（2026-11-25 讀取）。圖片直接連到作品集網站。 */
+const PORT = "https://tseng-kuo-cheng-art.tseng27.chatgpt.site";
 const SERIES = {
-  "凝形—自然":{ d:"透過凝固與消逝的張力，感覺時間與自然的脆弱。", w:["冰凍的過往","永恆的美麗","消逝的風景","冰原的記憶"] },
-  "溫柔巨物":{ d:"巨大尺度與柔軟材質，構成安撫、共生與靠近的想像。", w:["編織溫暖的夢","共生","幸福樂園","寧靜與豐盛"] },
-  "透明與居所":{ d:"觀看身體、空間、身份與阻隔之間的關係。", w:["透明的距離","肉身與靈魂的透明界限","無面之人"] },
-  "發展中":{ d:"影像完成、實體製作、公開發表、展出是不同狀態，分別確認。", w:["墨‧林","The Child After War","灰燼之後的方舟","餘燼之舟"] }
+  "01 凝形・自然":{ en:"CONDENSATION — NATURE", d:"冰、花與消逝的風景將時間凝結成可感的尺度；《冰原的記憶》邀請觀者以身體進入自然的脆弱。", w:[
+    ["冰凍的過往","約 2023–2024","frozen-past","portfolio-5.jpeg"],["永恆的美麗","約 2023–2024","eternal-beauty","portfolio-6.jpeg"],["消逝的風景","約 2023–2024","vanishing-landscape","portfolio-7.jpeg"],["冰原的記憶","約 2023–2024","ice-field-memory","portfolio-8.jpeg"]] },
+  "02 溫柔巨物":{ en:"SOFT MONUMENTS", d:"針織、絨毛與共生動物把紀念性尺度轉為安撫與停留的空間。", w:[
+    ["幸福樂園","2024/01/22","happiness-paradise","happiness-paradise.jpg"],["編織溫暖的夢・貓系列","2024","weaving-warm-dreams","portfolio-10.jpeg"],["寧靜與豐盛","2024","tranquility-abundance","portfolio-13.jpeg"],["共生系列・貓頭鷹","2024/10/04","symbiosis","symbiosis-owl.png"],["沉睡的巨貓","2025/09/17","sleeping-giant-cat","sleeping-giant-cat.png"]] },
+  "03 居所・記憶・身份":{ en:"DWELLING / MEMORY / IDENTITY", d:"居所既保存生活記憶，也可能取代面孔、塑造身份；家與制度因此成為彼此交疊的結構。", w:[
+    ["透明的距離：封存的孤獨與凝視","2024/01/05","transparent-distance","portfolio-15.jpeg"],["肉身與靈魂的透明界限","2024","transparent-boundaries","portfolio-16.jpeg"],["居所的記憶","2024/04/28","dwelling-memory","dwelling.jpg"],["無面之人","2025/09/08","faceless-ones","faceless-ones.jpg"]] },
+  "04 文明・集體記憶":{ en:"CIVILIZATION / COLLECTIVE MEMORY", d:"從個人的痕跡走向集體身影與文明流變，森林、巨像與移動的形體承載共同記憶。", w:[
+    ["戰爭之後的孩子","2026/05/15","child-after-war","child-after-war.jpg"],["游動的文明","2026/07/18","civilization-in-motion","civilization-in-motion.jpg"],["墨・林","約 2026/09/16","ink-forest","ink-forest.jpg"]] },
+  "05 身體・存在":{ en:"BODY / EXISTENCE", d:"以膜與呼吸呈現身體的邊界，追問存在如何被感覺、遮蔽，又再次浮現。", w:[
+    ["膜之息","2026/06/03","membrane","membrane.jpg"]] }
 };
-V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想","從冰、編織、透明材質到森林與居所，作品探索自然、記憶、身體與情感的關係。",'<span class="tag n">主題 03</span>',true)}
+V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想","五個主題是彼此交會的創作線索；它們連結材料、居所與身體，也延伸至文明和共同記憶。",'<span class="tag n">主題 03</span>',true)}
   <div class="tabs" role="tablist">${Object.keys(SERIES).map((k,i)=>`<button class="tab" role="tab" type="button" data-ser="${k}" aria-selected="${i===0}">${k}</button>`).join("")}</div>
   <div id="serbox"></div>
-  <div class="links" style="margin-top:18px">${lk(CONFIG.links.art)}</div>`;
+  <p class="note" style="margin-top:14px">作品圖、年代與系列說明取自講者作品集網站；點作品可開啟該作品頁。</p>
+  <div class="links" style="margin-top:12px">${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.art)}</div>`;
 
 const P5 = [["動機","從生活經驗、情感或問題出發，而不是從工具出發。"],["概念","整理成清楚的藝術概念：想說什麼、想讓觀者感受什麼。"],["生成","用 AI 產生大量可能性，當作素描本與實驗室。"],["選擇","在大量結果中做判斷。選擇本身就是創作者的美感與觀點。"],["再創作","修改、拼貼、重繪或轉換媒材，讓作品回到自己手上。"]];
 V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 擴充了表達的可能；人的經驗與判斷仍是創作的核心。",'<span class="tag n">主題 04</span>',true)}
@@ -938,7 +958,7 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
 
 const MEMBERS = [["HANA","黑色中分長直髮","#2B2B33"],["MIA","栗棕色下巴短鮑伯","#8A5A3C"],["ZOE","粉紅長直髮、空氣瀏海","#D9668A"],["LENA","白金側分長直髮，右眼下小痣","#B9A77A"],["CHLOE","黑色長波浪、側分","#3B3350"]];
 V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色、歌曲、影像與敘事整合成可持續發展的創作世界。跨領域的核心，是在每個環節做出一致而有理由的選擇。",'<span class="tag n">創作</span><span>E01–E06</span>')}
-  <div class="members">${MEMBERS.map(m=>`<div class="mem"><div class="sw" style="background:${m[2]}">${m[0]}</div><div class="bd"><b>${m[0]}</b><p>${m[1]}</p><span class="st chk">官方參考圖待補</span></div></div>`).join("")}</div>
+  <div class="members">${MEMBERS.map(m=>`<div class="mem"><a class="memimg" href="img/elara-${m[0].toLowerCase()}.jpg" target="_blank" rel="noopener" aria-label="${m[0]} 官方形象圖（開新分頁看大圖）"><img src="img/elara-${m[0].toLowerCase()}.jpg" alt="ELARA ${m[0]} 官方形象圖" loading="lazy"></a><div class="bd"><b>${m[0]}</b><p>${m[1]}</p><span class="st ok">官方形象圖</span></div></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">當前官方圖是角色的依據（Identity Anchor），不重新設計、不用生成圖替代。LENA 的痣在右眼下，不可鏡像。</p>
   <div class="sec">單曲狀態</div>
   <div class="tbl"><table><thead><tr><th>角色</th><th>單曲</th><th>狀態</th></tr></thead><tbody>
@@ -989,7 +1009,7 @@ V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></
   <p class="quote">你的人生，<br>就是你的<span>藝術品</span>。</p>
   <div class="grid g2" style="margin-top:30px">
     <div class="card"><h3>交流</h3><p>你想在未來的美術課裡，讓學生保留哪一個自己的決定？</p></div>
-    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
+    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
   </div>`;
 
 V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能找到網址，不代表已讀完全部內容；私人研究來源不出現在公開網站。",'<span class="tag">資源</span>')}
@@ -997,6 +1017,7 @@ V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能�
     <tr><td>教學</td><td>${lk(CONFIG.links.site)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.fanpage)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.github)}</td><td><span class="st chk">與現行網站的部署關係待核</span></td></tr>
+    <tr><td>藝術</td><td>${lk(CONFIG.links.portfolio)}</td><td><span class="st ok">作品頁已讀取（2026-11-25）</span></td></tr>
     <tr><td>藝術</td><td>${lk(CONFIG.links.art)}</td><td><span class="st ok">頁面已查核</span></td></tr>
     <tr><td>ELARA</td><td>${lk(CONFIG.links.elara)}</td><td><span class="st ok">頁面已查核</span></td></tr>
     <tr><td>其他</td><td>${lk(CONFIG.links.instagram)} ${lk(CONFIG.links.youtube)}</td><td><span class="st chk">網址已填，頁面未逐一查核</span></td></tr>
@@ -1070,8 +1091,9 @@ M.cases = (opt)=>{
 };
 M.art = ()=>{
   const set=k=>{const S=SERIES[k];$$("[data-ser]").forEach(b=>b.setAttribute("aria-selected",b.dataset.ser===k));
-    $("#serbox").innerHTML=`<p style="font-size:19px;margin-bottom:16px">${S.d}</p><div class="works">${S.w.map((w,i)=>work(w,k==="發展中"?"狀態分別確認中":"年份、媒材、尺寸待核",i,"作品圖待補")).join("")}</div>`};
-  $$("[data-ser]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.ser)));set("凝形—自然");
+    $("#serbox").innerHTML=`<p class="eyebrow" style="margin-bottom:4px">${esc(S.en)}</p><p style="font-size:19px;margin-bottom:18px">${esc(S.d)}</p><div class="works">${S.w.map(([t,y,slug,img])=>`<a class="work wk" href="${PORT}/works/${slug}/" target="_blank" rel="noopener"><div class="ph wkimg"><img src="${PORT}/assets/${img}" alt="${esc(t)}" loading="lazy"><span>${esc(t)}</span></div><small class="num">${esc(y)}・作品頁 ↗</small></a>`).join("")}</div>`;
+    $$("#serbox .wkimg img").forEach(im=>im.addEventListener("error",()=>{im.style.display="none"}));};
+  $$("[data-ser]").forEach(b=>b.addEventListener("click",()=>set(b.dataset.ser)));set(Object.keys(SERIES)[0]);
 };
 M.practice = ()=>{
   const d=i=>{$("#p5box").innerHTML=`<span class="chno n" style="font-size:68px">0${i+1}</span><h3 style="font-size:28px">${P5[i][0]}</h3><p style="font-size:17px">${P5[i][1]}</p>`;$$("[data-p5]").forEach(b=>b.setAttribute("aria-selected",+b.dataset.p5===i))};

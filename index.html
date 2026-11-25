@@ -536,6 +536,7 @@ body::before{background:var(--bg)}
 .flow li{display:grid;grid-template-columns:48px 1fr;gap:12px;align-items:start;background:var(--paper);padding:12px 14px;box-shadow:0 1px 1px rgba(0,0,0,.08),0 8px 18px -10px rgba(0,0,0,.3)}
 .flow .k{font-family:var(--f-num);font-size:26px;font-weight:700;color:var(--red);line-height:1}
 .flow b{font-size:17px}.flow p{margin:2px 0 0;font-size:15px;line-height:1.6}
+.flow .tooltag{display:inline-block;margin-left:8px;padding:1px 8px;font-size:12px;font-weight:700;background:var(--navy);color:#fff;vertical-align:2px}
 </style>
 
 <header class="bar">
@@ -989,12 +990,12 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
 
 const MIA_FLOW = [
   ["角色定錨","以官方形象圖為依據：栗棕色下巴短鮑伯、米白粗花呢外套、蕾絲長裙、棕色手提包與種子吊飾。之後每一鏡都回來對照。"],
-  ["歌曲與聲線","先確認《我把春天帶著走》的歌曲版本與 MIA 的聲線，視覺才跟著音樂走。"],
+  ["歌曲與聲線","用 ChatGPT 寫歌詞、整理曲風描述，再用 Suno AI 作曲；確認歌曲版本與 MIA 的聲線，視覺才跟著音樂走。","ChatGPT・Suno AI"],
   ["視覺概念","從歌名與角色個性找出畫面方向：溫柔、日常、把春天帶在身上。"],
-  ["服裝與場景","延續官方圖的服裝、配件與暖色調，決定每一段的場景。"],
+  ["服裝與場景","延續官方圖的服裝、配件與暖色調，用 Flow 生成每一段的場景與角色畫面。","Flow"],
   ["分鏡與運鏡","把歌曲切成段落，排出鏡頭順序與運鏡。目前有兩版分鏡：220 秒 40 鏡、216 秒 19 鏡。"],
-  ["生成與逐鏡檢查","逐鏡檢查臉孔、髮型、配件、服裝、身高比例、空間與光線；不一致就重做。"],
-  ["剪輯與字幕","依音樂節奏剪輯，加上字幕，輸出母帶。"],
+  ["生成與逐鏡檢查","在 Runway 平台用 Seedance 2.5 把畫面生成影片，逐鏡檢查臉孔、髮型、配件、服裝、身高比例、空間與光線；不一致就重做。","Runway・Seedance 2.5"],
+  ["剪輯與字幕","用剪映依音樂節奏剪輯，加上字幕，輸出母帶。","剪映"],
   ["版本紀錄","記下每一版的長度、鏡數與差異，比較之後再決定定稿。"]
 ];
 const MEMBERS = [["HANA","黑色中分長直髮","#2B2B33"],["MIA","栗棕色下巴短鮑伯","#8A5A3C"],["ZOE","粉紅長直髮、空氣瀏海","#D9668A"],["LENA","白金側分長直髮，右眼下小痣","#B9A77A"],["CHLOE","黑色長波浪、側分","#3B3350"]];
@@ -1009,10 +1010,10 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   </tbody></table></div>
   <div class="sec">MIA《我把春天帶著走》創作流程</div>
   <div class="split">
-    <ol class="flow">${MIA_FLOW.map((f,i)=>`<li><span class="k">0${i+1}</span><div><b>${f[0]}</b><p>${f[1]}</p></div></li>`).join("")}</ol>
+    <ol class="flow">${MIA_FLOW.map((f,i)=>`<li><span class="k">0${i+1}</span><div><b>${f[0]}</b>${f[2]?`<span class="tooltag">${f[2]}</span>`:""}<p>${f[1]}</p></div></li>`).join("")}</ol>
     <a class="memimg" style="border-radius:2px;box-shadow:0 10px 22px -10px rgba(0,0,0,.4)" href="img/elara-mia.jpg" target="_blank" rel="noopener"><img src="img/elara-mia.jpg" alt="ELARA MIA 官方形象圖"></a>
   </div>
-  <p class="note" style="margin-top:8px">每一步使用的工具與檔案版本待講者補充；定稿版本尚未確認，兩個候選版本都保留。</p>
+  <p class="note" style="margin-top:8px">工具組合：ChatGPT（歌詞與風格）→ Suno AI（作曲）→ Flow（生圖）→ Runway 的 Seedance 2.5（生影片）→ 剪映（剪輯）。定稿版本尚未確認，兩個候選版本都保留。</p>
   <div class="sec">MIA 候選版本比較 <span class="note">（120 版 +3 分鐘）</span></div>
   <div class="seg" role="group" aria-label="MIA 版本"><button type="button" data-mia="a" aria-pressed="true">版本 A</button><button type="button" data-mia="b" aria-pressed="false">版本 B</button></div>
   <div class="split"><div class="card" id="miaBox"></div>${ph("候選鏡頭截圖待補（需確認母帶與分鏡版次）",2)}</div>

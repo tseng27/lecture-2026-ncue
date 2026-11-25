@@ -11,7 +11,7 @@
 - 私人預覽已發布（Claude Artifact）。
 - 交接包：AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。
 
-- 2026-11-25 23:30：主題 04 改為講者 2024 公視講座的七步創作流程；ELARA 新增 MIA 創作流程（工具待補）。
+- 2026-11-25 23:30：主題 04 改為講者 2024 公視講座的七步創作流程；ELARA 新增 MIA 創作流程（工具：ChatGPT、Suno AI、Flow、Runway Seedance 2.5、剪映）。
 
 ## 進行中／等待
 - [x] GitHub repo：https://github.com/tseng27/lecture-2026-ncue （main 為主要版本）

@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 23:20（Asia/Taipei）｜Claude
+- 任務：講者補充 MIA 使用的工具：作曲 Suno AI；歌詞與風格 ChatGPT；生圖 Flow；生影片 Runway 平台中的 Seedance 2.5；剪輯剪映。
+- 改了什麼：MIA_FLOW 第 02、04、06、07 步加入工具與工具標籤（.tooltag），流程下方註記改為工具組合。
+- 驗證：smoke-test 11 項 PASS；#elara 截圖已看過。
+- 沒做完／阻礙：MIA 定稿版本仍未確認。
+- 下一步建議：無。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main。
+
 ## 2026-11-25 23:30（Asia/Taipei）｜Claude
 - 任務：講者上傳 2024-08-26 公視講座〈藝術的力量與未來〉簡報文字，要求主題 04「從 AI 生成到自主創作」改用裡面的藝術創作工作流程；ELARA 的創作流程整理 MIA 的過程。
 - 改了什麼：

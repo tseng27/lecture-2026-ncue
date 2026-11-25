@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 20:55（Asia/Taipei）｜Grok
+- 任務：講者要求封面（#talk-01）那行文字「改成 曾國正/國立屏北高級中學　線上講座/國立彰化師範大學」。
+- 改了什麼：index.html CONFIG 新增 school:"國立屏北高級中學"、format:"線上講座"；V.cover 的 p.c-who 改為「曾國正／國立屏北高級中學　　線上講座／國立彰化師範大學」（原本的對象文字從這行移除，CONFIG.audience 保留未刪）。
+- 驗證：node tools/smoke-test.js 11 項 PASS；桌機 1280×800 封面截圖檢查。
+- 沒做完／阻礙：無。
+- 下一步建議：見 GROK_START.md 第 5 節（作品圖、IG／YouTube 網址）。
+- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；已推送 GitHub main。
+
 ## 2026-11-25 20:50（Asia/Taipei）｜Claude
 - 任務：講者傳 Pinterest 拼貼作品集參考圖，要求「連版型一起改」；看過預覽後選「換上線」，並指定封面中間放他的 IG 個人海報（不要裁切），之後交接給 Grok 繼續製作。
 - 改了什麼：index.html 改為「拼貼作品集」風格：<head> 加 Caveat＋Oswald 字型；<style> 最後是拼貼覆寫區塊（膠帶紙片卡片、黑白拍立得、黃便條、紅螢光筆章節號）；V.cover 改成拼貼封面 section.collage（手寫標、藍標籤＋簡介、今日路線筆記本、黃便利貼、紅底大標）。封面中間是 img/cover-me.jpg（講者提供的完整海報，原比例、不裁切、不去色）。拍立得 .c-pola 在桌機隱藏。

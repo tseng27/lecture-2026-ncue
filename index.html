@@ -515,7 +515,7 @@ body::before{background:var(--bg)}
    url 留空 = 顯示「待補」；img 留空 = 顯示素材待補卡（不以生成圖冒充成果）
    ===================================================================== */
 const CONFIG = {
-  speaker:"曾國正", role:"高中美術教師・藝術創作者",
+  speaker:"曾國正", school:"國立屏北高級中學", format:"線上講座", role:"高中美術教師・藝術創作者",
   title:"AI 時代的藝術與教育", sub:"從創作突破到教學新模式",
   tagline:"一位高中美術教師的 AI 創作實踐、教學探索與反思",
   place:"國立彰化師範大學", date:"2026.11.27", audience:"師培生・大學生・碩士班學生",
@@ -650,7 +650,7 @@ V.cover = ()=>`
     <div class="c-title">
       <h1>AI 時代的<br><span>藝術與教育</span></h1>
       <p class="c-sub">${esc(CONFIG.sub)}</p>
-      <p class="c-who"><b>${esc(CONFIG.speaker)}</b>　${esc(CONFIG.place)}　${esc(CONFIG.audience)}</p>
+      <p class="c-who"><b>${esc(CONFIG.speaker)}</b>／${esc(CONFIG.school)}　　${esc(CONFIG.format)}／${esc(CONFIG.place)}</p>
     </div>
     <span class="c-star s1">✦</span><span class="c-star s2">✦</span>
     <span class="c-hand c-scrib">create · teach · reflect ↘</span>

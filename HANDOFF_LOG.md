@@ -2,6 +2,17 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-25 21:35（Asia/Taipei）｜Grok
+- 任務：講者看過關於我頁說「這樣左邊很空 幫我重新排版」；接著提供 YouTube／Instagram／Facebook 連結，要求底部「延伸連結」改成三組。
+- 改了什麼：
+  - `index.html` V.home：取消左右分欄。T04《我的美好人生》改成全寬橫幅（自然高度），主題句「你的人生，就是你的藝術品」放大並加紅色螢光筆底；其下公仔牆改全寬 5＋4 拍立得（桌機兩排置中，860px 以下改 3 列）。原文、9 張圖、AI 註記與燈箱都保留。
+  - 新增 `CONFIG.social`（youtube 4、instagram 3、facebook 3），V.home「延伸連結」改為 YouTube／Instagram／Facebook 三組，沿用 `.lk` 按鈕並新分頁開啟。
+  - `CONFIG.links`：instagram 填 `https://www.instagram.com/tseng27tw/`；youtube 填 `https://www.youtube.com/@ELARAOfficialStudio`；ELARA Facebook 改為 `https://www.facebook.com/ELARA.5GIRLS`；藝術頁標籤改為「AI藝術創新實驗室 Facebook」。資源頁 IG／YT 的「未定位」改為「網址已填，頁面未逐一查核」（不宣稱已查核帳號頁）。
+- 驗證：`NODE_PATH=/workspace/pwtools/node_modules node tools/smoke-test.js` 11 項 PASS；#home、#resources 在 400px `scrollWidth=400`；home／resources／elara／break／s06／lecture／cover 無 console 錯誤，上述頁面不再出現社群「待補」按鈕；桌機與手機截圖已目視檢查。
+- 沒做完／阻礙：本人真實照片與課堂照、藝術作品圖仍待補。變更尚未推送，等講者確認。
+- 下一步建議：講者確認預覽後再推 GitHub Pages。
+- 是否已同步 artifact-source.html／已發布：未同步 artifact-source.html；**待講者確認後推送**。
+
 ## 2026-11-25 21:06（Asia/Taipei）｜Grok
 - 任務：講者在自由探索「關於我」（#home）說「右邊的圖片用這幾張填滿」，並提供 9 張（去重後）自己的 AI 公仔形象圖；稍後再改同一頁的標題、三張身分卡、區塊標題與四個標籤文字（原文見講者訊息）。
 - 改了什麼：

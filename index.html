@@ -648,9 +648,9 @@ body::before{background:var(--bg)}
 .tvid{margin:0}.tvid figcaption{margin-top:8px;line-height:1.5}.tvid figcaption .num{display:block;color:var(--red);font-weight:700}.tvid figcaption b{display:block}
 .tvid-one{align-items:center}
 @media (max-width:760px){.tvids{grid-template-columns:1fr 1fr}}
-#spkBtn{position:fixed;right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:60;width:26px;height:26px;border:0;border-radius:50%;background:transparent;color:var(--ink);opacity:.18;font-size:13px;cursor:pointer;padding:0}
-#spkBtn:hover,#spkBtn:focus-visible{opacity:.7}
-#spkPanel{position:fixed;right:calc(40px + env(safe-area-inset-right,0px));bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:60;display:flex;gap:6px;align-items:center;padding:4px 8px;border-radius:6px;background:var(--paper);border:1px solid var(--line);font-size:12px;opacity:.85}
+#spkBtn{position:fixed;right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:999;height:28px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);opacity:.5;font:inherit;font-size:12px;cursor:pointer;padding:0 10px}
+#spkBtn:hover,#spkBtn:focus-visible{opacity:1}
+#spkPanel{position:fixed;right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(46px + env(safe-area-inset-bottom,0px));z-index:999;display:flex;gap:6px;align-items:center;padding:4px 8px;border-radius:6px;background:var(--paper);border:1px solid var(--line);font-size:12px;opacity:.85}
 #spkPanel[hidden]{display:none}#spkPanel button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:4px;padding:2px 6px;cursor:pointer}
 #spkPanel label{display:flex;gap:3px;align-items:center}#spkClk{font-variant-numeric:tabular-nums;min-width:74px}
 @media print{#spkBtn,#spkPanel{display:none!important}}
@@ -1755,7 +1755,7 @@ setInterval(tick,1000);
 buildStrip(); route(); tick();
 
 /* 講者私用：講座模式右下角的淡色小按鈕，點開後用裝置內建中文語音朗讀本頁講稿並計時。講稿在 speaker-notes.json，點開時才載入 */
-(()=>{let notes=null,q=[],on=false,t0=0,tk=null;const b=document.createElement("button");b.type="button";b.id="spkBtn";b.setAttribute("aria-label","講者練習");b.textContent="♪";
+(()=>{let notes=null,q=[],on=false,t0=0,tk=null;const b=document.createElement("button");b.type="button";b.id="spkBtn";b.setAttribute("aria-label","講者練習");b.textContent="♪ 練習";
  const p=document.createElement("div");p.id="spkPanel";p.hidden=true;p.innerHTML='<button type="button" id="spkRec">▶ 錄音</button><button type="button" id="spkPlay">▶ 朗讀</button><button type="button" id="spkStop">■</button><span id="spkClk">0:00</span><label><input type="checkbox" id="spkAuto"> 自動下一頁</label>';
  document.body.append(b,p);const fm=x=>Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0");
  const idx=()=>{const m=location.hash.match(/^#talk-(\d+)$/);return m?+m[1]-1:-1};

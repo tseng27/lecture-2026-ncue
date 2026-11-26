@@ -566,6 +566,11 @@ body::before{background:var(--bg)}
 .aij-shifts .arrow{color:var(--red);font-weight:700}
 @media (max-width:620px){.aij-shifts .card{grid-template-columns:1fr}.aij-shifts .arrow{display:none}}
 .optag{display:inline-block;font-size:12px;line-height:1;padding:4px 6px;border:1px dashed var(--red);color:var(--red);border-radius:3px;white-space:nowrap;font-weight:700}
+.about-book{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:start;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.about-book img{width:120px;height:auto;display:block;box-shadow:0 6px 14px -6px rgba(0,0,0,.45)}
+.about-book h3{margin:4px 0 2px;font-size:18px}
+.about-book blockquote{margin:10px 0;padding-left:12px;border-left:3px solid var(--red);font-size:16px}
+@media (max-width:520px){.about-book{grid-template-columns:84px 1fr;gap:12px}.about-book img{width:84px}}
 </style>
 
 <header class="bar">
@@ -823,6 +828,16 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     <span class="eyebrow" style="margin:0"><span class="tag y">教學案例</span>我的美好人生</span>
     <p class="about-quote-k"><span>你的人生，就是你的藝術品</span></p>
     <p class="about-quote-b">藝術不只存在於完成的作品，也存在於我們如何觀察生活、理解自己、做出選擇。AI 擴充了表達的可能，人的經驗與判斷仍是創作的核心。</p>
+      <div class="about-book">
+      <img src="img/book-creative-visualization.jpg" alt="《每一天，都是全新的時刻》書封" loading="lazy">
+      <div>
+        <span class="note">高一核心課程的靈感來源</span>
+        <h3>夏克蒂・高文（Shakti Gawain）《每一天，都是全新的時刻》</h3>
+        <p class="note">原書 Creative Visualization（1978）；陳璋儒 譯</p>
+        <blockquote>我喜歡將自己想成一位藝術家，而我的人生就是我最棒的傑作。⋯⋯每一刻都代表著一個新的機會、新的決定。</blockquote>
+        <p class="note">課程把這句話轉成美術課的問題：如果人生是一件作品，你今天要做出什麼選擇？</p>
+      </div>
+    </div>
   </div>
   ${aboutGallery()}
   <div class="sec">我的 AI 工具歷程：2023–2026</div>

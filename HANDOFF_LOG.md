@@ -4,7 +4,7 @@
 
 ## 2026-11-26 09:00（Asia/Taipei）｜Claude
 - 任務：講者提供教育部「AI 人才方舟計畫－資料下載」https://pads.moe.edu.tw/download2.php 。
-- 改了什麼：CONFIG.links.moeAI；放在主題 01「三個準備」02 卡（附三份文件名稱）、「用 AI 備課」頁連結列、連結與來源表「政策」列。
+- 改了什麼：CONFIG.links.moeAI；依講者指定放在主題 02（R005 卡，列出素養框架、教學指引、教案示例、注意事項 2.1、學習應用手冊），並列入連結與來源表「政策」列。汪滔長文改編號 R004（R003 已是 02 的 FB 貼文）。
 - 驗證：smoke-test PASS。
 - 是否已同步 artifact-source.html／已發布：是。
 

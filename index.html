@@ -829,7 +829,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   </div>
   <div class="sec">浪潮的速度：AI 公司的人怎麼說</div>
   <div class="card">
-    <span class="eyebrow" style="margin:0"><span class="tag n">R003</span>Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
+    <span class="eyebrow" style="margin:0"><span class="tag n">R004</span>Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
     <h3>〈Superintelligence is Arriving〉超級智慧即將到來</h3>
     <p>他寫道：「We should not be okay with a 'handover' of society to AI.」我們不該接受把社會「移交」給 AI。</p>
     <p class="note">這是 AI 公司主管的個人觀點，不是研究結論。對老師的意義：下一代是「駕馭 AI」還是「被 AI 接管」，教室是第一道關口。</p>
@@ -849,7 +849,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   <div class="sec">給準教師：現在就能開始的三個準備</div>
   <div class="grid g3 toolbox">
     <div class="card"><span class="tbno">01</span><h3>練習人機協作</h3><p>把 AI 當家教與備課助教，而不只是寫報告的工具；親自碰過它的極限與幻覺，以後才知道怎麼帶學生避開。</p></div>
-    <div class="card"><span class="tbno">02</span><h3>跨領域與數位素養</h3><p>把生成式 AI、多模態創作等工具，自然地放進自己的專長學科，而不是另外開一門「AI 課」。</p><p class="note">教育部已公布〈臺灣中小學教師與學生 AI 素養框架〉、〈中小學教師數位與 AI 教學指引〉與各學習階段教案示例、〈中小學使用生成式人工智慧注意事項 2.1〉。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.moeAI)}</div></div>
+    <div class="card"><span class="tbno">02</span><h3>跨領域與數位素養</h3><p>把生成式 AI、多模態創作等工具，自然地放進自己的專長學科，而不是另外開一門「AI 課」。</p></div>
     <div class="card"><span class="tbno">03</span><h3>練習提問</h3><p>對 AI 追問、反駁、要它給出處。這份提問力，就是未來帶課堂討論的能力。</p></div>
   </div>
   <div class="sec">現場互動：抓包 AI</div>
@@ -876,6 +876,13 @@ V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","�
     <span class="eyebrow" style="margin:0"><span class="tag n">R003</span>Facebook 貼文（講者提供）</span>
     <p class="note">講者提供的補充連結，內容以原貼文為準。不是本課程成效的證明，也不與上方兩項研究並列為已查核資料。</p>
     <div class="links">${lk(CONFIG.links.r003)}</div>
+  </div>
+  <div class="card" style="display:grid;gap:8px;align-content:start;margin-top:22px">
+    <span class="eyebrow" style="margin:0"><span class="tag n">R005</span>教育部（臺灣）AI 人才方舟計畫</span>
+    <h3>臺灣的官方文件：素養框架、教學指引與教案示例</h3>
+    <div class="chips">${["臺灣中小學教師與學生 AI 素養框架","中小學教師數位與 AI 教學指引","教案示例（國小／國中／普高／技高）","中小學使用生成式人工智慧注意事項 2.1","中小學 AI 之學習應用手冊"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+    <p class="note">從世界回到臺灣：這些是準教師進入教育現場會用到的官方文件，可在資料下載頁取得。</p>
+    <div class="links">${lk(CONFIG.links.moeAI)}</div>
   </div>
   <div class="sec">要分開看的兩件事</div>
   <div class="seg" role="group" aria-label="切換"><button type="button" data-ai="with" aria-pressed="true">有 AI 時</button><button type="button" data-ai="without" aria-pressed="false">把 AI 拿走後</button></div>
@@ -1021,7 +1028,7 @@ V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人�
     <div class="card"><h3>紀錄可交接</h3><p>把規則與進度寫下來，換工具、換人都能接著做。</p></div>
     <div class="card"><h3>驗收</h3><p>AI 說「完成了」不算數；老師親自看過、試過才算。</p></div>
   </div>
-  <div class="links" style="margin-top:18px">${lk(CONFIG.links.moeAI)}${lk(CONFIG.links.github)}${lk(CONFIG.links.claudeKit)}${lk(CONFIG.links.geminiCanvas)}${lk(CONFIG.links.notebooklm)}</div>`;
+  <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.claudeKit)}${lk(CONFIG.links.geminiCanvas)}${lk(CONFIG.links.notebooklm)}</div>`;
 
 /* 主題 03：系列、作品、年代與圖片皆取自講者作品集網站 /series/ 與各作品頁（2026-11-25 讀取）。圖片直接連到作品集網站。 */
 const PORT = "https://tseng-kuo-cheng-art.tseng27.chatgpt.site";

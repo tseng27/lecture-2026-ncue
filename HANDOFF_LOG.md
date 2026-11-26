@@ -3,6 +3,12 @@
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
 ## 2026-11-26 10:45（Asia/Taipei）｜Claude
+- 任務：講者指定 05 的核心：「教學設計的核心回到引導學生探索自己」。
+- 改了什麼：V.method 標題下方加黑底核心句「教學設計的核心／回到引導學生探索自己」，講者提示同步更新。
+- 驗證：smoke-test PASS；#talk-05 截圖已看過。
+- 是否已同步 artifact-source.html／已發布：是。
+
+## 2026-11-26 10:45（Asia/Taipei）｜Claude
 - 任務：講者請查證 02 補充資料（自己的臉書貼文〈瑞典踩下數位煞車〉），並加入原始文章與研究來源；講者要表達「人類在進化的道路上」。
 - 改了什麼：02 的 Facebook 卡改為「講者觀點」：標題、三條第三條路、原文連結；下方「查證後的事實與出處」7 條，各附來源連結（CONFIG.links.bbcSweden／govSweden／apSweden／delgado／sparrow，src() 小型文字連結）；並註明仍屬推論、查無直接研究的說法。
 - 查證結果：BBC 2026-04-16（Maddy Savage，經 The Star 轉載；bbc.com 原網址未取得）確有 21 億克朗、från skärm till pärm、2025 起幼兒園不強制數位。卡羅林斯卡 2023-08 聲明經 AP 引述。PIRLS 555→544。Delgado 2018、Sparrow 2011、柏拉圖《斐德羅篇》正確。「Nature Scientific Reports 眼動／平行掃描」「神經通路減少」「非線性進化」查無來源。

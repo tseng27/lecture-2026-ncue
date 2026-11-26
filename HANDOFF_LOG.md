@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 11:25（Asia/Taipei）｜Claude
+- 任務：Drive 連接器單次上傳上限約 3.1 MB，zip 已 3.16 MB；講者選「圖片壓小後傳完整版」。
+- 改了什麼：img/ 重新壓縮：cover-me 800×1000、ELARA 五張 640×800、s1 1100 寬、s6 900 高，q78–80；img/ 3.1→2.2 MB，zip 2.25 MB。之後新增圖片請先壓縮，讓 zip 保持 3 MB 以下。
+- 驗證：smoke-test PASS；Artifact 已換上新圖。
+- 是否已同步 artifact-source.html／已發布：是。
+
 ## 2026-11-26 11:00（Asia/Taipei）｜Claude
 - 任務：講者要在「你的人生，就是你的藝術品」文字旁放肖像縮圖（講者先給金色版，後改為粉彩色鉛筆版）。
 - 改了什麼：關於我 .about-quote 右上加 .about-thumb（img/life-artwork-portrait.jpg，粉彩版，寬 150px，手機 96px，白框微傾斜）。

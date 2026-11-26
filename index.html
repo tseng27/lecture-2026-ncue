@@ -632,6 +632,9 @@ body::before{background:var(--bg)}
 .sum4{display:grid;gap:4px;margin:10px 0 18px;font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.6}.sum4 p{margin:0}
 .roots .tbno{font-size:26px}
 @media (max-width:620px){.survey{grid-template-columns:repeat(2,minmax(0,1fr))}.survey .sv{padding:10px}}
+.st-row2{grid-template-columns:240px 1fr}
+@media (max-width:760px){.st-row2{grid-template-columns:1fr}}
+.stages-fig figcaption{margin-top:6px}
 </style>
 
 <header class="bar">
@@ -746,7 +749,7 @@ const STOPS = [
   { v:"s02",      s:0, m:4,  t:"全球 AI 教育革命", cue:"濃縮講：UNESCO 框架、教育部指引、瑞典反思、Bastani 研究。只講一句：AI 幫忙完成任務，不等於學生學會。分清研究事實、講者觀點、未來推論。" },
   { v:"method",   s:1, m:5,  t:"我的美術教育理念與課程設計方法", cue:"美術是表達自己，也是探索自己。左邊是老師的課程設計，右邊是學生的學習歷程；AI 可以參與各環節，但不是學習目標。" },
   { v:"survey",   s:1, m:4,  t:"師培生互動：你如何使用 AI？", cue:"請大家在會議聊天室回覆：工具＋環節編號＋怎麼用＋目的（效率或學習）。沒有教學經驗的人寫實習、試教或未來構想。頁面上的點選只在這台電腦，不是多人投票。" },
-  { v:"stages",   s:1, m:4,  t:"教師使用 AI 的五個階段", cue:"用「光圈與景深」走一遍 E→A。D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。強調：這是應用方式的分類，不是能力排名。" },
+  { v:"stages",   s:1, m:4,  t:"教師使用 AI 的五個階段", cue:"用高一〈臺灣美術．海闊天空〉與林玉山〈蓮池〉走一遍 E→A，B 指向 Padlet 七階段學習牆。攝影版收在頁面下方。D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。強調：這是應用方式的分類，不是能力排名。" },
   { v:"photo",    s:1, m:5,  t:"案例一：觀看的力量／攝影探索", cue:"照「動機 → 目標 → 活動 → 工具 → 歷程 → 成果 → 反思」講。接上五階段：相機模擬器就是 B。" },
   { v:"publicart",s:1, m:5,  t:"案例二：校園公共藝術設計", cue:"重點是學生的構想、判斷與選擇，不是模擬圖多精緻。AI 模擬圖和原始草圖的差異，是討論的起點。" },
   { v:"sensory",  s:1, m:3,  t:"案例三：感官轉譯｜觀看與理解", tab:"flow", cue:"鑑賞不只是記藝術家和年代。投影鑑賞原稿：哪些句子是學生原本的？" },
@@ -819,11 +822,11 @@ const CATCH = [
 ];
 /* 主題 AI 備課「教師使用 AI 的五個階段」：講者提供文字（2026-11-26），逐字使用 */
 const STAGES5 = [
-  ["E","傳統講授","用課本、板書與口述說明概念。","老師畫圖，說明光圈大小如何影響景深。"],
-  ["D","AI 製作教材與簡報","請 AI 把既有教學內容整理成學生看得懂的圖例。","老師用深、淺景深的對照圖講解，全班一起看。"],
-  ["C","與 AI 討論，調整教學","帶著學生的回答或作品和 AI 討論，由老師決定下一步怎麼教。","學生看得出背景模糊，卻說不出怎麼拍。老師因此把下一個活動改成「先預測，再試拍」。"],
-  ["B","用 AI 製作互動教具","把調整後的活動做成學生可以親手操作的工具。","學生在相機模擬器固定場景與對焦點，只改光圈，檢驗自己的預測。"],
-  ["A","程式自動化與跨 AI 應用","用程式串接不同 AI，讓重複性的教學工作可以自動執行。","例如表單收回答後，由一個 AI 整理常見疑問，另一個 AI 草擬對應練習，再交給老師確認。"]
+  ["E","傳統講授","用課本、板書與口述說明概念。","老師畫圖，說明光圈大小如何影響景深。","老師用課本與投影講臺灣美術史：林玉山 1927 年入選第一回臺展，1930 年畫出〈蓮池〉。學生聽講、記重點。"],
+  ["D","AI 製作教材與簡報","請 AI 把既有教學內容整理成學生看得懂的圖例。","老師用深、淺景深的對照圖講解，全班一起看。","把課本內容整理成以〈蓮池〉為題的示範：藝術家生命線，以及描述、分析、詮釋、判斷四步鑑賞。全班一起看示範。"],
+  ["C","與 AI 討論，調整教學","帶著學生的回答或作品和 AI 討論，由老師決定下一步怎麼教。","學生看得出背景模糊，卻說不出怎麼拍。老師因此把下一個活動改成「先預測，再試拍」。","學生最難的是把「很漂亮」說清楚。老師因此規定每個看法都要附畫面證據，並讓 AI 只追問、不代寫，最多問 3 個問題。"],
+  ["B","用 AI 製作互動教具","把調整後的活動做成學生可以親手操作的工具。","學生在相機模擬器固定場景與對焦點，只改光圈，檢驗自己的預測。","做成七個階段的 Padlet 學習牆：選藝術家、生命線、速寫與鑑賞、我的歌、新畫面、動起來、省思。學生用 AI 把感受轉成歌、新畫面與動態影像，每一步都附提示詞與修改紀錄。"],
+  ["A","程式自動化與跨 AI 應用","用程式串接不同 AI，讓重複性的教學工作可以自動執行。","例如表單收回答後，由一個 AI 整理常見疑問，另一個 AI 草擬對應練習，再交給老師確認。","（構想）用程式讀取學習牆上全班的鑑賞貼文，由一個 AI 整理常見的盲點，另一個 AI 草擬下一堂的追問題，再交給老師確認。"]
 ];
 const TOOLUSE = [
   ["ChatGPT","教學討論、課程設計、問題引導、反思、研究及創作"],
@@ -1380,12 +1383,21 @@ M.survey = ()=>{
   $("#svReset").addEventListener("click",()=>{$$(".sv").forEach(b=>b.setAttribute("aria-pressed","false"));cc()});
 };
 
-V.stages = ()=>`${head("","教師使用 AI 的五個階段","以「光圈與景深」為例","先看同一堂攝影課在五種用法下的差異，再進入實際教學案例。",'<span class="tag r">教學</span>')}
+V.stages = ()=>`${head("","教師使用 AI 的五個階段","以「臺灣藝術鑑賞 × AI 再創作」為例","用同一個高一單元〈臺灣美術．海闊天空〉（美術上第 4 單元，課本 p.82–109）看五種用法的差異，再進入實際教學案例。",'<span class="tag r">教學</span>')}
   <figure class="stages-fig"><img src="img/ai-teacher-stages.jpg" alt="教師使用 AI 的五個階段：E 傳統講授、D AI 製作教材簡報、C 與 AI 討論調整教學、B AI 製作互動教具、A 程式自動化跨 AI 應用" loading="lazy" width="1400" height="788"></figure>
   <div class="stages5" role="table" aria-label="教師使用 AI 的五個階段">
-    <div class="st-row st-head" role="row"><span role="columnheader">階段</span><span role="columnheader">教師如何使用 AI</span><span role="columnheader">以「光圈與景深」為例</span></div>
-    ${STAGES5.map(([k,n,how,ex])=>`<div class="st-row" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell"><i class="st-l">教師如何使用 AI</i>${how}</span><span role="cell"><i class="st-l">以「光圈與景深」為例</i>${ex}</span></div>`).join("")}
+    <div class="st-row st-head" role="row"><span role="columnheader">階段</span><span role="columnheader">教師如何使用 AI</span><span role="columnheader">以「臺灣藝術鑑賞 × AI 再創作」為例</span></div>
+    ${STAGES5.map(([k,n,how,ex,tw])=>`<div class="st-row" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell"><i class="st-l">教師如何使用 AI</i>${how}</span><span role="cell"><i class="st-l">以「臺灣藝術鑑賞 × AI 再創作」為例</i>${tw}</span></div>`).join("")}
   </div>
+  <div class="sec">B 的實際樣子：一面七個階段的學習牆</div>
+  <figure class="stages-fig"><img src="img/padlet-taiwan-art.jpg" alt="Padlet 學習牆「102台灣藝術鑑賞 × AI 再創作」：01 我選的藝術家、02 生命線、03 速寫與鑑賞、04 我的歌、05 新畫面、06 動起來、07 省思，每欄有繳交說明與以林玉山〈蓮池〉為題的示範貼文" loading="lazy" width="1600" height="900"><figcaption class="note">每一欄先放繳交說明，再放一則示範貼文。示範用的「林柏翰」是虛構學生；學生的實際貼文不在講座上公開。</figcaption></figure>
+  <div class="grid g2" style="margin-top:14px">
+    <div class="card"><h3>AI 只追問，不代寫</h3><p>示範的提示詞：「請檢查我的生命線，每個時間點對畫家的影響有沒有說清楚，最多問我 3 個問題，不要幫我寫。」</p></div>
+    <div class="card"><h3>AI 也會說錯</h3><p>示範裡 AI 說〈蓮池〉畫的是日月潭；查文化部資料，才知道是嘉義牛稠山的大蓮池。學生要寫下「我採納或不採納什麼」。</p></div>
+  </div>
+  <details class="card aij-more"><summary><b>同一張表，用攝影課「光圈與景深」來看</b><span class="note">點開</span></summary>
+    <div class="stages5" role="table" aria-label="光圈與景深的五個階段" style="margin-top:12px">${STAGES5.map(([k,n,how,ex])=>`<div class="st-row st-row2" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell">${ex}</span></div>`).join("")}</div>
+  </details>
   <div class="fourth"><span class="note">怎麼讀這張表</span><h3>D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。</h3></div>
   <p class="note stages-warn">這是 AI 應用深度與方式的分類，不是教師專業能力或教學品質的排名。技術越複雜，不一定代表教學效果越好。</p>`;
 

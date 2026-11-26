@@ -778,7 +778,7 @@ const STOPS = [
   { v:"s01",      s:0, m:7,  t:"AI 浪潮來襲：危機，還是轉機？", cue:"從自己的數位教學接過來：工具越來越強，我們要重新問五個問題。超級智慧是業界觀點與未來假設。「第四秒」是引導思考的命題，不是研究結論。時間夠再做抓包 AI。" },
   { v:"s02",      s:0, m:4,  t:"全球 AI 教育革命", cue:"濃縮講：UNESCO 框架、教育部指引、瑞典反思、Bastani 研究。只講一句：AI 幫忙完成任務，不等於學生學會。分清研究事實、講者觀點、未來推論。" },
   { v:"method",   s:1, m:5,  t:"我的美術教育理念與課程設計方法", cue:"美術是表達自己，也是探索自己。左邊是老師的課程設計，右邊是學生的學習歷程；AI 可以參與各環節，但不是學習目標。" },
-  { v:"survey",   s:1, m:4,  t:"師培生互動：你如何使用 AI？", cue:"請大家在會議聊天室回覆：工具＋環節編號＋怎麼用＋目的（效率或學習）。沒有教學經驗的人寫實習、試教或未來構想。頁面上的點選只在這台電腦，不是多人投票。" },
+  { v:"survey",   s:1, m:4,  t:"如果你是老師，你會怎麼用 AI？", cue:"請大家想像自己當老師，在會議聊天室回覆：工具＋環節編號＋怎麼用＋目的（省自己的時間，或讓學生學得更好）。頁面上的點選只在這台電腦，不是多人投票。" },
   { v:"stages",   s:1, m:4,  t:"教師使用 AI 的五個階段", cue:"用高一〈臺灣美術．海闊天空〉與林玉山〈蓮池〉走一遍 E→A，B 指向 Padlet 七階段學習牆。攝影版收在頁面下方。D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。強調：這是應用方式的分類，不是能力排名。" },
   { v:"photo",    s:1, m:5,  t:"案例一：觀看的力量／攝影探索", cue:"照「動機 → 目標 → 活動 → 工具 → 歷程 → 成果 → 反思」講。接上五階段：相機模擬器就是 B。" },
   { v:"publicart",s:1, m:5,  t:"案例二：校園公共藝術設計", cue:"重點是學生的構想、判斷與選擇，不是模擬圖多精緻。AI 模擬圖和原始草圖的差異，是討論的起點。" },
@@ -801,11 +801,11 @@ const STOPS = [
 const MENU = [
   ["認識", [["home","關於我"],["lecture","講座導覽"]]],
   ["第一部分", [["roots","AI 之前的數位教學"],["s01","01 AI 浪潮"],["s02","02 全球教育"]]],
-  ["第二部分", [["method","05 理念與設計"],["survey","師培生互動"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱"],["aiprep","自己開發工具"],["cases","全部案例"]]],
+  ["第二部分", [["method","05 理念與設計"],["survey","如果你是老師"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱"],["aiprep","自己開發工具"],["cases","全部案例"]]],
   ["第三部分", [["artpath","從好奇到自主"],["art","03 議題與系列"],["practice","04 臨場感與方法"],["elara","ELARA"],["artsum","創作總結"],["workflow","工作流程"]]],
   ["第四部分", [["s06","06 未來教師"],["closing","結語"],["resources","連結與來源"]]]
 ];
-const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"師培生互動", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"如果你是老師", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
 const EXPLORE_ORDER = ["cover","home","lecture","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","aiprep","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","resources"];
 
 /* ===== 六大正式主題（標題不改） ===== */
@@ -1414,13 +1414,13 @@ const ROOTS_TL = [
   ["2025–2026","多模態、程式開發、AI Agent 與自建平台","互動教材、自主學習網站、多 AI 協作與工作流程自動化。","講者 2026-11-26 提供的 AI 工具盤點"]
 ];
 
-V.survey = ()=>`${head("","師培生互動：你如何使用 AI？","在哪個環節、怎麼用、為了什麼","還沒有正式教學經驗也沒關係：可以寫實習、試教，或你未來想怎麼用。",'<span class="tag r">互動</span>')}
-  <div class="fourth" style="margin:0 0 18px"><span class="note">請在會議聊天室回覆</span><h3>工具＋環節編號＋怎麼用＋目的</h3><p class="note" style="margin-top:8px">例如：「ChatGPT／3／請它給我三個暖身活動再自己挑／提升效率」</p></div>
+V.survey = ()=>`${head("","如果你是老師，你會怎麼用 AI？","在哪個環節用、怎麼用、為了什麼","想像你站上講台的第一年：備課、上課、評量，你會讓 AI 幫你做哪一件事？又會把哪一件留給自己和學生？",'<span class="tag r">互動</span>')}
+  <div class="fourth" style="margin:0 0 18px"><span class="note">請在會議聊天室回覆</span><h3>工具＋環節編號＋怎麼用＋目的</h3><p class="note" style="margin-top:8px">例如：「ChatGPT／3／請它給我三個暖身活動，我再依班上學生挑一個／省下備課時間」</p></div>
   <div class="grid g4 survey">${SURVEY8.map((x,i)=>`<button type="button" class="sv" data-sv="${i}" aria-pressed="false"><span class="num">${i+1}</span>${x}</button>`).join("")}</div>
   <div class="mini" style="margin-top:10px"><span id="svCount">已點選 0 個環節</span><button type="button" id="svReset">清除</button></div>
   <p class="note" style="margin-top:6px">點選只記在這台電腦，方便講者整理聊天室的回答；不是多人即時投票。</p>
   <div class="sec">想一想</div>
-  <ol class="qlist">${["你目前主要使用哪些 AI 工具？","曾經在哪些教學環節使用 AI？","你是怎麼用的？","主要目的是提升教師工作效率，還是改善學生的學習？","未來還可以在哪些環節嘗試？"].map(q=>`<li>${q}</li>`).join("")}</ol>`;
+  <ol class="qlist">${["你現在當學生時，最常用哪些 AI 工具？","如果你是老師，會先在哪個環節用 AI？","你會怎麼用：請它直接做完，還是陪你想、幫你檢查？","這樣用是為了省自己的時間，還是讓學生學得更好？","哪一件事，你會堅持留給自己和學生來做？"].map(q=>`<li>${q}</li>`).join("")}</ol>`;
 const SURVEY8 = ["學習需求分析","課程規劃","教學活動設計","教材與資源製作","課堂教學與引導","學生學習與創作","學習評量與回饋","教學反思與改進"];
 M.survey = ()=>{
   const cc=()=>{$("#svCount").textContent="已點選 "+$$(".sv[aria-pressed=true]").length+" 個環節"};

@@ -709,6 +709,11 @@ const CONFIG = {
     wangEssay:{ label:"原文：Alexandr Wang〈Superintelligence is Arriving〉（X）", url:"https://x.com/alexandr_wang/status/2124636606959345776" },
     wangNews: { label:"報導：Daily Caller（2026-11-23）", url:"https://dailycaller.com/2026/11/23/alexandr-wang-meta-superintelligence-handover-ai/" },
     moeAI:    { label:"教育部 AI 人才方舟計畫：資料下載", url:"https://pads.moe.edu.tw/download2.php" },
+    alphaSchool:{ label:"CBS News：Alpha School 一天兩小時 AI 學科學習", url:"https://www.cbsnews.com/news/alpha-school-ai-teaching-2-hour-a-day/" },
+    koreaAiText:{ label:"Asia Business Daily：AI 教科書降為教育資料（2025-08）", url:"https://www.asiae.co.kr/en/article/2025080418420589912" },
+    estoniaLeap:{ label:"愛沙尼亞教育部：AI Leap 計畫", url:"https://hm.ee/en/news/estonia-announces-groundbreaking-national-initiative-ai-leap-programme-bring-ai-tools-all" },
+    beijingAi:{ label:"China Daily：北京中小學 AI 教育（2025-10）", url:"https://www.chinadaily.com.cn/a/202510/21/WS68f6d9bea310f735438b601e.html" },
+    uaeAi:{ label:"WAM：阿聯公立學校 AI 課程（2025–2026 學年）", url:"https://www.wam.ae/en/article/bji6z2n-ministry-education-introduces-curriculum-public" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
     govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
     apSweden: { label:"美聯社：Sweden brings more books and handwriting back（2023-09-10）", url:"https://www.clickorlando.com/news/world/2023/09/10/sweden-brings-more-books-and-handwriting-practice-back-to-its-tech-heavy-schools/" },
@@ -1052,7 +1057,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
     <p class="note" style="margin-top:10px">這段文字是為講座設計的示範稿，錯誤是刻意放入的。重點：AI 寫得越流暢，錯誤越不容易被發現；能抓出來的，是老師的專業知識。</p>
   </div>`;
 
-V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","從 UNESCO 的 AI 能力框架、高中數學研究、瑞典把課堂拉回紙本，到臺灣教育部的素養框架，看各地怎麼調整 AI 進入學校的方式。",'<span class="tag r">主題 02</span>')}
+V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","從 UNESCO 的 AI 能力框架、高中數學研究、瑞典把課堂拉回紙本，到臺灣教育部的素養框架，從 UNESCO 能力框架、研究提醒，到美國 Alpha School、南韓、愛沙尼亞、北京、阿聯、瑞典與臺灣，看各地怎麼讓 AI 進入學校。",'<span class="tag r">主題 02</span>')}
   <div class="fourth" style="margin:0 0 18px"><span class="note">這一頁只帶走一句</span><h3>AI 幫忙完成任務，不等於學生真正學會。</h3><p class="note" style="margin-top:8px">每張卡片上方標明類型：研究或官方文件是事實，講者觀點是推論，業界說法是未來假設。</p></div>
   <div class="grid g2">
     <div class="card" style="display:grid;gap:8px;align-content:start">
@@ -1070,6 +1075,9 @@ V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","�
       <div class="links">${lk(CONFIG.links.bastani)}</div>
     </div>
   </div>
+  <div class="sec" style="margin-top:22px">各國怎麼把 AI 帶進學校</div>
+  <div class="grid g3"><div class="card" style="display:grid;gap:8px;align-content:start"><span class="eyebrow" style="margin:0"><span class="tag n">私立學校</span>美國</span><h3>Alpha School：一天兩小時 AI 學科</h3><p>德州私立學校。學科由 AI 適應式軟體帶，約兩小時完成；其餘時間做專題與生活技能，大人的角色是引導者而非講課老師。</p><p class="note">成績亮眼是學校自己公布的數據，尚無獨立研究驗證；學費也很高。</p><div class="links">${lk(CONFIG.links.alphaSchool)}</div></div><div class="card" style="display:grid;gap:8px;align-content:start"><span class="eyebrow" style="margin:0"><span class="tag n">國家政策</span>南韓</span><h3>AI 數位教科書：上路後又退回</h3><p>2025 年 3 月在部分年級導入 AI 數位教科書；同年 8 月國會修法，降為學校可自選的「教育資料」。</p><p class="note">推得太快、教師與家長疑慮，是退回的主要原因。</p><div class="links">${lk(CONFIG.links.koreaAiText)}</div></div><div class="card" style="display:grid;gap:8px;align-content:start"><span class="eyebrow" style="margin:0"><span class="tag n">國家政策</span>愛沙尼亞</span><h3>AI Leap：先給高中生和老師</h3><p>2025 年 9 月起，高中生與教師取得教育版 AI 工具，並先辦教師培訓。</p><p class="note">重點放在「怎麼用 AI 學」，不是用 AI 取代老師。</p><div class="links">${lk(CONFIG.links.estoniaLeap)}</div></div><div class="card" style="display:grid;gap:8px;align-content:start"><span class="eyebrow" style="margin:0"><span class="tag n">地方政策</span>中國北京</span><h3>中小學每學年至少 8 堂 AI 課</h3><p>2025 年秋季學期起，北京中小學每學年至少 8 課時 AI 教育，可獨立開課或融入其他科目。</p><p class="note">是「學 AI」的課程，跟用 AI 輔助學習不同。</p><div class="links">${lk(CONFIG.links.beijingAi)}</div></div><div class="card" style="display:grid;gap:8px;align-content:start"><span class="eyebrow" style="margin:0"><span class="tag n">國家政策</span>阿聯</span><h3>從幼兒園到高三的 AI 課程</h3><p>2025–2026 學年起，公立學校從幼兒園到 12 年級都有 AI 課程，不考試。</p><p class="note">內容包含 AI 基礎、倫理與應用。</p><div class="links">${lk(CONFIG.links.uaeAi)}</div></div></div>
+  <p class="note" style="margin-top:8px">方向不只一種：有的加速導入，有的放慢或退回，瑞典則把部分課堂拉回紙本。</p>
   <div class="card" style="margin-top:22px;display:grid;gap:8px;align-content:start">
     <span class="eyebrow" style="margin:0"><span class="tag n">講者觀點</span>出處：講者 Facebook 貼文</span>
     <h3>瑞典踩下數位煞車：退化，還是人類在進化的道路上？</h3>

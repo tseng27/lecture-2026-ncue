@@ -718,6 +718,7 @@ const CONFIG = {
     paWorksheet:{ label:"校園公共藝術設計構想學習單（數位版）", url:"https://tseng27.github.io/ai-teaching-observatory/public-art-worksheet/" },
     portfolioWorksheet:{ label:"課程學習成果檔案學習單（數位版）", url:"https://tseng27.github.io/ai-teaching-observatory/portfolio-worksheet/" },
     artsCulture:{ label:"Google Arts & Culture", url:"https://artsandculture.google.com/?hl=zh-TW" },
+    artGpt:{ label:"藝術鑑賞學伴 GPT（講者自建）", url:"https://chatgpt.com/g/g-690b7690c5a48191b61fdbee6847c622-yi-shu-jian-shang-xue-ban-art-companion-for-students" },
     cameraSim:{ label:"相機模擬器 CameraSim", url:"https://www.camerasim.com/" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
     govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
@@ -1159,13 +1160,31 @@ const STEPS11 = [
   ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
 ];
 V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例</span><span>講座 14 分鐘</span>')}
-  <div class="tabs" role="tablist">${[["flow","十一步流程"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
   <div id="sbox"></div>`;
 
 const SENS_TABS = {
   flow:()=>`<div class="steps" role="tablist">${STEPS11.map((s,i)=>`<button type="button" role="tab" data-s11="${i}"><span>${i+1}</span>${s[0]}</button>`).join("")}</div>
     <div class="stepbox" id="s11box" aria-live="polite"></div>
     <p class="note" style="margin-top:10px">既有方法整合，不是單一班級的實施紀錄。觀察時先保留學生自己的回答，再用不同顏色記錄 AI 補充，區分史實、觀察與推測。</p>`,
+  course:()=>`<p style="margin-bottom:12px">課程名稱：〈名畫動起來！從《Dust My Shoulders Off》看藝術的故事〉。先欣賞張靚穎《Dust My Shoulders Off》MV（廖人帥導演），看見音樂和名畫可以彼此對話；再請學生選一幅最有感覺的畫，讓它「動起來」、「唱出來」。</p>
+    <div class="sec">鑑賞的四個步驟（Feldman）</div>
+    <div class="grid g4">${[["1 描述","我看到了什麼？（客觀事實）"],["2 分析","它是怎麼畫的？（風格、顏色、線條）"],["3 詮釋","它想說什麼故事？讓我感覺到什麼？"],["4 判斷","我覺得它如何？它有什麼價值？"]].map(([h,p])=>`<div class="card"><h3>${h}</h3><p>${p}</p></div>`).join("")}</div>
+    <p class="note" style="margin-top:6px">指導語：鑑賞不只是說「好看」或「看不懂」，要用四個步驟來「聊」藝術。</p>
+    <div class="sec">學生從 11 幅名畫選一幅</div>
+    <div class="chips">${["戴珍珠耳環的少女", "拾穗", "大碗島的星期天下午", "梵谷自畫像", "吶喊", "夜遊者", "聖安東尼的誘惑", "克莉絲蒂娜的世界", "另一個世界", "上升與下降", "人子"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+    <div class="sec">四個任務</div>
+    <div class="grid g2">
+      <div class="card"><span class="note">任務一｜我說畫 → AI 陪我看畫</span><h3>AI 協作填寫鑑賞學習單</h3><p>先用搜尋與 AI 鏡頭查作品基本資料，自己寫完四步驟鑑賞；再把文字貼給「藝術鑑賞學伴 GPT」，請它延伸補充。<b>AI 的新想法用不同顏色的筆補在旁邊</b>，最後整理成四句：我的畫作、我原本的感覺、AI 補充的想法、我現在的新理解。</p></div>
+      <div class="card"><span class="note">任務二｜從靜到動</span><h3>把畫的感覺寫成一首歌</h3><p>用三個詞形容畫的情緒，想像它的速度、樂器與節奏，寫一句感受句，再用提示模板請 Suno 生成歌曲。例：〈夜遊者〉→ 孤獨／等待／微光，「在深夜的玻璃窗後，他靜靜地等著誰也不會來的人。」</p></div>
+      <div class="card"><span class="note">任務三｜學生當總導演</span><h3>讓名畫「唱」出你的歌</h3><p>Suno 歌詞當劇本，請 Gemini 當副導演寫分鏡提示詞，用 Grok 讓名畫動起來，最後在 Canva 依音樂節奏剪成 15–30 秒短影音。學生要自己註明「同意公開」或「不同意公開」。</p></div>
+      <div class="card"><span class="note">任務四｜殺青</span><h3>導演的製作回憶錄</h3><p>滿意度與難度自評、最驚豔的時刻、卡關與突破、對這幅畫的新體悟，以及給老師的上課節奏與教學說明回饋。</p></div>
+    </div>
+    <p class="route" style="margin-top:14px">${["鑑賞學習單","藝術鑑賞學伴 GPT","Suno 音樂","Gemini 分鏡","Grok 動畫","Canva 剪輯","Padlet 發表與反思"].map(x=>`<span>${x}</span>`).join("")}</p>
+    <div class="sec">教師示範 MV</div>
+    <div class="grid g2 tvids">${[["vP8a-K5V49w","〈夜遊者〉"],["v7NMSqUw-2o","〈戴珍珠耳環的少女〉"]].map(([id,t])=>`<figure class="tvid">${ytl(id,"教師示範："+t+"轉譯 MV")}<figcaption><b>${t}</b><small class="note">教師示範</small></figcaption></figure>`).join("")}</div>
+    <div class="card" style="margin-top:14px"><h3>先示範一次完整流程</h3><p>老師先用名畫走完「鑑賞 → 情緒詞 → Suno 歌曲 → 分鏡 → 動畫 → 剪輯」，學生再用自己選的畫做一次。</p><div class="links">${lk(CONFIG.links.artGpt)}</div></div>
+    <p class="note" style="margin-top:8px">學生在 Padlet 上傳鑑賞學習單、歌曲與 MV；Padlet 有學生姓名，不公開連結。</p>`,
   practice:()=>`<p style="margin-bottom:14px">一起試一次：看一幅畫，用三個詞記下感受，再決定它會是什麼聲音。<b>沒有固定公式</b>，冷色也可以是明亮的節奏，重點是說得出理由。</p>
     <div class="prac">
       <div class="card"><label for="pw">① 三個情緒詞</label><input type="text" id="pw" placeholder="例：寂靜、溫暖、等待"><label for="pl" style="margin-top:12px">一句生活連結</label><textarea id="pl" placeholder="它讓我想起……"></textarea></div>
@@ -1782,14 +1801,12 @@ setInterval(tick,1000);
 buildStrip(); route(); tick();
 
 /* 講者私用：講座模式右下角的淡色小按鈕，點開後用裝置內建中文語音朗讀本頁講稿並計時。講稿在 speaker-notes.json，點開時才載入 */
-(()=>{let notes=null,q=[],on=false,t0=0,tk=null;const b=document.createElement("button");b.type="button";b.id="spkBtn";b.setAttribute("aria-label","講者練習");b.textContent="♪ 練習";
+(()=>{let notes=null,q=[],on=false,t0=0,tk=null,auto=false,au=null,urls=null;const b=document.createElement("button");b.type="button";b.id="spkBtn";b.setAttribute("aria-label","講者練習");b.textContent="♪ 練習";
  const p=document.createElement("div");p.id="spkPanel";p.hidden=true;p.innerHTML='<button type="button" id="spkRec">▶ 錄音</button><button type="button" id="spkPlay">▶ 朗讀</button><button type="button" id="spkStop">■</button><span id="spkClk">0:00</span><label><input type="checkbox" id="spkAuto"> 自動下一頁</label>';
  document.body.append(b,p);const fm=x=>Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0");
  const idx=()=>{const m=location.hash.match(/^#talk-(\d+)$/);return m?+m[1]-1:-1};
- const vis=()=>{b.hidden=idx()<0;if(b.hidden){p.hidden=true;stop()}};vis();window.addEventListener("hashchange",()=>{if(on&&!auto)stop();vis()});
- let auto=false;
+ const vis=()=>{b.hidden=idx()<0;if(b.hidden){p.hidden=true;stop()}};
  const clk=()=>{const i=idx(),lim=i>=0?STOPS[i].m*60:0,e=on?(Date.now()-t0)/1000:0;document.getElementById("spkClk").textContent=fm(e)+" / "+fm(lim)};
- let au=null,urls=null;
  function stop(){on=false;auto=false;if("speechSynthesis" in window)speechSynthesis.cancel();if(au){au.pause();au=null}clearInterval(tk);clk()}
  async function rec(){stop();if(!urls){try{urls=await (await fetch("speaker-audio.json")).json()}catch(e){document.getElementById("spkClk").textContent="錄音清單載入失敗";return}}
   const i=idx();if(i<0||!urls[i])return;au=new Audio(urls[i]);on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);
@@ -1800,6 +1817,7 @@ buildStrip(); route(); tick();
  async function play(){if(!("speechSynthesis" in window))return;if(au){au.pause();au=null}if(!notes){try{notes=await (await fetch("speaker-notes.json")).json()}catch(e){document.getElementById("spkClk").textContent="講稿載入失敗";return}}
   const i=idx();if(i<0)return;speechSynthesis.cancel();const t=(notes[i]||"").replace(/【[^】]*】/g,"").replace(/\s+/g,"");q=t.match(/[^。！？；]+[。！？；」]*/g)||[];on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);say()}
  b.onclick=()=>{p.hidden=!p.hidden;clk()};document.getElementById("spkPlay").onclick=play;document.getElementById("spkRec").onclick=rec;document.getElementById("spkStop").onclick=stop;
+ vis();window.addEventListener("hashchange",()=>{if(on&&!auto)stop();vis()});
 })();
 </script>
 

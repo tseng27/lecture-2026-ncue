@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 02:20 感官轉譯「課程四任務」分頁；修正 ♪ 練習按鈕（Claude）
+- #sensory 新增分頁「課程四任務」：Feldman 四步驟、11 幅名畫、任務一到四、工具鏈、兩支教師示範 MV（YouTube vP8a-K5V49w 夜遊者、v7NMSqUw-2o 戴珍珠耳環的少女）、藝術鑑賞學伴 GPT 連結（CONFIG.links.artGpt）。講座停點與時間不變。
+- 修正 bug：從非講座頁進站時，♪ 練習按鈕的 IIFE 因變數在宣告前被使用（TDZ）而中斷，按鈕不會出現。已把變數宣告移到最前面、vis() 移到 IIFE 最後。
+
 ## 2026-11-27 02:10 Google Arts & Culture 資源連結（Claude）
 - CONFIG.links.artsCulture；連結放在 #roots 的 VR 與平板卡片，並在「連結與來源」表加入 Arts & Culture、CameraSim、兩個數位學習單。
 

@@ -715,6 +715,7 @@ const CONFIG = {
     estoniaLeap:{ label:"愛沙尼亞教育部：AI Leap 計畫", url:"https://hm.ee/en/news/estonia-announces-groundbreaking-national-initiative-ai-leap-programme-bring-ai-tools-all" },
     beijingAi:{ label:"China Daily：北京中小學 AI 教育（2025-10）", url:"https://www.chinadaily.com.cn/a/202510/21/WS68f6d9bea310f735438b601e.html" },
     uaeAi:{ label:"WAM：阿聯公立學校 AI 課程（2025–2026 學年）", url:"https://www.wam.ae/en/article/bji6z2n-ministry-education-introduces-curriculum-public" },
+    cameraSim:{ label:"相機模擬器 CameraSim", url:"https://www.camerasim.com/" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
     govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
     apSweden: { label:"美聯社：Sweden brings more books and handwriting back（2023-09-10）", url:"https://www.clickorlando.com/news/world/2023/09/10/sweden-brings-more-books-and-handwriting-practice-back-to-its-tech-heavy-schools/" },
@@ -780,7 +781,7 @@ const STOPS = [
   { v:"method",   s:1, m:5,  t:"我的美術教育理念與課程設計方法", cue:"美術是表達自己，也是探索自己。左邊是老師的課程設計，右邊是學生的學習歷程；AI 可以參與各環節，但不是學習目標。" },
   { v:"survey",   s:1, m:4,  t:"如果你是老師，你會怎麼用 AI？", cue:"請大家想像自己當老師，在會議聊天室回覆：工具＋環節編號＋怎麼用＋目的（省自己的時間，或讓學生學得更好）。頁面上的點選只在這台電腦，不是多人投票。" },
   { v:"stages",   s:1, m:4,  t:"教師使用 AI 的五個階段", cue:"用高一〈臺灣美術．海闊天空〉與林玉山〈蓮池〉走一遍 E→A，B 指向 Padlet 七階段學習牆。攝影版收在頁面下方。D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。強調：這是應用方式的分類，不是能力排名。" },
-  { v:"photo",    s:1, m:5,  t:"案例一：觀看的力量／攝影探索", cue:"照「動機 → 目標 → 活動 → 工具 → 歷程 → 成果 → 反思」講。接上五階段：相機模擬器就是 B。" },
+  { v:"photo",    s:1, m:5,  t:"案例一：觀看的力量／攝影探索", cue:"照「動機 → 目標 → 活動 → 工具 → 歷程 → 成果 → 反思」講。工具是線上相機模擬器 CameraSim，先模擬再到校園實際拍攝。" },
   { v:"publicart",s:1, m:5,  t:"案例二：校園公共藝術設計", cue:"重點是學生的構想、判斷與選擇，不是模擬圖多精緻。AI 模擬圖和原始草圖的差異，是討論的起點。" },
   { v:"sensory",  s:1, m:3,  t:"案例三：感官轉譯｜觀看與理解", tab:"flow", cue:"鑑賞不只是記藝術家和年代。投影鑑賞原稿：哪些句子是學生原本的？" },
   { v:"sensory",  s:1, m:5,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇；學生要說明選擇與理由。120 版加 4 分鐘聆聽與速寫互動。" },
@@ -1444,10 +1445,10 @@ V.stages = ()=>`${head("","教師使用 AI 的五個階段","以「臺灣藝術�
   <p class="note stages-warn">這是 AI 應用深度與方式的分類，不是教師專業能力或教學品質的排名。技術越複雜，不一定代表教學效果越好。</p>`;
 
 V.photo = ()=>`${head("","案例一：觀看的力量／攝影探索","從生活與校園出發","把觀察轉成有理由的形式選擇：光線、陰影、構圖，再到曝光三角。",'<span class="tag r">教學案例</span>')}
-  ${caseFlow([["教學動機","學生每天拍照，卻很少停下來想「為什麼這樣拍」。"],["學習目標","觀察光線、陰影與構圖；理解曝光三角，能說出自己的形式選擇。"],["教學活動","從生活與校園環境出發的觀察，校園攝影，作品分享。"],["工具選擇","相機模擬器：固定場景與對焦點，只改一個變因（對應五階段的 B）。"],["學習歷程","先預測，再試拍；保留學生原始的觀察紀錄。"],["學生成果","校園攝影作品與分享。"],["教學反思","AI 協助分析、提問與反思；看見學生說不出的地方，下一堂再調整。"]])}
+  ${caseFlow([["教學動機","學生每天拍照，卻很少停下來想「為什麼這樣拍」。"],["學習目標","觀察光線、陰影與構圖；理解曝光三角，能說出自己的形式選擇。"],["教學活動","從生活與校園環境出發的觀察，校園攝影，作品分享。"],["工具選擇","相機模擬器 CameraSim：固定場景與對焦點，一次只改一個變因，先看懂光圈、快門、ISO 的效果。"],["實際拍攝","帶著在模擬器上的預測，到校園用相機或手機實際拍攝。"],["學生成果","校園攝影作品與分享。"],["教學反思","AI 協助分析、提問與反思；看見學生說不出的地方，下一堂再調整。"]])}
   <div class="grid g2 tvid-one" style="margin-top:16px"><figure class="tvid">${ytl("1WTJF81KjIs","攝影課程紀錄")}</figure><div class="card"><span class="note">影片</span><h3>攝影課程紀錄</h3><p>攝影課程的上課紀錄，可以對照上面的教學動機、目標與活動一起看。</p></div></div>
   <div class="grid g2" style="margin-top:16px">${todo("學生原始觀察紀錄（去識別化）")}${todo("校園攝影作品（需確認授權）")}</div>
-  <div class="links" style="margin-top:14px"><button class="lk" type="button" data-view="cases">在案例資料庫看攝影探索 →</button></div>`;
+  <div class="links" style="margin-top:14px">${lk(CONFIG.links.cameraSim)}<button class="lk" type="button" data-view="cases">在案例資料庫看攝影探索 →</button></div>`;
 
 V.publicart = ()=>`${head("","案例二：校園公共藝術設計","學生的構想、判斷與選擇","重點不是模擬圖有多精緻，而是學生如何思考作品和校園的關係。",'<span class="tag r">教學案例</span>')}
   <div class="sec">教學流程</div>

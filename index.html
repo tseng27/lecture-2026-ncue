@@ -1,6 +1,12 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}.exh-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}.exh-list li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}.exh-list li:last-child{border-bottom:0}.exh-d{font-family:var(--f-num,monospace);font-size:14px;min-width:8.5em;opacity:.75}.exh-list a{text-decoration:none;color:inherit;font-weight:700}.exh-list a small{font-weight:400;opacity:.7;margin-left:6px}.exh-list a:hover{text-decoration:underline}.exh-list .exh-x{font-size:14px;font-weight:500;opacity:.85}
 .wkfb{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;align-items:baseline}.wkfb a{color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}.wkfb a:hover{opacity:.7}
 .exh-l a{display:inline-block;margin-right:14px;color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}.exh-l a:hover{opacity:.7}
+.map-prog{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0 4px}.map-prog b{font-size:28px}.map-bar{flex:1 1 200px;height:10px;background:var(--chip);border-radius:6px;overflow:hidden}.map-bar i{display:block;height:100%;background:var(--red)}
+.map-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}.map-list a{display:flex;gap:12px;align-items:center;padding:12px 14px;background:var(--paper);border:1.5px solid var(--ink);color:inherit;text-decoration:none}.map-list a:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.map-ck{flex:0 0 28px;height:28px;border:2px solid var(--ink);display:grid;place-items:center;font-weight:900}.map-list .seen .map-ck{background:var(--ink);color:var(--paper)}.map-t{flex:1;display:grid;gap:2px}.map-t small{opacity:.8;font-size:15px}.map-st{font-size:13px;opacity:.7;white-space:nowrap}
+.rec-l{display:block;font-weight:700;margin-bottom:8px;line-height:1.5}.rec-l small{font-weight:400;opacity:.7;margin-left:4px}.rec-in{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:2px;background:var(--bg);color:var(--ink)}textarea.rec-in{min-height:110px;resize:vertical}
+#recPrint h1{font-size:22pt;margin:0 0 4pt}#recPrint h2{font-size:12pt;margin:14pt 0 4pt;border-bottom:1px solid #999;padding-bottom:2pt}#recPrint p{font-size:11pt;line-height:1.7;margin:0}
+@media print{body.prec header,body.prec .stop,body.prec main>*:not(.view),body.prec .view>*:not(#recPrint),body.prec #spkBtn,body.prec #spkPanel{display:none!important}body.prec #recPrint{display:block!important;color:#000}body.prec,body.prec main{background:#fff!important}}
 </style></head><body>
 <title>AI 時代的藝術與教育</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -809,14 +815,14 @@ const STOPS = [
 
 /* ===== 自由探索選單 ===== */
 const MENU = [
-  ["認識", [["home","關於我"],["lecture","講座導覽"]]],
+  ["認識", [["home","關於我"],["lecture","講座導覽"],["map","學習地圖"]]],
   ["第一部分", [["roots","AI 之前的數位教學"],["s01","01 AI 浪潮"],["s02","02 全球教育"]]],
   ["第二部分", [["method","05 理念與設計"],["survey","如果你是老師"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱"],["aiprep","自己開發工具"],["cases","全部案例"]]],
   ["第三部分", [["artpath","從好奇到自主"],["art","03 議題與系列"],["practice","04 臨場感與方法"],["elara","ELARA"],["artsum","創作總結"],["workflow","工作流程"]]],
-  ["第四部分", [["s06","06 未來教師"],["closing","結語"],["resources","連結與來源"]]]
+  ["第四部分", [["s06","06 未來教師"],["closing","結語"],["record","我的學習紀錄"],["resources","連結與來源"]]]
 ];
-const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"如果你是老師", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
-const EXPLORE_ORDER = ["cover","home","lecture","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","aiprep","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","resources"];
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"如果你是老師", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源", map:"學習地圖", record:"我的學習紀錄" };
+const EXPLORE_ORDER = ["cover","home","lecture","map","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","aiprep","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","record","resources"];
 
 /* ===== 六大正式主題（標題不改） ===== */
 const THEMES = [
@@ -1716,6 +1722,52 @@ function openAboutLb(i){
   lb.querySelector("figcaption").textContent="如果我是「"+im.label+"」　·　AI 生成形象圖";
   lb.hidden=false;
 }
+
+/* ===== 自學用：學習地圖與我的學習紀錄（2026-11-27；只存在本機瀏覽器） ===== */
+const MAP = [
+  ["起點","先認識講者，再決定要走講座路線還是自己逛。",[["home","認識講者的教學與創作背景"],["lecture","看懂今天的講座路線與時間"]]],
+  ["第一部分　看見變化","先理解 AI 帶來的變化，再談教學。",[["roots","看見 AI 出現之前，數位工具怎麼進入美術課"],["s01","判斷 AI 浪潮對教學是危機、轉機，還是兩者都是"],["s02","比較各國怎麼把 AI 帶進學校，以及研究的提醒"]]],
+  ["第二部分　教學設計","從理念到課例，最後是工具。建議依序看。",[["method","理解「回到引導學生探索自己」的課程設計理念"],["survey","想像自己當老師：AI 用在哪個環節、為了什麼"],["stages","分辨教師使用 AI 的五個階段"],["photo","課例：用相機模擬器預測，再實際拍攝"],["publicart","課例：校園公共藝術的提問與學習單"],["sensory","課例：把名畫轉譯成聲音與影像"],["learning","學習歷程與評量：留下可以檢查的證據"],["lab","認識可以用的 AI 工具與自建工具"],["aiprep","從使用 AI 走到自己開發教學工具"],["cases","全部教學案例索引（需要時再查）"]]],
+  ["第三部分　創作實踐","看一位美術老師自己的創作怎麼和 AI 互動。",[["artpath","創作從好奇、遊戲走到帶著想法實現"],["art","五個作品系列與長期關注的議題"],["practice","創作方法七步驟與展覽發表紀錄"],["elara","ELARA：從視覺跨到音樂與影片"],["artsum","兩條創作線背後的同一個理念"],["workflow","跨 AI 協作的工作流程"]]],
+  ["第四部分　回到自己","整理收穫，找到自己的教學模式。",[["s06","思考未來美術教師的角色"],["closing","結語"],["record","寫下自己的學習紀錄，列印或存成 PDF"]]]
+];
+const REC_Q = [
+  ["r1","第一部分：AI 帶來的變化裡，我最在意的一件事是……"],
+  ["r2","第二部分：哪一個課例最讓我想試？我會怎麼改成自己的版本？"],
+  ["r3","如果我是老師，我會先在哪個環節用 AI？為了什麼？"],
+  ["r4","哪一件事，我會堅持留給自己和學生來做？"],
+  ["r5","第三部分：講者的創作經驗，讓我對「AI 與創作」有什麼新的想法？"],
+  ["r6","我接下來想實際試的一個做法（具體到下週可以開始）"]
+];
+const MAP_ALL = MAP.flatMap(g=>g[2].map(x=>x[0]));
+V.map = ()=>{const sn=store.get("seen",{}),n=MAP_ALL.filter(k=>sn[k]).length;return `${head("","學習地圖","自己走一遍這個網站","每一站寫著看完後應該能做到的事。打勾表示這台裝置已經看過；紀錄只存在你的瀏覽器，不會上傳。",'<span class="tag n">自學</span>')}
+  <div class="map-prog"><b class="num">${n} / ${MAP_ALL.length}</b><span>已看過的頁面</span><span class="map-bar"><i style="width:${Math.round(n/MAP_ALL.length*100)}%"></i></span></div>
+  ${MAP.map(([g,d,items],gi)=>`<div class="sec">${g}</div><p class="note" style="margin:-4px 0 10px">${d}</p><ol class="map-list">${items.map(([k,goal],i)=>`<li class="${sn[k]?"seen":""}"><a href="#${k}"><span class="map-ck" aria-hidden="true">${sn[k]?"✓":""}</span><span class="map-t"><b>${esc(TITLES[k]||k)}</b><small>${esc(goal)}</small></span><span class="map-st">${sn[k]?"已看過":"還沒看"}</span></a></li>`).join("")}</ol>`).join("")}
+  <div class="links" style="margin-top:20px"><a class="lk" href="#record">寫我的學習紀錄 →</a> <button class="lk" type="button" id="mapReset">清除打勾</button></div>`};
+M.map = ()=>{const b=$("#mapReset");b.addEventListener("click",()=>{if(b.dataset.c){store.set("seen",{});render("map")}else{b.dataset.c=1;b.textContent="再按一次確認清除"}})};
+const PRAC_W={sp:["很慢","慢","中速","快","很快"],tn:["很柔","柔和","中性","明亮","銳利"],dn:["很疏","稀疏","適中","飽滿","很密"]};
+V.record = ()=>{const r=store.get("rec",{}),sn=store.get("seen",{}),pr=store.get("prac",null),n=MAP_ALL.filter(k=>sn[k]).length;return `${head("","我的學習紀錄","整理今天的收穫","寫完可以列印，或在列印視窗選「另存為 PDF」，放進自己的學習歷程。內容只存在這台裝置的瀏覽器，不會上傳。",'<span class="tag n">自學</span>')}
+  <div class="rec-form">
+  <div class="card"><label class="rec-l" for="rname">姓名或代號<small>（只在列印時出現，可不填）</small></label><input type="text" id="rname" class="rec-in" value="${esc(r.name||"")}" autocomplete="off"></div>
+  <div class="sec">我看過的頁面 <span class="note" style="font-weight:400">${n} / ${MAP_ALL.length}</span></div>
+  <p class="chips">${MAP_ALL.filter(k=>sn[k]).map(k=>`<span class="chip">${esc(TITLES[k])}</span>`).join("")||'<span class="note">還沒有紀錄。可以從<a href="#map">學習地圖</a>開始。</span>'}</p>
+  ${pr&&pr.pw?`<div class="sec">我的聲音設計卡（感官轉譯）</div><div class="card"><b>${esc(pr.pw)}</b><p>${PRAC_W.sp[pr.sp]||""}・${PRAC_W.tn[pr.tn]||""}・${PRAC_W.dn[pr.dn]||""}</p>${pr.pr?`<p>理由：${esc(pr.pr)}</p>`:""}</div>`:""}
+  <div class="sec">寫下來</div>
+  <div class="grid g2">${REC_Q.map(([k,q])=>`<div class="card"><label class="rec-l" for="${k}">${q}</label><textarea id="${k}" class="rec-in" rows="4">${esc(r[k]||"")}</textarea></div>`).join("")}</div>
+  <p class="note" id="recSaved" style="margin-top:8px">輸入後會自動保存在這台裝置。</p>
+  <div class="links" style="margin-top:16px"><button class="lk" type="button" id="recPrintBtn">列印／存成 PDF</button> <button class="lk" type="button" id="recClear">清除我的紀錄</button></div>
+  </div>
+  <div id="recPrint" hidden></div>`};
+M.record = ()=>{
+  const ids=["rname",...REC_Q.map(q=>q[0])];
+  const save=()=>{const o={name:$("#rname").value};REC_Q.forEach(([k])=>o[k]=$("#"+k).value);store.set("rec",o);$("#recSaved").textContent="已保存在這台裝置（"+new Date().toLocaleTimeString("zh-TW",{hour:"2-digit",minute:"2-digit"})+"）"};
+  ids.forEach(id=>$("#"+id).addEventListener("input",save));
+  $("#recPrintBtn").addEventListener("click",()=>{save();const o=store.get("rec",{}),sn=store.get("seen",{});
+    $("#recPrint").innerHTML=`<h1>我的學習紀錄</h1><p>AI 時代的藝術與教育：從創作突破到教學新模式｜2026-11-27 國立彰化師範大學${o.name?"｜"+esc(o.name):""}</p><h2>我看過的頁面（${MAP_ALL.filter(k=>sn[k]).length} / ${MAP_ALL.length}）</h2><p>${MAP_ALL.filter(k=>sn[k]).map(k=>esc(TITLES[k])).join("、")||"—"}</p>${REC_Q.map(([k,q])=>`<h2>${q}</h2><p>${esc(o[k]||"").replace(/\n/g,"<br>")||"—"}</p>`).join("")}`;
+    $("#recPrint").hidden=false;document.body.classList.add("prec");window.print();});
+  window.addEventListener("afterprint",()=>{document.body.classList.remove("prec");const x=$("#recPrint");if(x)x.hidden=true},{once:true});
+  const c=$("#recClear");c.addEventListener("click",()=>{if(c.dataset.c){store.set("rec",{});render("record")}else{c.dataset.c=1;c.textContent="再按一次確認清除"}});
+};
 function render(v,opt={}){
   closeAboutLb();
   view=v;
@@ -1725,6 +1777,7 @@ function render(v,opt={}){
     : (()=>{const i=EXPLORE_ORDER.indexOf(v);return navBtns(i>0?TITLES[EXPLORE_ORDER[i-1]]:null,i>=0&&i<EXPLORE_ORDER.length-1?TITLES[EXPLORE_ORDER[i+1]]:null)})();
   main.innerHTML=`${v!=="cover"?banner:""}<section class="view">${V[v]()}</section>${nav}${v==="cover"&&mode==="talk"?banner:""}`;
   M[v]&&M[v](opt);
+  if(v!=="cover"&&v!=="break"){const sn=store.get("seen",{});if(!sn[v]){sn[v]=1;store.set("seen",sn)}}
   window.scrollTo({top:0});
   updateBar();
   document.title=(v==="cover"?"":TITLES[v]+"｜")+"AI 時代的藝術與教育";

@@ -11,11 +11,11 @@ const { chromium } = require('playwright');
   ok(await p.evaluate(() => location.hash) === '#talk-21', '講座模式可走到第 21 頁');
   await p.goto(file + '#lecture');
   const seg = async () => p.evaluate(() => [...document.querySelectorAll('.ag-row.segh .m')].map(x => x.textContent).join(','));
-  await p.click('[data-tlen="110"]'); ok(await seg() === "20′,48′,5′,40′,10′", '110 版五段 20/48/5/40/10');
-  await p.click('[data-tlen="120"]'); ok(await seg() === "20′,52′,5′,43′,13′", '120 版五段 20/52/5/43/13');
+  await p.click('[data-tlen="110"]'); ok(await seg() === "23′,48′,5′,40′,10′", '110 版五段 23/48/5/40/10');
+  await p.click('[data-tlen="120"]'); ok(await seg() === "23′,52′,5′,43′,13′", '120 版五段 23/52/5/43/13');
   ok((await p.textContent('body')).includes('你的人生'), '結語原句存在');
   await p.setViewportSize({ width: 400, height: 850 });
-  for (const h of ['talk-03', 'talk-07', 'cases', 'elara', 'learning', 'aiprep', 'sensory', 'resources']) {
+  for (const h of ['talk-02', 'talk-03', 'talk-07', 'cases', 'elara', 'learning', 'aiprep', 'sensory', 'resources']) {
     await p.goto(file + '#' + h); await p.waitForTimeout(200);
     ok(await p.evaluate(() => document.documentElement.scrollWidth <= 400), `手機寬度無水平捲動：${h}`);
   }

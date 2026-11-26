@@ -549,6 +549,22 @@ body::before{background:var(--bg)}
 .fourth{margin-top:28px;padding:22px 24px;background:var(--ink);color:#fff}
 .fourth h3{font-size:clamp(22px,3vw,34px);line-height:1.3;margin:6px 0 0;color:#fff}
 .fourth .note{color:#f2d27a}
+.aij-years .tbno{font-size:30px}
+.aij-cats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media (max-width:760px){.aij-cats{grid-template-columns:1fr}}
+.aij-cats summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;font-size:18px;list-style:none}
+.aij-cats summary::-webkit-details-marker{display:none}
+.aij-cats summary b{font-family:var(--f-num);color:var(--red)}
+.aij-cats summary .note{margin-left:auto;white-space:nowrap}
+.aij-cats details[open] summary{margin-bottom:10px}
+.aij-cats dl{display:grid;grid-template-columns:max-content 1fr;gap:6px 14px;margin:0}
+.aij-cats dt{font-weight:700}
+.aij-cats dd{margin:0}
+@media (max-width:520px){.aij-cats dl{grid-template-columns:1fr}.aij-cats dd{margin-bottom:6px}}
+.aij-shifts{display:grid;gap:10px}
+.aij-shifts .card{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;padding:14px 18px}
+.aij-shifts .arrow{color:var(--red);font-weight:700}
+@media (max-width:620px){.aij-shifts .card{grid-template-columns:1fr}.aij-shifts .arrow{display:none}}
 </style>
 
 <header class="bar">
@@ -651,7 +667,7 @@ const SEGS = [
 ];
 const STOPS = [
   { v:"cover",   s:0, m:1,  t:"開場", cue:"問候，說明今天兩條線：教學實踐與藝術創作。" },
-  { v:"home",    s:0, m:4,  t:"關於我", cue:"三個身分；用《我的美好人生》帶出最後那句話。" },
+  { v:"home",    s:0, m:7,  t:"關於我｜我的 AI 工具歷程", cue:"三個身分；用《我的美好人生》帶出最後那句話。再用 2023–2026 歷程講五個層次的轉變，不是比工具數量。" },
   { v:"s01",     s:0, m:10, t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？接著帶出核心命題「第四秒」：汪滔長文→角色重塑與五件不能外包→第四秒→三個準備→抓包 AI。" },
   { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
   { v:"method",  s:1, m:8,  t:"05 不只是 AI 備課", cue:"七步學習與四個設計決定。" },
@@ -712,6 +728,24 @@ const CASES = [
   { id:"T14", g:"空間與未來", st:"plan", t:"職涯公仔", d:"把職涯想像做成角色公仔。", ev:"規劃案例，尚非已完成學生作品。" },
   { id:"T15", g:"空間與未來", st:"chk", t:"多媒體專題", d:"跨媒材整合的期末專題。", ev:"備用案例，原報告待核。" }
 ];
+/* 講者 AI 工具歷程（2026-11-26 講者提供的盤點；年份為階段歸納，非確切首次使用年份） */
+const AIJ_YEARS = [
+  ["2023","AI 影像與藝術創作探索","從文字生成影像，到個人藝術語彙的探索","Midjourney、ChatGPT"],
+  ["2024","跨媒體創作與動態影像","從靜態影像走向動態影像","Luma、Kling、Pika、PixVerse、Runway、Haiper"],
+  ["2025","AI 融入教學與跨媒材藝術","從個人創作走向學生學習與多元表達","ChatGPT、Midjourney、Suno、數位教材"],
+  ["2026","AI Agent 與自主工作流程","從使用 AI 工具走向建構自己的 AI 系統","Claude、Codex、Gemini、Grok、ComfyUI、Flow、Seedance、多代理協作"]
+];
+const AIJ_CATS = [
+  ["大型語言模型與 AI 思考協作",[["ChatGPT","教學設計、創作構思、研究分析、提示詞、課程反思、歌詞、程式開發"],["Claude","長篇資料分析、教材設計、網頁製作、專案規劃"],["Gemini","多模態分析、教育應用、教材生成、跨平台協作"],["Grok","資料研究、跨 AI 協作、專案交接、觀點比較"],["NotebookLM","教材分析、資料整理、教師講述內容、知識整合"],["ChatGPT Voice","語音討論、教學反思、即時構思、日常研究"]]],
+  ["AI 影像生成與視覺藝術",[["Midjourney","長期藝術創作的核心媒材：數位影像、裝置藝術構想、公共藝術、角色設計、視覺風格探索"],["ChatGPT Images","影像生成與修改、人物一致性、分鏡、公共藝術模擬"],["Gemini 影像生成","影像生成、圖片修改、角色與場景設計"],["DALL·E","影像生成與教學素材探索"],["Stable Diffusion","本地端影像生成、生成模型探索"],["ComfyUI","節點式工作流、本地端影像與影片生成、角色一致性"]]],
+  ["AI 影片與動態影像",[["Runway","影像轉影片、藝術錄像、MV、廣告、運鏡"],["Luma Dream Machine","圖片轉影片、場景動態化"],["Kling AI","人物動態、電影式影像"],["Pika","動態影像、創意特效"],["PixVerse","影像動畫化、短影片"],["Haiper","早期生成式影片探索"],["Google Flow","電影式影像、場景與角色影像"],["Veo","生成式影片、場景與運鏡探索"],["Seedance","ELARA MV、商業廣告、多鏡頭影片"],["ComfyUI 影片工作流","本地端影片生成與批次製作"],["ChatCut","AI 影片剪輯與後製試用"]]],
+  ["AI 音樂與聲音創作",[["Suno","歌曲創作、作曲、編曲、演唱、風格實驗"],["Suno Personas","ELARA 成員聲線與歌手風格一致性"],["ChatGPT","歌詞、歌曲結構、曲風提示詞、男女對唱設計"],["Gemini／Claude","歌曲概念發展、提示詞比較"]],"代表作：《白牡丹》、《葡萄牙的光》、ELARA 虛擬女團，以及把台灣藝術鑑賞轉化為音樂的教學活動。"],
+  ["AI 空間、建築與沉浸式藝術",[["Skybox AI","360° 全景影像、虛擬展覽空間、沉浸式場景"],["Midjourney","建築設計、裝置藝術、展覽空間與公共藝術模擬"],["ChatGPT Images","建築平面與立面構想、校園公共藝術模擬"],["Runway／Flow","建築生成縮時影片、空間動態化"]],"搭配平台：Kuula、Matterport、YouTube 360、Meta Quest、HTC Vive。"],
+  ["AI 教育與數位教材設計",[["ChatGPT","課程設計、學習單、評量規準、引導問題、個別化回饋"],["Claude","互動教材、自學網頁、課程網站"],["Gemini Canvas","互動式教材、教學網頁與數位學習活動"],["NotebookLM","教科書內容分析、教材轉化"],["ChatGPT Sites","教學網站、自主學習資源、成果展示"],["Suno","藝術鑑賞與音樂創作、感官轉譯"],["Codex","自主學習系統、互動學習單、PDF 成果輸出"]]],
+  ["AI Agent、程式設計與網站開發",[["Claude Code","程式開發、專案管理、網站修改、代理式工作流程"],["OpenAI Codex","程式開發、網站建置、除錯、工作流程整合"],["ChatGPT Work","跨檔案研究、專案整理、複合型任務"],["Grok","跨代理協作、程式專案交接"],["Gemini Canvas","網頁與應用程式原型"],["Google Opal","AI 小型應用程式、工作流程設計"]],"搭配平台：GitHub Pages、Google Apps Script、Google Drive、Cloudflare Pages、Remotion。"],
+  ["AI 研究、知識管理與自動化",[["ChatGPT Deep Research","藝術教育研究、教學趨勢、專題研究"],["Gemini","跨來源資料研究與分析"],["Claude","大量文件整理、長篇內容分析"],["NotebookLM","專題知識庫、研究資料整合"],["ChatGPT Projects","長期專案管理、資料累積"],["ChatGPT Automations","每週 AI 藝術教育研究、Suno 週報、ELARA 趨勢雷達"]]]
+];
+const AIJ_SHIFTS = [["從使用 AI <b>取得答案</b>","到使用 AI <b>拓展思考</b>"],["從使用 AI <b>生成作品</b>","到使用 AI <b>實現創作理念</b>"],["從使用 AI <b>製作教材</b>","到使用 AI <b>重新設計學習</b>"],["從使用<b>現成的 AI 工具</b>","到<b>開發自己需要的教學工具</b>"],["從<b>單一 AI 的操作</b>","到<b>多 AI 協作與工作流程自動化</b>"]];
 const TOOLS = [
   { id:"G05", st:"wip", s:"部分可用・待測", t:"AI 自學中心", d:"學生依任務自學並保存輸入、比較與輸出。", ev:"離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步尚待現版測試。" },
   { id:"", st:"chk", s:"待核", t:"學習歷程網頁", d:"保留原始回答、比較、修正與反思。", ev:"離線版與雲端版分開，不能互相推定功能。" },
@@ -789,6 +823,14 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     <p class="about-quote-b">藝術不只存在於完成的作品，也存在於我們如何觀察生活、理解自己、做出選擇。AI 擴充了表達的可能，人的經驗與判斷仍是創作的核心。</p>
   </div>
   ${aboutGallery()}
+  <div class="sec">我的 AI 工具歷程：2023–2026</div>
+  <div class="grid g4 aij-years">${AIJ_YEARS.map(([y,t,d,tools])=>`<div class="card"><span class="tbno">${y}</span><h3>${t}</h3><p>${d}</p><p class="note">${tools}</p></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">年份是發展階段的概略歸納，不代表各工具的確切首次使用年份。</p>
+  <div class="sec">八大類工具與用途 <span class="note" style="font-weight:400">點開查看</span></div>
+  <div class="aij-cats">${AIJ_CATS.map(([c,rows,extra],i)=>`<details class="card"><summary><b>${String(i+1).padStart(2,"0")}</b>${c}<span class="note">${rows.length} 項</span></summary><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>${extra?`<p class="note">${extra}</p>`:""}</details>`).join("")}</div>
+  <div class="sec">五個層次的轉變</div>
+  <div class="aij-shifts">${AIJ_SHIFTS.map(([a,b])=>`<div class="card"><span>${a}</span><span class="arrow" aria-hidden="true">→</span><span>${b}</span></div>`).join("")}</div>
+  <div class="fourth"><span class="note">重點</span><h3>真正重要的，不是我們會使用多少種 AI，而是能否運用 AI，實現過去想做卻無法完成的事情。</h3></div>
   <div class="sec">延伸連結</div>
   <div class="about-social">
     <div class="about-social-g"><b class="about-social-h">YouTube</b><div class="links">${CONFIG.social.youtube.map(lk).join("")}</div></div>

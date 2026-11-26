@@ -425,7 +425,7 @@ body::before{background:var(--bg)}
 .entry button:first-child span{color:rgba(255,255,255,.85)}
 
 /* ===== 封面拼貼版型 ===== */
-.collage{position:relative;height:min(80vh,720px);min-height:620px;margin-top:6px;background:#F7F6F2;box-shadow:0 18px 40px -20px rgba(0,0,0,.4);overflow:hidden;
+.collage{position:relative;height:min(80vh,720px);min-height:700px;margin-top:6px;background:#F7F6F2;box-shadow:0 18px 40px -20px rgba(0,0,0,.4);overflow:hidden;
   background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1.3px);background-size:6px 6px}
 .collage>*{position:absolute}
 .c-hand{font-family:var(--f-hand);font-weight:600}
@@ -584,10 +584,12 @@ body::before{background:var(--bg)}
 .factlist{margin:0;padding-left:20px;display:grid;gap:8px}
 .factlist li{line-height:1.7}
 .srclink{display:block;font-size:13.5px;color:var(--navy);text-decoration:underline;text-underline-offset:3px;margin-top:2px;word-break:break-word}
-.warmup{margin:28px auto 8px;max-width:960px}
-.warmup-h{margin-bottom:12px}
-.warmup-h h2{margin:2px 0 4px;font-size:clamp(20px,2.6vw,28px)}
-.warmup-h .c-hand{position:static;font-size:22px;color:var(--red)}
+.c-vid{position:absolute;left:4%;top:34%;width:19%;z-index:2;transform:rotate(-2deg)}
+.c-vid .c-hand{position:static;display:block;font-size:16px;color:var(--red);margin:0 0 4px 4px;white-space:nowrap}
+.c-vid .vid{border-width:6px}
+.c-vid::before{content:"";position:absolute;left:58%;top:22px;width:84px;height:22px;background:var(--tape);transform:rotate(-6deg);z-index:3}
+@media (min-width:861px) and (max-width:1180px){.c-vid{top:38%}}
+@media (max-width:860px){.c-vid{position:static;order:3;width:100%;transform:none}.c-vid::before{display:none}.c-vid .c-hand{white-space:normal}}
 </style>
 
 <header class="bar">
@@ -694,7 +696,7 @@ const SEGS = [
   { n:"結語與交流", c:"var(--ink)" }
 ];
 const STOPS = [
-  { v:"cover",   s:0, m:1,  t:"開場", cue:"開場前播放封面下方的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
+  { v:"cover",   s:0, m:1,  t:"開場", cue:"開場前播放封面左側的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
   { v:"home",    s:0, m:7,  t:"關於我｜我的 AI 工具歷程", cue:"三個身分；用《我的美好人生》帶出最後那句話。再用 2023–2026 歷程講五個層次的轉變，不是比工具數量。" },
   { v:"s01",     s:0, m:10, t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？接著帶出核心命題「第四秒」：汪滔長文→角色重塑與五件不能外包→第四秒→三個準備→抓包 AI。" },
   { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
@@ -832,6 +834,7 @@ V.cover = ()=>`
       <span class="c-label">${esc(CONFIG.role)}</span>
       <p>${esc(CONFIG.tagline)}。從課堂到創作，從生成到選擇，分享一位美術老師在 AI 時代的實驗與反思。</p>
     </div>
+    <div class="c-vid"><span class="c-hand">warm-up ▸ 114 優高亮點課程・高一美術</span><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3QZlTPCcTmA?rel=0" title="114 優高亮點課程－高一美術" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></div>
     <figure class="c-pola"><img src="img/s3.jpg" alt=""><figcaption>Dare to create</figcaption></figure>
     <div class="c-note">
       <b class="c-hand">今日路線</b>
@@ -848,10 +851,6 @@ V.cover = ()=>`
     <span class="c-hand c-scrib">create · teach · reflect ↘</span>
     <span class="c-tape t1"></span><span class="c-tape t2"></span>
   </section>
-  <div class="warmup">
-    <div class="warmup-h"><span class="c-hand">warm-up</span><h2>開場熱身影片：114 優高亮點課程・高一美術</h2><p class="note">講座開始前播放；七步學習與設計決定在課堂中的實際樣子。</p></div>
-    <div class="vid warmup-vid"><iframe src="https://www.youtube-nocookie.com/embed/3QZlTPCcTmA?rel=0" title="114 優高亮點課程－高一美術" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-  </div>
   <div class="entry">
     <button type="button" data-start="talk"><b>開始講座 →</b><span>依講座順序一頁一頁走，含計時與 110／120 分鐘切換</span></button>
     <button type="button" data-start="explore"><b>自由探索</b><span>講座後回來看：案例、作品、工具與資源</span></button>

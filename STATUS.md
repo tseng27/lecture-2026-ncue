@@ -7,7 +7,8 @@
 - 2026-11-25 20:55：封面講者資訊改為「曾國正／國立屏北高級中學　線上講座／國立彰化師範大學」（Grok）。
 - 2026-11-25 20:50：視覺改為「拼貼作品集」風格（含封面版型），封面中間為講者海報 img/cover-me.jpg（Artifact v5）。立體黏土版可從 git 509514e 取回。
 - 下一位接手：Grok（請讀 GROK_START.md）。
-- v2 網站：講座模式 21 頁（110/120）＋自由探索 18 個視圖，依 ChatGPT 資料包 v1.0 撰寫。
+- 2026-11-26 第二階段：講座主線改為四部分（20/40/中場 5/30/15＝110′）；新增 roots、survey、stages、photo、publicart、artpath、artsum 七個視圖；待補素材見 待補素材清單.md。
+- v2 網站：講座模式 22 頁（110/120）＋自由探索 25 個視圖，依 ChatGPT 資料包 v1.0 撰寫。
 - 私人預覽已發布（Claude Artifact）。
 - 交接包：AGENTS.md、CLAUDE.md、README.md、STATUS.md、HANDOFF_LOG.md、tools/smoke-test.js。
 

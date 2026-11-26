@@ -602,6 +602,36 @@ body::before{background:var(--bg)}
 .st-k{font-weight:700}.st-k b{display:inline-block;min-width:28px;font-family:var(--f-num);color:var(--red);font-size:20px}
 .st-l{display:none;font-style:normal;font-size:12px;font-weight:700;color:var(--red);margin-bottom:2px}
 @media (max-width:760px){.st-head{display:none}.st-row{grid-template-columns:1fr;gap:6px}.st-l{display:block}}
+.routes,.pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.routes,.pair{grid-template-columns:1fr}}
+.route{display:flex;flex-wrap:wrap;gap:6px 0;margin:6px 0 0;line-height:1.6}
+.route span{font-weight:700}
+.route span+span::before{content:"→";margin:0 8px;color:var(--red);font-weight:700}
+.qlist{margin:0;padding-left:24px;display:grid;gap:6px;line-height:1.7;font-size:17px}
+.mini-ul{margin:8px 0 12px;padding-left:20px;line-height:1.7}
+.todo{display:grid;gap:4px;padding:12px 14px;border:2px dashed var(--line);border-radius:4px;background:repeating-linear-gradient(135deg,transparent 0 10px,rgba(0,0,0,.025) 10px 20px)}
+.todo b{font-size:12px;color:var(--red);letter-spacing:.08em}
+.todo span{font-weight:700}.todo small{color:var(--muted,#666)}
+.tline{list-style:none;margin:0;padding:0;display:grid;gap:0;border-left:3px solid var(--red)}
+.tline li{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:10px 0 10px 18px;position:relative}
+.tline li::before{content:"";position:absolute;left:-8px;top:16px;width:13px;height:13px;border-radius:50%;background:var(--red)}
+.tline .y{font-weight:700}.tline p{margin:2px 0}
+@media (max-width:620px){.tline li{grid-template-columns:1fr;gap:2px}}
+.cflow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px}
+.cflow li{display:grid;grid-template-columns:34px 1fr;gap:8px;padding:12px;border:1px solid var(--line);border-radius:4px;background:var(--paper)}
+.cflow .k{font-family:var(--f-num);font-weight:700;color:var(--red)}.cflow p{margin:2px 0 0;line-height:1.6}
+.survey .sv{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:4px;padding:14px;border:1px solid var(--line);border-radius:4px;background:var(--paper);font-weight:700;line-height:1.5}
+.survey .sv .num{color:var(--red);font-size:22px}
+.survey .sv:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.survey .sv[aria-pressed=true]{border-color:var(--red);background:rgba(224,50,43,.08)}
+.stages-warn{margin-top:14px;padding:10px 14px;border-left:4px solid var(--red);background:rgba(224,50,43,.06)}
+.seven.six{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media (max-width:760px){.seven.six{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.aij-more{margin-top:16px}.aij-more>summary{cursor:pointer;display:flex;gap:10px;align-items:baseline;list-style:none}
+.aij-more>summary::-webkit-details-marker{display:none}.aij-more>summary .note{margin-left:auto}
+.sum4{display:grid;gap:4px;margin:10px 0 18px;font-size:clamp(18px,2.2vw,24px);font-weight:700;line-height:1.6}.sum4 p{margin:0}
+.roots .tbno{font-size:26px}
+@media (max-width:620px){.survey{grid-template-columns:repeat(2,minmax(0,1fr))}.survey .sv{padding:10px}}
 </style>
 
 <header class="bar">
@@ -657,6 +687,7 @@ const CONFIG = {
     apSweden: { label:"美聯社：Sweden brings more books and handwriting back（2023-09-10）", url:"https://www.clickorlando.com/news/world/2023/09/10/sweden-brings-more-books-and-handwriting-practice-back-to-its-tech-heavy-schools/" },
     delgado:  { label:"Delgado 等（2018）紙本與螢幕閱讀統合分析", url:"https://www.uv.es/lasalgon/papers/Delgado%202018%20dont%20throw%20away%20your%20printed%20books.pdf" },
     sparrow:  { label:"Sparrow 等（2011）Google effects on memory", url:"https://pubmed.ncbi.nlm.nih.gov/21764755/" },
+    tutInterview:{ label:"臺南應用科大美術系：藝術家專訪與作品介紹", url:"https://art.tut.edu.tw/p/404-1073-40636.php?Lang=zh-tw" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
@@ -701,46 +732,48 @@ const ABOUT_IMGS = [
 
 /* ===== 講座段落與頁序（110 為基礎，x = 120 版增加的分鐘） ===== */
 const SEGS = [
-  { n:"開場與教育反思", c:"var(--red)" },
-  { n:"AI 教學設計與實踐", c:"var(--red)" },
+  { n:"第一部分｜從數位教學到 AI 時代的教育反思", c:"var(--red)" },
+  { n:"第二部分｜我的美術教學探索與實踐", c:"var(--red)" },
   { n:"中場休息", c:"var(--yellow)" },
-  { n:"AI 藝術與影音創作", c:"var(--navy)" },
-  { n:"結語與交流", c:"var(--ink)" }
+  { n:"第三部分｜我的 AI 藝術創作與實踐", c:"var(--navy)" },
+  { n:"第四部分｜未來教師與教育反思", c:"var(--ink)" }
 ];
 const STOPS = [
-  { v:"cover",   s:0, m:1,  t:"開場", cue:"開場前播放封面左側的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
-  { v:"home",    s:0, m:7,  t:"關於我｜我的 AI 工具歷程", cue:"三個身分；用《我的美好人生》帶出最後那句話。再用 2023–2026 歷程講五個層次的轉變，不是比工具數量。" },
-  { v:"s01",     s:0, m:10, t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？接著帶出核心命題「第四秒」：汪滔長文→角色重塑與五件不能外包→第四秒→三個準備→抓包 AI。" },
-  { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
-  { v:"method",  s:1, m:8,  t:"05 不只是 AI 備課", cue:"核心：教學設計回到引導學生探索自己。再講七步學習與四個設計決定。" },
-  { v:"sensory", s:1, m:4,  t:"感官轉譯｜觀看與理解", tab:"flow", cue:"投影鑑賞原稿：哪些句子是學生原本的？" },
-  { v:"sensory", s:1, m:6,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇。120 版加 4 分鐘聆聽與速寫互動。" },
-  { v:"sensory", s:1, m:4,  opt:1, t:"感官轉譯｜證據與反思", tab:"evidence", cue:"三種證據狀態分開說；生成的是素材，選擇形成作品。" },
-  { v:"cases",   s:1, m:3,  opt:1, t:"攝影探索", c:"T06", cue:"把觀察轉成有理由的形式選擇。" },
-  { v:"learning",s:1, m:8,  t:"學習歷程與評量", cue:"一份資料多次累積；配分 70／20／10 是既有規定。" },
-  { v:"cases",   s:1, m:1,  opt:1, t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
-  { v:"cases",   s:1, m:1,  opt:1, t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
-  { v:"lab",     s:1, m:5,  t:"AI 教學實驗室｜教師的 AI 工具箱", cue:"回答「明天可以用什麼工具」：Claude 做教材、Gemini Canvas 做課程示範、NotebookLM 備課。只展示已驗證的功能。" },
-  { v:"aiprep",  s:1, m:8,  t:"用 AI 備課・認識 AI Agent", cue:"先講備課五步：目標由老師定，最後由老師驗收。再講 Agent：會規劃、用工具、檢查、留紀錄。用這個講座網站當實例。中段用「光圈與景深」走一遍 E→A 五階段：D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。" },
-  { v:"break",   s:2, m:5,  t:"中場休息" },
-  { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
-  { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
-  { v:"elara",   s:3, m:12, x:3, t:"ELARA 影音創作", cue:"五位角色與一致性。120 版加 3 分鐘 MIA 候選版本比較。" },
-  { v:"workflow",s:3, m:6,  opt:1, t:"跨 AI 協作與工作台", cue:"FRAMEFLOW 是原型，不演示生成。" },
-  { v:"s06",     s:4, m:6,  t:"06 未來美術教師", cue:"帶著一個問題離開。" },
-  { v:"closing", s:4, m:4,  x:3, t:"結語與交流", cue:"原句不變。120 版加 3 分鐘問答。" }
+  { v:"cover",    s:0, m:1,  t:"開場", cue:"開場前播放封面左側的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
+  { v:"home",     s:0, m:3,  t:"關於我：一位持續探索的美術教師", cue:"三個身分；《我的美好人生》與「你的人生，就是你的藝術品」。最後點出今天的兩條路線。不在這裡介紹 AI 工具。" },
+  { v:"roots",    s:0, m:5,  t:"在 AI 出現之前，我就已經開始改變教學", cue:"108 學年度起：SketchAR（降低畫不像的挫折）、Google Expeditions（讓鑑賞不只停在課本）、借平板與平板車。結論：不是因為有了科技才改變教學，而是想改變教學，才去找科技。再用時間軸走到生成式 AI。" },
+  { v:"s01",      s:0, m:7,  t:"AI 浪潮來襲：危機，還是轉機？", cue:"從自己的數位教學接過來：工具越來越強，我們要重新問五個問題。超級智慧是業界觀點與未來假設。「第四秒」是引導思考的命題，不是研究結論。時間夠再做抓包 AI。" },
+  { v:"s02",      s:0, m:4,  t:"全球 AI 教育革命", cue:"濃縮講：UNESCO 框架、教育部指引、瑞典反思、Bastani 研究。只講一句：AI 幫忙完成任務，不等於學生學會。分清研究事實、講者觀點、未來推論。" },
+  { v:"method",   s:1, m:5,  t:"我的美術教育理念與課程設計方法", cue:"美術是表達自己，也是探索自己。左邊是老師的課程設計，右邊是學生的學習歷程；AI 可以參與各環節，但不是學習目標。" },
+  { v:"survey",   s:1, m:4,  t:"師培生互動：你如何使用 AI？", cue:"請大家在會議聊天室回覆：工具＋環節編號＋怎麼用＋目的（效率或學習）。沒有教學經驗的人寫實習、試教或未來構想。頁面上的點選只在這台電腦，不是多人投票。" },
+  { v:"stages",   s:1, m:4,  t:"教師使用 AI 的五個階段", cue:"用「光圈與景深」走一遍 E→A。D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。強調：這是應用方式的分類，不是能力排名。" },
+  { v:"photo",    s:1, m:5,  t:"案例一：觀看的力量／攝影探索", cue:"照「動機 → 目標 → 活動 → 工具 → 歷程 → 成果 → 反思」講。接上五階段：相機模擬器就是 B。" },
+  { v:"publicart",s:1, m:5,  t:"案例二：校園公共藝術設計", cue:"重點是學生的構想、判斷與選擇，不是模擬圖多精緻。AI 模擬圖和原始草圖的差異，是討論的起點。" },
+  { v:"sensory",  s:1, m:3,  t:"案例三：感官轉譯｜觀看與理解", tab:"flow", cue:"鑑賞不只是記藝術家和年代。投影鑑賞原稿：哪些句子是學生原本的？" },
+  { v:"sensory",  s:1, m:5,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇；學生要說明選擇與理由。120 版加 4 分鐘聆聽與速寫互動。" },
+  { v:"learning", s:1, m:4,  t:"學習歷程、自主學習與評量", cue:"原始回答 → AI 建議 → 學生判斷 → 修正比較 → 成果 → 反思。功能清單照標示講，未驗證的不說成已完成。時間不夠，師培生體驗改成示範。" },
+  { v:"lab",      s:1, m:3,  t:"我的 AI 教學工具箱", cue:"理解理念與案例之後才講工具。依用途分，不比模型強弱。八大類完整盤點留給會後展開。" },
+  { v:"aiprep",   s:1, m:2,  t:"從使用 AI 到開發自己的教學工具", cue:"用這個講座網站當 Agent 實例。老師負責目標、內容、判斷、驗證、修正；AI 負責整理、實作、執行、檢查。" },
+  { v:"break",    s:2, m:5,  t:"中場休息" },
+  { v:"artpath",  s:3, m:6,  t:"從好奇、遊戲到自主創作", cue:"最早用 Midjourney 是好奇與遊戲，這段經驗有價值。後來只為看效果而生成，會覺得空虛。轉變：從「AI 能生成什麼」到「我有想法，想透過 AI 實現」。再沿 2023 時間軸講早期作品。" },
+  { v:"art",      s:3, m:5,  t:"創作議題與個人藝術語彙", cue:"先講長期關注的議題，再挑一個系列。每件作品回答：想表達什麼、什麼限制、怎麼用 AI、怎麼選。" },
+  { v:"practice", s:3, m:7,  t:"從靜態影像走向臨場感的展覽", cue:"能不能讓想像中的作品與展覽更像真實存在？分清真實展覽、虛擬策展、AI 模擬、展覽構想。創作七步穿插在作品裡講，不做長時間提示詞教學。" },
+  { v:"elara",    s:3, m:10, x:3, t:"ELARA 虛擬女團與跨媒體創作", cue:"不是展示用了多少 AI：一位視覺藝術家如何跨到音樂、影片、攝影與程式。HANA、MIA 為主。120 版加 3 分鐘 MIA 候選版本比較。" },
+  { v:"artsum",   s:3, m:2,  t:"藝術創作總結", cue:"兩條創作線，同一個理念。唸兩句話就好。" },
+  { v:"s06",      s:4, m:6,  t:"未來美術教師", cue:"回到最初的問題。優秀的老師不是找到永遠不變的方法，而是能持續觀察、調整、探索與學習。" },
+  { v:"closing",  s:4, m:9,  x:3, t:"結語與交流", cue:"四句總結，再唸原句。留給問答。120 版加 3 分鐘問答。" }
 ];
 
 /* ===== 自由探索選單 ===== */
 const MENU = [
   ["認識", [["home","關於我"],["lecture","講座導覽"]]],
-  ["主題", [["s01","01"],["s02","02"],["method","05"],["art","03"],["practice","04"],["s06","06"]]],
-  ["教學", [["sensory","感官轉譯"],["cases","教學案例"],["learning","學習歷程"],["lab","教學實驗室"],["aiprep","AI 備課與 Agent"]]],
-  ["創作", [["elara","ELARA"],["workflow","工作流程"]]],
-  ["資源", [["resources","連結與來源"]]]
+  ["第一部分", [["roots","AI 之前的數位教學"],["s01","01 AI 浪潮"],["s02","02 全球教育"]]],
+  ["第二部分", [["method","05 理念與設計"],["survey","師培生互動"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱"],["aiprep","自己開發工具"],["cases","全部案例"]]],
+  ["第三部分", [["artpath","從好奇到自主"],["art","03 議題與系列"],["practice","04 臨場感與方法"],["elara","ELARA"],["artsum","創作總結"],["workflow","工作流程"]]],
+  ["第四部分", [["s06","06 未來教師"],["closing","結語"],["resources","連結與來源"]]]
 ];
-const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 不只是 AI 備課", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學實驗室", aiprep:"用 AI 備課・認識 AI Agent", art:"03 突破創作邊界", practice:"04 從 AI 生成到自主創作", elara:"ELARA", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
-const EXPLORE_ORDER = ["cover","home","lecture","s01","s02","method","sensory","cases","learning","lab","aiprep","art","practice","elara","workflow","s06","closing","resources"];
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"師培生互動", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源" };
+const EXPLORE_ORDER = ["cover","home","lecture","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","aiprep","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","resources"];
 
 /* ===== 六大正式主題（標題不改） ===== */
 const THEMES = [
@@ -791,6 +824,17 @@ const STAGES5 = [
   ["C","與 AI 討論，調整教學","帶著學生的回答或作品和 AI 討論，由老師決定下一步怎麼教。","學生看得出背景模糊，卻說不出怎麼拍。老師因此把下一個活動改成「先預測，再試拍」。"],
   ["B","用 AI 製作互動教具","把調整後的活動做成學生可以親手操作的工具。","學生在相機模擬器固定場景與對焦點，只改光圈，檢驗自己的預測。"],
   ["A","程式自動化與跨 AI 應用","用程式串接不同 AI，讓重複性的教學工作可以自動執行。","例如表單收回答後，由一個 AI 整理常見疑問，另一個 AI 草擬對應練習，再交給老師確認。"]
+];
+const TOOLUSE = [
+  ["ChatGPT","教學討論、課程設計、問題引導、反思、研究及創作"],
+  ["Gemini","多模態分析、資料整理、互動教材與課程示範"],
+  ["Claude","長篇資料整理、教材、學習單與課程網站"],
+  ["NotebookLM","教科書與研究資料分析、知識整理、教師講述"],
+  ["Grok","資料研究、觀點比較、跨 AI 協作"],
+  ["ChatGPT Work","大型研究、資料盤點與複合型任務"],
+  ["Codex、Claude Code","網站、程式、教學工具與自學平台開發"],
+  ["AI Agent","任務規劃、工具操作、檢查、紀錄及交接"],
+  ["自動化","重複性工作、定期研究、資料整理及跨工具流程"]
 ];
 /* 講者 AI 工具歷程（2026-11-26 講者提供的盤點；年份為階段歸納，非確切首次使用年份） */
 const AIJ_YEARS = [
@@ -900,14 +944,12 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     </div>
   </div>
   ${aboutGallery()}
-  <div class="sec">我的 AI 工具歷程：2023–2026</div>
-  <div class="grid g4 aij-years">${AIJ_YEARS.map(([y,t,d,tools])=>`<div class="card"><span class="tbno">${y}</span><h3>${t}</h3><p>${d}</p><p class="note">${tools}</p></div>`).join("")}</div>
-  <p class="note" style="margin-top:8px">年份是發展階段的概略歸納，不代表各工具的確切首次使用年份。</p>
-  <div class="sec">八大類工具與用途 <span class="note" style="font-weight:400">點開查看</span></div>
-  <div class="aij-cats">${AIJ_CATS.map(([c,rows,extra],i)=>`<details class="card"><summary><b>${String(i+1).padStart(2,"0")}</b>${c}<span class="note">${rows.length} 項</span></summary><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>${extra?`<p class="note">${extra}</p>`:""}</details>`).join("")}</div>
-  <div class="sec">五個層次的轉變</div>
-  <div class="aij-shifts">${AIJ_SHIFTS.map(([a,b])=>`<div class="card"><span>${a}</span><span class="arrow" aria-hidden="true">→</span><span>${b}</span></div>`).join("")}</div>
-  <div class="fourth"><span class="note">重點</span><h3>真正重要的，不是我們會使用多少種 AI，而是能否運用 AI，實現過去想做卻無法完成的事情。</h3></div>
+  <div class="sec">今天的兩條路線</div>
+  <div class="routes">
+    <div class="card"><span class="note">教學</span><p class="route">${["我想改變什麼","尋找方法","選擇工具","教學實驗","觀察學生","反思與調整"].map(x=>`<span>${x}</span>`).join("")}</p></div>
+    <div class="card"><span class="note">創作</span><p class="route">${["我想表達什麼","探索媒材","尋找工具","創作實驗","選擇與修正","實現創作理念"].map(x=>`<span>${x}</span>`).join("")}</p></div>
+  </div>
+  <p class="note" style="margin-top:8px">兩條路線最後都回到人的主體性與終身學習。</p>
   <div class="sec">延伸連結</div>
   <div class="about-social">
     <div class="about-social-g"><b class="about-social-h">YouTube</b><div class="links">${CONFIG.social.youtube.map(lk).join("")}</div></div>
@@ -915,8 +957,8 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     <div class="about-social-g"><b class="about-social-h">Facebook</b><div class="links">${CONFIG.social.facebook.map(lk).join("")}</div></div>
   </div>`;
 
-V.lecture = ()=>`${head("","講座導覽","六大主題與時間安排","正式六大主題作為索引；實際講述順序是 01 → 02 → 05 → 03 → 04 → 06，先從教育反思出發，再看課堂與創作中的具體選擇。講座時間：2026.11.27（五）13:10–15:00，共 110 分鐘。目前內容約 126 分鐘；標「可略過」的 5 頁共 15 分鐘，現場可視時間跳過。",'<span class="tag">講座</span>')}
-  <div class="themes">${THEMES.map((t,i)=>`<button class="theme" type="button" data-view="${t[2]}"><span class="k">${t[0]}</span><span><b>${t[1]}</b></span><span class="ord">第 ${[1,2,5,6,3,4][i]} 個講</span></button>`).join("")}</div>
+V.lecture = ()=>`${head("","講座導覽","六大主題與時間安排","正式六大主題作為索引；實際講述順序是 01 → 02 → 05 → 03 → 04 → 06，先從教育反思出發，再看課堂與創作中的具體選擇。講座時間：2026.11.27（五）13:10–15:00，共 110 分鐘。四個部分加中場休息，共 22 頁、110 分鐘。",'<span class="tag">講座</span>')}
+  <div class="themes">${THEMES.map((t,i)=>`<button class="theme" type="button" data-view="${t[2]}"><span class="k">${t[0]}</span><span><b>${t[1]}</b></span><span class="ord">第 ${[1,2,4,5,3,6][i]} 個講</span></button>`).join("")}</div>
   <div class="sec">時間表</div>
   <div class="filters">
     <div class="len" role="group" aria-label="表格長度"><button type="button" data-tlen="110">110 分鐘</button><button type="button" data-tlen="120">120 分鐘</button></div>
@@ -945,13 +987,16 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   <div class="fourth">
     <span class="note">核心命題</span>
     <h3>當 AI 三秒給出答案，未來老師的價值在第四秒</h3>
+    <p class="note" style="margin-top:8px">這是引導思考的命題，不是研究結論。</p>
   </div>
+  <div class="sec">工具越來越強，我們要重新問</div>
+  <ol class="qlist">${["作為人類，我們應該如何面對 AI？","作為教師，我們應該教給學生什麼？","當知識與技能越來越容易取得，教育的價值是什麼？","哪些能力與責任不應交給 AI？","未來教師如何重新定位自己的角色？"].map(q=>`<li>${q}</li>`).join("")}</ol>
   <div class="sec">浪潮的速度：AI 公司的人怎麼說</div>
   <div class="card">
-    <span class="eyebrow" style="margin:0"><span class="tag n">業界觀點</span>出處：Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
+    <span class="eyebrow" style="margin:0"><span class="tag n">業界觀點</span><span class="tag y">未來假設</span>出處：Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
     <h3>〈Superintelligence is Arriving〉超級智慧即將到來</h3>
     <p>他寫道：「We should not be okay with a 'handover' of society to AI.」我們不該接受把社會「移交」給 AI。</p>
-    <p class="note">這是 AI 公司主管的個人觀點，不是研究結論。對老師的意義：下一代是「駕馭 AI」還是「被 AI 接管」，教室是第一道關口。</p>
+    <p class="note">這是 AI 公司主管的個人觀點，不是研究結論；「超級智慧」「AI 全面超越人類」是對未來的假設，不是已經發生的事。對老師的意義：下一代是「駕馭 AI」還是「被 AI 接管」，教室是第一道關口。</p>
     <div class="links" style="margin-top:8px">${lk(CONFIG.links.wangEssay)}${lk(CONFIG.links.wangNews)}</div>
   </div>
   <div class="sec">角色重塑：從知識搬運工到學習設計師</div>
@@ -981,6 +1026,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   </div>`;
 
 V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","這兩項外部研究是提問框架，不是本人美術課已證實的成效，也不代表「全世界都已如此」。",'<span class="tag r">主題 02</span>')}
+  <div class="fourth" style="margin:0 0 18px"><span class="note">這一頁只帶走一句</span><h3>AI 幫忙完成任務，不等於學生真正學會。</h3><p class="note" style="margin-top:8px">每張卡片上方標明類型：研究或官方文件是事實，講者觀點是推論，業界說法是未來假設。</p></div>
   <div class="grid g2">
     <div class="card" style="display:grid;gap:8px;align-content:start">
       <span class="eyebrow" style="margin:0"><span class="tag n">國際框架</span>出處：UNESCO（2024）</span>
@@ -1026,7 +1072,7 @@ V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","�
   <div class="seg" role="group" aria-label="切換"><button type="button" data-ai="with" aria-pressed="true">有 AI 時</button><button type="button" data-ai="without" aria-pressed="false">把 AI 拿走後</button></div>
   <div class="card" id="aiBox" style="font-size:20px"></div>`;
 
-V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的可能","美術是表達自己。AI 融入教學的目的，是讓學生更有能力觀察、思考與創作。",'<span class="tag r">主題 05</span>')}
+V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的可能","美術是表達自己，也是探索自己。AI 可以協助學習，但不應代替學生的思考與創作。",'<span class="tag r">主題 05</span>')}
   <div class="fourth" style="margin:0 0 24px"><span class="note">教學設計的核心</span><h3>回到引導學生探索自己</h3></div>
   <div class="grid g4">
     <div class="card"><h3>從生活出發</h3><p>從一個顏色、一張校園照片、一件令自己感動的事開始。</p></div>
@@ -1034,6 +1080,14 @@ V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的�
     <div class="card"><h3>教師的位置</h3><p>設計學習條件、提供提問與鷹架。AI 提供方案，學生保有選擇與說明。</p></div>
     <div class="card"><h3>持續創造生活</h3><p>教師也是終身學習者。</p></div>
   </div>
+  <div class="chips" style="margin-top:14px">${["從學生的生活經驗出發","引導觀察、感受與思考","發現自己的興趣、情感與價值","培養美感、創造力與判斷","重視學生主體性與自主學習","教師是學習的引導者與設計者","教師本身也是終身學習者"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+  <div class="sec">我的課程設計方法：老師怎麼設計，學生怎麼學</div>
+  <div class="pair">
+    <div class="card"><span class="note">教師的課程設計</span><p class="route">${["學習需求","學習目標","教學方法","選擇工具","學習評量","教學反思與改進"].map(x=>`<span>${x}</span>`).join("")}</p></div>
+    <div class="card"><span class="note">學生的學習歷程</span><p class="route">${["觀察","感受","思考","視覺轉化","創作","分享","反思"].map(x=>`<span>${x}</span>`).join("")}</p></div>
+  </div>
+  <p class="note" style="margin-top:8px">AI 可以參與不同環節，但 AI 不是學習目標。「選擇工具」排在「教學方法」之後。</p>
+  <div class="fourth"><span class="note">我的做法</span><h3>不是把 AI 當成做教材與簡報的拐杖，而是持續嘗試，找到符合自己特質、學科內容與學生需要的教學模式。</h3></div>
   <div class="sec">七步學習</div>
   <div class="seven">${[["觀察","辨認具體線索","var(--red)"],["感受","說出個人回應","var(--yellow)"],["思考","查證並建立關係","var(--navy)"],["視覺轉化","文字、速寫與構圖外化","var(--ink)"],["創作","實作、比較與修正","var(--red)"],["分享","說明選擇","var(--yellow)"],["反思","回看自己如何改變","var(--navy)"]].map((s,i)=>`<div style="--sc:${s[2]}"><span class="k">0${i+1}</span><b>${s[0]}</b><p>${s[1]}</p></div>`).join("")}</div>
   <div class="sec">四個設計決定</div>
@@ -1111,10 +1165,15 @@ V.cases = ()=>`${head("","教學案例","完整課程資料庫","已實施、正
   <div class="detail" id="cdetail" hidden></div>
   <p class="note" style="margin-top:14px">每個案例缺圖時以文字狀態卡呈現，不用生成圖取代真實成果。案例編號沿用資料庫，未標編號者待對照。</p>`;
 
-V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與配分","把課堂中的原始回答、比較、修正與反思留下來，學生完成學習的同時，也逐步形成可展示的成果。",'<span class="tag r">教學</span>')}
-  <div class="sec">一份資料，多次累積</div>
-  <div class="seven" style="grid-template-columns:repeat(4,minmax(0,1fr))">${[["原始感受與草圖","var(--red)"],["AI 協助與版本比較","var(--yellow)"],["選擇理由","var(--navy)"],["作品說明與反思","var(--ink)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
+V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與評量","把課堂中的原始回答、比較、修正與反思留下來，學生完成學習的同時，也逐步形成可展示的成果。",'<span class="tag r">教學</span>')}
+  <div class="sec">從原始想法到最終作品</div>
+  <div class="seven six">${[["學生原始回答","var(--red)"],["AI 建議","var(--yellow)"],["學生判斷","var(--navy)"],["修正與比較","var(--ink)"],["最終成果","var(--red)"],["學習反思","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">成果檔不是下課後重新抄寫一次。</p>
+  <div class="sec">自學中心與數位學習單：做到哪裡</div>
+  <div class="tbl"><table><thead><tr><th>功能</th><th>狀態</th></tr></thead><tbody>${[["AI 自學中心（離線攝影版）","wip","部分可用・待測"],["數位學習單","wip","部分可用・待測"],["保留原始回答及修正內容","wip","部分可用・待測"],["AI 協助改善學生回答","wip","部分可用・待測"],["學習成果 PDF 輸出","chk","待驗證"],["學校 Google 帳號登入","chk","開發中・待驗證"],["教師端學習進度與紀錄","chk","開發中・待驗證"],["形成性評量嵌入各階段","sug","建議做法"]].map(([a,c,b])=>`<tr><td>${a}</td><td><span class="st ${c}">${b}</span></td></tr>`).join("")}</tbody></table></div>
+  <p class="note" style="margin-top:8px">標「待驗證」的功能，講座上只說是開發方向，不說成已完成。</p>
+  <div class="sec">師培生體驗：從學生的角度走一次 <span class="st sug">時間不足改示範</span></div>
+  <ol class="qlist">${["提出自己的教學構想","使用 AI 協助分析或改善","比較原始構想與 AI 建議","自己決定採納或修改的內容","完成反思","輸出學習成果 PDF"].map(q=>`<li>${q}</li>`).join("")}</ol>
   <div class="sec">現行配分 <span class="st ok">既有規定</span></div>
   <div class="bar100"><div style="flex:70;background:var(--red)">作業及學習成果 70%</div><div style="flex:20;background:var(--navy)">期末紙筆 20%</div><div style="flex:10;background:var(--ink);color:var(--bg)">課堂 10%</div></div>
   <div class="sec">在「作業」裡觀察什麼 <span class="st sug">建議</span></div>
@@ -1125,13 +1184,25 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
     <div class="card"><h3>保護學習者</h3><p>公開版不含姓名、學號、帳號、成績及可辨識影像。學生可選擇不公開私人生命經驗，替代材料不影響正常評量。</p></div>
   </div>`;
 
-V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學卡住的地方開始開發：讓抽象概念可以操作，讓學習資料能被保留。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
+V.lab = ()=>`${head("","我的 AI 教學工具箱","依用途選工具","理解教學理念與案例之後，再談工具：先知道要解決什麼學習問題，再選工具。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
   <div class="sec">教師的 AI 工具箱：明天就可以用的三種方式</div>
   <div class="grid g3 toolbox">
     <div class="card"><span class="tbno">01</span><h3>用 Claude 製作教材</h3><p>把教學需求說清楚，讓 AI 協助寫成可操作的互動網頁、學習單或課程網站。這個講座網站就是一個例子。</p><p class="note">重點：老師決定內容與結構，AI 負責實作與修改。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.claudeKit)}</div></div>
     <div class="card"><span class="tbno">02</span><h3>Gemini Canvas 課程示範</h3><p>在 Canvas 裡把一個概念做成可以現場操作的示範頁，上課時邊講邊調整，學生看得到變化。</p><p class="note">重點：示範頁服務一個學習目標，不追求功能多。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.geminiCanvas)}</div></div>
     <div class="card"><span class="tbno">03</span><h3>NotebookLM 備課</h3><p>把課本、講義、文章放進同一個筆記本，請它整理重點、找出處、產生提問與學習單草稿。</p><p class="note">重點：回答都要能回到來源；學生要學的判斷仍由老師設計。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.notebooklm)}</div></div>
   </div>
+  <div class="sec">依用途分類，不比模型強弱</div>
+  <div class="tbl"><table><thead><tr><th>工具</th><th>我拿來做什麼</th></tr></thead><tbody>${TOOLUSE.map(([k,v])=>`<tr><td><b>${k}</b></td><td>${v}</td></tr>`).join("")}</tbody></table></div>
+  <details class="card aij-more"><summary><b>完整盤點：我的 AI 工具歷程 2023–2026 與八大類工具</b><span class="note">點開</span></summary>
+  <div class="sec">我的 AI 工具歷程：2023–2026</div>
+  <div class="grid g4 aij-years">${AIJ_YEARS.map(([y,t,d,tools])=>`<div class="card"><span class="tbno">${y}</span><h3>${t}</h3><p>${d}</p><p class="note">${tools}</p></div>`).join("")}</div>
+  <p class="note" style="margin-top:8px">年份是發展階段的概略歸納，不代表各工具的確切首次使用年份。</p>
+  <div class="sec">八大類工具與用途 <span class="note" style="font-weight:400">點開查看</span></div>
+  <div class="aij-cats">${AIJ_CATS.map(([c,rows,extra],i)=>`<details class="card"><summary><b>${String(i+1).padStart(2,"0")}</b>${c}<span class="note">${rows.length} 項</span></summary><dl>${rows.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>${extra?`<p class="note">${extra}</p>`:""}</details>`).join("")}</div>
+  <div class="sec">五個層次的轉變</div>
+  <div class="aij-shifts">${AIJ_SHIFTS.map(([a,b])=>`<div class="card"><span>${a}</span><span class="arrow" aria-hidden="true">→</span><span>${b}</span></div>`).join("")}</div>
+  <div class="fourth"><span class="note">重點</span><h3>真正重要的，不是我們會使用多少種 AI，而是能否運用 AI，實現過去想做卻無法完成的事情。</h3></div>
+  </details>
   <div class="sec">自建工具</div>
   <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">自建工具</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
   <div class="sec">每張工具卡固定記錄</div>
@@ -1139,7 +1210,7 @@ V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學�
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
   <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>`;
 
-V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人到會做事的助手","AI 可以幫忙整理資料、做示範、寫教材；但教學目標、內容判斷與最後驗收，仍然是老師的工作。",'<span class="tag r">教學</span>')}
+V.aiprep = ()=>`${head("","從使用 AI 到開發自己的教學工具","備課、AI Agent 與這個講座網站","從使用現成工具，到自己設計教材、互動網頁與自主學習平台。AI 可以幫忙整理、實作、執行與檢查；教學目標、內容判斷與最後驗收，仍然是老師的工作。",'<span class="tag r">教學</span>')}
   <div class="sec">一、用 AI 備課與製作教材：五個步驟</div>
   <div class="grid g3 toolbox steps5">
     <div class="card"><span class="tbno">1</span><h3>定目標</h3><p>先寫下這堂課學生要會什麼、用什麼證據看得出來。</p><p class="note">老師負責</p></div>
@@ -1148,23 +1219,20 @@ V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人�
     <div class="card"><span class="tbno">4</span><h3>製作教材</h3><p>請 Claude 把需求寫成互動網頁、學習單或課程網站，再一輪一輪修改。</p><p class="note">Claude</p></div>
     <div class="card"><span class="tbno">5</span><h3>檢查與修改</h3><p>逐項核對內容是否正確、是否符合學生程度、來源是否可查。</p><p class="note">老師負責</p></div>
   </div>
-  <div class="sec">二、教師使用 AI 的五個階段：以「光圈與景深」為例</div>
-  <figure class="stages-fig"><img src="img/ai-teacher-stages.jpg" alt="教師使用 AI 的五個階段：E 傳統講授、D AI 製作教材簡報、C 與 AI 討論調整教學、B AI 製作互動教具、A 程式自動化跨 AI 應用" loading="lazy" width="1400" height="788"></figure>
-  <div class="stages5" role="table" aria-label="教師使用 AI 的五個階段">
-    <div class="st-row st-head" role="row"><span role="columnheader">階段</span><span role="columnheader">教師如何使用 AI</span><span role="columnheader">以「光圈與景深」為例</span></div>
-    ${STAGES5.map(([k,n,how,ex])=>`<div class="st-row" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell"><i class="st-l">教師如何使用 AI</i>${how}</span><span role="cell"><i class="st-l">以「光圈與景深」為例</i>${ex}</span></div>`).join("")}
-  </div>
-  <div class="fourth"><span class="note">怎麼讀這張表</span><h3>D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。</h3></div>
-  <div class="sec">三、什麼是 AI Agent？</div>
+  <div class="sec">二、什麼是 AI Agent？</div>
   <div class="grid g2">
     <div class="card"><h3>聊天機器人</h3><p>你問一句，它答一句。每一步都要你自己接手：複製、貼上、存檔、再問。</p></div>
     <div class="card"><h3>AI Agent（代理）</h3><p>你交給它一個目標，它會自己拆步驟、使用工具（讀檔、寫檔、執行、搜尋）、檢查結果，並把做過的事記錄下來，讓下一位能接手。</p></div>
   </div>
   <div class="chips" style="margin-top:14px">${["目標","規劃步驟","用工具執行","檢查結果","記錄與交接"].map((x,i)=>`<span class="chip">${i+1}. ${x}</span>`).join("")}</div>
-  <div class="sec">四、實例：這個講座網站怎麼做出來</div>
+  <div class="sec">三、實例：這個講座網站怎麼做出來</div>
   <div class="grid g2">
     <div class="card"><h3>Agent 做的事</h3><p>Claude 依照講者的需求寫網頁、自動測試每一頁（smoke test）、上傳到 GitHub 發布，並寫下工作規則（AGENTS.md）與交接紀錄（HANDOFF_LOG）。另一個 AI（Grok）讀了紀錄後，可以接著做。</p></div>
     <div class="card"><h3>講者做的事</h3><p>決定講什麼、用哪些作品、哪一種風格；看過畫面後提出修改，例如「不要裁切」「影片縮小，以文字為主」。每次改動都要講者看過才算數。</p></div>
+  </div>
+  <div class="pair" style="margin-top:18px">
+    <div class="card"><span class="note">教師負責</span><p class="route">${["設定目標","決定內容與學習方法","判斷適切性","驗證成果","持續修正"].map(x=>`<span>${x}</span>`).join("")}</p></div>
+    <div class="card"><span class="note">AI 協助</span><p class="route">${["整理","實作","執行","檢查"].map(x=>`<span>${x}</span>`).join("")}</p></div>
   </div>
   <div class="sec">老師要握住的三件事</div>
   <div class="grid g3">
@@ -1188,7 +1256,10 @@ const SERIES = {
   "05 身體・存在":{ en:"BODY / EXISTENCE", d:"以膜與呼吸呈現身體的邊界，追問存在如何被感覺、遮蔽，又再次浮現。", w:[
     ["膜之息","2026/06/03","membrane","membrane.jpg"]] }
 };
-V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想","五個主題是彼此交會的創作線索；它們連結材料、居所與身體，也延伸至文明和共同記憶。",'<span class="tag n">主題 03</span>',true)}
+V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想","不只是看技術效果，也看我長期關注的議題。五個系列是彼此交會的創作線索。",'<span class="tag n">主題 03</span>',true)}
+  <div class="sec">我長期關注的議題</div>
+  <div class="chips">${["自然與環境","時間與記憶","居所與家的意義","生命與存在","人類的情感","身體與身份","戰爭與人類文明","幸福、溫柔與療癒"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+  <div class="sec">五個作品系列</div>
   <div class="tabs" role="tablist">${Object.keys(SERIES).map((k,i)=>`<button class="tab" role="tab" type="button" data-ser="${k}" aria-selected="${i===0}">${k}</button>`).join("")}</div>
   <div id="serbox"></div>
   <p class="note" style="margin-top:14px">作品圖、年代與系列說明取自講者作品集網站；點作品可開啟該作品頁。</p>
@@ -1206,8 +1277,15 @@ const P5 = [
 ];
 const PROMPT_EX = 'A highly detailed model of the H llertmer Reiheleyhofen is displayed on an old wooden table, surrounded by miniature figures dressed in traditional German and carrying beer barrels. The building has red brick walls with white windows and doors decorated with black tiles… --ar 16:9';
 const AI_VIDEO = ["Luma Dream Machine","Kling","Pika","PixVerse","Runway","Haiper"];
-V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 擴充了表達的可能；人的經驗與判斷仍是創作的核心。",'<span class="tag n">主題 04</span>',true)}
-  <div class="sec">我的創作流程：生活圖像 → 提示詞 → 分析 → 提取 → 生成 → 增加 → 再生成</div>
+V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 影片生成逐漸成熟後，我開始想：能不能讓想像中的作品與展覽，更像真實存在？",'<span class="tag n">主題 04</span>',true)}
+  <div class="sec">從靜態影像走向具有臨場感的展覽</div>
+  <p class="route">${["單張影像","系列作品","虛擬策展","大型裝置構想","展覽空間模擬","動態影像","攝影與運鏡","有時間性與臨場感的展覽敘事"].map(x=>`<span>${x}</span>`).join("")}</p>
+  <div class="sec">先分清楚是哪一種</div>
+  <div class="chips">${[["ok","真實展覽"],["wip","虛擬策展"],["wip","AI 模擬"],["plan","展覽構想"],["plan","尚未實現的作品"]].map(([c,x])=>`<span class="st ${c}">${x}</span>`).join(" ")}</div>
+  <p class="note" style="margin-top:8px">虛構展場或海報上的美術館名稱，不當成真實展歷。</p>
+  <div class="sec">每件作品都回答五個問題</div>
+  <ol class="qlist">${["我當時想表達什麼？","我關注的是什麼議題？","原本有哪些媒材或技術限制？","我如何運用 AI？","我如何選擇、修改與決定作品形式？"].map(q=>`<li>${q}</li>`).join("")}</ol>
+  <div class="sec">我的創作方法：生活圖像 → 提示詞 → 分析 → 提取 → 生成 → 增加 → 再生成 <span class="note" style="font-weight:400">穿插在作品裡講</span></div>
   <div class="steps" role="tablist">${P5.map((s,i)=>`<button type="button" role="tab" data-p5="${i}"><span>0${i+1}</span>${s[0]}</button>`).join("")}</div>
   <div class="split"><div class="card" id="p5box" aria-live="polite" style="display:grid;gap:10px;align-content:start"></div>
     <div class="card"><h3>發散與收斂</h3><p>前半段讓 AI 幫忙打開可能性（發散）；後半段由自己判斷、刪減、調整（收斂）。兩段都要有，作品才會回到自己手上。</p>
@@ -1226,6 +1304,7 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
   <div class="sec">影像生成工具（2024 講座使用）</div>
   <div class="chips">${AI_VIDEO.map(x=>`<span class="chip">${x}</span>`).join("")}</div>
   <p class="note" style="margin-top:8px">文字轉影片、圖片轉影片工具更新很快，現在的版本與方案待核。</p>
+  <div class="fourth"><span class="note">藝術創作的核心</span><h3>技術不斷進化，但創作的主體始終是我自己。</h3></div>
   <div class="sec">作品狀態與展歷</div>
   <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>`;
 
@@ -1265,6 +1344,105 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <div class="works">${work("HANA《我醒在世界之前》MV","影片檔或公開連結待補",0,"影片待補")}${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
   <div class="links" style="margin-top:16px">${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
 
+/* ===== 第二階段新增頁（2026-11-26）：素材找不到的地方一律顯示待補，不用生成圖冒充真實紀錄 ===== */
+const caseFlow = rows => `<ol class="cflow">${rows.map(([k,v],i)=>`<li><span class="k">${String(i+1).padStart(2,"0")}</span><div><b>${k}</b><p>${v}</p></div></li>`).join("")}</ol>`;
+const todo = (t,d) => `<div class="todo"><b>待補</b><span>${t}</span>${d?`<small>${d}</small>`:""}</div>`;
+
+V.roots = ()=>`${head("","在 AI 出現之前，我就已經開始改變教學","從學生的學習問題出發，去找方法與工具","民國 108 學年度起，我逐步把數位科技帶進美術課。不是因為有了科技才改變，而是想改變，才去找科技。",'<span class="tag r">第一部分</span>')}
+  <div class="grid g3 roots">
+    <div class="card"><span class="tbno">AR</span><h3>SketchAR：降低「畫不像」的門檻</h3><ul class="mini-ul"><li>有些學生因為畫不像、技巧不足而挫折</li><li>希望降低進入美術創作的門檻</li><li>讓學生實際體驗擴增實境</li></ul>${todo("SketchAR 上課照片或學生操作畫面")}</div>
+    <div class="card"><span class="tbno">VR</span><h3>Google Expeditions：鑑賞不只停在課本</h3><ul class="mini-ul"><li>希望學生對藝術鑑賞更有興趣</li><li>不只看課本圖片、聽老師說</li><li>體驗不同的藝術空間與文化場域</li></ul>${todo("Google Expeditions／VR 上課照片")}</div>
+    <div class="card"><span class="tbno">平板</span><h3>借平板、找平板車、接上學習平台</h3><ul class="mini-ul"><li>向教務處借用平板</li><li>尋找合適的設備與平板車</li><li>把數位學習平台帶進課堂</li></ul>${todo("平板、平板車或課堂使用照片")}</div>
+  </div>
+  <div class="fourth"><span class="note">這一頁的結論</span><h3>我不是因為有了科技才改變教學，而是因為想改變教學，所以開始尋找科技。</h3></div>
+  <div class="sec">從數位教學走向生成式 AI</div>
+  <ol class="tline">${ROOTS_TL.map(([y,t,d,src])=>`<li><span class="y num">${y}</span><div><b>${t}</b><p>${d}</p>${src?`<small class="note">出處：${src}</small>`:""}</div></li>`).join("")}</ol>
+  <p class="note" style="margin-top:10px">年份只寫有紀錄的；工具的「第一次使用」日期不推定。</p>`;
+const ROOTS_TL = [
+  ["108 學年度起","AR、VR、平板與數位學習平台","SketchAR、Google Expeditions、借平板與平板車，逐步把數位設備帶進課堂。","講者自述（照片待補）"],
+  ["109 年","美術學科中心教案〈時代之窗〉","「數位新浪潮」單元：用 Google Arts & Culture 找有 AR 功能的作品「與名畫合影」，用 Tour Creator 製作 VR 導覽（該服務 2021 年 6 月停止）。","2021-11-22 高中美術學科中心 ICT 融入教學研習簡報（曾國正、鄭伊璟）"],
+  ["2022–2024","教育部高級中等學校數位教學輔導團委員","持續探索數位教材、互動式學習與科技融入美術教學。","2024-08-26 講座簡報經歷欄"],
+  ["2024 年 8 月以前","生成式 AI 進入課堂","數位學習「四學」策略：學生用手機與平板，透過 Google Classroom 學習單、Canva 與 AI 分析配色；以 ChatGPT 設計色彩學 WSQ 學習。","2024-08-26 講座〈藝術的力量與未來〉簡報"],
+  ["2025–2026","多模態、程式開發、AI Agent 與自建平台","互動教材、自主學習網站、多 AI 協作與工作流程自動化。","講者 2026-11-26 提供的 AI 工具盤點"]
+];
+
+V.survey = ()=>`${head("","師培生互動：你如何使用 AI？","在哪個環節、怎麼用、為了什麼","還沒有正式教學經驗也沒關係：可以寫實習、試教，或你未來想怎麼用。",'<span class="tag r">互動</span>')}
+  <div class="fourth" style="margin:0 0 18px"><span class="note">請在會議聊天室回覆</span><h3>工具＋環節編號＋怎麼用＋目的</h3><p class="note" style="margin-top:8px">例如：「ChatGPT／3／請它給我三個暖身活動再自己挑／提升效率」</p></div>
+  <div class="grid g4 survey">${SURVEY8.map((x,i)=>`<button type="button" class="sv" data-sv="${i}" aria-pressed="false"><span class="num">${i+1}</span>${x}</button>`).join("")}</div>
+  <div class="mini" style="margin-top:10px"><span id="svCount">已點選 0 個環節</span><button type="button" id="svReset">清除</button></div>
+  <p class="note" style="margin-top:6px">點選只記在這台電腦，方便講者整理聊天室的回答；不是多人即時投票。</p>
+  <div class="sec">想一想</div>
+  <ol class="qlist">${["你目前主要使用哪些 AI 工具？","曾經在哪些教學環節使用 AI？","你是怎麼用的？","主要目的是提升教師工作效率，還是改善學生的學習？","未來還可以在哪些環節嘗試？"].map(q=>`<li>${q}</li>`).join("")}</ol>`;
+const SURVEY8 = ["學習需求分析","課程規劃","教學活動設計","教材與資源製作","課堂教學與引導","學生學習與創作","學習評量與回饋","教學反思與改進"];
+M.survey = ()=>{
+  const cc=()=>{$("#svCount").textContent="已點選 "+$$(".sv[aria-pressed=true]").length+" 個環節"};
+  $$(".sv").forEach(b=>b.addEventListener("click",()=>{b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true");cc()}));
+  $("#svReset").addEventListener("click",()=>{$$(".sv").forEach(b=>b.setAttribute("aria-pressed","false"));cc()});
+};
+
+V.stages = ()=>`${head("","教師使用 AI 的五個階段","以「光圈與景深」為例","先看同一堂攝影課在五種用法下的差異，再進入實際教學案例。",'<span class="tag r">教學</span>')}
+  <figure class="stages-fig"><img src="img/ai-teacher-stages.jpg" alt="教師使用 AI 的五個階段：E 傳統講授、D AI 製作教材簡報、C 與 AI 討論調整教學、B AI 製作互動教具、A 程式自動化跨 AI 應用" loading="lazy" width="1400" height="788"></figure>
+  <div class="stages5" role="table" aria-label="教師使用 AI 的五個階段">
+    <div class="st-row st-head" role="row"><span role="columnheader">階段</span><span role="columnheader">教師如何使用 AI</span><span role="columnheader">以「光圈與景深」為例</span></div>
+    ${STAGES5.map(([k,n,how,ex])=>`<div class="st-row" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell"><i class="st-l">教師如何使用 AI</i>${how}</span><span role="cell"><i class="st-l">以「光圈與景深」為例</i>${ex}</span></div>`).join("")}
+  </div>
+  <div class="fourth"><span class="note">怎麼讀這張表</span><h3>D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。</h3></div>
+  <p class="note stages-warn">這是 AI 應用深度與方式的分類，不是教師專業能力或教學品質的排名。技術越複雜，不一定代表教學效果越好。</p>`;
+
+V.photo = ()=>`${head("","案例一：觀看的力量／攝影探索","從生活與校園出發","把觀察轉成有理由的形式選擇：光線、陰影、構圖，再到曝光三角。",'<span class="tag r">教學案例</span>')}
+  ${caseFlow([["教學動機","學生每天拍照，卻很少停下來想「為什麼這樣拍」。"],["學習目標","觀察光線、陰影與構圖；理解曝光三角，能說出自己的形式選擇。"],["教學活動","從生活與校園環境出發的觀察，校園攝影，作品分享。"],["工具選擇","相機模擬器：固定場景與對焦點，只改一個變因（對應五階段的 B）。"],["學習歷程","先預測，再試拍；保留學生原始的觀察紀錄。"],["學生成果","校園攝影作品與分享。"],["教學反思","AI 協助分析、提問與反思；看見學生說不出的地方，下一堂再調整。"]])}
+  <div class="grid g2" style="margin-top:16px">${todo("學生原始觀察紀錄（去識別化）")}${todo("校園攝影作品（需確認授權）")}</div>
+  <div class="links" style="margin-top:14px"><button class="lk" type="button" data-view="cases">在案例資料庫看攝影探索 →</button></div>`;
+
+V.publicart = ()=>`${head("","案例二：校園公共藝術設計","學生的構想、判斷與選擇","重點不是模擬圖有多精緻，而是學生如何思考作品和校園的關係。",'<span class="tag r">教學案例</span>')}
+  <div class="sec">教學流程</div>
+  <p class="route">${["校園環境觀察","選擇場域","提出構想","手繪草圖","AI 場域模擬","比較與修正","完成設計提案"].map(x=>`<span>${x}</span>`).join("")}</p>
+  <div class="sec">學生要想清楚的六件事</div>
+  <div class="grid g3">${[["作品和校園環境","放在這裡，和周圍的建築、動線、人有什麼關係？"],["創作理念","想讓經過的人感受到什麼？"],["材質與尺度","用什麼材料？多大？戶外能撐多久？"],["使用者與互動","誰會經過？會停留、觸摸、坐下嗎？"],["空間適切性","安全、遮擋、維護是否可行？"],["AI 結果與原始構想","模擬圖哪裡和我想的不一樣？我要改作品，還是改提示？"]].map(([h,p])=>`<div class="card"><h3>${h}</h3><p>${p}</p></div>`).join("")}</div>
+  <div class="sec">一組作品的前後對照</div>
+  <div class="grid g3">${todo("學生選擇的校園場域照片")}${todo("學生手繪草圖")}${todo("AI 場域模擬圖與學生的比較說明")}</div>
+  <p class="note" style="margin-top:8px">學生作品需確認授權與去識別化後才放上網站。</p>
+  <div class="links" style="margin-top:14px"><button class="lk" type="button" data-view="cases">在案例資料庫看公共藝術 →</button></div>`;
+
+V.artpath = ()=>`${head("","從好奇、遊戲到自主創作","我的 AI 藝術創作心境轉變","最早用 Midjourney，是抱著好奇、遊戲與探索的心態；那段實驗是重要的累積。",'<span class="tag n">第三部分</span>',true)}
+  <div class="ba">
+    <div class="card"><span class="note">一開始</span><h3>我想知道 AI 能生成什麼。</h3></div>
+    <div class="arrow" aria-hidden="true">→</div>
+    <div class="card" style="border:2px solid var(--navy)"><span class="note">後來</span><h3>我有一些想法，想透過 AI 將它實現。</h3></div>
+  </div>
+  <p class="note" style="margin-top:10px">生成精美圖片越來越容易。只為了看效果而反覆生成，雖然有趣，卻容易覺得空虛；所以近年較少單純測試，而是帶著想法去做。</p>
+  <div class="sec">2023 年：早期作品與主題策展</div>
+  <div class="tbl"><table><thead><tr><th>作品／策展</th><th>日期</th><th>狀態</th></tr></thead><tbody>${EARLY.map(([t,d,c,st])=>`<tr><td>《${t}》</td><td class="num">${d}</td><td><span class="st ${c}">${st}</span></td></tr>`).join("")}</tbody></table></div>
+  <p class="note" style="margin-top:8px">同名作品若有不同日期或版本（例如《居所的記憶》），分開列出，不合併。</p>
+  <div class="links" style="margin-top:10px">${lk(CONFIG.links.tutInterview)}${lk(CONFIG.links.portfolio)}</div>
+  <div class="sec">之後的發展</div>
+  <p class="route">${["2023 早期 Midjourney 實驗","系列作品","虛擬策展","裝置藝術與展覽空間","動態影像","更有臨場感的藝術表達"].map(x=>`<span>${x}</span>`).join("")}</p>
+  <p class="note" style="margin-top:8px">2024–2026 的系列作品見下一頁；臨場感與展覽見主題 04。</p>`;
+const EARLY = [
+  ["鳥與家","4 月 4 日（年份待核）","ok","2024 講座簡報有記錄"],
+  ["墨・黑","2023-04-05","ok","2024 講座簡報有記錄"],
+  ["凝形","待核","wip","臺南應用科大專訪列出"],
+  ["凝形─自然系列","待核","wip","作品集網站「凝形・自然」系列"],
+  ["既近又遠","待核","wip","臺南應用科大專訪列出"],
+  ["流動的羽翼","待核","wip","臺南應用科大專訪列出"],
+  ["空間中的羽翼","待補","chk","圖片與日期待補"],
+  ["鳥群系列","待補","chk","圖片與日期待補"],
+  ["意識之色","待核","wip","臺南應用科大專訪列出"],
+  ["居所的記憶（作品集版）","2024-04-28","ok","作品集網站"],
+  ["居所的記憶（另一版本）","待補","chk","日期與圖片待補，不合併"],
+  ["模糊的記憶‧居所","待核","wip","臺南應用科大專訪列出"],
+  ["靜謐的對話","待補","chk","圖片與日期待補"],
+  ["夢歸何處","待核","wip","臺南應用科大專訪列出"]
+];
+
+V.artsum = ()=>`${head("","藝術創作總結","兩條創作線，同一個理念","",'<span class="tag n">第三部分</span>',true)}
+  <div class="grid g2">
+    <div class="card"><span class="tbno">A</span><h3>藝術創作與策展</h3><p>從好奇與遊戲，走向帶著想法去實現；從單張影像走向系列、策展與有臨場感的展覽。</p></div>
+    <div class="card"><span class="tbno">B</span><h3>ELARA 虛擬女團</h3><p>一位視覺藝術家，透過 AI 跨進音樂、編曲、影片、攝影與程式開發。</p></div>
+  </div>
+  <div class="fourth"><span class="note">背後是同一個理念</span><h3>不是因為 AI 能做什麼，所以我去創作什麼；而是因為我想表達什麼，所以我不斷尋找能夠實現它的技術。</h3></div>
+  <p class="quote" style="font-size:clamp(26px,4vw,44px);margin-top:28px">AI 擴張的是我的創作能力，<br>而不是取代我的<span>創作意志</span>。</p>`;
+
 V.workflow = ()=>`${head("","工作流程","跨 AI 協作與創作平台","從一次問答走向可以接續的專案，需要清楚的來源、設定、版本、驗收結果與下一步。",'<span class="tag n">創作</span>')}
   <div class="seven" style="grid-template-columns:repeat(6,minmax(0,1fr))">${[["定義需求","var(--red)"],["整理資料","var(--yellow)"],["製作內容","var(--navy)"],["實作","var(--ink)"],["檢查","var(--red)"],["記錄","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">每一步留下可閱讀的產出，避免只靠對話記憶。</p>
@@ -1283,9 +1461,12 @@ V.s06 = ()=>`${head("06","未來美術教師","在 AI 時代找到自己的教�
     </div>
     <div class="photo"><img src="img/s3.jpg" alt=""><span class="cap">示意圖</span></div>
   </div>
+  <div class="sec">回到最初的問題</div>
+  <ol class="qlist">${["我為什麼想成為一位老師？","我希望學生透過美術學到什麼？","我想改變什麼樣的教學現況？","我如何找到適合自己的教學模式？","當 AI 越來越強大，人應該保留哪些能力？","如何讓自己的教學生涯持續具有熱情、趣味與創造性？"].map(q=>`<li>${q}</li>`).join("")}</ol>
+  <div class="fourth"><span class="note">我希望你帶走的</span><h3>優秀的教師，不是找到一套永遠不變的方法，而是能持續觀察學生、調整教學、探索新方法，並終身學習。</h3><p class="note" style="margin-top:8px">AI 不應成為教師停止思考的拐杖。善用 AI，持續探索適合自己與學生的教學模式，也讓自己的生活充滿創造性。</p></div>
   <div class="q" style="margin-top:26px">你想讓學生保留哪一個自己的決定？<small>用什麼證據確認他正在學習？</small></div>`;
 
-V.break = ()=>`${head("","中場休息","5 分鐘","下半場：AI 藝術與影音創作。",'<span class="tag y">休息</span>')}
+V.break = ()=>`${head("","中場休息","5 分鐘","下半場：我的 AI 藝術創作與實踐。",'<span class="tag y">休息</span>')}
   <div class="split">
     <div><div class="bigtime" id="brkTime">05:00</div>
       <div class="links" style="margin-top:16px"><button class="lk" type="button" id="brkStart">開始倒數</button><button class="lk" type="button" id="brkReset">重設</button></div>
@@ -1295,6 +1476,7 @@ V.break = ()=>`${head("","中場休息","5 分鐘","下半場：AI 藝術與影�
 
 V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></div>
   <div style="display:flex;gap:12px;margin:20px 0" aria-hidden="true"><div class="shape c"></div><div class="shape s"></div><div class="shape t"></div></div>
+  <div class="sum4">${["教學，是為了實現我想要的教育。","創作，是為了表達我想要表達的想法。","AI，是讓這些可能性不斷擴大的工具。","而我自己，始終是教學與創作的主體。"].map(x=>`<p>${x}</p>`).join("")}</div>
   <p class="quote">你的人生，<br>就是你的<span>藝術品</span>。</p>
   <div class="grid g2" style="margin-top:30px">
     <div class="card"><h3>交流</h3><p>你想在未來的美術課裡，讓學生保留哪一個自己的決定？</p></div>

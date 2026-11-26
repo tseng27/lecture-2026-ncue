@@ -572,6 +572,15 @@ body::before{background:var(--bg)}
 .about-book blockquote{margin:10px 0;padding-left:12px;border-left:3px solid var(--red);font-size:16px}
 @media (max-width:520px){.about-book{grid-template-columns:84px 1fr;gap:12px}.about-book img{width:84px}}
 .about-book-why{margin:8px 0 0;font-weight:700;color:var(--ink)}
+.catch-list{list-style:none;margin:14px 0 12px;padding:0;display:grid;gap:8px}
+.catch-s{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:28px 1fr;gap:10px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--paper);line-height:1.6}
+.catch-s:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+.catch-s[aria-pressed=true]{border-color:var(--red);background:rgba(224,50,43,.08)}
+.catch-s[aria-pressed=true] .catch-t{text-decoration:underline wavy var(--red);text-underline-offset:4px}
+.catch-n{font-weight:700;color:var(--red)}
+.catch-a{margin:6px 0 4px 38px;font-size:15px}
+.catch-a b{display:inline-block;margin-right:8px;padding:1px 6px;border-radius:3px;font-size:13px;color:#fff}
+.catch-a b.ok{background:#2f7d4f}.catch-a b.bad{background:var(--red)}
 </style>
 
 <header class="bar">
@@ -734,6 +743,19 @@ const CASES = [
   { id:"T13", g:"空間與未來", st:"part", t:"VR 策展", d:"在虛擬空間中策劃展覽。", ev:"成果待補。" },
   { id:"T14", g:"空間與未來", st:"plan", t:"職涯公仔", d:"把職涯想像做成角色公仔。", ev:"規劃案例，尚非已完成學生作品。" },
   { id:"T15", g:"空間與未來", st:"chk", t:"多媒體專題", d:"跨媒材整合的期末專題。", ev:"備用案例，原報告待核。" }
+];
+/* 主題 01「抓包 AI」示範稿：[正確?, 句子, 解說]；錯誤為刻意放入 */
+const CATCH = [
+  [1,"「印象派」一詞來自莫內的《日出・印象》；評論家路易・勒魯瓦（Louis Leroy）在 1874 年的展覽評論中，用這個標題嘲諷這群畫家。","正確。1874 年第一次聯展後，勒魯瓦在《喧鬧報》（Le Charivari）的評論標題就是〈印象派畫家的展覽〉。"],
+  [0,"印象派畫家強調在畫室裡依照素描稿精細完成作品，避免戶外光線變化干擾畫面。","相反。印象派重視戶外寫生（en plein air），就是要捕捉光線與天氣的變化。"],
+  [0,"由於管狀顏料要到 1920 年代才普及，印象派畫家多半得自己研磨顏料，因此很少外出作畫。","時間錯。可攜帶的錫管顏料在 1841 年就已發明（John Goffe Rand），正是它讓戶外寫生變得容易。"],
+  [1,"他們常用短而破碎的筆觸，把顏色並置在畫面上，讓畫面保有閃爍的光感。","正確。這是印象派最容易辨認的筆觸特徵。"],
+  [0,"為了加強光的對比，印象派畫家習慣用黑色來畫陰影。","有錯。印象派多半避免純黑，改用藍、紫等有色彩的陰影。"],
+  [0,"梵谷是第一次印象派聯展的核心成員，《星夜》也在那次展覽中展出。","兩處錯。梵谷 1886 年才到巴黎，沒有參加 1874 年的聯展；《星夜》畫於 1889 年。"],
+  [0,"秀拉的《大碗島的星期天下午》以平塗的大色塊完成，是點描派的反例。","相反。這件作品正是點描派（點彩）的代表作，1886 年在最後一次印象派聯展展出。"],
+  [1,"印象派之後，塞尚、高更與梵谷等人發展出各自的方向，常被合稱為「後印象派」。","正確。「後印象派」一詞來自 1910 年羅傑・弗萊（Roger Fry）在倫敦策劃的展覽。"],
+  [0,"（參考資料：莫內，《印象派宣言》，1874。）","查無此書。印象派沒有莫內寫的「宣言」，這是 AI 常見的「編造出處」。"],
+  [0,"評量方式：請學生用 AI 生成一張印象派風格的圖片，生成成功即達成學習目標。","教學設計的問題。生成成功只代表會下指令，看不出學生是否理解光、色彩與筆觸；需要學生說明選擇或親手嘗試。"]
 ];
 /* 講者 AI 工具歷程（2026-11-26 講者提供的盤點；年份為階段歸納，非確切首次使用年份） */
 const AIJ_YEARS = [
@@ -913,7 +935,13 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
     <div class="card"><span class="tbno">03</span><h3>練習提問</h3><p>對 AI 追問、反駁、要它給出處。這份提問力，就是未來帶課堂討論的能力。</p></div>
   </div>
   <div class="sec">現場互動：抓包 AI</div>
-  <div class="card"><h3>這段 AI 寫的內容，錯在哪裡？</h3><p>現場請 AI 寫一段看似完整的美術知識或教案，請大家找出錯誤或不合理的地方。找到的那一刻，就是老師專業判斷還是最後一道防線的證據。</p><p class="note">示範內容請講者事先準備並核對答案。</p></div>`;
+  <div class="card catch">
+    <h3>這段「AI 寫的教案」，錯在哪裡？</h3>
+    <p class="note">情境：請 AI 寫一段高一美術〈認識印象派〉的課程導入。全班一起讀，點選你覺得有問題的句子，再按「公布答案」。</p>
+    <ol class="catch-list">${CATCH.map((c,i)=>`<li><button type="button" class="catch-s" data-ci="${i}" aria-pressed="false"><span class="catch-n num">${i+1}</span><span class="catch-t">${c[1]}</span></button><div class="catch-a" hidden><b class="${c[0]?"ok":"bad"}">${c[0]?"正確":"有錯"}</b>${c[2]}</div></li>`).join("")}</ol>
+    <div class="mini"><span id="catchCount">已圈選 0 句</span><button type="button" id="catchShow">公布答案</button><button type="button" id="catchReset">重來</button></div>
+    <p class="note" style="margin-top:10px">這段文字是為講座設計的示範稿，錯誤是刻意放入的。重點：AI 寫得越流暢，錯誤越不容易被發現；能抓出來的，是老師的專業知識。</p>
+  </div>`;
 
 V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","這兩項外部研究是提問框架，不是本人美術課已證實的成效，也不代表「全世界都已如此」。",'<span class="tag r">主題 02</span>')}
   <div class="grid g2">
@@ -1261,6 +1289,10 @@ M.s01 = ()=>{
   $("#pollUndo").addEventListener("click",()=>{const i=hist.pop();if(i!=null&&v[i]>0){v[i]--;draw()}});
   $("#pollReset").addEventListener("click",()=>{v=[0,0,0,0];hist=[];draw()});
   draw();
+  const cc=()=>{$("#catchCount").textContent="已圈選 "+$$(".catch-s[aria-pressed=true]").length+" 句"};
+  $$(".catch-s").forEach(b=>b.addEventListener("click",()=>{b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")!=="true");cc()}));
+  $("#catchShow").addEventListener("click",()=>{$$(".catch-a").forEach(a=>a.hidden=false);$(".catch").classList.add("shown")});
+  $("#catchReset").addEventListener("click",()=>{$$(".catch-a").forEach(a=>a.hidden=true);$$(".catch-s").forEach(b=>b.setAttribute("aria-pressed","false"));$(".catch").classList.remove("shown");cc()});
 };
 M.s02 = ()=>{
   const T={with:"<b>任務完成了</b><br><span class='note'>作品看起來不錯、作業準時繳交。但這不一定代表學生學會了。</span>",without:"<b>學生自己還做得到嗎？</b><br><span class='note'>教學設計要區分「有 AI 時完成任務」和「移除 AI 後的學習」，並在過程中設計護欄與鷹架。</span>"};

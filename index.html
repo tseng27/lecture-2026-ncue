@@ -1,5 +1,6 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}.exh-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}.exh-list li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}.exh-list li:last-child{border-bottom:0}.exh-d{font-family:var(--f-num,monospace);font-size:14px;min-width:8.5em;opacity:.75}.exh-list a{text-decoration:none;color:inherit;font-weight:700}.exh-list a small{font-weight:400;opacity:.7;margin-left:6px}.exh-list a:hover{text-decoration:underline}.exh-list .exh-x{font-size:14px;font-weight:500;opacity:.85}
 .wkfb{margin:8px 0 0;display:flex;flex-wrap:wrap;gap:4px 12px;font-size:14px;align-items:baseline}.wkfb a{color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}.wkfb a:hover{opacity:.7}
+.exh-l a{display:inline-block;margin-right:14px;color:inherit;font-weight:700;text-decoration:none;border-bottom:1px solid currentColor}.exh-l a:hover{opacity:.7}
 </style></head><body>
 <title>AI 時代的藝術與教育</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1512,27 +1513,27 @@ V.artpath = ()=>`${head("","從好奇、遊戲到自主創作","我的 AI 藝術
   </div>
   <p class="note" style="margin-top:10px">生成精美圖片越來越容易。只為了看效果而反覆生成，雖然有趣，卻容易覺得空虛；所以近年較少單純測試，而是帶著想法去做。</p>
   <div class="sec">2023 年：早期作品與主題策展</div>
-  <div class="tbl"><table><thead><tr><th>作品／策展</th><th>日期</th><th>狀態</th></tr></thead><tbody>${EARLY.map(([t,d,c,st])=>`<tr><td>《${t}》</td><td class="num">${d}</td><td><span class="st ${c}">${st}</span></td></tr>`).join("")}</tbody></table></div>
-  <p class="note" style="margin-top:8px">同名作品若有不同日期或版本（例如《居所的記憶》），分開列出，不合併。</p>
+  <div class="tbl"><table><thead><tr><th>作品／策展</th><th>日期</th><th>發表紀錄</th></tr></thead><tbody>${EARLY.map(([t,d,L])=>`<tr><td>《${t}》</td><td class="num">${d}</td><td class="exh-l">${L.map(([l,u])=>`<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</td></tr>`).join("")}</tbody></table></div>
+  <p class="note" style="margin-top:8px">日期與連結取自講者 Facebook 個人頁貼文。同名作品不同版本（例如《居所的記憶》）分開列出，不合併。</p>
   <div class="links" style="margin-top:10px">${lk(CONFIG.links.tutInterview)}${lk(CONFIG.links.portfolio)}</div>
   <div class="sec">之後的發展</div>
   <p class="route">${["2023 早期 Midjourney 實驗","系列作品","虛擬策展","裝置藝術與展覽空間","動態影像","更有臨場感的藝術表達"].map(x=>`<span>${x}</span>`).join("")}</p>
   <p class="note" style="margin-top:8px">2024–2026 的系列作品見下一頁；臨場感與展覽見主題 04。</p>`;
 const EARLY = [
-  ["鳥與家","4 月 4 日（年份待核）","ok","2024 講座簡報有記錄"],
-  ["墨・黑","2023-04-05","ok","2024 講座簡報有記錄"],
-  ["凝形","待核","wip","臺南應用科大專訪列出"],
-  ["凝形─自然系列","待核","wip","作品集網站「凝形・自然」系列"],
-  ["既近又遠","待核","wip","臺南應用科大專訪列出"],
-  ["流動的羽翼","待核","wip","臺南應用科大專訪列出"],
-  ["空間中的羽翼","待補","chk","圖片與日期待補"],
-  ["鳥群系列","待補","chk","圖片與日期待補"],
-  ["意識之色","待核","wip","臺南應用科大專訪列出"],
-  ["居所的記憶（作品集版）","2024-04-28","ok","作品集網站"],
-  ["居所的記憶（另一版本）","待補","chk","日期與圖片待補，不合併"],
-  ["模糊的記憶‧居所","待核","wip","臺南應用科大專訪列出"],
-  ["靜謐的對話","待補","chk","圖片與日期待補"],
-  ["夢歸何處","待核","wip","臺南應用科大專訪列出"]
+  ["鳥與家","2023-04-04",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02ywtzFi5LeTRtzUtFY76Eo8okT1cPNE84KZBkRxxV6o4DubrtTethZBhZn5JzcRW6l"]]],
+  ["墨・黑","2023-04-05",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02jipBjKQvyNsKpLhXWth8JKWZ7qFp14ZQUpnTwacJZKNjTjocAATaUmjquDCCJDabl"]]],
+  ["凝形","2023-04-05",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02NsXjwBEV8ycceGJmqvd5Qd8hyeBHQ1MsJAar2d6UaQVo4YBvMkz4r9rUh3LUXb8Ul"]]],
+  ["凝形─自然系列","2023-04-05",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0281RhWYzgRiwKF5tmC6XXbkQy5ztUbqj3eo9PdtyzijBgcG8tenuHFTb3RKMxeSSLl"],["Canva 作品集",EXH_CANVA]]],
+  ["既近又遠","2023-04-07",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02z7j4hx14CRfwbH6yjjBUR1ULw1h4328FEY6mrWJdM43hR46bghpjG9rfZdh86hdcl"]]],
+  ["流動的羽翼","2023-04-07",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0VoCxo3gpxBbavz56rTj8S4yuJyNKMyRWgEu4D7kMoNgJnT2L6Ncru5vjyuvKGSeAl"]]],
+  ["空間中的羽翼","2023-04-07～08",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02Z763UgDapwQHqsti4HqY8QahTg78q3cQovcuVbxJhNhGqFSLBnvYKimJb6QwQXiZl"]]],
+  ["鳥群系列","2023-04-07～08",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0NmrXEoSmev386zZXTSQH2S1aEy6Hhi4GYHcRkt5mUuQVagBnUe8q5aSnxB7XjWa7l"]]],
+  ["意識之色","2023-04-09",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0gaYZbzaYUY4Aj886WNEtmWPdNuRs84DX2uiKzUPkgj7ejM8kvowshjhpESsnj6fCl"]]],
+  ["居所的記憶","2023-04-16",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0268SA348W5HXxNQvgvaHv9M3V3XREUpQoPY8Gr99it6krSfV71SXd9vdoTVtK5ibAl"]]],
+  ["居所的記憶（作品集版）","2024-04-28",[["作品集網站",CONFIG.links.portfolio.url]]],
+  ["模糊的記憶‧居所","2023-04-16",[["貼文 1","https://www.facebook.com/kuojean.tseng/posts/pfbid0ZDXqy6HYsVosn1bj6Vhc8eCpTuJA46sGVLJrd4WnTWV94Troieet3RDjNy6vRwt7l"],["貼文 2","https://www.facebook.com/kuojean.tseng/posts/pfbid0cKBagUpp3BJBeSoQcJBJcC7pTBe8eGp2kgB8Y4XiJRhpN9AJCLfP6LcmJjnk1m9yl"]]],
+  ["靜謐的對話","2023-12-23",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid02yFAQmpUht82qnuhGz54d8av4fYUcZx2Vd2Y9kiKvcEAAcbdAUco2QZE2fRhVgT3Al"]]],
+  ["夢歸何處","2023-12-24",[["臉書貼文","https://www.facebook.com/kuojean.tseng/posts/pfbid0L9HfTg5ciq4h9396F1fBosMWbXRYyiZaDyfG729S8uLwAgeG1FKJC1QPiAbezyFDl"]]]
 ];
 
 V.artsum = ()=>`${head("","藝術創作總結","兩條創作線，同一個理念","",'<span class="tag n">第三部分</span>',true)}

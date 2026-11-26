@@ -2,6 +2,9 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 Claude：第 8 頁換上臺灣藝術鑑賞版 E→A 插圖
+- 講者依提示詞生成新插圖，存為 img/ai-teacher-stages-tw.jpg（1400×788）。原攝影版 img/ai-teacher-stages.jpg 保留在 repo，頁面不再引用。
+
 ## 2026-11-26 Claude：第 8 頁五階段改用臺灣藝術鑑賞案例
 - 講者要求把 stages（talk-08）的案例改成「102台灣藝術鑑賞 × AI 再創作」（高一美術上第 4 單元，林玉山〈蓮池〉）。STAGES5 新增第 5 欄 tw；原「光圈與景深」欄收在頁面下方折疊區。
 - 新圖 img/padlet-taiwan-art.jpg（講者提供的 Padlet 截圖，只見繳交說明與虛構示範貼文）。Padlet 連結含學生實名貼文，不放上網站。

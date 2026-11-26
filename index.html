@@ -657,7 +657,7 @@ body::before{background:var(--bg)}
 .sk-media{margin-top:12px;display:grid;gap:6px}
 .sk-vid{width:100%;aspect-ratio:16/9;display:block;background:#111;border:4px solid #fff;box-shadow:0 6px 14px -8px rgba(0,0,0,.4)}
 .sk-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.sk-big{grid-template-columns:1fr}.sk-4{grid-template-columns:repeat(4,1fr)}.sk-ph img.sk-fit{object-fit:contain;background:#fff}
+.sk-big{grid-template-columns:1fr}.sk-4{grid-template-columns:repeat(4,1fr)}.sk-2{grid-template-columns:repeat(2,1fr)}.sk-ph img.sk-fit{object-fit:contain;background:#fff}
 .sk-ph img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;border:3px solid #fff;box-shadow:0 4px 10px -6px rgba(0,0,0,.4);cursor:zoom-in}
 </style>
 
@@ -768,7 +768,7 @@ const SEGS = [
 const STOPS = [
   { v:"cover",    s:0, m:1,  t:"開場", cue:"開場前播放封面左側的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
   { v:"home",     s:0, m:3,  t:"關於我：一位持續探索的美術教師", cue:"三個身分；《我的美好人生》與「你的人生，就是你的藝術品」。最後點出今天的兩條路線。不在這裡介紹 AI 工具。" },
-  { v:"roots",    s:0, m:5,  t:"在 AI 出現之前，我就已經開始改變教學", cue:"108 學年度起：SketchAR（降低畫不像的挫折）、Google Expeditions（讓鑑賞不只停在課本）、借平板與平板車。結論：不是因為有了科技才改變教學，而是想改變教學，才去找科技。再用時間軸走到生成式 AI。" },
+  { v:"roots",    s:0, m:5,  t:"在 AI 出現之前，我就已經開始改變教學", cue:"108 學年度起：SketchAR（降低畫不像的挫折）、Google Expeditions（讓鑑賞不只停在課本）、借平板接上學習平台。結論：不是因為有了科技才改變教學，而是想改變教學，才去找科技。再用時間軸走到生成式 AI。" },
   { v:"s01",      s:0, m:7,  t:"AI 浪潮來襲：危機，還是轉機？", cue:"從自己的數位教學接過來：工具越來越強，我們要重新問五個問題。超級智慧是業界觀點與未來假設。「第四秒」是引導思考的命題，不是研究結論。時間夠再做抓包 AI。" },
   { v:"s02",      s:0, m:4,  t:"全球 AI 教育革命", cue:"濃縮講：UNESCO 框架、教育部指引、瑞典反思、Bastani 研究。只講一句：AI 幫忙完成任務，不等於學生學會。分清研究事實、講者觀點、未來推論。" },
   { v:"method",   s:1, m:5,  t:"我的美術教育理念與課程設計方法", cue:"美術是表達自己，也是探索自己。左邊是老師的課程設計，右邊是學生的學習歷程；AI 可以參與各環節，但不是學習目標。" },
@@ -1387,7 +1387,7 @@ V.roots = ()=>`${head("","在 AI 出現之前，我就已經開始改變教學",
   <div class="grid g3 roots">
     <div class="card"><span class="tbno">AR</span><h3>SketchAR：降低「畫不像」的門檻</h3><ul class="mini-ul"><li>有些學生因為畫不像、技巧不足而挫折</li><li>希望降低進入美術創作的門檻</li><li>讓學生實際體驗擴增實境</li></ul><div class="sk-media"><video class="sk-vid" src="img/sketchar.mp4" poster="img/sketchar-poster.jpg" controls preload="none" playsinline aria-label="SketchAR 課堂紀錄短片"></video><div class="sk-ph"><img src="img/sketchar-1.jpg" alt="手機架在畫紙上方，SketchAR 把線稿疊在紙上，學生照著描繪植物" loading="lazy" width="1200" height="676"><img src="img/sketchar-3.jpg" alt="學生一手拿手機看 SketchAR 疊圖，一手在紙上畫人像" loading="lazy" width="1200" height="676"><img src="img/sketchar-2.jpg" alt="用 SketchAR 描繪後再上水彩的植物速寫作品" loading="lazy" width="1200" height="676"></div></div></div>
     <div class="card"><span class="tbno">VR</span><h3>Google Expeditions：鑑賞不只停在課本</h3><ul class="mini-ul"><li>希望學生對藝術鑑賞更有興趣</li><li>不只看課本圖片、聽老師說</li><li>體驗不同的藝術空間與文化場域</li></ul><div class="sk-media"><div class="sk-ph sk-big"><img src="img/vr-5.jpg" alt="美術教室裡全班學生拿著紙盒 VR 眼鏡觀看（臉部已模糊）" loading="lazy" width="1200" height="675"></div><div class="sk-ph sk-4"><img src="img/vr-2.jpg" alt="學生戴紙盒 VR 抬頭看萬神殿，投影幕上也是萬神殿（臉部已模糊）" loading="lazy" width="960" height="540"><img src="img/vr-1.jpg" alt="學生用手機掃描學習單上的 QR code 進入 VR 場景" loading="lazy" width="960" height="540"><img src="img/vr-3.jpg" alt="手機顯示古代浮雕的 VR 畫面，放在 QR code 學習單上" loading="lazy" width="528" height="960"><img class="sk-fit" src="img/vr-4.jpg" alt="紙盒 VR 眼鏡（Google Cardboard）" loading="lazy" width="1200" height="1055"></div></div></div>
-    <div class="card"><span class="tbno">平板</span><h3>借平板、找平板車、接上學習平台</h3><ul class="mini-ul"><li>向教務處借用平板</li><li>尋找合適的設備與平板車</li><li>把數位學習平台帶進課堂</li></ul>${todo("平板、平板車或課堂使用照片")}</div>
+    <div class="card"><span class="tbno">平板</span><h3>借平板、接上學習平台</h3><ul class="mini-ul"><li>向教務處借用平板</li><li>在平板上鑑賞與繪圖</li><li>把數位學習平台帶進課堂</li></ul><div class="sk-media"><div class="sk-ph sk-big"><img src="img/tablet-1.jpg" alt="學生在平板上用 Google Arts &amp; Culture 看藝術作品（螢幕上的人像已模糊）" loading="lazy" width="1200" height="675"></div><div class="sk-ph sk-2"><img src="img/tablet-2.jpg" alt="學生用觸控筆在平板上畫服裝設計草圖" loading="lazy" width="1200" height="675"><img src="img/tablet-3.jpg" alt="學生在平板繪圖 App 裡為人物畫上服裝與花紋" loading="lazy" width="1200" height="675"></div></div></div>
   </div>
   <div class="fourth"><span class="note">這一頁的結論</span><h3>我不是因為有了科技才改變教學，而是因為想改變教學，所以開始尋找科技。</h3></div>
   <div class="sec">從數位教學走向生成式 AI</div>
@@ -1397,7 +1397,7 @@ V.roots = ()=>`${head("","在 AI 出現之前，我就已經開始改變教學",
   <div class="grid g4 tvids">${TVIDS.map(([id,y,t,d])=>`<figure class="tvid">${ytl(id,y+" "+t)}<figcaption><span class="num">${y}</span><b>${t}</b>${d?`<small class="note">${d}</small>`:""}</figcaption></figure>`).join("")}</div>
   <p class="note" style="margin-top:8px">114 年高一美術課的影片在封面。影片來自講者的 YouTube 頻道，點縮圖才會載入播放。</p>`;
 const ROOTS_TL = [
-  ["108 學年度起","AR、VR、平板與數位學習平台","SketchAR、Google Expeditions、借平板與平板車，逐步把數位設備帶進課堂。","講者自述（照片待補）"],
+  ["108 學年度起","AR、VR、平板與數位學習平台","SketchAR、Google Expeditions、借平板，逐步把數位設備帶進課堂。","講者自述與課堂照片"],
   ["109 年","美術學科中心教案〈時代之窗〉","「數位新浪潮」單元：用 Google Arts & Culture 找有 AR 功能的作品「與名畫合影」，用 Tour Creator 製作 VR 導覽（該服務 2021 年 6 月停止）。","2021-11-22 高中美術學科中心 ICT 融入教學研習簡報（曾國正、鄭伊璟）"],
   ["109 年","科技輔助自主學習教學模式優良教學師選拔","數位教學特色組第二名（屏北高中）。","講者 YouTube 頻道影片標題"],
   ["2022–2024","教育部高級中等學校數位教學輔導團委員","持續探索數位教材、互動式學習與科技融入美術教學。","2024-08-26 講座簡報經歷欄"],

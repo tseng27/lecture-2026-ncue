@@ -784,7 +784,7 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
   <div class="sec">從教學、創作到實踐</div>
   <div class="chips"><span class="chip">AI 教學觀察所｜藝術教育研究與實踐</span><span class="chip">AI 藝術與跨媒材創作</span><span class="chip">ELARA 虛擬女團創作計畫</span><span class="chip">數位教材與創作平台開發</span></div>
   <div class="about-quote">
-    <span class="eyebrow" style="margin:0"><span class="tag y">T04</span>我的美好人生</span>
+    <span class="eyebrow" style="margin:0"><span class="tag y">教學案例</span>我的美好人生</span>
     <p class="about-quote-k"><span>你的人生，就是你的藝術品</span></p>
     <p class="about-quote-b">藝術不只存在於完成的作品，也存在於我們如何觀察生活、理解自己、做出選擇。AI 擴充了表達的可能，人的經驗與判斷仍是創作的核心。</p>
   </div>
@@ -829,7 +829,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   </div>
   <div class="sec">浪潮的速度：AI 公司的人怎麼說</div>
   <div class="card">
-    <span class="eyebrow" style="margin:0"><span class="tag n">R004</span>Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
+    <span class="eyebrow" style="margin:0"><span class="tag n">業界觀點</span>出處：Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
     <h3>〈Superintelligence is Arriving〉超級智慧即將到來</h3>
     <p>他寫道：「We should not be okay with a 'handover' of society to AI.」我們不該接受把社會「移交」給 AI。</p>
     <p class="note">這是 AI 公司主管的個人觀點，不是研究結論。對老師的意義：下一代是「駕馭 AI」還是「被 AI 接管」，教室是第一道關口。</p>
@@ -858,14 +858,14 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
 V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","這兩項外部研究是提問框架，不是本人美術課已證實的成效，也不代表「全世界都已如此」。",'<span class="tag r">主題 02</span>')}
   <div class="grid g2">
     <div class="card" style="display:grid;gap:8px;align-content:start">
-      <span class="eyebrow" style="margin:0"><span class="tag n">R001</span>UNESCO（2024）</span>
+      <span class="eyebrow" style="margin:0"><span class="tag n">國際框架</span>出處：UNESCO（2024）</span>
       <h3>學生與教師的 AI 能力框架</h3>
       <p>以人本思維、倫理、AI 基礎與應用、教學與教師專業學習來定位能力發展。</p>
       <p class="note">這是官方能力框架，不能當作某個工具有效的證明。</p>
       <div class="links">${lk(CONFIG.links.unesco)}</div>
     </div>
     <div class="card" style="display:grid;gap:8px;align-content:start">
-      <span class="eyebrow" style="margin:0"><span class="tag n">R002</span>Bastani 等（2025）</span>
+      <span class="eyebrow" style="margin:0"><span class="tag n">研究論文</span>出處：Bastani 等（2025）</span>
       <h3>沒有護欄的生成式 AI，可能傷害學習</h3>
       <p>高中數學研究：無適當護欄的生成式 AI 可能損害之後的獨立表現。</p>
       <p class="note">研究情境是數學不是美術，不直接外推效應量。</p>
@@ -873,12 +873,12 @@ V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","�
     </div>
   </div>
   <div class="card" style="margin-top:22px;display:grid;gap:8px;align-content:start">
-    <span class="eyebrow" style="margin:0"><span class="tag n">R003</span>Facebook 貼文（講者提供）</span>
+    <span class="eyebrow" style="margin:0"><span class="tag n">補充資料</span>出處：Facebook 貼文（講者提供）</span>
     <p class="note">講者提供的補充連結，內容以原貼文為準。不是本課程成效的證明，也不與上方兩項研究並列為已查核資料。</p>
     <div class="links">${lk(CONFIG.links.r003)}</div>
   </div>
   <div class="card" style="display:grid;gap:8px;align-content:start;margin-top:22px">
-    <span class="eyebrow" style="margin:0"><span class="tag n">R005</span>教育部（臺灣）AI 人才方舟計畫</span>
+    <span class="eyebrow" style="margin:0"><span class="tag n">臺灣官方文件</span>出處：教育部 AI 人才方舟計畫</span>
     <h3>臺灣的官方文件：素養框架、教學指引與教案示例</h3>
     <div class="chips">${["臺灣中小學教師與學生 AI 素養框架","中小學教師數位與 AI 教學指引","教案示例（國小／國中／普高／技高）","中小學使用生成式人工智慧注意事項 2.1","中小學 AI 之學習應用手冊"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
     <p class="note">從世界回到臺灣：這些是準教師進入教育現場會用到的官方文件，可在資料下載頁取得。</p>
@@ -928,7 +928,7 @@ const STEPS11 = [
   ["動態作品","分鏡、素材、節奏、剪輯","分鏡與版本","鏡頭服務敘事；設備不足就用靜態影像"],
   ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
 ];
-V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例 T01</span><span>講座 14 分鐘</span>')}
+V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例</span><span>講座 14 分鐘</span>')}
   <div class="tabs" role="tablist">${[["flow","十一步流程"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
   <div id="sbox"></div>`;
 
@@ -974,7 +974,7 @@ V.cases = ()=>`${head("","教學案例","完整課程資料庫","已實施、正
   <div class="detail" id="cdetail" hidden></div>
   <p class="note" style="margin-top:14px">每個案例缺圖時以文字狀態卡呈現，不用生成圖取代真實成果。案例編號沿用資料庫，未標編號者待對照。</p>`;
 
-V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與配分","把課堂中的原始回答、比較、修正與反思留下來，學生完成學習的同時，也逐步形成可展示的成果。",'<span class="tag r">教學</span><span>G05・G10・T01</span>')}
+V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與配分","把課堂中的原始回答、比較、修正與反思留下來，學生完成學習的同時，也逐步形成可展示的成果。",'<span class="tag r">教學</span>')}
   <div class="sec">一份資料，多次累積</div>
   <div class="seven" style="grid-template-columns:repeat(4,minmax(0,1fr))">${[["原始感受與草圖","var(--red)"],["AI 協助與版本比較","var(--yellow)"],["選擇理由","var(--navy)"],["作品說明與反思","var(--ink)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">成果檔不是下課後重新抄寫一次。</p>
@@ -996,7 +996,7 @@ V.lab = ()=>`${head("","AI 教學實驗室","自建教材與工具","從教學�
     <div class="card"><span class="tbno">03</span><h3>NotebookLM 備課</h3><p>把課本、講義、文章放進同一個筆記本，請它整理重點、找出處、產生提問與學習單草稿。</p><p class="note">重點：回答都要能回到來源；學生要學的判斷仍由老師設計。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.notebooklm)}</div></div>
   </div>
   <div class="sec">自建工具</div>
-  <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">${t.id||"—"}</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
+  <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">自建工具</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
   <div class="sec">每張工具卡固定記錄</div>
   <div class="chips">${["原問題","開發動機","介面","操作流程","教學用途","證據","限制","下一步"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
@@ -1096,7 +1096,7 @@ const MIA_FLOW = [
   ["版本紀錄","記下每一版的長度、鏡數與差異，比較之後再決定定稿。"]
 ];
 const MEMBERS = [["HANA","黑色中分長直髮","#2B2B33"],["MIA","栗棕色下巴短鮑伯","#8A5A3C"],["ZOE","粉紅長直髮、空氣瀏海","#D9668A"],["LENA","白金側分長直髮，右眼下小痣","#B9A77A"],["CHLOE","黑色長波浪、側分","#3B3350"]];
-V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色、歌曲、影像與敘事整合成可持續發展的創作世界。跨領域的核心，是在每個環節做出一致而有理由的選擇。",'<span class="tag n">創作</span><span>E01–E06</span>')}
+V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色、歌曲、影像與敘事整合成可持續發展的創作世界。跨領域的核心，是在每個環節做出一致而有理由的選擇。",'<span class="tag n">創作</span>')}
   <div class="members">${MEMBERS.map(m=>`<div class="mem"><a class="memimg" href="img/elara-${m[0].toLowerCase()}.jpg" target="_blank" rel="noopener" aria-label="${m[0]} 官方形象圖（開新分頁看大圖）"><img src="img/elara-${m[0].toLowerCase()}.jpg" alt="ELARA ${m[0]} 官方形象圖" loading="lazy"></a><div class="bd"><b>${m[0]}</b><p>${m[1]}</p><span class="st ok">官方形象圖</span></div></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">當前官方圖是角色的依據（Identity Anchor），不重新設計、不用生成圖替代。LENA 的痣在右眼下，不可鏡像。</p>
   <div class="sec">單曲狀態</div>
@@ -1121,7 +1121,7 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <div class="works">${work("HANA《我醒在世界之前》MV","影片檔或公開連結待補",0,"影片待補")}${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
   <div class="links" style="margin-top:16px">${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
 
-V.workflow = ()=>`${head("","工作流程","跨 AI 協作與創作平台","從一次問答走向可以接續的專案，需要清楚的來源、設定、版本、驗收結果與下一步。",'<span class="tag n">創作</span><span>G09・J01</span>')}
+V.workflow = ()=>`${head("","工作流程","跨 AI 協作與創作平台","從一次問答走向可以接續的專案，需要清楚的來源、設定、版本、驗收結果與下一步。",'<span class="tag n">創作</span>')}
   <div class="seven" style="grid-template-columns:repeat(6,minmax(0,1fr))">${[["定義需求","var(--red)"],["整理資料","var(--yellow)"],["製作內容","var(--navy)"],["實作","var(--ink)"],["檢查","var(--red)"],["記錄","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">每一步留下可閱讀的產出，避免只靠對話記憶。</p>
   <div class="grid g3" style="margin-top:20px">
@@ -1227,9 +1227,9 @@ M.sensory = (opt)=>{
 M.cases = (opt)=>{
   let g="全部", s="all";
   const show=id=>{const c=CASES.find(x=>(x.id||x.t)===id);const box=$("#cdetail");if(!c){box.hidden=true;return}
-    box.hidden=false;box.innerHTML=`<span class="eyebrow" style="margin:0">${c.id?`<span class="tag r">${c.id}</span>`:""}${esc(c.g)}</span><h3>${esc(c.t)}</h3><dl><dt>內容</dt><dd>${esc(c.d)}</dd><dt>狀態</dt><dd>${st(c.st)}</dd><dt>證據與限制</dt><dd>${esc(c.ev)}</dd><dt>媒體</dt><dd><span class="note">代表圖待補（去識別、授權確認後放入）</span></dd></dl>${c.go?`<div class="links"><button class="lk" type="button" data-view="${c.go}">打開完整案例 →</button></div>`:""}`;
+    box.hidden=false;box.innerHTML=`<span class="eyebrow" style="margin:0"><span class="tag r">教學案例</span>${esc(c.g)}</span><h3>${esc(c.t)}</h3><dl><dt>內容</dt><dd>${esc(c.d)}</dd><dt>狀態</dt><dd>${st(c.st)}</dd><dt>證據與限制</dt><dd>${esc(c.ev)}</dd><dt>媒體</dt><dd><span class="note">代表圖待補（去識別、授權確認後放入）</span></dd></dl>${c.go?`<div class="links"><button class="lk" type="button" data-view="${c.go}">打開完整案例 →</button></div>`:""}`;
     $$(".ccard").forEach(b=>b.setAttribute("aria-pressed",b.dataset.cid===id));};
-  const draw=()=>{$("#cgrid").innerHTML=CASES.filter(c=>(g==="全部"||c.g===g)&&(s==="all"||c.st===s)).map(c=>`<button class="ccard" type="button" data-cid="${esc(c.id||c.t)}"><span class="top"><span class="id">${c.id||"—"}・${esc(c.g)}</span>${st(c.st)}</span><b>${esc(c.t)}</b><p>${esc(c.d)}</p></button>`).join("")||'<p class="note">沒有符合條件的案例。</p>';
+  const draw=()=>{$("#cgrid").innerHTML=CASES.filter(c=>(g==="全部"||c.g===g)&&(s==="all"||c.st===s)).map(c=>`<button class="ccard" type="button" data-cid="${esc(c.id||c.t)}"><span class="top"><span class="id">${esc(c.g)}</span>${st(c.st)}</span><b>${esc(c.t)}</b><p>${esc(c.d)}</p></button>`).join("")||'<p class="note">沒有符合條件的案例。</p>';
     $$(".ccard").forEach(b=>b.addEventListener("click",()=>show(b.dataset.cid)))};
   $$("[data-fg]").forEach(b=>b.addEventListener("click",()=>{g=b.dataset.fg;$$("[data-fg]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));
   $$("[data-fs]").forEach(b=>b.addEventListener("click",()=>{s=b.dataset.fs;$$("[data-fs]").forEach(x=>x.setAttribute("aria-pressed",x===b));draw()}));

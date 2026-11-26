@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 01:35 主題 02 加英國案例（Claude）
+- 新增英國倫敦 David Game College（2024-09 沒有授課老師、用 AI 與 VR 學 GCSE 的小班）卡片，來源 CONFIG.links.ukDavidGame。各國卡片共 6 張。
+- 修正導言重複的句子。時間不變。
+
 ## 2026-11-27 01:30 主題 02 導言與各國案例（Claude）
 - 導言原本是免責句（講者覺得怪），改成概述本頁內容。
 - 新增「各國怎麼把 AI 帶進學校」五張卡：美國 Alpha School、南韓 AI 數位教科書（2025-08 降為教育資料）、愛沙尼亞 AI Leap、北京中小學每學年至少 8 課時、阿聯 K–12 AI 課程。每張附來源連結（CONFIG.links alphaSchool/koreaAiText/estoniaLeap/beijingAi/uaeAi）。時間不變。

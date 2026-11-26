@@ -715,6 +715,8 @@ const CONFIG = {
     estoniaLeap:{ label:"愛沙尼亞教育部：AI Leap 計畫", url:"https://hm.ee/en/news/estonia-announces-groundbreaking-national-initiative-ai-leap-programme-bring-ai-tools-all" },
     beijingAi:{ label:"China Daily：北京中小學 AI 教育（2025-10）", url:"https://www.chinadaily.com.cn/a/202510/21/WS68f6d9bea310f735438b601e.html" },
     uaeAi:{ label:"WAM：阿聯公立學校 AI 課程（2025–2026 學年）", url:"https://www.wam.ae/en/article/bji6z2n-ministry-education-introduces-curriculum-public" },
+    paWorksheet:{ label:"校園公共藝術設計構想學習單（數位版）", url:"https://tseng27.github.io/ai-teaching-observatory/public-art-worksheet/" },
+    portfolioWorksheet:{ label:"課程學習成果檔案學習單（數位版）", url:"https://tseng27.github.io/ai-teaching-observatory/portfolio-worksheet/" },
     cameraSim:{ label:"相機模擬器 CameraSim", url:"https://www.camerasim.com/" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
     govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
@@ -1208,6 +1210,7 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
   <div class="sec">自學中心與數位學習單：做到哪裡</div>
   <div class="tbl"><table><thead><tr><th>功能</th><th>狀態</th></tr></thead><tbody>${[["AI 自學中心（離線攝影版）","wip","部分可用・待測"],["數位學習單","wip","部分可用・待測"],["保留原始回答及修正內容","wip","部分可用・待測"],["AI 協助改善學生回答","wip","部分可用・待測"],["學習成果 PDF 輸出","chk","待驗證"],["學校 Google 帳號登入","chk","開發中・待驗證"],["教師端學習進度與紀錄","chk","開發中・待驗證"],["形成性評量嵌入各階段","sug","建議做法"]].map(([a,c,b])=>`<tr><td>${a}</td><td><span class="st ${c}">${b}</span></td></tr>`).join("")}</tbody></table></div>
   <p class="note" style="margin-top:8px">標「待驗證」的功能，講座上只說是開發方向，不說成已完成。</p>
+  <div class="links" style="margin-top:10px">${lk(CONFIG.links.portfolioWorksheet)}${lk(CONFIG.links.paWorksheet)}</div>
   <div class="sec">師培生體驗：從學生的角度走一次 <span class="st sug">時間不足改示範</span></div>
   <ol class="qlist">${["提出自己的教學構想","使用 AI 協助分析或改善","比較原始構想與 AI 建議","自己決定採納或修改的內容","完成反思","輸出學習成果 PDF"].map(q=>`<li>${q}</li>`).join("")}</ol>
   <div class="sec">現行配分 <span class="st ok">既有規定</span></div>
@@ -1458,6 +1461,11 @@ V.publicart = ()=>`${head("","案例二：校園公共藝術設計","學生的�
   <div class="grid g4"><div class="card"><span class="note">1 校園照片</span><ol class="mini-ul" style="padding-left:1.2em;margin-top:6px"><li>你為什麼選擇這個地方？它有什麼特別之處？</li><li>你認為這裡適合設置公共藝術嗎？為什麼？</li><li>你希望加入公共藝術後，這個地方有什麼改變？</li></ol></div><div class="card"><span class="note">2 設計草圖</span><ol class="mini-ul" style="padding-left:1.2em;margin-top:6px"><li>你想設計什麼樣的公共藝術？當時為什麼決定採用這個造形？</li><li>你喜歡什麼樣的藝術風格（抽象、寫實、可愛、簡約、奇幻）？草圖如何表現這種風格？</li><li>你最喜歡草圖中的哪個部分？為什麼？</li></ol></div><div class="card"><span class="note">3 構想學習單</span><ol class="mini-ul" style="padding-left:1.2em;margin-top:6px"><li>你的作品想表達什麼想法？希望大家看到時有什麼感受？</li><li>為什麼選擇這些造形、色彩與材料？它們如何表達你的想法？</li><li>你的作品和所選的校園環境有什麼關係？</li></ol></div><div class="card"><span class="note">4 AI 模擬圖</span><ol class="mini-ul" style="padding-left:1.2em;margin-top:6px"><li>AI 模擬圖和你的原始草圖有哪些相同與不同？</li><li>你為什麼選擇這張 AI 模擬圖？哪些地方最符合你的美感喜好？</li><li>如果可以再修改一次，你想調整什麼？為什麼？</li></ol></div></div>
   <div class="card" style="margin-top:14px"><span class="note">教師回饋的樣子</span><p style="margin-top:6px">「能從生態池的錦鯉發想『錦鯉門』，取材有觀察力，五個階段都完成了，很好！文字說明比較簡短，下次可以多說明『寓意好』具體是什麼意思，讓作品更有說服力。」</p><p class="note">先肯定學生自己的觀察，再指出下一步要補的理由。</p></div>
   <p class="note" style="margin-top:6px">出處：講者 115 學期「校園公共藝術」Padlet。學生依「校園照片 → 設計草圖 → 構想學習單 → AI 模擬圖 → 學習歷程檔案」逐欄繳交；Padlet 有學生姓名，不公開連結。</p>
+  <div class="sec">設計構想學習單</div>
+  <div class="grid g2">
+    <figure class="stages-fig" style="margin:0"><img src="img/public-art-worksheet.jpg" alt="校園公共藝術設計構想學習單範例：設計基本資料、手繪草圖（局部細節、不同角度、與環境關係）、作品設定、創作理念與 AI 模擬前檢核" loading="lazy" width="869" height="1228"><figcaption class="note">學習單範例（班級、座號、姓名已遮蔽）。</figcaption></figure>
+    <div class="card" style="display:grid;gap:10px;align-content:start"><h3>先手繪、先想清楚，再交給 AI</h3><p>學習單分五塊：設計基本資料、手繪草圖（局部細節、不同角度、與環境關係）、作品設定（材質、尺寸、色彩、形式、想給觀者的感受）、創作理念，最後是「AI 模擬前檢核」。</p><p>五項都打勾，才進入 AI 擬真模擬：地點選好了、草圖畫好了、寫出關鍵字、想過材質與尺寸、能說清楚創作理念。</p><div class="links">${lk(CONFIG.links.paWorksheet)}</div></div>
+  </div>
   <div class="sec">一組作品的前後對照</div>
   <div class="grid g3">${todo("學生選擇的校園場域照片")}${todo("學生手繪草圖")}${todo("AI 場域模擬圖與學生的比較說明")}</div>
   <p class="note" style="margin-top:8px">學生作品需確認授權與去識別化後才放上網站。</p>
@@ -1713,7 +1721,7 @@ function updateBar(){
 
 /* ===== events ===== */
 /* 滑鼠移過照片放大預覽（封面、關於我）；觸控裝置點一下開、再點關 */
-const ZOOM_SEL=".c-main img,.about-thumb img,.about-book img,.about-pola img,.sk-ph img,.sk-big img";
+const ZOOM_SEL=".c-main img,.about-thumb img,.about-book img,.about-pola img,.sk-ph img,.sk-big img,.stages-fig img";
 const zp=document.createElement("div");zp.id="zoomPrev";zp.hidden=true;zp.innerHTML='<img alt="">';document.body.appendChild(zp);
 const zShow=img=>{const z=zp.querySelector("img");z.src=img.currentSrc||img.src;z.alt=img.alt;zp.hidden=false;requestAnimationFrame(()=>zp.classList.add("on"))};
 const zHide=()=>{zp.classList.remove("on");zp.hidden=true};

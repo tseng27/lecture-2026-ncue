@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 02:05 學習單範例與數位學習單連結（Claude）
+- 公共藝術頁新增「設計構想學習單」：範例圖 img/public-art-worksheet.jpg（班級、座號、姓名已模糊）＋說明＋連結 CONFIG.links.paWorksheet。
+- 學習歷程頁加入兩個數位學習單連結（portfolioWorksheet、paWorksheet）。.stages-fig 圖片可滑鼠放大。時間不變。
+
 ## 2026-11-27 02:00 公共藝術頁加入 115 Padlet 的階段提問（Claude）
 - 講者提供 114-2 與 115「校園公共藝術」Padlet（有學生姓名，不放連結）。加入「每個階段，學生回答三個問題」（校園照片／設計草圖／構想學習單／AI 模擬圖）與一則教師回饋範例（未具名）。
 - 雲端無法下載 Padlet 圖片（padletusercontent 403），前後對照三個待補框仍待講者提供圖片。時間不變。

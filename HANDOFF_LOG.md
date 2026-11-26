@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 09:00（Asia/Taipei）｜Claude
+- 任務：講者提供教育部「AI 人才方舟計畫－資料下載」https://pads.moe.edu.tw/download2.php 。
+- 改了什麼：CONFIG.links.moeAI；放在主題 01「三個準備」02 卡（附三份文件名稱）、「用 AI 備課」頁連結列、連結與來源表「政策」列。
+- 驗證：smoke-test PASS。
+- 是否已同步 artifact-source.html／已發布：是。
+
 ## 2026-11-26 08:55（Asia/Taipei）｜Claude
 - 任務：講者貼來另一個 AI 規劃的架構《當 AI 三秒給出答案，未來老師的價值在第四秒》，指定放進主題 01。
 - 改了什麼：V.s01 原有投票與三張卡保留，下方新增：核心命題、汪滔〈Superintelligence is Arriving〉（2026-11-22 X，已核對標題與「handover」原句；R003，CONFIG.links.wangEssay／wangNews）、角色重塑與五件不能外包、第四秒、準教師三個準備、「抓包 AI」現場互動。01 時間 5→10 分鐘（講者自行控時），總長 110 版 123、120 版 128→133。

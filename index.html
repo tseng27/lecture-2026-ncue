@@ -598,6 +598,7 @@ const CONFIG = {
     notebooklm:  { label:"NotebookLM 備課步驟", url:"" },
     wangEssay:{ label:"原文：Alexandr Wang〈Superintelligence is Arriving〉（X）", url:"https://x.com/alexandr_wang/status/2124636606959345776" },
     wangNews: { label:"報導：Daily Caller（2026-11-23）", url:"https://dailycaller.com/2026/11/23/alexandr-wang-meta-superintelligence-handover-ai/" },
+    moeAI:    { label:"教育部 AI 人才方舟計畫：資料下載", url:"https://pads.moe.edu.tw/download2.php" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
@@ -848,7 +849,7 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
   <div class="sec">給準教師：現在就能開始的三個準備</div>
   <div class="grid g3 toolbox">
     <div class="card"><span class="tbno">01</span><h3>練習人機協作</h3><p>把 AI 當家教與備課助教，而不只是寫報告的工具；親自碰過它的極限與幻覺，以後才知道怎麼帶學生避開。</p></div>
-    <div class="card"><span class="tbno">02</span><h3>跨領域與數位素養</h3><p>把生成式 AI、多模態創作等工具，自然地放進自己的專長學科，而不是另外開一門「AI 課」。</p></div>
+    <div class="card"><span class="tbno">02</span><h3>跨領域與數位素養</h3><p>把生成式 AI、多模態創作等工具，自然地放進自己的專長學科，而不是另外開一門「AI 課」。</p><p class="note">教育部已公布〈臺灣中小學教師與學生 AI 素養框架〉、〈中小學教師數位與 AI 教學指引〉與各學習階段教案示例、〈中小學使用生成式人工智慧注意事項 2.1〉。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.moeAI)}</div></div>
     <div class="card"><span class="tbno">03</span><h3>練習提問</h3><p>對 AI 追問、反駁、要它給出處。這份提問力，就是未來帶課堂討論的能力。</p></div>
   </div>
   <div class="sec">現場互動：抓包 AI</div>
@@ -1020,7 +1021,7 @@ V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人�
     <div class="card"><h3>紀錄可交接</h3><p>把規則與進度寫下來，換工具、換人都能接著做。</p></div>
     <div class="card"><h3>驗收</h3><p>AI 說「完成了」不算數；老師親自看過、試過才算。</p></div>
   </div>
-  <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.claudeKit)}${lk(CONFIG.links.geminiCanvas)}${lk(CONFIG.links.notebooklm)}</div>`;
+  <div class="links" style="margin-top:18px">${lk(CONFIG.links.moeAI)}${lk(CONFIG.links.github)}${lk(CONFIG.links.claudeKit)}${lk(CONFIG.links.geminiCanvas)}${lk(CONFIG.links.notebooklm)}</div>`;
 
 /* 主題 03：系列、作品、年代與圖片皆取自講者作品集網站 /series/ 與各作品頁（2026-11-25 讀取）。圖片直接連到作品集網站。 */
 const PORT = "https://tseng-kuo-cheng-art.tseng27.chatgpt.site";
@@ -1159,6 +1160,7 @@ V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能�
     <tr><td>ELARA</td><td>${lk(CONFIG.links.elara)}</td><td><span class="st ok">頁面已查核</span></td></tr>
     <tr><td>其他</td><td>${lk(CONFIG.links.instagram)} ${lk(CONFIG.links.youtube)}</td><td><span class="st chk">網址已填，頁面未逐一查核</span></td></tr>
     <tr><td>研究</td><td>${lk(CONFIG.links.unesco)}</td><td><span class="st ok">外部參照</span></td></tr>
+    <tr><td>政策</td><td>${lk(CONFIG.links.moeAI)}</td><td><span class="st ok">外部參照（2026-11-26 讀取）</span></td></tr>
     <tr><td>研究</td><td>${lk(CONFIG.links.bastani)}</td><td><span class="st ok">外部參照（數學情境）</span></td></tr>
   </tbody></table></div>
   <div class="sec">網站內容的標記方式</div>

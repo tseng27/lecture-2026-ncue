@@ -894,12 +894,15 @@ const AIJ_CATS = [
 const AIJ_SHIFTS = [["從使用 AI <b>取得答案</b>","到使用 AI <b>拓展思考</b>"],["從使用 AI <b>生成作品</b>","到使用 AI <b>實現創作理念</b>"],["從使用 AI <b>製作教材</b>","到使用 AI <b>重新設計學習</b>"],["從使用<b>現成的 AI 工具</b>","到<b>開發自己需要的教學工具</b>"],["從<b>單一 AI 的操作</b>","到<b>多 AI 協作與工作流程自動化</b>"]];
 const TOOLS = [
   { id:"G05", st:"wip", s:"部分可用・待測", t:"AI 自學中心", d:"學生依任務自學並保存輸入、比較與輸出。", ev:"離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步尚待現版測試。" },
-  { id:"", st:"chk", s:"待核", t:"學習歷程網頁", d:"保留原始回答、比較、修正與反思。", ev:"離線版與雲端版分開，不能互相推定功能。" },
-  { id:"", st:"chk", s:"待找原檔", t:"歐元建築立體書", d:"可翻頁、彈出的互動建築立體書。", ev:"有簡報線索，原專案位置待確認。" },
+  { id:"", st:"chk", s:"待核", t:"學習歷程網頁", d:"保留原始回答、比較、修正與反思。", ev:"離線版與雲端版分開，不能互相推定功能。", links:[["課程學習成果小幫手","https://claude.ai/artifact/Qqq9yufVpLh5D8tkzYHVg3"]] },
+  { id:"", st:"ok", s:"有成品", t:"歐元建築立體書", d:"可翻頁、彈出的互動建築立體書。", ev:"有兩個版本：歐元上的建築、自建模型版。", links:[["歐元上的建築","https://claude.ai/artifact/ADKj8txRxCPFeGJbsPfzQ3"],["自建模型版","https://claude.ai/artifact/WPRs93aezht9BAHzvcrE7W"]] },
+  { id:"", st:"ok", s:"有成品", t:"單眼相機練習場", d:"在網頁上練習光圈、快門、ISO 的操作。", ev:"自建練習頁；課堂案例另用 CameraSim。", links:[["單眼相機練習場","https://claude.ai/artifact/M8Wo1nabKWWYPZbdaruCHS"]] },
+  { id:"", st:"ok", s:"有成品", t:"速寫植物圖鑑", d:"植物速寫的觀察與記錄。", ev:"另有「速寫玫瑰」「玫瑰生長文法」。", links:[["速寫植物圖鑑","https://claude.ai/artifact/RAHTaHiu4KkAgMgNdUM8rU"],["速寫玫瑰","https://claude.ai/artifact/KfztvAUoXszcCR8aJ8R9VD"]] },
+  { id:"", st:"ok", s:"有成品", t:"愛與思考的世界 自主學習", d:"學生依任務自主學習的網站。", ev:"另有教師版文件。", links:[["愛與思考的世界","https://claude.ai/artifact/HhmsVzq1mrVactKUZaB1qX"]] },
   { id:"", st:"chk", s:"待找原檔", t:"BrandLab AI", d:"品牌設計輔助工具。", ev:"未找到原檔，保留條目。" },
   { id:"", st:"chk", s:"待找原檔", t:"繪畫歷程記錄", d:"記錄繪畫過程的工具。", ev:"未找到原檔，保留條目。" },
   { id:"", st:"chk", s:"待找原檔", t:"地景互動", d:"地景主題的互動教材。", ev:"未找到原檔，保留條目。" },
-  { id:"", st:"chk", s:"待核", t:"VR 平台", d:"VR 策展與空間展示平台。", ev:"功能待驗證。" },
+  { id:"", st:"ok", s:"有成品", t:"VR 平台", d:"360° 校園導覽與虛擬展覽空間。", ev:"校園導覽與虛擬展覽兩個實例。", links:[["屏北 360 校園導覽","https://claude.ai/artifact/4M3EdsMnMeiASxWnSvSJ9c"],["灰燼之後，方舟 360° 導覽","https://claude.ai/artifact/ViNLS81XGduji8n7L41C8j"]] },
   { id:"", st:"plan", s:"原型", t:"FRAMEFLOW 工作台", d:"MV 製作工作台：分鏡、素材、版本。", ev:"有介面與流程原型；文字顯示生成服務尚未設定，不是全自動製作系統。" }
 ];
 
@@ -1263,7 +1266,7 @@ V.lab = ()=>`${head("","我的 AI 教學工具箱","依用途選工具","理解�
   <div class="fourth"><span class="note">重點</span><h3>真正重要的，不是我們會使用多少種 AI，而是能否運用 AI，實現過去想做卻無法完成的事情。</h3></div>
   </details>
   <div class="sec">自建工具</div>
-  <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">自建工具</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p></div>`).join("")}</div>
+  <div class="cgrid">${TOOLS.map(t=>`<div class="ccard"><div class="top"><span class="id">自建工具</span><span class="st ${t.st}">${t.s}</span></div><b>${t.t}</b><p>${t.d}</p><p class="note">${t.ev}</p>${t.links?`<div class="links" style="margin-top:6px">${t.links.map(([l,u])=>lk({label:l,url:u})).join("")}</div>`:""}</div>`).join("")}</div>
   <div class="sec">每張工具卡固定記錄</div>
   <div class="chips">${["原問題","開發動機","介面","操作流程","教學用途","證據","限制","下一步"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>

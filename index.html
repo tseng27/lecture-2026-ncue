@@ -546,6 +546,9 @@ body::before{background:var(--bg)}
 .steps5{grid-template-columns:repeat(5,minmax(0,1fr))}
 @media (max-width:900px){.steps5{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.steps5{grid-template-columns:1fr}}
+.fourth{margin-top:28px;padding:22px 24px;background:var(--ink);color:#fff}
+.fourth h3{font-size:clamp(22px,3vw,34px);line-height:1.3;margin:6px 0 0;color:#fff}
+.fourth .note{color:#f2d27a}
 </style>
 
 <header class="bar">
@@ -593,6 +596,8 @@ const CONFIG = {
     claudeKit:   { label:"Claude 製作的教材範例", url:"" },
     geminiCanvas:{ label:"Gemini Canvas 課程示範", url:"" },
     notebooklm:  { label:"NotebookLM 備課步驟", url:"" },
+    wangEssay:{ label:"原文：Alexandr Wang〈Superintelligence is Arriving〉（X）", url:"https://x.com/alexandr_wang/status/2124636606959345776" },
+    wangNews: { label:"報導：Daily Caller（2026-11-23）", url:"https://dailycaller.com/2026/11/23/alexandr-wang-meta-superintelligence-handover-ai/" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
@@ -646,7 +651,7 @@ const SEGS = [
 const STOPS = [
   { v:"cover",   s:0, m:1,  t:"開場", cue:"問候，說明今天兩條線：教學實踐與藝術創作。" },
   { v:"home",    s:0, m:4,  t:"關於我", cue:"三個身分；用《我的美好人生》帶出最後那句話。" },
-  { v:"s01",     s:0, m:5,  t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？" },
+  { v:"s01",     s:0, m:10, t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？接著帶出核心命題「第四秒」：汪滔長文→角色重塑與五件不能外包→第四秒→三個準備→抓包 AI。" },
   { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
   { v:"method",  s:1, m:8,  t:"05 不只是 AI 備課", cue:"七步學習與四個設計決定。" },
   { v:"sensory", s:1, m:4,  t:"感官轉譯｜觀看與理解", tab:"flow", cue:"投影鑑賞原稿：哪些句子是學生原本的？" },
@@ -816,7 +821,38 @@ V.s01 = ()=>`${head("01","AI 浪潮來襲","危機，還是轉機？","在談 AI
     <div class="card"><h3>為什麼想當老師？</h3><p>讓你走上教職的，是一位老師、一堂課，還是一件作品？</p></div>
     <div class="card"><h3>如何讓教學生涯不無聊？</h3><p>一份要做很多年的工作，靠什麼一直保有好奇與熱情？</p></div>
     <div class="card"><h3>技術與藝術史</h3><p>每一次新媒材出現，藝術都被迫重新回答「什麼是創作」。這一次，我們要回答什麼？</p></div>
-  </div>`;
+  </div>
+  <div class="fourth">
+    <span class="note">核心命題</span>
+    <h3>當 AI 三秒給出答案，未來老師的價值在第四秒</h3>
+  </div>
+  <div class="sec">浪潮的速度：AI 公司的人怎麼說</div>
+  <div class="card">
+    <span class="eyebrow" style="margin:0"><span class="tag n">R003</span>Alexandr Wang（汪滔），Meta 首席 AI 長，2026-11-22 發表於 X</span>
+    <h3>〈Superintelligence is Arriving〉超級智慧即將到來</h3>
+    <p>他寫道：「We should not be okay with a 'handover' of society to AI.」我們不該接受把社會「移交」給 AI。</p>
+    <p class="note">這是 AI 公司主管的個人觀點，不是研究結論。對老師的意義：下一代是「駕馭 AI」還是「被 AI 接管」，教室是第一道關口。</p>
+    <div class="links" style="margin-top:8px">${lk(CONFIG.links.wangEssay)}${lk(CONFIG.links.wangNews)}</div>
+  </div>
+  <div class="sec">角色重塑：從知識搬運工到學習設計師</div>
+  <div class="grid g2">
+    <div class="card"><h3>會被淘汰的是教學模式</h3><p>AI 不會取代老師，但會淘汰「只剩單向講課、出標準答案考卷」的教法。AI 可以幫忙寫教案初稿、出題、做摘要。</p></div>
+    <div class="card"><h3>刻意設計「學習坑洞」</h3><p>安排需要思辨、會產生認知衝突的任務，讓學生練習不盲信 AI：查證、比較、說出理由。</p></div>
+  </div>
+  <div class="chips" style="margin-top:14px"><span class="chip"><b>不能外包給 AI 的五件事</b></span>${["設定教學目標","理解學生脈絡","做出價值判斷","建立師生關係","承擔教育責任"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
+  <div class="sec">不可取代的溫度：第四秒</div>
+  <div class="grid g2">
+    <div class="card"><h3>看見困惑</h3><p>學生用 AI 三秒抄完答案，眼神卻還是茫然。老師在第四秒拉近椅子問：「你是從哪裡開始不懂的？」這份陪伴 AI 給不了。</p></div>
+    <div class="card"><h3>點燃火種</h3><p>AI 從過去的資料做預測；教育關心的是學生還沒成為的樣子。老師看得見學生自己沒發現的潛能，並在相處中示範正直與同理。</p></div>
+  </div>
+  <div class="sec">給準教師：現在就能開始的三個準備</div>
+  <div class="grid g3 toolbox">
+    <div class="card"><span class="tbno">01</span><h3>練習人機協作</h3><p>把 AI 當家教與備課助教，而不只是寫報告的工具；親自碰過它的極限與幻覺，以後才知道怎麼帶學生避開。</p></div>
+    <div class="card"><span class="tbno">02</span><h3>跨領域與數位素養</h3><p>把生成式 AI、多模態創作等工具，自然地放進自己的專長學科，而不是另外開一門「AI 課」。</p></div>
+    <div class="card"><span class="tbno">03</span><h3>練習提問</h3><p>對 AI 追問、反駁、要它給出處。這份提問力，就是未來帶課堂討論的能力。</p></div>
+  </div>
+  <div class="sec">現場互動：抓包 AI</div>
+  <div class="card"><h3>這段 AI 寫的內容，錯在哪裡？</h3><p>現場請 AI 寫一段看似完整的美術知識或教案，請大家找出錯誤或不合理的地方。找到的那一刻，就是老師專業判斷還是最後一道防線的證據。</p><p class="note">示範內容請講者事先準備並核對答案。</p></div>`;
 
 V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","這兩項外部研究是提問框架，不是本人美術課已證實的成效，也不代表「全世界都已如此」。",'<span class="tag r">主題 02</span>')}
   <div class="grid g2">

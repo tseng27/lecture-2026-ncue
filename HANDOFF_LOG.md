@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 08:55（Asia/Taipei）｜Claude
+- 任務：講者貼來另一個 AI 規劃的架構《當 AI 三秒給出答案，未來老師的價值在第四秒》，指定放進主題 01。
+- 改了什麼：V.s01 原有投票與三張卡保留，下方新增：核心命題、汪滔〈Superintelligence is Arriving〉（2026-11-22 X，已核對標題與「handover」原句；R003，CONFIG.links.wangEssay／wangNews）、角色重塑與五件不能外包、第四秒、準教師三個準備、「抓包 AI」現場互動。01 時間 5→10 分鐘（講者自行控時），總長 110 版 123、120 版 128→133。
+- 未採用：原稿「科技巨頭 2026–2035／學術界 2040–2060」時間預測查無出處，未放；原稿附的 Google 購物連結與未核對的部落格出處未放。
+- 驗證：smoke-test 13 項 PASS；#talk-03 截圖已看過。
+- 下一步建議：「抓包 AI」的示範內容需講者事先準備並核對答案。
+- 是否已同步 artifact-source.html／已發布：是，Artifact、GitHub main。
+
 ## 2026-11-26 06:45（Asia/Taipei）｜Claude
 - 任務：講者要一個獨立章節說明「如何用 AI 準備課程與製作教材」與「AI Agent 的概念」，且不刪減其他段落，時間由講者自行掌控。
 - 改了什麼：新增視圖 V.aiprep（#aiprep，講座模式 #talk-14，8 分鐘，接在 AI 教學實驗室之後）：備課五步（定目標→NotebookLM→Gemini Canvas→Claude→老師檢查）、聊天機器人 vs AI Agent、以本講座網站為 Agent 實例、老師要握住的三件事。加入 MENU 教學群組、EXPLORE_ORDER、TITLES。講座模式變 21 頁；上半場 48／52 分鐘，總長 110 版 118、120 版 128（按鈕名稱不變）。smoke-test 與文件同步更新。

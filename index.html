@@ -635,6 +635,12 @@ body::before{background:var(--bg)}
 .st-row2{grid-template-columns:240px 1fr}
 @media (max-width:760px){.st-row2{grid-template-columns:1fr}}
 .stages-fig figcaption{margin-top:6px}
+#zoomPrev{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(20,18,16,.55);pointer-events:none;opacity:0;transition:opacity .18s ease}
+#zoomPrev.on{opacity:1}
+#zoomPrev img{max-width:min(92vw,1100px);max-height:90vh;width:auto;height:auto;object-fit:contain;background:#fff;padding:10px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);transform:scale(.96);transition:transform .18s ease}
+#zoomPrev.on img{transform:scale(1)}
+.c-main img,.about-thumb img,.about-book img{cursor:zoom-in}
+@media (prefers-reduced-motion:reduce){#zoomPrev,#zoomPrev img{transition:none}}
 </style>
 
 <header class="bar">
@@ -1665,6 +1671,19 @@ function updateBar(){
 }
 
 /* ===== events ===== */
+/* 滑鼠移過照片放大預覽（封面、關於我）；觸控裝置點一下開、再點關 */
+const ZOOM_SEL=".c-main img,.about-thumb img,.about-book img,.about-pola img";
+const zp=document.createElement("div");zp.id="zoomPrev";zp.hidden=true;zp.innerHTML='<img alt="">';document.body.appendChild(zp);
+const zShow=img=>{const z=zp.querySelector("img");z.src=img.currentSrc||img.src;z.alt=img.alt;zp.hidden=false;requestAnimationFrame(()=>zp.classList.add("on"))};
+const zHide=()=>{zp.classList.remove("on");zp.hidden=true};
+const canHover=matchMedia("(hover:hover) and (pointer:fine)").matches;
+if(canHover){
+  document.addEventListener("mouseover",e=>{const im=e.target.closest&&e.target.closest(ZOOM_SEL);if(im)zShow(im)});
+  document.addEventListener("mouseout",e=>{const im=e.target.closest&&e.target.closest(ZOOM_SEL);if(im&&!(e.relatedTarget&&im.contains(e.relatedTarget)))zHide()});
+}else{
+  zp.style.pointerEvents="auto";zp.addEventListener("click",zHide);
+  document.addEventListener("click",e=>{const im=e.target.closest&&e.target.closest(".c-main img,.about-thumb img,.about-book img");if(im){e.preventDefault();zShow(im)}});
+}
 document.addEventListener("click",e=>{
   const ab=e.target.closest("[data-about]"); if(ab){ openAboutLb(+ab.dataset.about); return; }
   const t=e.target.closest("[data-stop],[data-view],[data-step],[data-mode],[data-start],[data-go],[data-len]"); if(!t) return;

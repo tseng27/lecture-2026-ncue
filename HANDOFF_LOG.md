@@ -2,6 +2,9 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 Claude：首頁照片滑鼠移過放大
+- 封面海報（.c-main img）、關於我的肖像縮圖、書封、AI 公仔照片：滑鼠移過時以全螢幕預覽層（#zoomPrev，pointer-events:none）放大，移開即關。觸控裝置改為點一下開、再點關（公仔照片仍用原本的點擊燈箱）。
+
 ## 2026-11-26 Claude：第 8 頁換上臺灣藝術鑑賞版 E→A 插圖
 - 講者依提示詞生成新插圖，存為 img/ai-teacher-stages-tw.jpg（1400×788）。原攝影版 img/ai-teacher-stages.jpg 保留在 repo，頁面不再引用。
 

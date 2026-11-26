@@ -1756,18 +1756,23 @@ buildStrip(); route(); tick();
 
 /* 講者私用：講座模式右下角的淡色小按鈕，點開後用裝置內建中文語音朗讀本頁講稿並計時。講稿在 speaker-notes.json，點開時才載入 */
 (()=>{let notes=null,q=[],on=false,t0=0,tk=null;const b=document.createElement("button");b.type="button";b.id="spkBtn";b.setAttribute("aria-label","講者練習");b.textContent="♪";
- const p=document.createElement("div");p.id="spkPanel";p.hidden=true;p.innerHTML='<button type="button" id="spkPlay">▶ 朗讀本頁</button><button type="button" id="spkStop">■</button><span id="spkClk">0:00</span><label><input type="checkbox" id="spkAuto"> 自動下一頁</label>';
+ const p=document.createElement("div");p.id="spkPanel";p.hidden=true;p.innerHTML='<button type="button" id="spkRec">▶ 錄音</button><button type="button" id="spkPlay">▶ 朗讀</button><button type="button" id="spkStop">■</button><span id="spkClk">0:00</span><label><input type="checkbox" id="spkAuto"> 自動下一頁</label>';
  document.body.append(b,p);const fm=x=>Math.floor(x/60)+":"+String(Math.floor(x%60)).padStart(2,"0");
  const idx=()=>{const m=location.hash.match(/^#talk-(\d+)$/);return m?+m[1]-1:-1};
  const vis=()=>{b.hidden=idx()<0;if(b.hidden){p.hidden=true;stop()}};vis();window.addEventListener("hashchange",()=>{if(on&&!auto)stop();vis()});
  let auto=false;
  const clk=()=>{const i=idx(),lim=i>=0?STOPS[i].m*60:0,e=on?(Date.now()-t0)/1000:0;document.getElementById("spkClk").textContent=fm(e)+" / "+fm(lim)};
- function stop(){on=false;auto=false;if("speechSynthesis" in window)speechSynthesis.cancel();clearInterval(tk);clk()}
+ let au=null,urls=null;
+ function stop(){on=false;auto=false;if("speechSynthesis" in window)speechSynthesis.cancel();if(au){au.pause();au=null}clearInterval(tk);clk()}
+ async function rec(){stop();if(!urls){try{urls=await (await fetch("speaker-audio.json")).json()}catch(e){document.getElementById("spkClk").textContent="錄音清單載入失敗";return}}
+  const i=idx();if(i<0||!urls[i])return;au=new Audio(urls[i]);on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);
+  au.onended=()=>{on=false;clearInterval(tk);au=null;if(document.getElementById("spkAuto").checked&&idx()<STOPS.length-1){auto=true;document.body.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));setTimeout(()=>{auto=false;rec()},800)}};
+  au.onerror=()=>{document.getElementById("spkClk").textContent="錄音無法播放，請改用朗讀";stop()};au.play().catch(()=>{})}
  function say(){if(!on)return;const s=q.shift();if(!s){on=false;clearInterval(tk);if(document.getElementById("spkAuto").checked&&idx()<STOPS.length-1&&Date.now()-t0>5000){auto=true;document.body.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));setTimeout(()=>{auto=false;play()},800)}return}
   const u=new SpeechSynthesisUtterance(s);const v=speechSynthesis.getVoices().filter(v=>/^zh|cmn/i.test(v.lang)).sort((a,c)=>(/TW|Hant/i.test(c.lang)?1:0)-(/TW|Hant/i.test(a.lang)?1:0))[0];if(v){u.voice=v;u.lang=v.lang}else u.lang="zh-TW";u.onend=say;u.onerror=e=>{if(e.error!=="interrupted"&&e.error!=="canceled")say()};speechSynthesis.speak(u)}
- async function play(){if(!("speechSynthesis" in window))return;if(!notes){try{notes=await (await fetch("speaker-notes.json")).json()}catch(e){document.getElementById("spkClk").textContent="講稿載入失敗";return}}
+ async function play(){if(!("speechSynthesis" in window))return;if(au){au.pause();au=null}if(!notes){try{notes=await (await fetch("speaker-notes.json")).json()}catch(e){document.getElementById("spkClk").textContent="講稿載入失敗";return}}
   const i=idx();if(i<0)return;speechSynthesis.cancel();const t=(notes[i]||"").replace(/【[^】]*】/g,"").replace(/\s+/g,"");q=t.match(/[^。！？；]+[。！？；」]*/g)||[];on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);say()}
- b.onclick=()=>{p.hidden=!p.hidden;clk()};document.getElementById("spkPlay").onclick=play;document.getElementById("spkStop").onclick=stop;
+ b.onclick=()=>{p.hidden=!p.hidden;clk()};document.getElementById("spkPlay").onclick=play;document.getElementById("spkRec").onclick=rec;document.getElementById("spkStop").onclick=stop;
 })();
 </script>
 

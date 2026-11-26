@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 VR 照片（Claude）
+- #roots 的 Google Expeditions 卡片：原「待補」框換成講者提供的五張照片（img/vr-1…5.jpg）。全班照（vr-5）放大在上，其餘四張排成一列，滑鼠移過可放大。
+- 隱私處理：vr-5 全班照每位學生臉部、vr-2 學生臉部已模糊。
+- 各段時間不變。仍待補：平板卡片、#photo 頁五個框（尚未收到素材）。
+
 ## 2026-11-26 SketchAR 照片與影片（Claude）
 - #roots 的 SketchAR 卡片：原「待補」框換成講者提供的課堂短片（img/sketchar.mp4，19 秒，preload=none，封面 img/sketchar-poster.jpg）與三張照片（img/sketchar-1/2/3.jpg，1200px）。
 - 照片可滑鼠移過放大（加進 ZOOM_SEL）。

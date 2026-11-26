@@ -657,6 +657,7 @@ body::before{background:var(--bg)}
 .sk-media{margin-top:12px;display:grid;gap:6px}
 .sk-vid{width:100%;aspect-ratio:16/9;display:block;background:#111;border:4px solid #fff;box-shadow:0 6px 14px -8px rgba(0,0,0,.4)}
 .sk-ph{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.sk-big{grid-template-columns:1fr}.sk-4{grid-template-columns:repeat(4,1fr)}.sk-ph img.sk-fit{object-fit:contain;background:#fff}
 .sk-ph img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;border:3px solid #fff;box-shadow:0 4px 10px -6px rgba(0,0,0,.4);cursor:zoom-in}
 </style>
 
@@ -1385,7 +1386,7 @@ const todo = (t,d) => `<div class="todo"><b>待補</b><span>${t}</span>${d?`<sma
 V.roots = ()=>`${head("","在 AI 出現之前，我就已經開始改變教學","從學生的學習問題出發，去找方法與工具","民國 108 學年度起，我逐步把數位科技帶進美術課。不是因為有了科技才改變，而是想改變，才去找科技。",'<span class="tag r">第一部分</span>')}
   <div class="grid g3 roots">
     <div class="card"><span class="tbno">AR</span><h3>SketchAR：降低「畫不像」的門檻</h3><ul class="mini-ul"><li>有些學生因為畫不像、技巧不足而挫折</li><li>希望降低進入美術創作的門檻</li><li>讓學生實際體驗擴增實境</li></ul><div class="sk-media"><video class="sk-vid" src="img/sketchar.mp4" poster="img/sketchar-poster.jpg" controls preload="none" playsinline aria-label="SketchAR 課堂紀錄短片"></video><div class="sk-ph"><img src="img/sketchar-1.jpg" alt="手機架在畫紙上方，SketchAR 把線稿疊在紙上，學生照著描繪植物" loading="lazy" width="1200" height="676"><img src="img/sketchar-3.jpg" alt="學生一手拿手機看 SketchAR 疊圖，一手在紙上畫人像" loading="lazy" width="1200" height="676"><img src="img/sketchar-2.jpg" alt="用 SketchAR 描繪後再上水彩的植物速寫作品" loading="lazy" width="1200" height="676"></div></div></div>
-    <div class="card"><span class="tbno">VR</span><h3>Google Expeditions：鑑賞不只停在課本</h3><ul class="mini-ul"><li>希望學生對藝術鑑賞更有興趣</li><li>不只看課本圖片、聽老師說</li><li>體驗不同的藝術空間與文化場域</li></ul>${todo("Google Expeditions／VR 上課照片")}</div>
+    <div class="card"><span class="tbno">VR</span><h3>Google Expeditions：鑑賞不只停在課本</h3><ul class="mini-ul"><li>希望學生對藝術鑑賞更有興趣</li><li>不只看課本圖片、聽老師說</li><li>體驗不同的藝術空間與文化場域</li></ul><div class="sk-media"><div class="sk-ph sk-big"><img src="img/vr-5.jpg" alt="美術教室裡全班學生拿著紙盒 VR 眼鏡觀看（臉部已模糊）" loading="lazy" width="1200" height="675"></div><div class="sk-ph sk-4"><img src="img/vr-2.jpg" alt="學生戴紙盒 VR 抬頭看萬神殿，投影幕上也是萬神殿（臉部已模糊）" loading="lazy" width="960" height="540"><img src="img/vr-1.jpg" alt="學生用手機掃描學習單上的 QR code 進入 VR 場景" loading="lazy" width="960" height="540"><img src="img/vr-3.jpg" alt="手機顯示古代浮雕的 VR 畫面，放在 QR code 學習單上" loading="lazy" width="528" height="960"><img class="sk-fit" src="img/vr-4.jpg" alt="紙盒 VR 眼鏡（Google Cardboard）" loading="lazy" width="1200" height="1055"></div></div></div>
     <div class="card"><span class="tbno">平板</span><h3>借平板、找平板車、接上學習平台</h3><ul class="mini-ul"><li>向教務處借用平板</li><li>尋找合適的設備與平板車</li><li>把數位學習平台帶進課堂</li></ul>${todo("平板、平板車或課堂使用照片")}</div>
   </div>
   <div class="fourth"><span class="note">這一頁的結論</span><h3>我不是因為有了科技才改變教學，而是因為想改變教學，所以開始尋找科技。</h3></div>
@@ -1702,7 +1703,7 @@ function updateBar(){
 
 /* ===== events ===== */
 /* 滑鼠移過照片放大預覽（封面、關於我）；觸控裝置點一下開、再點關 */
-const ZOOM_SEL=".c-main img,.about-thumb img,.about-book img,.about-pola img,.sk-ph img";
+const ZOOM_SEL=".c-main img,.about-thumb img,.about-book img,.about-pola img,.sk-ph img,.sk-big img";
 const zp=document.createElement("div");zp.id="zoomPrev";zp.hidden=true;zp.innerHTML='<img alt="">';document.body.appendChild(zp);
 const zShow=img=>{const z=zp.querySelector("img");z.src=img.currentSrc||img.src;z.alt=img.alt;zp.hidden=false;requestAnimationFrame(()=>zp.classList.add("on"))};
 const zHide=()=>{zp.classList.remove("on");zp.hidden=true};

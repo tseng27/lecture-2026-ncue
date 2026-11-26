@@ -1,4 +1,5 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style></head><body>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}.exh-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}.exh-list li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}.exh-list li:last-child{border-bottom:0}.exh-d{font-family:var(--f-num,monospace);font-size:14px;min-width:8.5em;opacity:.75}.exh-list a{text-decoration:none;color:inherit;font-weight:700}.exh-list a small{font-weight:400;opacity:.7;margin-left:6px}.exh-list a:hover{text-decoration:underline}.exh-list .exh-x{font-size:14px;font-weight:500;opacity:.85}
+</style></head><body>
 <title>AI 時代的藝術與教育</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1338,6 +1339,8 @@ const P5 = [
   ["再生成","再次生成並挑選、修改，收斂成作品；選擇本身就是創作者的觀點。"]
 ];
 const PROMPT_EX = 'A highly detailed model of the H llertmer Reiheleyhofen is displayed on an old wooden table, surrounded by miniature figures dressed in traditional German and carrying beer barrels. The building has red brick walls with white windows and doors decorated with black tiles… --ar 16:9';
+const EXHIBITS = [["2023/12/24","夢歸何處","Where Dreams Return","https://www.facebook.com/kuojean.tseng/posts/pfbid0L9HfTg5ciq4h9396F1fBosMWbXRYyiZaDyfG729S8uLwAgeG1FKJC1QPiAbezyFDl"],["2023/12/23","靜謐的對話","Quiet Dialogue","https://www.facebook.com/kuojean.tseng/posts/pfbid02yFAQmpUht82qnuhGz54d8av4fYUcZx2Vd2Y9kiKvcEAAcbdAUco2QZE2fRhVgT3Al"],["2023/04/16","居所的記憶","Memories of Home","https://www.facebook.com/kuojean.tseng/posts/pfbid0268SA348W5HXxNQvgvaHv9M3V3XREUpQoPY8Gr99it6krSfV71SXd9vdoTVtK5ibAl"],["2023/04/16","模糊的記憶‧居所 -1","Blurred Memories‧Dwelling","https://www.facebook.com/kuojean.tseng/posts/pfbid0ZDXqy6HYsVosn1bj6Vhc8eCpTuJA46sGVLJrd4WnTWV94Troieet3RDjNy6vRwt7l"],["2023/04/16","模糊的記憶‧居所 -2","Blurred Memories‧Dwelling","https://www.facebook.com/kuojean.tseng/posts/pfbid0cKBagUpp3BJBeSoQcJBJcC7pTBe8eGp2kgB8Y4XiJRhpN9AJCLfP6LcmJjnk1m9yl"],["2023/04/09","意識之色","The Color of Consciousness","https://www.facebook.com/kuojean.tseng/posts/pfbid0gaYZbzaYUY4Aj886WNEtmWPdNuRs84DX2uiKzUPkgj7ejM8kvowshjhpESsnj6fCl"],["2023/04/07–08","鳥群 系列","The Flock of Birds","https://www.facebook.com/kuojean.tseng/posts/pfbid0NmrXEoSmev386zZXTSQH2S1aEy6Hhi4GYHcRkt5mUuQVagBnUe8q5aSnxB7XjWa7l"],["2023/04/07–08","空間中的羽翼","Wings in Space","https://www.facebook.com/kuojean.tseng/posts/pfbid02Z763UgDapwQHqsti4HqY8QahTg78q3cQovcuVbxJhNhGqFSLBnvYKimJb6QwQXiZl"],["2023/04/07","流動的羽翼","The Flowing Wings","https://www.facebook.com/kuojean.tseng/posts/pfbid0VoCxo3gpxBbavz56rTj8S4yuJyNKMyRWgEu4D7kMoNgJnT2L6Ncru5vjyuvKGSeAl"],["2023/04/07","既近又遠","Very Close Yet Very Far","https://www.facebook.com/kuojean.tseng/posts/pfbid02z7j4hx14CRfwbH6yjjBUR1ULw1h4328FEY6mrWJdM43hR46bghpjG9rfZdh86hdcl"],["2023/04/05","凝形─自然系列","Solidified Form─Natural Series","https://www.facebook.com/kuojean.tseng/posts/pfbid0281RhWYzgRiwKF5tmC6XXbkQy5ztUbqj3eo9PdtyzijBgcG8tenuHFTb3RKMxeSSLl"],["2023/04/05","凝形","Solidified Form","https://www.facebook.com/kuojean.tseng/posts/pfbid02NsXjwBEV8ycceGJmqvd5Qd8hyeBHQ1MsJAar2d6UaQVo4YBvMkz4r9rUh3LUXb8Ul"],["2023/04/05","墨‧黑","Ink ‧ Black","https://www.facebook.com/kuojean.tseng/posts/pfbid02jipBjKQvyNsKpLhXWth8JKWZ7qFp14ZQUpnTwacJZKNjTjocAATaUmjquDCCJDabl"],["2023/04/04","鳥與家","Bird and Home","https://www.facebook.com/kuojean.tseng/posts/pfbid02ywtzFi5LeTRtzUtFY76Eo8okT1cPNE84KZBkRxxV6o4DubrtTethZBhZn5JzcRW6l"]];
+const EXH_CANVA = "https://www.canva.com/design/DAFffdPc9cY/Qiu_8y2ek_IsVH_jmuWkKQ/view";
 const AI_VIDEO = ["Luma Dream Machine","Kling","Pika","PixVerse","Runway","Haiper"];
 V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗與實踐","AI 影片生成逐漸成熟後，我開始想：能不能讓想像中的作品與展覽，更像真實存在？",'<span class="tag n">主題 04</span>',true)}
   <div class="sec">從靜態影像走向具有臨場感的展覽</div>
@@ -1358,7 +1361,7 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
   <div class="sec">從作品到發表</div>
   <div class="grid g3">
     <div class="card"><h3>形式與議題</h3><p>決定作品的形式（平面、裝置、影像）以及想談的議題，再回頭調整生成內容。</p></div>
-    <div class="card"><h3>主題策展練習</h3><p>為一組作品寫展覽文字，例如「鳥與家」「墨・黑」，用 AI 協助整理成策展論述。<span class="st chk">策展練習，不列為展歷</span></p></div>
+    <div class="card"><h3>主題策展練習</h3><p>為一組作品寫展覽文字，例如「鳥與家」「墨・黑」，用 AI 協助整理成策展論述。<span class="note">發表紀錄見本頁下方「展覽發表紀錄」。</span></p></div>
     <div class="card"><h3>發布</h3><p>在臉書「AI藝術創新實驗室」與作品集網站發表，留下每一件作品的時間與版本。</p></div>
   </div>
   <div class="sec">作品案例</div>
@@ -1368,13 +1371,15 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
   <p class="note" style="margin-top:8px">文字轉影片、圖片轉影片工具更新很快，現在的版本與方案待核。</p>
   <div class="fourth"><span class="note">藝術創作的核心</span><h3>技術不斷進化，但創作的主體始終是我自己。</h3></div>
   <div class="sec">作品狀態與展歷</div>
-  <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>`;
+  <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>
+  <div class="sec">展覽發表紀錄（2023 年 4 月起）</div>
+  <div class="card exh"><ol class="exh-list">${EXHIBITS.map(([d,t,e,u])=>`<li><span class="exh-d">${d}</span><a href="${u}" target="_blank" rel="noopener">「${esc(t)}」<small>${esc(e)}</small> ↗</a>${t==="凝形─自然系列"?` <a class="exh-x" href="${EXH_CANVA}" target="_blank" rel="noopener">作品集 ↗</a>`:""}</li>`).join("")}</ol><p class="note" style="margin-top:10px">出處：講者 Facebook 個人頁貼文，依日期由新到舊排列。</p></div>`;
 
 const MIA_FLOW = [
-  ["角色定錨","以官方形象圖為依據：栗棕色下巴短鮑伯、米白粗花呢外套、蕾絲長裙、棕色手提包與種子吊飾。之後每一鏡都回來對照。"],
+  ["角色定錨","以 MV 服裝設定圖為依據：栗棕色下巴短鮑伯、鵝黃襯衫、米白外套、灰藍百褶長裙、棕色短靴、棕色斜背包與 ELARA 耳機，分成「城市春日散步」與「花田」兩套造型。之後每一鏡都回來對照。"],
   ["歌曲與聲線","用 ChatGPT 寫歌詞、整理曲風描述，再用 Suno AI 作曲；確認歌曲版本與 MIA 的聲線，視覺才跟著音樂走。","ChatGPT・Suno AI"],
   ["視覺概念","從歌名與角色個性找出畫面方向：溫柔、日常、把春天帶在身上。"],
-  ["服裝與場景","延續官方圖的服裝、配件與暖色調，用 Flow 生成每一段的場景與角色畫面。","Flow"],
+  ["服裝與場景","延續服裝設定圖的兩套造型、耳機配件與春日色調，用 Flow 生成每一段的場景與角色畫面。","Flow"],
   ["分鏡與運鏡","把歌曲切成段落，排出鏡頭順序與運鏡。目前有兩版分鏡：220 秒 40 鏡、216 秒 19 鏡。"],
   ["生成與逐鏡檢查","在 Runway 平台用 Seedance 2.5 把畫面生成影片，逐鏡檢查臉孔、髮型、配件、服裝、身高比例、空間與光線；不一致就重做。","Runway・Seedance 2.5"],
   ["剪輯與字幕","用剪映依音樂節奏剪輯，加上字幕，輸出母帶。","剪映"],
@@ -1393,7 +1398,7 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <div class="sec">MIA《我把春天帶著走》創作流程</div>
   <div class="split">
     <ol class="flow">${MIA_FLOW.map((f,i)=>`<li><span class="k">0${i+1}</span><div><b>${f[0]}</b>${f[2]?`<span class="tooltag">${f[2]}</span>`:""}<p>${f[1]}</p></div></li>`).join("")}</ol>
-    <a class="memimg" style="border-radius:2px;box-shadow:0 10px 22px -10px rgba(0,0,0,.4)" href="img/elara-mia.jpg" target="_blank" rel="noopener"><img src="img/elara-mia.jpg" alt="ELARA MIA 官方形象圖"></a>
+    <a class="sk-ph" style="align-self:start;display:block;border-radius:2px;box-shadow:0 10px 22px -10px rgba(0,0,0,.4)" href="img/mia-wardrobe.jpg" target="_blank" rel="noopener"><img class="sk-fit" src="img/mia-wardrobe.jpg" width="1448" height="1086" alt="MIA《我把春天帶著走》MV 服裝設定圖：LOOK 01 城市春日散步、LOOK 02 花田、人像與配件細節" style="width:100%;height:auto;display:block"></a>
   </div>
   <p class="note" style="margin-top:8px">工具組合：ChatGPT（歌詞與風格）→ Suno AI（作曲）→ Flow（生圖）→ Runway 的 Seedance 2.5（生影片）→ 剪映（剪輯）。定稿版本尚未確認，兩個候選版本都保留。</p>
   <div class="sec">MIA 候選版本比較 <span class="note">（120 版 +3 分鐘）</span></div>
@@ -1403,7 +1408,7 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <div class="grid g2"><div class="check" id="chk">${["臉孔","髮型","配件","服裝","身高比例","空間","光線"].map((x,i)=>`<label><input type="checkbox" id="ck${i}">${x}</label>`).join("")}</div>
     <div class="card"><h3>音樂到視覺</h3><p>先確認歌曲版本與角色聲線，再發展視覺概念、服裝、分鏡、運鏡、剪輯與字幕。候選比較與修正，就是創作歷程。</p><h3 style="margin-top:14px">創作能力的累積</h3><p>從不熟悉的音樂、攝影與剪輯知識開始，透過試作與比較建立自己的流程。工具只是輔助，不取代作品敘事。</p></div></div>
   <div class="sec">影音</div>
-  <div class="works">${work("HANA《我醒在世界之前》MV","影片檔或公開連結待補",0,"影片待補")}${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
+  <div class="works"><figure class="tvid">${ytl("Own3ODpdmWM","HANA《我醒在世界之前》MV")}<figcaption><b>HANA《我醒在世界之前》MV</b><small class="note">YouTube・點擊播放</small></figcaption></figure>${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
   <div class="links" style="margin-top:16px">${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
 
 /* ===== 第二階段新增頁（2026-11-26）：素材找不到的地方一律顯示待補，不用生成圖冒充真實紀錄 ===== */

@@ -2,6 +2,9 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 02:10 Google Arts & Culture 資源連結（Claude）
+- CONFIG.links.artsCulture；連結放在 #roots 的 VR 與平板卡片，並在「連結與來源」表加入 Arts & Culture、CameraSim、兩個數位學習單。
+
 ## 2026-11-27 02:05 學習單範例與數位學習單連結（Claude）
 - 公共藝術頁新增「設計構想學習單」：範例圖 img/public-art-worksheet.jpg（班級、座號、姓名已模糊）＋說明＋連結 CONFIG.links.paWorksheet。
 - 學習歷程頁加入兩個數位學習單連結（portfolioWorksheet、paWorksheet）。.stages-fig 圖片可滑鼠放大。時間不變。

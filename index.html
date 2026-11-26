@@ -729,7 +729,9 @@ const CONFIG = {
     sparrow:  { label:"Sparrow 等（2011）Google effects on memory", url:"https://pubmed.ncbi.nlm.nih.gov/21764755/" },
     tutInterview:{ label:"臺南應用科大美術系：藝術家專訪與作品介紹", url:"https://art.tut.edu.tw/p/404-1073-40636.php?Lang=zh-tw" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
+    portfolioCanva:{ label:"作品集（Canva）", url:"https://www.canva.com/design/DAGYZRfGULw/VMoA14CijdGm-n02kVFcMA/view" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
+    elaraDebut:{ label:"ELARA 正式出道〈You Are the Light〉", url:"https://www.facebook.com/share/p/1FDAf5JaD7/" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
     unesco:   { label:"UNESCO AI 能力框架", url:"https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=195885" },
     bastani:  { label:"Bastani 等（2025）原始研究", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/" },
@@ -1327,7 +1329,7 @@ V.art = ()=>`${head("03","突破創作邊界","一個人也能實現藝術夢想
   <div class="tabs" role="tablist">${Object.keys(SERIES).map((k,i)=>`<button class="tab" role="tab" type="button" data-ser="${k}" aria-selected="${i===0}">${k}</button>`).join("")}</div>
   <div id="serbox"></div>
   <p class="note" style="margin-top:14px">作品圖、年代與系列說明取自講者作品集網站；點作品可開啟該作品頁。</p>
-  <div class="links" style="margin-top:12px">${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.art)}</div>`;
+  <div class="links" style="margin-top:12px">${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.portfolioCanva)}${lk(CONFIG.links.art)}</div>`;
 
 /* 主題 04：藝術創作流程，取自講者 2024-08-26 公視講座〈藝術的力量與未來〉簡報的「創作說明」與相關頁 */
 const P5 = [
@@ -1393,6 +1395,7 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <p class="note" style="margin-top:8px">當前官方圖是角色的依據（Identity Anchor），不重新設計、不用生成圖替代。LENA 的痣在右眼下，不可鏡像。</p>
   <div class="sec">單曲狀態</div>
   <div class="tbl"><table><thead><tr><th>角色</th><th>單曲</th><th>狀態</th></tr></thead><tbody>
+    <tr><td>ELARA</td><td>〈You Are the Light〉</td><td><span class="st ok">最早的一首歌・已發布</span></td></tr>
     <tr><td>HANA</td><td>《我醒在世界之前》</td><td><span class="st ok">有發布證據</span></td></tr>
     <tr><td>MIA</td><td>《我把春天帶著走》</td><td><span class="st wip">版本未對齊</span></td></tr>
     <tr><td>ZOE・CHLOE・LENA</td><td>—</td><td><span class="st plan">發展中，不推定已發布</span></td></tr>
@@ -1410,8 +1413,8 @@ V.elara = ()=>`${head("","ELARA","虛擬女團與影音創作","ELARA 把角色�
   <div class="grid g2"><div class="check" id="chk">${["臉孔","髮型","配件","服裝","身高比例","空間","光線"].map((x,i)=>`<label><input type="checkbox" id="ck${i}">${x}</label>`).join("")}</div>
     <div class="card"><h3>音樂到視覺</h3><p>先確認歌曲版本與角色聲線，再發展視覺概念、服裝、分鏡、運鏡、剪輯與字幕。候選比較與修正，就是創作歷程。</p><h3 style="margin-top:14px">創作能力的累積</h3><p>從不熟悉的音樂、攝影與剪輯知識開始，透過試作與比較建立自己的流程。工具只是輔助，不取代作品敘事。</p></div></div>
   <div class="sec">影音</div>
-  <div class="works"><figure class="tvid">${ytl("Own3ODpdmWM","HANA《我醒在世界之前》MV")}<figcaption><b>HANA《我醒在世界之前》MV</b><small class="note">YouTube・點擊播放</small></figcaption></figure>${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
-  <div class="links" style="margin-top:16px">${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
+  <div class="works"><figure class="tvid">${ytl("uBG2CkFvCS8","ELARA〈You Are the Light〉MV")}<figcaption><b>ELARA〈You Are the Light〉</b><small class="note">最早的一首歌・出道曲（YouTube Shorts）</small></figcaption></figure><figure class="tvid">${ytl("Own3ODpdmWM","HANA《我醒在世界之前》MV")}<figcaption><b>HANA《我醒在世界之前》MV</b><small class="note">YouTube・點擊播放</small></figcaption></figure>${work("MIA 候選版本片段","待指定定稿版本",1,"影片待補")}${work("角色定裝圖","五人當前官方圖待補",2,"圖片待補")}</div>
+  <div class="links" style="margin-top:16px">${lk(CONFIG.links.elaraDebut)}${lk(CONFIG.links.elara)}${lk(CONFIG.links.youtube)}</div>`;
 
 /* ===== 第二階段新增頁（2026-11-26）：素材找不到的地方一律顯示待補，不用生成圖冒充真實紀錄 ===== */
 const caseFlow = rows => `<ol class="cflow">${rows.map(([k,v],i)=>`<li><span class="k">${String(i+1).padStart(2,"0")}</span><div><b>${k}</b><p>${v}</p></div></li>`).join("")}</ol>`;
@@ -1577,7 +1580,7 @@ V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></
   <p class="quote">你的人生，<br>就是你的<span>藝術品</span>。</p>
   <div class="grid g2" style="margin-top:30px">
     <div class="card"><h3>交流</h3><p>你想在未來的美術課裡，讓學生保留哪一個自己的決定？</p></div>
-    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
+    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.portfolioCanva)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
   </div>`;
 
 V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能找到網址，不代表已讀完全部內容；私人研究來源不出現在公開網站。",'<span class="tag">資源</span>')}
@@ -1586,8 +1589,10 @@ V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能�
     <tr><td>教學</td><td>${lk(CONFIG.links.fanpage)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.github)}</td><td><span class="st chk">與現行網站的部署關係待核</span></td></tr>
     <tr><td>藝術</td><td>${lk(CONFIG.links.portfolio)}</td><td><span class="st ok">作品頁已讀取（2026-11-25）</span></td></tr>
+    <tr><td>藝術</td><td>${lk(CONFIG.links.portfolioCanva)}</td><td><span class="st ok">講者提供（2026-11-27）</span></td></tr>
     <tr><td>藝術</td><td>${lk(CONFIG.links.art)}</td><td><span class="st ok">頁面已查核</span></td></tr>
     <tr><td>ELARA</td><td>${lk(CONFIG.links.elara)}</td><td><span class="st ok">頁面已查核</span></td></tr>
+    <tr><td>ELARA</td><td>${lk(CONFIG.links.elaraDebut)}</td><td><span class="st ok">講者提供（2026-11-27）</span></td></tr>
     <tr><td>其他</td><td>${lk(CONFIG.links.instagram)} ${lk(CONFIG.links.youtube)}</td><td><span class="st chk">網址已填，頁面未逐一查核</span></td></tr>
     <tr><td>教學資源</td><td>${lk(CONFIG.links.artsCulture)}</td><td><span class="st ok">講者課堂使用（VR、平板鑑賞）</span></td></tr>
     <tr><td>教學資源</td><td>${lk(CONFIG.links.cameraSim)}</td><td><span class="st ok">講者課堂使用（攝影探索）</span></td></tr>

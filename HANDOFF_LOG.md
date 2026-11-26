@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 Claude：加上 Canva 作品集與 ELARA 出道貼文連結
+
+- CONFIG.links.portfolioCanva；出現在主題 03 底部、講座結尾連結列與「連結與來源」表格。
+- ELARA 影音區新增〈You Are the Light〉MV（YouTube Shorts uBG2CkFvCS8），放在 HANA MV 之前；講者說明這是 ELARA 最早的一首歌，單曲表格加一列。
+- CONFIG.links.elaraDebut（ELARA 正式出道〈You Are the Light〉Facebook 貼文）；ELARA 頁底部連結列與「連結與來源」表格。
+
 ## 2026-11-27 Claude：作品案例加臉書發表連結
 
 - 主題 04 作品案例：幸福樂園（貼文 1、2、花之動物、幸福泡泡屋）與肉身與靈魂的透明界限（貼文 1–3）加上講者提供的 Facebook 分享連結（WORK_FB）。

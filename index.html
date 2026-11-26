@@ -565,6 +565,7 @@ body::before{background:var(--bg)}
 .aij-shifts .card{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;padding:14px 18px}
 .aij-shifts .arrow{color:var(--red);font-weight:700}
 @media (max-width:620px){.aij-shifts .card{grid-template-columns:1fr}.aij-shifts .arrow{display:none}}
+.optag{display:inline-block;font-size:12px;line-height:1;padding:4px 6px;border:1px dashed var(--red);color:var(--red);border-radius:3px;white-space:nowrap;font-weight:700}
 </style>
 
 <header class="bar">
@@ -602,7 +603,7 @@ const CONFIG = {
   speaker:"曾國正", school:"國立屏北高級中學", format:"線上講座", role:"高中美術教師・藝術創作者",
   title:"AI 時代的藝術與教育", sub:"從創作突破到教學新模式",
   tagline:"一位高中美術教師的 AI 創作實踐、教學探索與反思",
-  place:"國立彰化師範大學", date:"2026.11.27", audience:"師培生・大學生・碩士班學生",
+  place:"國立彰化師範大學", date:"2026.11.27", time:"13:10–15:00", start:"13:10", audience:"師培生・大學生・碩士班學生",
   photo:"",
   links:{
     site:     { label:"AI 教學觀察所網站", url:"https://kuocheng-art-education.tseng27.chatgpt.site" },
@@ -673,18 +674,18 @@ const STOPS = [
   { v:"method",  s:1, m:8,  t:"05 不只是 AI 備課", cue:"七步學習與四個設計決定。" },
   { v:"sensory", s:1, m:4,  t:"感官轉譯｜觀看與理解", tab:"flow", cue:"投影鑑賞原稿：哪些句子是學生原本的？" },
   { v:"sensory", s:1, m:6,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇。120 版加 4 分鐘聆聽與速寫互動。" },
-  { v:"sensory", s:1, m:4,  t:"感官轉譯｜證據與反思", tab:"evidence", cue:"三種證據狀態分開說；生成的是素材，選擇形成作品。" },
-  { v:"cases",   s:1, m:3,  t:"攝影探索", c:"T06", cue:"把觀察轉成有理由的形式選擇。" },
+  { v:"sensory", s:1, m:4,  opt:1, t:"感官轉譯｜證據與反思", tab:"evidence", cue:"三種證據狀態分開說；生成的是素材，選擇形成作品。" },
+  { v:"cases",   s:1, m:3,  opt:1, t:"攝影探索", c:"T06", cue:"把觀察轉成有理由的形式選擇。" },
   { v:"learning",s:1, m:8,  t:"學習歷程與評量", cue:"一份資料多次累積；配分 70／20／10 是既有規定。" },
-  { v:"cases",   s:1, m:1,  t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
-  { v:"cases",   s:1, m:1,  t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
+  { v:"cases",   s:1, m:1,  opt:1, t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
+  { v:"cases",   s:1, m:1,  opt:1, t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
   { v:"lab",     s:1, m:5,  t:"AI 教學實驗室｜教師的 AI 工具箱", cue:"回答「明天可以用什麼工具」：Claude 做教材、Gemini Canvas 做課程示範、NotebookLM 備課。只展示已驗證的功能。" },
   { v:"aiprep",  s:1, m:8,  t:"用 AI 備課・認識 AI Agent", cue:"先講備課五步：目標由老師定，最後由老師驗收。再講 Agent：會規劃、用工具、檢查、留紀錄。用這個講座網站當實例。" },
   { v:"break",   s:2, m:5,  t:"中場休息" },
   { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
   { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
   { v:"elara",   s:3, m:12, x:3, t:"ELARA 影音創作", cue:"五位角色與一致性。120 版加 3 分鐘 MIA 候選版本比較。" },
-  { v:"workflow",s:3, m:6,  t:"跨 AI 協作與工作台", cue:"FRAMEFLOW 是原型，不演示生成。" },
+  { v:"workflow",s:3, m:6,  opt:1, t:"跨 AI 協作與工作台", cue:"FRAMEFLOW 是原型，不演示生成。" },
   { v:"s06",     s:4, m:6,  t:"06 未來美術教師", cue:"帶著一個問題離開。" },
   { v:"closing", s:4, m:4,  x:3, t:"結語與交流", cue:"原句不變。120 版加 3 分鐘問答。" }
 ];
@@ -800,6 +801,7 @@ V.cover = ()=>`
       <h1>AI 時代的<br><span>藝術與教育</span></h1>
       <p class="c-sub">${esc(CONFIG.sub)}</p>
       <p class="c-who"><b>${esc(CONFIG.speaker)}</b>／${esc(CONFIG.school)}　　${esc(CONFIG.format)}／${esc(CONFIG.place)}</p>
+      <p class="c-who">${esc(CONFIG.date)}（五）${esc(CONFIG.time)}</p>
     </div>
     <span class="c-star s1">✦</span><span class="c-star s2">✦</span>
     <span class="c-hand c-scrib">create · teach · reflect ↘</span>
@@ -838,13 +840,13 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     <div class="about-social-g"><b class="about-social-h">Facebook</b><div class="links">${CONFIG.social.facebook.map(lk).join("")}</div></div>
   </div>`;
 
-V.lecture = ()=>`${head("","講座導覽","六大主題與時間安排","正式六大主題作為索引；實際講述順序是 01 → 02 → 05 → 03 → 04 → 06，先從教育反思出發，再看課堂與創作中的具體選擇。",'<span class="tag">講座</span>')}
+V.lecture = ()=>`${head("","講座導覽","六大主題與時間安排","正式六大主題作為索引；實際講述順序是 01 → 02 → 05 → 03 → 04 → 06，先從教育反思出發，再看課堂與創作中的具體選擇。講座時間：2026.11.27（五）13:10–15:00，共 110 分鐘。目前內容約 126 分鐘；標「可略過」的 5 頁共 15 分鐘，現場可視時間跳過。",'<span class="tag">講座</span>')}
   <div class="themes">${THEMES.map((t,i)=>`<button class="theme" type="button" data-view="${t[2]}"><span class="k">${t[0]}</span><span><b>${t[1]}</b></span><span class="ord">第 ${[1,2,5,6,3,4][i]} 個講</span></button>`).join("")}</div>
   <div class="sec">時間表</div>
   <div class="filters">
     <div class="len" role="group" aria-label="表格長度"><button type="button" data-tlen="110">110 分鐘</button><button type="button" data-tlen="120">120 分鐘</button></div>
     <label class="note" for="startAt">開始時間</label><input id="startAt" type="time" style="font:inherit;font-family:var(--f-num);padding:4px 8px;border:1px solid var(--line);border-radius:4px;background:var(--paper);color:var(--ink)">
-    <span class="note">實際開講時間未定，請自行調整</span>
+    <span class="note">預設 13:10 開始、15:00 結束；可依現場調整</span>
   </div>
   <div class="ag" id="agTable"></div>
   <p class="note" style="margin-top:12px">120 分鐘版不加新案例，而是讓既有案例更深入：感官轉譯聆聽速寫＋4、MIA 候選鏡頭比較＋3、問答＋3。</p>
@@ -1218,7 +1220,7 @@ V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能�
 
 /* ===== mounts (interactions) ===== */
 M.lecture = ()=>{
-  let L = store.get("len",120); const inp=$("#startAt"); inp.value = store.get("start","");
+  let L = store.get("len110",110); const inp=$("#startAt"); inp.value = (store.get("start","")||CONFIG.start);
   const draw=()=>{
     $$("[data-tlen]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.tlen===L));
     const [h,m]=(inp.value||"00:00").split(":").map(Number); let t=h*60+m;
@@ -1227,7 +1229,7 @@ M.lecture = ()=>{
     STOPS.forEach((s,i)=>{
       if(s.s!==last){ last=s.s; const sm=STOPS.filter(z=>z.s===s.s).reduce((a,z)=>a+z.m+(L===120?(z.x||0):0),0); html+=`<div class="ag-row segh"><span class="t"></span><span class="m">${sm}′</span><span><i style="display:inline-block;width:10px;height:10px;background:${SEGS[s.s].c};margin-right:8px"></i>${SEGS[s.s].n}</span><span></span></div>`; }
       const mm=s.m+(L===120?(s.x||0):0);
-      html+=`<button class="ag-row" type="button" data-stop="${i}"><span class="t">${f(t)}</span><span class="m">${mm}′</span><span>${esc(s.t)}</span><span class="x">${L===120&&s.x?"+"+s.x:""}</span></button>`; t+=mm;
+      html+=`<button class="ag-row" type="button" data-stop="${i}"><span class="t">${f(t)}</span><span class="m">${mm}′</span><span>${esc(s.t)}</span><span class="x">${s.opt?'<span class="optag">可略過</span>':""}${L===120&&s.x?"+"+s.x:""}</span></button>`; t+=mm;
     });
     html+=`<div class="ag-row"><span class="t">${f(t)}</span><span class="m"></span><span><b>結束</b></span><span></span></div>`;
     $("#agTable").innerHTML=html;
@@ -1302,7 +1304,7 @@ M.break = ()=>{
 };
 
 /* ===== routing: #talk-01..#talk-21 = 講座模式；其他 = 自由探索 ===== */
-let mode="talk", stopIdx=0, view="cover", LEN=store.get("len",120);
+let mode="talk", stopIdx=0, view="cover", LEN=store.get("len110",110);
 const main=$("#main");
 const mins=s=>s.m+(LEN===120?(s.x||0):0);
 function closeAboutLb(){const lb=document.getElementById("aboutLb");if(lb) lb.hidden=true}
@@ -1326,7 +1328,7 @@ function render(v,opt={}){
   closeAboutLb();
   view=v;
   let banner="";
-  if(mode==="talk"){const s=STOPS[stopIdx];banner=`<div class="stop"><b class="num">${String(stopIdx+1).padStart(2,"0")} / ${STOPS.length}</b><span>${esc(SEGS[s.s].n)}</span><b class="num">本頁 ${mins(s)}′</b>${LEN===120&&s.x?`<span class="plus num">120 版 +${s.x}′</span>`:""}${s.cue?`<span class="cue">講者提示：${esc(s.cue)}</span>`:""}</div>`;}
+  if(mode==="talk"){const s=STOPS[stopIdx];banner=`<div class="stop"><b class="num">${String(stopIdx+1).padStart(2,"0")} / ${STOPS.length}</b><span>${esc(SEGS[s.s].n)}</span><b class="num">本頁 ${mins(s)}′</b>${s.opt?'<span class="optag">可略過</span>':""}${LEN===120&&s.x?`<span class="plus num">120 版 +${s.x}′</span>`:""}${s.cue?`<span class="cue">講者提示：${esc(s.cue)}</span>`:""}</div>`;}
   const nav = mode==="talk" ? navBtns(stopIdx>0?STOPS[stopIdx-1].t:null, stopIdx<STOPS.length-1?STOPS[stopIdx+1].t:null)
     : (()=>{const i=EXPLORE_ORDER.indexOf(v);return navBtns(i>0?TITLES[EXPLORE_ORDER[i-1]]:null,i>=0&&i<EXPLORE_ORDER.length-1?TITLES[EXPLORE_ORDER[i+1]]:null)})();
   main.innerHTML=`${v!=="cover"?banner:""}<section class="view">${V[v]()}</section>${nav}${v==="cover"&&mode==="talk"?banner:""}`;
@@ -1374,7 +1376,7 @@ document.addEventListener("click",e=>{
   else if(t.dataset.mode) t.dataset.mode==="talk"?goStop(stopIdx):goView(view==="break"?"home":view);
   else if(t.dataset.start) t.dataset.start==="talk"?goStop(1):goView("home");
   else if(t.dataset.go) mode==="talk"?goStop(0):goView("cover");
-  else if(t.dataset.len){LEN=+t.dataset.len;store.set("len",LEN);buildStrip();render(view,{tab:STOPS[stopIdx].tab,c:STOPS[stopIdx].c});tick()}
+  else if(t.dataset.len){LEN=+t.dataset.len;store.set("len110",LEN);buildStrip();render(view,{tab:STOPS[stopIdx].tab,c:STOPS[stopIdx].c});tick()}
 });
 $("#prevBtn").addEventListener("click",()=>step(-1));
 $("#nextBtn").addEventListener("click",()=>step(1));

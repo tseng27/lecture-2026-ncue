@@ -581,6 +581,9 @@ body::before{background:var(--bg)}
 .catch-a{margin:6px 0 4px 38px;font-size:15px}
 .catch-a b{display:inline-block;margin-right:8px;padding:1px 6px;border-radius:3px;font-size:13px;color:#fff}
 .catch-a b.ok{background:#2f7d4f}.catch-a b.bad{background:var(--red)}
+.factlist{margin:0;padding-left:20px;display:grid;gap:8px}
+.factlist li{line-height:1.7}
+.srclink{display:block;font-size:13.5px;color:var(--navy);text-decoration:underline;text-underline-offset:3px;margin-top:2px;word-break:break-word}
 </style>
 
 <header class="bar">
@@ -631,12 +634,17 @@ const CONFIG = {
     wangEssay:{ label:"原文：Alexandr Wang〈Superintelligence is Arriving〉（X）", url:"https://x.com/alexandr_wang/status/2124636606959345776" },
     wangNews: { label:"報導：Daily Caller（2026-11-23）", url:"https://dailycaller.com/2026/11/23/alexandr-wang-meta-superintelligence-handover-ai/" },
     moeAI:    { label:"教育部 AI 人才方舟計畫：資料下載", url:"https://pads.moe.edu.tw/download2.php" },
+    bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
+    govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
+    apSweden: { label:"美聯社：Sweden brings more books and handwriting back（2023-09-10）", url:"https://www.clickorlando.com/news/world/2023/09/10/sweden-brings-more-books-and-handwriting-practice-back-to-its-tech-heavy-schools/" },
+    delgado:  { label:"Delgado 等（2018）紙本與螢幕閱讀統合分析", url:"https://www.uv.es/lasalgon/papers/Delgado%202018%20dont%20throw%20away%20your%20printed%20books.pdf" },
+    sparrow:  { label:"Sparrow 等（2011）Google effects on memory", url:"https://pubmed.ncbi.nlm.nih.gov/21764755/" },
     portfolio:{ label:"藝術作品集網站", url:"https://tseng-kuo-cheng-art.tseng27.chatgpt.site" },
     elara:    { label:"ELARA Facebook", url:"https://www.facebook.com/ELARA.5GIRLS" },
     github:   { label:"GitHub：ai-teaching-observatory", url:"https://github.com/tseng27/ai-teaching-observatory" },
     unesco:   { label:"UNESCO AI 能力框架", url:"https://www.unesco.org/en/articles/what-you-need-know-about-unescos-new-ai-competency-frameworks-students-and-teachers?hub=195885" },
     bastani:  { label:"Bastani 等（2025）原始研究", url:"https://pmc.ncbi.nlm.nih.gov/articles/PMC12232635/" },
-    r003:     { label:"Facebook 貼文（講者提供）", url:"https://www.facebook.com/share/p/1HtpuXEEQG/" },
+    r003:     { label:"原文：講者 Facebook 貼文", url:"https://www.facebook.com/share/p/1HtpuXEEQG/" },
     instagram:{ label:"個人 Instagram", url:"https://www.instagram.com/art27tw/" },
     youtube:  { label:"YouTube／ELARA 官方頻道", url:"https://www.youtube.com/@ELARAOfficialStudio" }
   },
@@ -744,6 +752,7 @@ const CASES = [
   { id:"T14", g:"空間與未來", st:"plan", t:"職涯公仔", d:"把職涯想像做成角色公仔。", ev:"規劃案例，尚非已完成學生作品。" },
   { id:"T15", g:"空間與未來", st:"chk", t:"多媒體專題", d:"跨媒材整合的期末專題。", ev:"備用案例，原報告待核。" }
 ];
+const src = l => `<a class="srclink" href="${l.url}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`;
 /* 主題 01「抓包 AI」示範稿：[正確?, 句子, 解說]；錯誤為刻意放入 */
 const CATCH = [
   [1,"「印象派」一詞來自莫內的《日出・印象》；評論家路易・勒魯瓦（Louis Leroy）在 1874 年的展覽評論中，用這個標題嘲諷這群畫家。","正確。1874 年第一次聯展後，勒魯瓦在《喧鬧報》（Le Charivari）的評論標題就是〈印象派畫家的展覽〉。"],
@@ -961,9 +970,22 @@ V.s02 = ()=>`${head("02","全球 AI 教育革命","重新想像未來學校","�
     </div>
   </div>
   <div class="card" style="margin-top:22px;display:grid;gap:8px;align-content:start">
-    <span class="eyebrow" style="margin:0"><span class="tag n">補充資料</span>出處：Facebook 貼文（講者提供）</span>
-    <p class="note">講者提供的補充連結，內容以原貼文為準。不是本課程成效的證明，也不與上方兩項研究並列為已查核資料。</p>
+    <span class="eyebrow" style="margin:0"><span class="tag n">講者觀點</span>出處：講者 Facebook 貼文</span>
+    <h3>瑞典踩下數位煞車：退化，還是人類在進化的道路上？</h3>
+    <p>瑞典把課堂從螢幕拉回紙本。講者的提問是：我們說的「退化」，會不會是新一代大腦在適應數位與 AI 環境？與其二選一，不如走第三條路：</p>
+    <div class="chips">${["混血教育：深度思考用紙筆，跨域比對用 AI","重構考核：會提問、會查證、會整合","把 AI 當外接突觸：騰出頻寬給審美與判斷"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
     <div class="links">${lk(CONFIG.links.r003)}</div>
+    <div class="sec" style="margin-top:6px">查證後的事實與出處</div>
+    <ul class="factlist">
+      <li><b>瑞典政策轉向</b>：BBC 2026-04-16 報導，政策口號「från skärm till pärm」（從螢幕回到講義夾），學校已獲超過 21 億克朗補助購買教科書與教師手冊；2025 年起幼兒園不再強制使用數位工具。${src(CONFIG.links.bbcSweden)}</li>
+      <li><b>政府經費</b>：瑞典政府公告教科書補助 2023 年 6.85 億、2024 年 6.58 億克朗。${src(CONFIG.links.govSweden)}</li>
+      <li><b>卡羅林斯卡醫學院</b>：2023 年 8 月聲明「有明確科學證據顯示，數位工具損害而非增進學生學習」。這份聲明在學界也有爭議。${src(CONFIG.links.apSweden)}</li>
+      <li><b>成績下滑</b>：瑞典四年級 PIRLS 閱讀從 2016 年 555 分降到 2021 年 544 分；政府也以 PISA 下滑為理由。${src(CONFIG.links.apSweden)}</li>
+      <li><b>紙本與螢幕閱讀</b>：54 項研究的統合分析發現，紙本閱讀理解略優於螢幕，限時情境差距更明顯（Delgado 等，2018）。${src(CONFIG.links.delgado)}</li>
+      <li><b>外在檢索</b>：人們預期資訊之後查得到時，較少記住內容，但較會記住「去哪裡找」（Sparrow 等，2011，《Science》）。${src(CONFIG.links.sparrow)}</li>
+      <li><b>蘇格拉底反對文字</b>：見柏拉圖《斐德羅篇》（Phaedrus），蘇格拉底認為文字會讓人疏於記憶。</li>
+    </ul>
+    <p class="note">仍屬講者推論、目前沒有找到直接研究支持：「大腦正在非線性進化」、「儲存內容的神經通路減少」、《Nature Scientific Reports》關於眼動與平行掃描的說法。神經可塑性是真的，但幾年內的環境改變不等於演化。</p>
   </div>
   <div class="card" style="display:grid;gap:8px;align-content:start;margin-top:22px">
     <span class="eyebrow" style="margin:0"><span class="tag n">臺灣官方文件</span>出處：教育部 AI 人才方舟計畫</span>

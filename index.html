@@ -584,6 +584,10 @@ body::before{background:var(--bg)}
 .factlist{margin:0;padding-left:20px;display:grid;gap:8px}
 .factlist li{line-height:1.7}
 .srclink{display:block;font-size:13.5px;color:var(--navy);text-decoration:underline;text-underline-offset:3px;margin-top:2px;word-break:break-word}
+.warmup{margin:28px auto 8px;max-width:960px}
+.warmup-h{margin-bottom:12px}
+.warmup-h h2{margin:2px 0 4px;font-size:clamp(20px,2.6vw,28px)}
+.warmup-h .c-hand{position:static;font-size:22px;color:var(--red)}
 </style>
 
 <header class="bar">
@@ -690,7 +694,7 @@ const SEGS = [
   { n:"結語與交流", c:"var(--ink)" }
 ];
 const STOPS = [
-  { v:"cover",   s:0, m:1,  t:"開場", cue:"問候，說明今天兩條線：教學實踐與藝術創作。" },
+  { v:"cover",   s:0, m:1,  t:"開場", cue:"開場前播放封面下方的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
   { v:"home",    s:0, m:7,  t:"關於我｜我的 AI 工具歷程", cue:"三個身分；用《我的美好人生》帶出最後那句話。再用 2023–2026 歷程講五個層次的轉變，不是比工具數量。" },
   { v:"s01",     s:0, m:10, t:"01 AI 浪潮來襲", cue:"現場舉手：危機，還是轉機？接著帶出核心命題「第四秒」：汪滔長文→角色重塑與五件不能外包→第四秒→三個準備→抓包 AI。" },
   { v:"s02",     s:0, m:5,  t:"02 全球 AI 教育革命", cue:"兩項外部研究只當提問框架，不當成效證明。" },
@@ -844,6 +848,10 @@ V.cover = ()=>`
     <span class="c-hand c-scrib">create · teach · reflect ↘</span>
     <span class="c-tape t1"></span><span class="c-tape t2"></span>
   </section>
+  <div class="warmup">
+    <div class="warmup-h"><span class="c-hand">warm-up</span><h2>開場熱身影片：114 優高亮點課程・高一美術</h2><p class="note">講座開始前播放；七步學習與設計決定在課堂中的實際樣子。</p></div>
+    <div class="vid warmup-vid"><iframe src="https://www.youtube-nocookie.com/embed/3QZlTPCcTmA?rel=0" title="114 優高亮點課程－高一美術" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+  </div>
   <div class="entry">
     <button type="button" data-start="talk"><b>開始講座 →</b><span>依講座順序一頁一頁走，含計時與 110／120 分鐘切換</span></button>
     <button type="button" data-start="explore"><b>自由探索</b><span>講座後回來看：案例、作品、工具與資源</span></button>
@@ -1021,9 +1029,7 @@ V.method = ()=>`${head("05","不只是 AI 備課","重新探索美術教學的�
     <div class="card"><h3>自主學習與共學</h3><p>先個人觀察與作答，再組內比較不同看法，最後由教師釐清概念。形成性評量嵌入各階段，不等成品完成才給回饋。</p></div>
     <div class="card"><h3>教學反思</h3><p>留意工具切換、重複繳交與操作挫折。課程可以刪減功能、增加手繪與討論，讓注意力回到理解。</p></div>
   </div>
-  <div class="vidrow">
-    <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3QZlTPCcTmA?rel=0" title="114 優高亮點課程－高一美術" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
-    <div><span class="note">課程影片</span><h3>114 優高亮點課程・高一美術</h3><p class="note">上面的七步學習與設計決定，在課堂中的實際樣子。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.lesson114)}</div></div>
+  <p class="note" style="margin-top:22px">課程影片〈114 優高亮點課程・高一美術〉已放在封面作為開場熱身影片。</p><div class="links" style="margin-top:8px">${lk(CONFIG.links.lesson114)}</div>
   </div>`;
 
 const STEPS11 = [

@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 SketchAR 照片與影片（Claude）
+- #roots 的 SketchAR 卡片：原「待補」框換成講者提供的課堂短片（img/sketchar.mp4，19 秒，preload=none，封面 img/sketchar-poster.jpg）與三張照片（img/sketchar-1/2/3.jpg，1200px）。
+- 照片可滑鼠移過放大（加進 ZOOM_SEL）。
+- 隱私處理：sketchar-3 學習單上的「班級／座號／姓名」手寫字、sketchar-2 作品上的簽名已模糊。
+- 各段時間不變。
+
 ## 2026-11-26 22:20 Claude｜♪ 按鈕改明顯一點
 - 講者找不到原本很淡的 ♪：改成右下角小膠囊「♪ 練習」（透明度 0.5，滑過變清楚，z-index 999），工具列移到按鈕上方。
 

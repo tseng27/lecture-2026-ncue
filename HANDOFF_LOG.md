@@ -4,7 +4,7 @@
 
 ## 2026-11-26 10:20（Asia/Taipei）｜Claude
 - 任務：講者說高一核心課程《我的美好人生》的靈感來自夏克蒂・高文《每一天，都是全新的時刻》（Creative Visualization）。
-- 改了什麼：「關於我」的〈你的人生，就是你的藝術品〉卡片下方加「靈感來源」：書封 img/book-creative-visualization.jpg（講者提供）、書名、譯者、講者提供的書中片段引文。結語原句不變。原稿中「是／做／擁有」三法則與影響《秘密》的說法來自 AI 摘要、未核對，未放。
+- 改了什麼：「關於我」的〈你的人生，就是你的藝術品〉卡片下方加「靈感來源」：書封 img/book-creative-visualization.jpg（講者提供）、書名、譯者、講者提供的書中片段引文，以及講者的話「學校只有高一一學期的美術課，希望這份價值學生能帶著走」。結語原句不變。原稿中「是／做／擁有」三法則與影響《秘密》的說法來自 AI 摘要、未核對，未放。
 - 驗證：smoke-test PASS；截圖已看過。
 - 是否已同步 artifact-source.html／已發布：是（Artifact 新增 img/book-creative-visualization.jpg）。
 

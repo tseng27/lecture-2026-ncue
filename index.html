@@ -590,6 +590,10 @@ body::before{background:var(--bg)}
 .c-vid::before{content:"";position:absolute;left:58%;top:22px;width:84px;height:22px;background:var(--tape);transform:rotate(-6deg);z-index:3}
 @media (min-width:861px) and (max-width:1180px){.c-vid{top:38%}}
 @media (max-width:860px){.c-vid{position:static;order:3;width:100%;transform:none}.c-vid::before{display:none}.c-vid .c-hand{white-space:normal}}
+.about-thumb{float:right;width:150px;margin:-6px 0 12px 22px;background:#fff;padding:6px;box-shadow:0 10px 20px -10px rgba(0,0,0,.45);transform:rotate(2deg)}
+.about-thumb img{display:block;width:100%;height:auto}
+.about-book{clear:both}
+@media (max-width:520px){.about-thumb{width:96px;margin:0 0 8px 12px}}
 </style>
 
 <header class="bar">
@@ -865,6 +869,7 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
   <div class="chips"><span class="chip">AI 教學觀察所｜藝術教育研究與實踐</span><span class="chip">AI 藝術與跨媒材創作</span><span class="chip">ELARA 虛擬女團創作計畫</span><span class="chip">數位教材與創作平台開發</span></div>
   <div class="about-quote">
     <span class="eyebrow" style="margin:0"><span class="tag y">教學案例</span>我的美好人生</span>
+    <figure class="about-thumb"><img src="img/life-artwork-portrait.jpg" alt="講者肖像插畫：你的人生，就是你的藝術品" loading="lazy"></figure>
     <p class="about-quote-k"><span>你的人生，就是你的藝術品</span></p>
     <p class="about-quote-b">藝術不只存在於完成的作品，也存在於我們如何觀察生活、理解自己、做出選擇。AI 擴充了表達的可能，人的經驗與判斷仍是創作的核心。</p>
       <div class="about-book">

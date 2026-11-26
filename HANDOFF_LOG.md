@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-26 11:00（Asia/Taipei）｜Claude
+- 任務：講者要在「你的人生，就是你的藝術品」文字旁放肖像縮圖（講者先給金色版，後改為粉彩色鉛筆版）。
+- 改了什麼：關於我 .about-quote 右上加 .about-thumb（img/life-artwork-portrait.jpg，粉彩版，寬 150px，手機 96px，白框微傾斜）。
+- 驗證：smoke-test PASS；截圖已看過。
+- 是否已同步 artifact-source.html／已發布：是（Artifact 新增 img/life-artwork-portrait.jpg）。
+
 ## 2026-11-26 10:58（Asia/Taipei）｜Claude
 - 任務：講者要熱身影片縮小、放進封面拼貼中並重新排版。
 - 改了什麼：移除封面下方 .warmup 大影片；拼貼左側（介紹文字與大標題之間）加 .c-vid 小影片磚（寬 19%、白框、膠帶、手寫標籤「warm-up ▸ 114 優高亮點課程・高一美術」）。.collage min-height 620→700 以留空間；861–1180px 寬時 top 38%；手機版排在介紹文字後。

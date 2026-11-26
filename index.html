@@ -594,6 +594,14 @@ body::before{background:var(--bg)}
 .about-thumb img{display:block;width:100%;height:auto}
 .about-book{clear:both}
 @media (max-width:520px){.about-thumb{width:96px;margin:0 0 8px 12px}}
+.stages-fig{margin:0 0 14px}.stages-fig img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:4px}
+.stages5{display:grid;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--paper)}
+.st-row{display:grid;grid-template-columns:240px 1fr 1.2fr;gap:16px;padding:12px 16px;border-top:1px solid var(--line);line-height:1.7}
+.st-row:first-child{border-top:0}
+.st-head{font-weight:700;font-size:14px;background:rgba(0,0,0,.04)}
+.st-k{font-weight:700}.st-k b{display:inline-block;min-width:28px;font-family:var(--f-num);color:var(--red);font-size:20px}
+.st-l{display:none;font-style:normal;font-size:12px;font-weight:700;color:var(--red);margin-bottom:2px}
+@media (max-width:760px){.st-head{display:none}.st-row{grid-template-columns:1fr;gap:6px}.st-l{display:block}}
 </style>
 
 <header class="bar">
@@ -713,7 +721,7 @@ const STOPS = [
   { v:"cases",   s:1, m:1,  opt:1, t:"公共藝術", c:"T09", cue:"延伸案例，1 分鐘帶過。" },
   { v:"cases",   s:1, m:1,  opt:1, t:"更多案例", cue:"其他案例請學員會後在自由探索模式瀏覽。" },
   { v:"lab",     s:1, m:5,  t:"AI 教學實驗室｜教師的 AI 工具箱", cue:"回答「明天可以用什麼工具」：Claude 做教材、Gemini Canvas 做課程示範、NotebookLM 備課。只展示已驗證的功能。" },
-  { v:"aiprep",  s:1, m:8,  t:"用 AI 備課・認識 AI Agent", cue:"先講備課五步：目標由老師定，最後由老師驗收。再講 Agent：會規劃、用工具、檢查、留紀錄。用這個講座網站當實例。" },
+  { v:"aiprep",  s:1, m:8,  t:"用 AI 備課・認識 AI Agent", cue:"先講備課五步：目標由老師定，最後由老師驗收。再講 Agent：會規劃、用工具、檢查、留紀錄。用這個講座網站當實例。中段用「光圈與景深」走一遍 E→A 五階段：D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。" },
   { v:"break",   s:2, m:5,  t:"中場休息" },
   { v:"art",     s:3, m:10, t:"03 突破創作邊界", cue:"三個系列：凝形、溫柔巨物、透明與居所。" },
   { v:"practice",s:3, m:12, t:"04 從 AI 生成到自主創作", cue:"動機、概念、生成、選擇、再創作。" },
@@ -775,6 +783,14 @@ const CATCH = [
   [1,"印象派之後，塞尚、高更與梵谷等人發展出各自的方向，常被合稱為「後印象派」。","正確。「後印象派」一詞來自 1910 年羅傑・弗萊（Roger Fry）在倫敦策劃的展覽。"],
   [0,"（參考資料：莫內，《印象派宣言》，1874。）","查無此書。印象派沒有莫內寫的「宣言」，這是 AI 常見的「編造出處」。"],
   [0,"評量方式：請學生用 AI 生成一張印象派風格的圖片，生成成功即達成學習目標。","教學設計的問題。生成成功只代表會下指令，看不出學生是否理解光、色彩與筆觸；需要學生說明選擇或親手嘗試。"]
+];
+/* 主題 AI 備課「教師使用 AI 的五個階段」：講者提供文字（2026-11-26），逐字使用 */
+const STAGES5 = [
+  ["E","傳統講授","用課本、板書與口述說明概念。","老師畫圖，說明光圈大小如何影響景深。"],
+  ["D","AI 製作教材與簡報","請 AI 把既有教學內容整理成學生看得懂的圖例。","老師用深、淺景深的對照圖講解，全班一起看。"],
+  ["C","與 AI 討論，調整教學","帶著學生的回答或作品和 AI 討論，由老師決定下一步怎麼教。","學生看得出背景模糊，卻說不出怎麼拍。老師因此把下一個活動改成「先預測，再試拍」。"],
+  ["B","用 AI 製作互動教具","把調整後的活動做成學生可以親手操作的工具。","學生在相機模擬器固定場景與對焦點，只改光圈，檢驗自己的預測。"],
+  ["A","程式自動化與跨 AI 應用","用程式串接不同 AI，讓重複性的教學工作可以自動執行。","例如表單收回答後，由一個 AI 整理常見疑問，另一個 AI 草擬對應練習，再交給老師確認。"]
 ];
 /* 講者 AI 工具歷程（2026-11-26 講者提供的盤點；年份為階段歸納，非確切首次使用年份） */
 const AIJ_YEARS = [
@@ -1132,13 +1148,20 @@ V.aiprep = ()=>`${head("","用 AI 備課・認識 AI Agent","從聊天機器人�
     <div class="card"><span class="tbno">4</span><h3>製作教材</h3><p>請 Claude 把需求寫成互動網頁、學習單或課程網站，再一輪一輪修改。</p><p class="note">Claude</p></div>
     <div class="card"><span class="tbno">5</span><h3>檢查與修改</h3><p>逐項核對內容是否正確、是否符合學生程度、來源是否可查。</p><p class="note">老師負責</p></div>
   </div>
-  <div class="sec">二、什麼是 AI Agent？</div>
+  <div class="sec">二、教師使用 AI 的五個階段：以「光圈與景深」為例</div>
+  <figure class="stages-fig"><img src="img/ai-teacher-stages.jpg" alt="教師使用 AI 的五個階段：E 傳統講授、D AI 製作教材簡報、C 與 AI 討論調整教學、B AI 製作互動教具、A 程式自動化跨 AI 應用" loading="lazy" width="1400" height="788"></figure>
+  <div class="stages5" role="table" aria-label="教師使用 AI 的五個階段">
+    <div class="st-row st-head" role="row"><span role="columnheader">階段</span><span role="columnheader">教師如何使用 AI</span><span role="columnheader">以「光圈與景深」為例</span></div>
+    ${STAGES5.map(([k,n,how,ex])=>`<div class="st-row" role="row"><span class="st-k" role="cell"><b>${k}</b>${n}</span><span role="cell"><i class="st-l">教師如何使用 AI</i>${how}</span><span role="cell"><i class="st-l">以「光圈與景深」為例</i>${ex}</span></div>`).join("")}
+  </div>
+  <div class="fourth"><span class="note">怎麼讀這張表</span><h3>D 幫我準備要講的內容，C 陪我想下一步怎麼教，B 把教法做成學生能操作的工具，A 再讓整套流程可以重複使用。</h3></div>
+  <div class="sec">三、什麼是 AI Agent？</div>
   <div class="grid g2">
     <div class="card"><h3>聊天機器人</h3><p>你問一句，它答一句。每一步都要你自己接手：複製、貼上、存檔、再問。</p></div>
     <div class="card"><h3>AI Agent（代理）</h3><p>你交給它一個目標，它會自己拆步驟、使用工具（讀檔、寫檔、執行、搜尋）、檢查結果，並把做過的事記錄下來，讓下一位能接手。</p></div>
   </div>
   <div class="chips" style="margin-top:14px">${["目標","規劃步驟","用工具執行","檢查結果","記錄與交接"].map((x,i)=>`<span class="chip">${i+1}. ${x}</span>`).join("")}</div>
-  <div class="sec">三、實例：這個講座網站怎麼做出來</div>
+  <div class="sec">四、實例：這個講座網站怎麼做出來</div>
   <div class="grid g2">
     <div class="card"><h3>Agent 做的事</h3><p>Claude 依照講者的需求寫網頁、自動測試每一頁（smoke test）、上傳到 GitHub 發布，並寫下工作規則（AGENTS.md）與交接紀錄（HANDOFF_LOG）。另一個 AI（Grok）讀了紀錄後，可以接著做。</p></div>
     <div class="card"><h3>講者做的事</h3><p>決定講什麼、用哪些作品、哪一種風格；看過畫面後提出修改，例如「不要裁切」「影片縮小，以文字為主」。每次改動都要講者看過才算數。</p></div>

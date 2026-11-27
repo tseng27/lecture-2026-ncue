@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:25 Claude：工具箱改為四種 AI 與其 Agent
+
+- #lab「明天就可以用的三種方式」三張卡（含待補按鈕）改為 Claude／ChatGPT／Gemini／Grok 四張卡，附 logo（Simple Icons；Grok 為自繪簡化標誌）與各家 Agent 簡述。
+- Agent 名稱依 2026 年中資料撰寫，未再上網核對。
+
 ## 2026-11-27 11:17 Claude：工具箱移除「離線攝影版」字樣
 
 - CONFIG.links.aiSelfStudy 標籤改為「AI 自學中心」；G05 卡與 #learning 卡說明刪去「離線攝影版」。

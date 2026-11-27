@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:34 Claude：工具箱新增「地球時區與洋流」
+
+- TOOLS 新增，連結 https://claude.ai/artifact/GWm6gm4maGgrERzy1RF7JU 。
+
 ## 2026-11-27 11:32 Claude：工具箱新增「台灣程式空拍」
 
 - TOOLS 新增，連結 https://claude.ai/artifact/4DppFZ9WHFUi1uWuH5cdkG 。是否即「地景互動」待講者確認。

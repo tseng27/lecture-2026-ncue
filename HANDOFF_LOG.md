@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 12:00 Claude：Anthropic 加入 Claude Duet
+
+- Anthropic 卡加入 Claude Duet（2026-10-21 預覽，常駐背景 agent，對應 Grok Bot／dots）；圖示暫用 Claude logo。
+
+## 2026-11-27 11:55 Claude：OpenAI 加入 dots
+
+- OpenAI 卡加入 dots（2026-09-29 DevDay 推出的常駐 agent）；官方無公開圖示，img/ai/dots.svg 為四色圓點示意。
+
 ## 2026-11-27 11:50 Claude：AI 工具加入網路評價（優／缺／費）與來源
 
 - 四家公司卡展開後，每個工具多三行：優點、缺點、費用（美元／月），每家附資料來源連結；查核日期 2026-11-27。

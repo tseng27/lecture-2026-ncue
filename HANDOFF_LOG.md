@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:32 Claude：工具箱新增「台灣程式空拍」
+
+- TOOLS 新增，連結 https://claude.ai/artifact/4DppFZ9WHFUi1uWuH5cdkG 。是否即「地景互動」待講者確認。
+
 ## 2026-11-27 11:30 Claude：工具箱新增「轉盤動畫工作台」
 
 - TOOLS 新增，連結 https://claude.ai/artifact/BfhhUDaKqdf9ZTUBi6bPei （Claude Artifact，需講者分享才能公開開啟）。

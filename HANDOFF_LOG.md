@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:50 Claude：工具箱小圖示；FRAMEFLOW 加 AURA FRAME 截圖與下載
+
+- 每張自建工具卡加 SVG 小圖示（TICON，紅／藍／黃三色輪替）；TOOLS 加 ic 欄位。
+- FRAMEFLOW：截圖 img/tool-aura.jpg、說明改為本機 AI 創作室（AURA FRAME）、狀態「可下載範本」；下載 downloads/aura-template-20261127.zip（講者範本，已檢查：teacher pin 空白、無個人路徑／金鑰）與 downloads/aura-prompts.md。links 第三欄 = 下載檔名。卡名是否改 AURA FRAME 待講者決定。
+- 工具箱底部連結列移除 Claude 教材範例、Gemini Canvas 兩個待補，只留 GitHub 與 NotebookLM 備課步驟（講者要求）。
+
 ## 2026-11-27 11:38 Claude：「地景互動」併入「台灣程式空拍」
 
 - 講者確認兩者是同一個；刪除地景互動卡。

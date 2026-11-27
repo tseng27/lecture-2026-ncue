@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 12:05 Claude：工具箱與 AI Agent 合併為一頁
+
+- 講者：「我的ai工具箱改成後面的agent整合為一頁」。V.aiprep 內容併入 V.lab 後半（「從使用 AI 到開發自己的教學工具」），V.aiprep 改為 V.lab 別名，#aiprep 轉到 #lab；選單、TITLES、EXPLORE_ORDER、學習地圖移除 aiprep。
+- STOPS：lab 3′＋aiprep 2′ 合為一站 5′，講座模式 23 → 22 站，各段時間不變。speaker-notes.json 第 14、15 頁合併；speaker-audio.json 該站改成兩段音檔陣列，♪ 錄音會依序播放。
+
 ## 2026-11-27 11:50 Claude：工具箱小圖示；FRAMEFLOW 加 AURA FRAME 截圖與下載
 
 - 每張自建工具卡加 SVG 小圖示（TICON，紅／藍／黃三色輪替）；TOOLS 加 ic 欄位。

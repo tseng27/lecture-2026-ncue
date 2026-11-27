@@ -794,6 +794,7 @@ const SEGS = [
   { n:"第三部分｜我的 AI 藝術創作與實踐", c:"var(--navy)" },
   { n:"第四部分｜未來教師與教育反思", c:"var(--ink)" }
 ];
+if(location.hash==="#aiprep")history.replaceState(null,"","#lab");
 const STOPS = [
   { v:"cover",    s:0, m:1,  t:"開場", cue:"開場前播放封面左側的熱身影片（114 優高亮點課程）。問候，說明今天兩條線：教學實踐與藝術創作。" },
   { v:"home",     s:0, m:3,  t:"關於我：一位持續探索的美術教師", cue:"三個身分；《我的美好人生》與「你的人生，就是你的藝術品」。最後點出今天的兩條路線。不在這裡介紹 AI 工具。" },
@@ -808,8 +809,7 @@ const STOPS = [
   { v:"sensory",  s:1, m:3,  t:"案例三：感官轉譯｜觀看與理解", tab:"flow", cue:"鑑賞不只是記藝術家和年代。投影鑑賞原稿：哪些句子是學生原本的？" },
   { v:"sensory",  s:1, m:5,  x:4, t:"感官轉譯｜畫面 → 聲音 → 新畫面", tab:"practice", cue:"三個情緒詞 → 聲音選擇；學生要說明選擇與理由。120 版加 4 分鐘聆聽與速寫互動。" },
   { v:"learning", s:1, m:4,  t:"學習歷程、自主學習與評量", cue:"原始回答 → AI 建議 → 學生判斷 → 修正比較 → 成果 → 反思。功能清單照標示講，未驗證的不說成已完成。時間不夠，師培生體驗改成示範。" },
-  { v:"lab",      s:1, m:3,  t:"我的 AI 教學工具箱", cue:"理解理念與案例之後才講工具。依用途分，不比模型強弱。八大類完整盤點留給會後展開。" },
-  { v:"aiprep",   s:1, m:2,  t:"從使用 AI 到開發自己的教學工具", cue:"用這個講座網站當 Agent 實例。老師負責目標、內容、判斷、驗證、修正；AI 負責整理、實作、執行、檢查。" },
+  { v:"lab",      s:1, m:5,  t:"我的 AI 教學工具箱與 AI Agent", cue:"理解理念與案例之後才講工具。依用途分，不比模型強弱。再用這個講座網站當 Agent 實例：老師負責目標、內容、判斷、驗證、修正；AI 負責整理、實作、執行、檢查。" },
   { v:"break",    s:2, m:5,  t:"中場休息" },
   { v:"artpath",  s:3, m:6,  t:"從好奇、遊戲到自主創作", cue:"最早用 Midjourney 是好奇與遊戲，這段經驗有價值。後來只為看效果而生成，會覺得空虛。轉變：從「AI 能生成什麼」到「我有想法，想透過 AI 實現」。再沿 2023 時間軸講早期作品。" },
   { v:"art",      s:3, m:5,  t:"創作議題與個人藝術語彙", cue:"先講長期關注的議題，再挑一個系列。每件作品回答：想表達什麼、什麼限制、怎麼用 AI、怎麼選。" },
@@ -824,12 +824,12 @@ const STOPS = [
 const MENU = [
   ["認識", [["home","關於我"],["lecture","講座導覽"],["map","學習地圖"]]],
   ["第一部分", [["roots","AI 之前的數位教學"],["s01","01 AI 浪潮"],["s02","02 全球教育"]]],
-  ["第二部分", [["method","05 理念與設計"],["survey","如果你是老師"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱"],["aiprep","自己開發工具"],["cases","全部案例"]]],
+  ["第二部分", [["method","05 理念與設計"],["survey","如果你是老師"],["stages","五個階段"],["photo","攝影探索"],["publicart","公共藝術"],["sensory","感官轉譯"],["learning","學習歷程"],["lab","工具箱與 Agent"],["cases","全部案例"]]],
   ["第三部分", [["artpath","從好奇到自主"],["art","03 議題與系列"],["practice","04 臨場感與方法"],["elara","ELARA"],["artsum","創作總結"],["workflow","工作流程"]]],
   ["第四部分", [["s06","06 未來教師"],["closing","結語"],["record","我的學習紀錄"],["resources","連結與來源"]]]
 ];
-const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"如果你是老師", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"AI 教學工具箱", aiprep:"從使用 AI 到開發工具", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源", map:"學習地圖", record:"我的學習紀錄" };
-const EXPLORE_ORDER = ["cover","home","lecture","map","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","aiprep","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","record","resources"];
+const TITLES = { cover:"封面", home:"關於我", lecture:"講座導覽", roots:"在 AI 出現之前", s01:"01 AI 浪潮來襲", s02:"02 全球 AI 教育革命", method:"05 理念與課程設計", survey:"如果你是老師", stages:"教師使用 AI 的五個階段", photo:"案例：攝影探索", publicart:"案例：校園公共藝術", sensory:"感官轉譯", cases:"教學案例", learning:"學習歷程與評量", lab:"我的 AI 教學工具箱與 AI Agent", artpath:"從好奇到自主創作", art:"03 創作議題與系列", practice:"04 臨場感與創作方法", elara:"ELARA", artsum:"藝術創作總結", workflow:"工作流程", s06:"06 未來美術教師", closing:"結語", break:"中場休息", resources:"連結與來源", map:"學習地圖", record:"我的學習紀錄" };
+const EXPLORE_ORDER = ["cover","home","lecture","map","roots","s01","s02","method","survey","stages","photo","publicart","sensory","learning","lab","cases","artpath","art","practice","elara","artsum","workflow","s06","closing","record","resources"];
 
 /* ===== 六大正式主題（標題不改） ===== */
 const THEMES = [
@@ -1367,7 +1367,7 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
     <div class="card"><h3>保護學習者</h3><p>公開版不含姓名、學號、帳號、成績及可辨識影像。學生可選擇不公開私人生命經驗，替代材料不影響正常評量。</p></div>
   </div>`;
 
-V.lab = ()=>`${head("","我的 AI 教學工具箱","依用途選工具","理解教學理念與案例之後，再談工具：先知道要解決什麼學習問題，再選工具。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
+V.lab = ()=>`${head("","我的 AI 教學工具箱","依用途選工具，再走到 AI Agent","理解教學理念與案例之後，再談工具：先知道要解決什麼學習問題，再選工具。每項工具都說清楚已經做到什麼。",'<span class="tag r">教學</span>')}
   <div class="sec">教師的 AI 工具箱：明天就可以用的三種方式</div>
   <div class="grid g3 toolbox">
     <div class="card"><span class="tbno">01</span><h3>用 Claude 製作教材</h3><p>把教學需求說清楚，讓 AI 協助寫成可操作的互動網頁、學習單或課程網站。這個講座網站就是一個例子。</p><p class="note">重點：老師決定內容與結構，AI 負責實作與修改。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.claudeKit)}</div></div>
@@ -1391,9 +1391,8 @@ V.lab = ()=>`${head("","我的 AI 教學工具箱","依用途選工具","理解�
   <div class="sec">每張工具卡固定記錄</div>
   <div class="chips">${["原問題","開發動機","介面","操作流程","教學用途","證據","限制","下一步"].map(x=>`<span class="chip">${x}</span>`).join("")}</div>
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.site)}</div>
-  <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>`;
-
-V.aiprep = ()=>`${head("","從使用 AI 到開發自己的教學工具","備課、AI Agent 與這個講座網站","從使用現成工具，到自己設計教材、互動網頁與自主學習平台。AI 可以幫忙整理、實作、執行與檢查；教學目標、內容判斷與最後驗收，仍然是老師的工作。",'<span class="tag r">教學</span>')}
+  <p class="note" style="margin-top:10px">操作錄影只呈現已驗證的功能；未找到原檔的專案不用概念圖冒充介面。</p>
+  <div class="sec" style="margin-top:30px">從使用 AI 到開發自己的教學工具</div>
   <div class="sec">一、用 AI 備課與製作教材：五個步驟</div>
   <div class="grid g3 toolbox steps5">
     <div class="card"><span class="tbno">1</span><h3>定目標</h3><p>先寫下這堂課學生要會什麼、用什麼證據看得出來。</p><p class="note">老師負責</p></div>
@@ -1424,6 +1423,8 @@ V.aiprep = ()=>`${head("","從使用 AI 到開發自己的教學工具","備課�
     <div class="card"><h3>驗收</h3><p>AI 說「完成了」不算數；老師親自看過、試過才算。</p></div>
   </div>
   <div class="links" style="margin-top:18px">${lk(CONFIG.links.github)}${lk(CONFIG.links.notebooklm)}</div>`;
+
+V.aiprep = ()=>V.lab();
 
 /* 主題 03：系列、作品、年代與圖片皆取自講者作品集網站 /series/ 與各作品頁（2026-11-25 讀取）。圖片直接連到作品集網站。 */
 const PORT = "https://tseng-kuo-cheng-art.tseng27.chatgpt.site";
@@ -1836,7 +1837,7 @@ function openAboutLb(i){
 const MAP = [
   ["起點","先認識講者，再決定要走講座路線還是自己逛。",[["home","認識講者的教學與創作背景"],["lecture","看懂今天的講座路線與時間"]]],
   ["第一部分　看見變化","先理解 AI 帶來的變化，再談教學。",[["roots","看見 AI 出現之前，數位工具怎麼進入美術課"],["s01","判斷 AI 浪潮對教學是危機、轉機，還是兩者都是"],["s02","比較各國怎麼把 AI 帶進學校，以及研究的提醒"]]],
-  ["第二部分　教學設計","從理念到課例，最後是工具。建議依序看。",[["method","理解「回到引導學生探索自己」的課程設計理念"],["survey","想像自己當老師：AI 用在哪個環節、為了什麼"],["stages","分辨教師使用 AI 的五個階段"],["photo","課例：用相機模擬器預測，再實際拍攝"],["publicart","課例：校園公共藝術的提問與學習單"],["sensory","課例：把名畫轉譯成聲音與影像"],["learning","學習歷程與評量：留下可以檢查的證據"],["lab","認識可以用的 AI 工具與自建工具"],["aiprep","從使用 AI 走到自己開發教學工具"],["cases","全部教學案例索引（需要時再查）"]]],
+  ["第二部分　教學設計","從理念到課例，最後是工具。建議依序看。",[["method","理解「回到引導學生探索自己」的課程設計理念"],["survey","想像自己當老師：AI 用在哪個環節、為了什麼"],["stages","分辨教師使用 AI 的五個階段"],["photo","課例：用相機模擬器預測，再實際拍攝"],["publicart","課例：校園公共藝術的提問與學習單"],["sensory","課例：把名畫轉譯成聲音與影像"],["learning","學習歷程與評量：留下可以檢查的證據"],["lab","認識可以用的 AI 工具與自建工具"],["cases","全部教學案例索引（需要時再查）"]]],
   ["第三部分　創作實踐","看一位美術老師自己的創作怎麼和 AI 互動。",[["artpath","創作從好奇、遊戲走到帶著想法實現"],["art","五個作品系列與長期關注的議題"],["practice","創作方法七步驟與展覽發表紀錄"],["elara","ELARA：從視覺跨到音樂與影片"],["artsum","兩條創作線背後的同一個理念"],["workflow","跨 AI 協作的工作流程"]]],
   ["第四部分　回到自己","整理收穫，找到自己的教學模式。",[["s06","思考未來美術教師的角色"],["closing","結語"],["record","寫下自己的學習紀錄，列印或存成 PDF"]]]
 ];
@@ -1988,8 +1989,8 @@ buildStrip(); route(); tick();
  const clk=()=>{const i=idx(),lim=i>=0?STOPS[i].m*60:0,e=on?(Date.now()-t0)/1000:0;document.getElementById("spkClk").textContent=fm(e)+" / "+fm(lim)};
  function stop(){on=false;auto=false;if("speechSynthesis" in window)speechSynthesis.cancel();if(au){au.pause();au=null}clearInterval(tk);clk()}
  async function rec(){stop();if(!urls){try{urls=await (await fetch("speaker-audio.json")).json()}catch(e){document.getElementById("spkClk").textContent="錄音清單載入失敗";return}}
-  const i=idx();if(i<0||!urls[i])return;au=new Audio(urls[i]);on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);
-  au.onended=()=>{on=false;clearInterval(tk);au=null;if(document.getElementById("spkAuto").checked&&idx()<STOPS.length-1){auto=true;document.body.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));setTimeout(()=>{auto=false;rec()},800)}};
+  const i=idx();if(i<0||!urls[i])return;const lst=[].concat(urls[i]);let k=0;au=new Audio(lst[0]);on=true;t0=Date.now();clearInterval(tk);tk=setInterval(clk,500);
+  au.onended=()=>{if(++k<lst.length){au.src=lst[k];au.play().catch(()=>{});return}on=false;clearInterval(tk);au=null;if(document.getElementById("spkAuto").checked&&idx()<STOPS.length-1){auto=true;document.body.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));setTimeout(()=>{auto=false;rec()},800)}};
   au.onerror=()=>{document.getElementById("spkClk").textContent="錄音無法播放，請改用朗讀";stop()};au.play().catch(()=>{})}
  function say(){if(!on)return;const s=q.shift();if(!s){on=false;clearInterval(tk);if(document.getElementById("spkAuto").checked&&idx()<STOPS.length-1&&Date.now()-t0>5000){auto=true;document.body.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true}));setTimeout(()=>{auto=false;play()},800)}return}
   const u=new SpeechSynthesisUtterance(s);const v=speechSynthesis.getVoices().filter(v=>/^zh|cmn/i.test(v.lang)).sort((a,c)=>(/TW|Hant/i.test(c.lang)?1:0)-(/TW|Hant/i.test(a.lang)?1:0))[0];if(v){u.voice=v;u.lang=v.lang}else u.lang="zh-TW";u.onend=say;u.onerror=e=>{if(e.error!=="interrupted"&&e.error!=="canceled")say()};speechSynthesis.speak(u)}

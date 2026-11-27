@@ -7,6 +7,7 @@
 .rec-l{display:block;font-weight:700;margin-bottom:8px;line-height:1.5}.rec-l small{font-weight:400;opacity:.7;margin-left:4px}.rec-in{width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 12px;border:1.5px solid var(--ink);border-radius:2px;background:var(--bg);color:var(--ink)}textarea.rec-in{min-height:110px;resize:vertical}
 #recPrint h1{font-size:22pt;margin:0 0 4pt}#recPrint h2{font-size:12pt;margin:14pt 0 4pt;border-bottom:1px solid #999;padding-bottom:2pt}#recPrint p{font-size:11pt;line-height:1.7;margin:0}
 @media print{body.prec header,body.prec .stop,body.prec main>*:not(.view),body.prec .view>*:not(#recPrint),body.prec #spkBtn,body.prec #spkPanel{display:none!important}body.prec #recPrint{display:block!important;color:#000}body.prec,body.prec main{background:#fff!important}}
+.bio-list{list-style:none;margin:8px 0 0!important;padding:0!important}.bio-list li{display:grid;grid-template-columns:auto;gap:2px;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}.bio-list li:last-child{border-bottom:0}.bio-list li:has(.bio-d){grid-template-columns:7.5em 1fr;gap:4px 12px}.bio-d{font-family:var(--f-num,monospace);font-size:14px;opacity:.75;padding-top:2px}@media(max-width:560px){.bio-list li:has(.bio-d){grid-template-columns:1fr}}
 </style></head><body>
 <title>AI 時代的藝術與教育</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -977,6 +978,16 @@ V.home = ()=>`${head("","我是"+esc(CONFIG.speaker),"一位在美術教學、�
     <div class="card"><div class="shape s" style="margin-bottom:12px"></div><h3>藝術創作者</h3><p>從自己在意的感受與議題出發，運用 AI 與多元媒材，探索藝術表達的可能。</p></div>
     <div class="card"><div class="shape t" style="margin-bottom:12px"></div><h3>終身學習者</h3><p>喜歡新事物，享受學習與成長，讓每天的探索更靠近自己想過的生活。</p></div>
   </div>
+  <div class="sec">學歷與經歷</div>
+  <div class="grid g2">
+    <div class="card"><h3>學歷</h3><p>國立高雄師範大學美術系 碩士</p><h3 style="margin-top:14px">現職</h3><ul class="bio-list"><li><span>國立屏北高級中學 美術專任教師</span></li><li><span>教育部高級中等學校教學輔導團 委員</span></li><li><span>教育部高中課程美術學科中心 種子教師</span></li></ul></div>
+    <div class="card"><h3>經歷</h3><ul class="bio-list">
+      <li><span class="bio-d">1997–2004</span><span>屏東縣立鹽埔國中 美術專任教師、資料組長、註冊組長</span></li>
+      <li><span class="bio-d">2004–</span><span>國立屏北高級中學 訓育組長、學務主任；現為美術專任教師</span></li>
+      <li><span class="bio-d">2010–迄今</span><span>教育部高中課程美術學科中心 種子教師、研究教師</span></li>
+      <li><span class="bio-d">2022–迄今</span><span>教育部高級中等學校教學輔導團 委員</span></li>
+    </ul></div>
+  </div>
   <div class="sec">從教學、創作到實踐</div>
   <div class="chips"><span class="chip">AI 教學觀察所｜藝術教育研究與實踐</span><span class="chip">AI 藝術與跨媒材創作</span><span class="chip">ELARA 虛擬女團創作計畫</span><span class="chip">數位教材與創作平台開發</span></div>
   <div class="about-quote">
@@ -1385,7 +1396,7 @@ V.practice = ()=>`${head("04","從 AI 生成到自主創作","我的藝術實驗
   <div class="sec">作品狀態與展歷</div>
   <div class="card"><p>沒有原始證據的年份、尺寸與展出地點一律顯示「待核」。《光之繭》的 MoMA 字樣是海報構想設定，不列為展歷；《灰燼之後的方舟》與《餘燼之舟》暫不合併，等本人確認是否同案不同版。</p></div>
   <div class="sec">展覽發表紀錄（2023 年 4 月起）</div>
-  <div class="card exh"><ol class="exh-list">${EXHIBITS.map(([d,t,e,u])=>`<li><span class="exh-d">${d}</span><a href="${u}" target="_blank" rel="noopener">「${esc(t)}」<small>${esc(e)}</small> ↗</a>${t==="凝形─自然系列"?` <a class="exh-x" href="${EXH_CANVA}" target="_blank" rel="noopener">作品集 ↗</a>`:""}</li>`).join("")}</ol><p class="note" style="margin-top:10px">出處：講者 Facebook 個人頁貼文，依日期由新到舊排列。</p></div>`;
+  <div class="card exh"><ol class="exh-list">${EXHIBITS.map(([d,t,e,u])=>`<li><span class="bio-d">${d}</span><a href="${u}" target="_blank" rel="noopener">「${esc(t)}」<small>${esc(e)}</small> ↗</a>${t==="凝形─自然系列"?` <a class="exh-x" href="${EXH_CANVA}" target="_blank" rel="noopener">作品集 ↗</a>`:""}</li>`).join("")}</ol><p class="note" style="margin-top:10px">出處：講者 Facebook 個人頁貼文，依日期由新到舊排列。</p></div>`;
 
 const MIA_FLOW = [
   ["角色定錨","以 MV 服裝設定圖為依據：栗棕色下巴短鮑伯、鵝黃襯衫、米白外套、灰藍百褶長裙、棕色短靴、棕色斜背包與 ELARA 耳機，分成「城市春日散步」與「花田」兩套造型。之後每一鏡都回來對照。"],

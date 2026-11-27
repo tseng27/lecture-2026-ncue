@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:40 Claude：四種 AI 卡改用各家 Agent 自己的圖示
+
+- 依 2026-11 網路資料更新 Agent 名稱：Claude Code／Cowork（Chrome 側邊欄已併入）、ChatGPT Work／Codex、Gemini Spark／Antigravity（取代 Gemini CLI、Jules）、Grok Bot／Grok Build。
+- 圖示放 img/ai/*.svg（取自 @lobehub/icons-static-svg，MIT）。
+
 ## 2026-11-27 11:25 Claude：工具箱改為四種 AI 與其 Agent
 
 - #lab「明天就可以用的三種方式」三張卡（含待補按鈕）改為 Claude／ChatGPT／Gemini／Grok 四張卡，附 logo（Simple Icons；Grok 為自繪簡化標誌）與各家 Agent 簡述。

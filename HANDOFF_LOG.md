@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:17 Claude：工具箱移除「離線攝影版」字樣
+
+- CONFIG.links.aiSelfStudy 標籤改為「AI 自學中心」；G05 卡與 #learning 卡說明刪去「離線攝影版」。
+
 ## 2026-11-27 12:05 Claude：工具箱與 AI Agent 合併為一頁
 
 - 講者：「我的ai工具箱改成後面的agent整合為一頁」。V.aiprep 內容併入 V.lab 後半（「從使用 AI 到開發自己的教學工具」），V.aiprep 改為 V.lab 別名，#aiprep 轉到 #lab；選單、TITLES、EXPLORE_ORDER、學習地圖移除 aiprep。

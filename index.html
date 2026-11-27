@@ -1186,7 +1186,7 @@ const STEPS11 = [
   ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
 ];
 V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例</span><span>講座 14 分鐘</span>')}
-  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["law","著作權與法治"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
   <div id="sbox"></div>`;
 
 const SENS_TABS = {
@@ -1211,6 +1211,34 @@ const SENS_TABS = {
     <div class="grid g2 tvids">${[["vP8a-K5V49w","〈夜遊者〉"],["v7NMSqUw-2o","〈戴珍珠耳環的少女〉"]].map(([id,t])=>`<figure class="tvid">${ytl(id,"教師示範："+t+"轉譯 MV")}<figcaption><b>${t}</b><small class="note">教師示範</small></figcaption></figure>`).join("")}</div>
     <div class="card" style="margin-top:14px"><h3>先示範一次完整流程</h3><p>老師先用名畫走完「鑑賞 → 情緒詞 → Suno 歌曲 → 分鏡 → 動畫 → 剪輯」，學生再用自己選的畫做一次。</p><div class="links">${lk(CONFIG.links.artGpt)}</div></div>
     <p class="note" style="margin-top:8px">學生在 Padlet 上傳鑑賞學習單、歌曲與 MV；Padlet 有學生姓名，不公開連結。</p>`,
+  law:()=>`<p style="margin-bottom:12px">把名畫做成會動的 MV，在法律上就是「改作」。能不能做、能不能公開上傳，要看兩件事：<b>作者過世多久</b>，以及<b>作品在哪個國家被使用</b>。這一頁是課堂的法治教育補充，不是法律意見。</p>
+    <div class="sec">這 11 幅畫的著作權狀態</div>
+    <div class="tbl"><table><thead><tr><th>作品</th><th>作者（卒年）</th><th>台灣：死後 50 年</th><th>歐盟、英、日、韓：死後 70 年</th></tr></thead><tbody>
+    <tr><td><b>戴珍珠耳環的少女</b></td><td>維梅爾（1675 卒）</td><td><span class="st ok">公共領域</span></td><td><span class="st ok">公共領域</span></td></tr><tr><td><b>拾穗</b></td><td>米勒（1875 卒）</td><td><span class="st ok">公共領域</span></td><td><span class="st ok">公共領域</span></td></tr><tr><td><b>大碗島的星期天下午</b></td><td>秀拉（1891 卒）</td><td><span class="st ok">公共領域</span></td><td><span class="st ok">公共領域</span></td></tr><tr><td><b>梵谷自畫像</b></td><td>梵谷（1890 卒）</td><td><span class="st ok">公共領域</span></td><td><span class="st ok">公共領域</span></td></tr><tr><td><b>吶喊</b></td><td>孟克（1944 卒）</td><td><span class="st ok">公共領域</span></td><td><span class="st ok">公共領域（2015 起）</span></td></tr><tr><td><b>夜遊者</b></td><td>霍普（1967 卒）</td><td><span class="st ok">公共領域（2018 起）</span></td><td><span class="st wip">保護到 2037 年底</span></td></tr><tr><td><b>聖安東尼的誘惑</b></td><td>達利（1989 卒）</td><td><span class="st wip">保護到 2039 年底</span></td><td><span class="st wip">保護到 2059 年底</span></td></tr><tr><td><b>克莉絲蒂娜的世界</b></td><td>魏斯（2009 卒）</td><td><span class="st wip">保護到 2059 年底</span></td><td><span class="st wip">保護到 2079 年底</span></td></tr><tr><td><b>另一個世界</b></td><td>艾雪（1972 卒）</td><td><span class="st ok">公共領域（2023 起）</span></td><td><span class="st wip">保護到 2042 年底</span></td></tr><tr><td><b>上升與下降</b></td><td>艾雪（1972 卒）</td><td><span class="st ok">公共領域（2023 起）</span></td><td><span class="st wip">保護到 2042 年底</span></td></tr><tr><td><b>人子</b></td><td>馬格利特（1967 卒）</td><td><span class="st ok">公共領域（2018 起）</span></td><td><span class="st wip">保護到 2037 年底</span></td></tr>
+    </tbody></table></div>
+    <p class="note" style="margin-top:6px">保護期算到期滿那一年的 12 月 31 日。《聖安東尼的誘惑》這裡指達利 1946 年版本；若用的是波希（1516 卒）的同名作品，已屬公共領域。美國對 1978 年以前發表的作品另依發表年與續展計算，要逐件查。</p>
+    <div class="sec">台灣《著作權法》重點</div>
+    <div class="grid g2">
+      <div class="card"><span class="note">第 10 條、第 30、35 條</span><h3>創作完成就有著作權</h3><p>不必登記。著作財產權保護到作者死後 50 年，算到期滿當年年底；之後成為公共領域，任何人都能自由利用。</p></div>
+      <div class="card"><span class="note">第 28 條</span><h3>改作要經過同意</h3><p>把畫改成動畫、MV 或新圖像，屬於「改作」。仍在保護期內的作品，原則上要取得授權。</p></div>
+      <div class="card"><span class="note">第 46、52、65 條</span><h3>教學有合理使用，但有範圍</h3><p>學校授課的必要重製、為教學在合理範圍內引用，可能屬合理使用。判斷看四件事：目的（營利或非營利教育）、著作性質、使用的質量與比例、對原作市場的影響。課堂內播放，不等於可以公開上傳。</p></div>
+      <div class="card"><span class="note">第 15–18 條</span><h3>人格權沒有期限</h3><p>作者過世後，仍不能用歪曲、竄改的方式損害作者名譽，也要標示作者姓名。公共領域的作品也要寫出處。</p></div>
+    </div>
+    <div class="sec">國際規範</div>
+    <div class="grid g3">
+      <div class="card"><h3>伯恩公約</h3><p>自動保護、不必登記；外國作品享有和本國作品相同的保護；最低保護期是作者死後 50 年。台灣透過 WTO 的 TRIPS 協定遵守它的主要規定。</p></div>
+      <div class="card"><h3>死後 70 年</h3><p>歐盟、英國、美國（1978 年以後的作品）、日本（2018 年起）、韓國都是死後 70 年。同一幅畫，在台灣已是公共領域，在歐洲可能還受保護；作品放上網路，就可能被各國看到。</p></div>
+      <div class="card"><h3>名畫的照片</h3><p>歐盟 2019 年《數位單一市場著作權指令》第 14 條：忠實翻拍公共領域的平面美術作品，不產生新的著作權。仍建議優先使用美術館開放授權（如 CC0）的圖檔，並註明館藏出處。</p></div>
+    </div>
+    <div class="sec">用 AI 改作名畫時</div>
+    <div class="grid g2">
+      <div class="card"><h3>AI 不是免責工具</h3><p>用 AI 讓受保護的畫「動起來」，結果和原作實質相似，仍是改作。音樂、影片生成平台的使用條款也會限制商業使用，要先看清楚。</p></div>
+      <div class="card"><h3>AI 生成的部分，誰是作者？</h3><p>美國著作權局 2025 年報告與 Thaler 案判決、台灣智慧財產局的見解都認為：沒有足夠人類創作的純 AI 輸出不受著作權保護；人有創意選擇與修改的部分，才可能受保護。所以要留下自己的分鏡、歌詞與剪輯紀錄。</p></div>
+    </div>
+    <div class="sec">上傳作品前，問自己三題</div>
+    <div class="grid g3">${["我選的畫，作者哪一年過世？在台灣、在歐洲是不是公共領域？","我的 MV 只在課堂播放，還是要公開上傳？","圖檔、音樂從哪裡來？我有沒有標示原作者與出處？"].map(q=>`<div class="card"><h3>${q}</h3></div>`).join("")}</div>
+    <p class="note" style="margin-top:10px">參考：全國法規資料庫《著作權法》；WIPO《伯恩公約》；歐盟指令 2019/790 第 14 條；美國著作權局〈Copyright and Artificial Intelligence〉報告（2025）；經濟部智慧財產局著作權問答。</p>
+    <div class="links" style="margin-top:10px">${lk({label:"全國法規資料庫：著作權法",url:"https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=J0070017"})}${lk({label:"WIPO：伯恩公約",url:"https://www.wipo.int/treaties/en/ip/berne/"})}${lk({label:"歐盟指令 2019/790",url:"https://eur-lex.europa.eu/eli/dir/2019/790/oj"})}${lk({label:"美國著作權局：Copyright and AI",url:"https://www.copyright.gov/ai/"})}</div>`,
   practice:()=>`<p style="margin-bottom:14px">一起試一次：看一幅畫，用三個詞記下感受，再決定它會是什麼聲音。<b>沒有固定公式</b>，冷色也可以是明亮的節奏，重點是說得出理由。</p>
     <div class="prac">
       <div class="card"><label for="pw">① 三個情緒詞</label><input type="text" id="pw" placeholder="例：寂靜、溫暖、等待"><label for="pl" style="margin-top:12px">一句生活連結</label><textarea id="pl" placeholder="它讓我想起……"></textarea></div>

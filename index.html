@@ -9,6 +9,7 @@
 @media print{body.prec header,body.prec .stop,body.prec main>*:not(.view),body.prec .view>*:not(#recPrint),body.prec #spkBtn,body.prec #spkPanel{display:none!important}body.prec #recPrint{display:block!important;color:#000}body.prec,body.prec main{background:#fff!important}}
 .bio-list{list-style:none;margin:8px 0 0!important;padding:0!important}.bio-list li{display:grid;grid-template-columns:auto;gap:2px;padding:8px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}.bio-list li:last-child{border-bottom:0}.bio-list li:has(.bio-d){grid-template-columns:7.5em 1fr;gap:4px 12px}.bio-d{font-family:var(--f-num,monospace);font-size:14px;opacity:.75;padding-top:2px}@media(max-width:560px){.bio-list li:has(.bio-d){grid-template-columns:1fr}}
 .fig-grid .stages-fig img{width:100%;aspect-ratio:1/1;object-fit:contain;background:#fff}
+.prompt-pre{white-space:pre-wrap;font-size:14px;line-height:1.7;background:var(--chip,#f3f1ec);padding:10px 12px;border-radius:4px;margin:8px 0 10px;max-height:260px;overflow:auto;font-family:inherit}
 </style></head><body>
 <title>AI 時代的藝術與教育</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -1298,10 +1299,57 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
   <div class="sec">從原始想法到最終作品</div>
   <div class="seven six">${[["學生原始回答","var(--red)"],["AI 建議","var(--yellow)"],["學生判斷","var(--navy)"],["修正與比較","var(--ink)"],["最終成果","var(--red)"],["學習反思","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">成果檔不是下課後重新抄寫一次。</p>
-  <div class="sec">自學中心與數位學習單：做到哪裡</div>
-  <div class="tbl"><table><thead><tr><th>功能</th><th>狀態</th></tr></thead><tbody>${[["AI 自學中心（離線攝影版）","wip","部分可用・待測"],["數位學習單","wip","部分可用・待測"],["保留原始回答及修正內容","wip","部分可用・待測"],["AI 協助改善學生回答","wip","部分可用・待測"],["學習成果 PDF 輸出","chk","待驗證"],["學校 Google 帳號登入","chk","開發中・待驗證"],["教師端學習進度與紀錄","chk","開發中・待驗證"],["形成性評量嵌入各階段","sug","建議做法"]].map(([a,c,b])=>`<tr><td>${a==="AI 自學中心（離線攝影版）"?lk(CONFIG.links.aiSelfStudy):a}</td><td><span class="st ${c}">${b}</span></td></tr>`).join("")}</tbody></table></div>
-  <p class="note" style="margin-top:8px">標「待驗證」的功能，講座上只說是開發方向，不說成已完成。</p>
-  <div class="links" style="margin-top:10px">${lk(CONFIG.links.portfolioWorksheet)}${lk(CONFIG.links.paWorksheet)}</div>
+  <div class="sec">自學中心與數位學習單</div>
+  <div class="links">${lk(CONFIG.links.aiSelfStudy)}${lk(CONFIG.links.portfolioWorksheet)}${lk(CONFIG.links.paWorksheet)}</div>
+  <div class="sec">如何製作出來：給師培生的提示詞</div>
+  <p class="note" style="margin:-4px 0 10px">一次只做一件事：先規劃，再一步一步加功能，每加一個就實際測一次。可以貼給 Gemini、ChatGPT 或 Claude；【】裡換成你自己的課程。</p>
+  <div class="grid g2"><div class="card prompt-card"><span class="note">規劃</span><h3>0 先把需求說清楚</h3><pre class="prompt-pre">你是一位熟悉 Google Apps Script 的教育科技工程師。我是高中美術老師，想做一個「AI 自學中心」網頁，讓學生依任務自主學習。
+課程：【填入單元名稱，例如：攝影探索－光線、陰影、構圖、曝光三角】
+對象：高一學生，一節課 50 分鐘，用手機或平板操作。
+請先不要寫程式。請幫我：
+1. 把這個單元拆成 4–6 個學習任務，每個任務寫出學習目標與學生要繳交的內容。
+2. 列出網頁需要的頁面與功能。
+3. 列出要存哪些資料，並標出哪些是個人資料。
+4. 提出最簡單、老師自己可以維護的做法。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">單一 HTML</span><h3>1 自學中心（離線版）</h3><pre class="prompt-pre">請用單一 HTML 檔（HTML、CSS、JavaScript 寫在同一個檔案，不使用外部套件）做出「AI 自學中心」離線版：
+- 首頁列出上面規劃的任務卡，顯示完成進度。
+- 每個任務頁：任務說明、範例圖片位置、學生作答欄位。
+- 作答自動存在瀏覽器 localStorage，重新整理不會消失。
+- 手機版面優先，字級至少 16px，按鈕好按。
+- 不需要登入，不上傳任何資料。
+請給我完整程式碼，並告訴我怎麼在電腦上直接打開測試。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">學習單</span><h3>2 數位學習單</h3><pre class="prompt-pre">請把這份紙本學習單改成數位學習單：
+【貼上學習單題目，或上傳學習單照片】
+要求：
+- 每一題對應一個輸入欄位（文字、單選、上傳圖片）。
+- 題目旁可以展開「提示」，但不直接給答案。
+- 學生填完可以檢查哪些題目還沒寫。
+- 沿用自學中心的版面與存檔方式。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">學習歷程</span><h3>3 保留原始回答與修正</h3><pre class="prompt-pre">請在每一題加入「兩個版本」：
+- 第一次作答送出後鎖定，標示為「原始回答」。
+- 之後的修改另存成「修正版」，並記錄修改時間。
+- 畫面上並排顯示原始回答和修正版，用不同顏色標出差異。
+目的：讓老師看見學生的思考如何改變，不是只看最後答案。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">AI 回饋</span><h3>4 AI 協助改善回答</h3><pre class="prompt-pre">請加入「請 AI 給回饋」按鈕。按下後，把題目、評量規準與學生的回答送給 AI，回傳回饋。AI 的角色設定如下：
+你是高中美術課的學習夥伴。請用繁體中文、對高中生友善的語氣回覆：
+1. 先具體指出回答中做得好的一點。
+2. 再提出一個可以更深入的問題，引導學生自己修改。
+3. 不要直接改寫或代寫答案，不要打分數。
+4. 回覆不超過 120 字。
+技術上請用 Google Apps Script 呼叫 Gemini API，API 金鑰存在「指令碼屬性」，不要寫在前端程式碼裡。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">輸出</span><h3>5 學習成果 PDF</h3><pre class="prompt-pre">請加入「產生學習成果」功能：
+- 把學生的任務、原始回答、修正版、AI 回饋與最後反思，整理成一頁 A4 版面。
+- 用瀏覽器的列印功能另存成 PDF，列印時隱藏按鈕和選單。
+- 頁首放課程名稱與日期，姓名欄由學生自己填寫。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">Apps Script</span><h3>6 學校 Google 帳號登入</h3><pre class="prompt-pre">請把這個網頁改成 Google Apps Script 網頁應用程式：
+- 部署設定為「以存取網頁應用程式的使用者身分執行」，只允許本校網域的帳號存取。
+- 用 Session.getActiveUser().getEmail() 辨識學生。
+- 作答資料存到老師的 Google 試算表，每位學生一列，每個任務一欄。
+- 學生換裝置登入後，可以接著上次的進度。
+請一步一步說明部署方式，以及第一次授權時會看到哪些畫面。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">後台</span><h3>7 教師端進度與紀錄</h3><pre class="prompt-pre">請做一個只有老師能開的「教師後台」頁面：
+- 用表格列出全班每位學生在每個任務的狀態：未開始、進行中、已完成。
+- 點學生可以看他的原始回答、修正版與 AI 回饋。
+- 可以依班級篩選，並匯出成 CSV。
+- 用老師的 email 判斷權限，其他人打開只會看到「沒有權限」。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div><div class="card prompt-card"><span class="note">評量</span><h3>8 形成性評量嵌入各階段</h3><pre class="prompt-pre">請在每個任務結束時加入一題「小檢核」：
+- 根據這個任務的學習目標，出 1–2 題選擇題或一句話簡答。
+- 答錯時給提示，再讓學生試一次，不直接公布答案。
+- 把檢核結果記錄在教師後台，讓我知道哪個任務大家最容易卡住。
+請先列出每個任務的檢核題給我確認，再寫程式。</pre><button class="lk" type="button" data-copy>複製提示詞</button></div></div>
+  <div class="card" style="margin-top:14px"><h3>做之前先想好學生資料</h3><p>學生的回答、姓名與 email 都是個人資料。只收教學需要的資料；資料存在學校帳號的雲端硬碟，不要存在個人帳號；API 金鑰不能放在網頁程式碼裡；公開展示時，先把姓名與座號去識別化。</p></div>
   <div class="sec">師培生體驗：從學生的角度走一次 <span class="st sug">時間不足改示範</span></div>
   <ol class="qlist">${["提出自己的教學構想","使用 AI 協助分析或改善","比較原始構想與 AI 建議","自己決定採納或修改的內容","完成反思","輸出學習成果 PDF"].map(q=>`<li>${q}</li>`).join("")}</ol>
   <div class="sec">現行配分 <span class="st ok">既有規定</span></div>
@@ -1947,4 +1995,5 @@ buildStrip(); route(); tick();
 })();
 </script>
 
+<script>document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const t=b.parentElement.querySelector(".prompt-pre").textContent;const done=()=>{const o=b.textContent;b.textContent="已複製 ✓";setTimeout(()=>b.textContent=o,1500)};if(navigator.clipboard)navigator.clipboard.writeText(t).then(done,()=>{});else{const r=document.createRange();r.selectNodeContents(b.parentElement.querySelector(".prompt-pre"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r);document.execCommand("copy");done()}});</script>
 </body></html>

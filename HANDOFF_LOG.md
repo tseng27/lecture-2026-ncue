@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:25 Claude：BrandLab AI 改名並加連結
+
+- TOOLS：BrandLab AI → 「AI 品牌識別與商業空間設計工作室」，連結 https://share.gemini.google/ZpHU90ECEYKO ，狀態改「有成品」。
+
 ## 2026-11-27 11:20 Claude：工具箱加入連結（自學中心、音樂實驗工作站）
 
 - TOOLS：G05 AI 自學中心加連結；新增「音樂實驗工作站」https://huggingface.co/spaces/tseng27/music-lab-studio （已去掉 fbclid）。講者會陸續提供其他工具連結。

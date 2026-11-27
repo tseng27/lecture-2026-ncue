@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:05 Claude：「自學中心與數位學習單：做到哪裡」表格第一列改為連結
+
+- 講者：「就是這個連結」。AI 自學中心（離線攝影版）列改成 lk(CONFIG.links.aiSelfStudy)。
+
 ## 2026-11-27 11:00 Claude：加入 AI 自學中心（離線攝影版）連結
 
 - CONFIG.links.aiSelfStudy（GAS，網址含 /a/macros/ppsh.ptc.edu.tw/，可能需學校網域帳號）；放在 #learning 自學中心卡、#photo 連結列、連結與來源表。

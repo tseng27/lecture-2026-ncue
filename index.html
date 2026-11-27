@@ -1299,7 +1299,7 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
   <div class="seven six">${[["學生原始回答","var(--red)"],["AI 建議","var(--yellow)"],["學生判斷","var(--navy)"],["修正與比較","var(--ink)"],["最終成果","var(--red)"],["學習反思","var(--yellow)"]].map((s,i)=>`<div style="--sc:${s[1]}"><span class="k">0${i+1}</span><b>${s[0]}</b></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">成果檔不是下課後重新抄寫一次。</p>
   <div class="sec">自學中心與數位學習單：做到哪裡</div>
-  <div class="tbl"><table><thead><tr><th>功能</th><th>狀態</th></tr></thead><tbody>${[["AI 自學中心（離線攝影版）","wip","部分可用・待測"],["數位學習單","wip","部分可用・待測"],["保留原始回答及修正內容","wip","部分可用・待測"],["AI 協助改善學生回答","wip","部分可用・待測"],["學習成果 PDF 輸出","chk","待驗證"],["學校 Google 帳號登入","chk","開發中・待驗證"],["教師端學習進度與紀錄","chk","開發中・待驗證"],["形成性評量嵌入各階段","sug","建議做法"]].map(([a,c,b])=>`<tr><td>${a}</td><td><span class="st ${c}">${b}</span></td></tr>`).join("")}</tbody></table></div>
+  <div class="tbl"><table><thead><tr><th>功能</th><th>狀態</th></tr></thead><tbody>${[["AI 自學中心（離線攝影版）","wip","部分可用・待測"],["數位學習單","wip","部分可用・待測"],["保留原始回答及修正內容","wip","部分可用・待測"],["AI 協助改善學生回答","wip","部分可用・待測"],["學習成果 PDF 輸出","chk","待驗證"],["學校 Google 帳號登入","chk","開發中・待驗證"],["教師端學習進度與紀錄","chk","開發中・待驗證"],["形成性評量嵌入各階段","sug","建議做法"]].map(([a,c,b])=>`<tr><td>${a==="AI 自學中心（離線攝影版）"?lk(CONFIG.links.aiSelfStudy):a}</td><td><span class="st ${c}">${b}</span></td></tr>`).join("")}</tbody></table></div>
   <p class="note" style="margin-top:8px">標「待驗證」的功能，講座上只說是開發方向，不說成已完成。</p>
   <div class="links" style="margin-top:10px">${lk(CONFIG.links.portfolioWorksheet)}${lk(CONFIG.links.paWorksheet)}</div>
   <div class="sec">師培生體驗：從學生的角度走一次 <span class="st sug">時間不足改示範</span></div>

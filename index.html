@@ -731,6 +731,7 @@ const CONFIG = {
     artsCulture:{ label:"Google Arts & Culture", url:"https://artsandculture.google.com/?hl=zh-TW" },
     artGpt:{ label:"藝術鑑賞學伴 GPT（講者自建）", url:"https://chatgpt.com/g/g-690b7690c5a48191b61fdbee6847c622-yi-shu-jian-shang-xue-ban-art-companion-for-students" },
     learningSite:{ label:"我的學習歷程檔案（自學網站）", url:"https://tseng27.github.io/lecture-2026-ncue-learning/" },
+    aiSelfStudy:{ label:"AI 自學中心（離線攝影版）", url:"https://script.google.com/a/macros/ppsh.ptc.edu.tw/s/AKfycbx3ZTZi2Spq7fhjZmoslVk4SttAqAt86o2kuAWptP16l5z41T9LI7IZ0LbeTFoGL-uRzQ/exec" },
     suno:{ label:"Suno AI（AI 音樂生成）", url:"https://suno.com/" },
     cameraSim:{ label:"相機模擬器 CameraSim", url:"https://www.camerasim.com/" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
@@ -1309,7 +1310,7 @@ V.learning = ()=>`${head("","學習歷程與評量","學習單、自學中心與
   <div class="grid g5">${["原始構想","理解","選擇與修正","最終表達","反思"].map(x=>`<div class="card"><h3>${x}</h3></div>`).join("")}</div>
   <p class="note" style="margin-top:8px">用短訪談與過程證據補足成品無法呈現的學習。這是建議規準，尚未全面使用。</p>
   <div class="grid g2" style="margin-top:22px">
-    <div class="card"><h3>AI 自學中心 <span class="st wip">部分可用・待測</span></h3><p>離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步需另做現版測試。展示時清楚標示是哪個版本。</p></div>
+    <div class="card"><h3>AI 自學中心 <span class="st wip">部分可用・待測</span></h3><p>離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步需另做現版測試。展示時清楚標示是哪個版本。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.aiSelfStudy)}</div></div>
     <div class="card"><h3>保護學習者</h3><p>公開版不含姓名、學號、帳號、成績及可辨識影像。學生可選擇不公開私人生命經驗，替代材料不影響正常評量。</p></div>
   </div>`;
 
@@ -1545,7 +1546,7 @@ V.stages = ()=>`${head("","教師使用 AI 的五個階段","以「臺灣藝術�
 V.photo = ()=>`${head("","案例一：觀看的力量／攝影探索","從生活與校園出發","把觀察轉成有理由的形式選擇：光線、陰影、構圖，再到曝光三角。",'<span class="tag r">教學案例</span>')}
   ${caseFlow([["教學動機","學生每天拍照，卻很少停下來想「為什麼這樣拍」。"],["學習目標","觀察光線、陰影與構圖；理解曝光三角，能說出自己的形式選擇。"],["教學活動","從生活與校園環境出發的觀察，校園攝影，作品分享。"],["工具選擇","相機模擬器 CameraSim：固定場景與對焦點，一次只改一個變因，先看懂光圈、快門、ISO 的效果。"],["實際拍攝","帶著在模擬器上的預測，到校園用相機或手機實際拍攝。"],["學生成果","校園攝影作品與分享。"],["教學反思","AI 協助分析、提問與反思；看見學生說不出的地方，下一堂再調整。"]])}
   <div class="grid g2 tvid-one" style="margin-top:16px"><figure class="tvid">${ytl("1WTJF81KjIs","攝影課程紀錄")}</figure><div class="card"><span class="note">影片</span><h3>攝影課程紀錄</h3><p>攝影課程的上課紀錄，可以對照上面的教學動機、目標與活動一起看。</p></div></div>
-  <div class="links" style="margin-top:14px">${lk(CONFIG.links.cameraSim)}<button class="lk" type="button" data-view="cases">在案例資料庫看攝影探索 →</button></div>`;
+  <div class="links" style="margin-top:14px">${lk(CONFIG.links.cameraSim)}${lk(CONFIG.links.aiSelfStudy)}<button class="lk" type="button" data-view="cases">在案例資料庫看攝影探索 →</button></div>`;
 
 V.publicart = ()=>`${head("","案例二：校園公共藝術設計","學生的構想、判斷與選擇","重點不是模擬圖有多精緻，而是學生如何思考作品和校園的關係。",'<span class="tag r">教學案例</span>')}
   <div class="sec">教學流程</div>
@@ -1646,6 +1647,7 @@ V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></
 V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能找到網址，不代表已讀完全部內容；私人研究來源不出現在公開網站。",'<span class="tag">資源</span>')}
   <div class="tbl"><table><thead><tr><th>類別</th><th>連結</th><th>查核狀態</th></tr></thead><tbody>
     <tr><td>自學</td><td>${lk(CONFIG.links.learningSite)}</td><td><span class="st ok">講者提供（2026-11-27）</span></td></tr>
+    <tr><td>自學</td><td>${lk(CONFIG.links.aiSelfStudy)}</td><td><span class="st wip">講者提供；可能需學校帳號登入</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.site)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.fanpage)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.github)}</td><td><span class="st chk">與現行網站的部署關係待核</span></td></tr>

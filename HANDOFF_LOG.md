@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:35 Claude：四張卡改為公司 logo＋可展開的相關工具
+
+- 卡頭改為 Anthropic／OpenAI／Google／xAI 公司名與 logo；下方 <details> 點擊展開相關工具（各附圖示與一句說明）。
+- 依 2026-11 網路資料：Sora app 已於 2026-03 停止故未列；Grok Imagine 仍在但 Imagine 分頁已併入對話；Flow 無專用圖示，暫用 Google logo。
+
 ## 2026-11-27 11:40 Claude：四種 AI 卡改用各家 Agent 自己的圖示
 
 - 依 2026-11 網路資料更新 Agent 名稱：Claude Code／Cowork（Chrome 側邊欄已併入）、ChatGPT Work／Codex、Gemini Spark／Antigravity（取代 Gemini CLI、Jules）、Grok Bot／Grok Build。

@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:38 Claude：「地景互動」併入「台灣程式空拍」
+
+- 講者確認兩者是同一個；刪除地景互動卡。
+
 ## 2026-11-27 11:36 Claude：工具箱「繪畫歷程記錄」改為 ATELIER
 
 - 改為「ATELIER 虛擬繪畫工作室」https://tseng27.github.io/virtual-painting-atelier/ 。

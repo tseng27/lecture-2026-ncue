@@ -2,6 +2,12 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 09:50 Claude：加入自學網站「我的學習歷程檔案」連結
+
+- 講者提供 https://tseng27.github.io/lecture-2026-ncue-learning/ ，說「連結就好」。
+- CONFIG.links.learningSite；出現在 #record 頂端說明卡、#map 底部、結語「講座之後」、連結與來源表格（類別「自學」）。講座模式與時間不變。
+- 驗證：smoke-test 全部通過；手機 400px 無水平捲動。
+
 ## 2026-11-27 Claude：自學功能：學習地圖與我的學習紀錄
 
 - 新增 V.map（#map，選單「認識」）：五段路線、每頁一句學習目標、已看過打勾與進度條（store "seen"，render() 自動記錄）。

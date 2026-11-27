@@ -728,6 +728,7 @@ const CONFIG = {
     portfolioWorksheet:{ label:"課程學習成果檔案學習單（數位版）", url:"https://tseng27.github.io/ai-teaching-observatory/portfolio-worksheet/" },
     artsCulture:{ label:"Google Arts & Culture", url:"https://artsandculture.google.com/?hl=zh-TW" },
     artGpt:{ label:"藝術鑑賞學伴 GPT（講者自建）", url:"https://chatgpt.com/g/g-690b7690c5a48191b61fdbee6847c622-yi-shu-jian-shang-xue-ban-art-companion-for-students" },
+    learningSite:{ label:"我的學習歷程檔案（自學網站）", url:"https://tseng27.github.io/lecture-2026-ncue-learning/" },
     cameraSim:{ label:"相機模擬器 CameraSim", url:"https://www.camerasim.com/" },
     bbcSweden:{ label:"BBC：Back to books - Sweden's schools give up digital learning（2026-04-16，轉載）", url:"https://www.the-star.co.ke/news/world/2026-04-16-back-to-books-swedens-schools-give-up-digital-learning" },
     govSweden:{ label:"瑞典政府：more reading time and less screen time", url:"https://government.se/articles/2024/02/government-investing-in-more-reading-time-and-less-screen-time/" },
@@ -1587,11 +1588,12 @@ V.closing = ()=>`<div class="eyebrow"><span class="tag">結語與交流</span></
   <p class="quote">你的人生，<br>就是你的<span>藝術品</span>。</p>
   <div class="grid g2" style="margin-top:30px">
     <div class="card"><h3>交流</h3><p>你想在未來的美術課裡，讓學生保留哪一個自己的決定？</p></div>
-    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.portfolioCanva)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
+    <div class="card"><h3>講座之後</h3><p>切換到「自由探索」，可以再看所有案例、作品與工具。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.learningSite)}${lk(CONFIG.links.site)}${lk(CONFIG.links.fanpage)}${lk(CONFIG.links.portfolio)}${lk(CONFIG.links.portfolioCanva)}${lk(CONFIG.links.art)}${lk(CONFIG.links.elara)}</div></div>
   </div>`;
 
 V.resources = ()=>`${head("","連結與來源","網站、社群與研究","能找到網址，不代表已讀完全部內容；私人研究來源不出現在公開網站。",'<span class="tag">資源</span>')}
   <div class="tbl"><table><thead><tr><th>類別</th><th>連結</th><th>查核狀態</th></tr></thead><tbody>
+    <tr><td>自學</td><td>${lk(CONFIG.links.learningSite)}</td><td><span class="st ok">講者提供（2026-11-27）</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.site)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.fanpage)}</td><td><span class="st ok">已讀取主要頁面</span></td></tr>
     <tr><td>教學</td><td>${lk(CONFIG.links.github)}</td><td><span class="st chk">與現行網站的部署關係待核</span></td></tr>
@@ -1743,10 +1745,11 @@ const MAP_ALL = MAP.flatMap(g=>g[2].map(x=>x[0]));
 V.map = ()=>{const sn=store.get("seen",{}),n=MAP_ALL.filter(k=>sn[k]).length;return `${head("","學習地圖","自己走一遍這個網站","每一站寫著看完後應該能做到的事。打勾表示這台裝置已經看過；紀錄只存在你的瀏覽器，不會上傳。",'<span class="tag n">自學</span>')}
   <div class="map-prog"><b class="num">${n} / ${MAP_ALL.length}</b><span>已看過的頁面</span><span class="map-bar"><i style="width:${Math.round(n/MAP_ALL.length*100)}%"></i></span></div>
   ${MAP.map(([g,d,items],gi)=>`<div class="sec">${g}</div><p class="note" style="margin:-4px 0 10px">${d}</p><ol class="map-list">${items.map(([k,goal],i)=>`<li class="${sn[k]?"seen":""}"><a href="#${k}"><span class="map-ck" aria-hidden="true">${sn[k]?"✓":""}</span><span class="map-t"><b>${esc(TITLES[k]||k)}</b><small>${esc(goal)}</small></span><span class="map-st">${sn[k]?"已看過":"還沒看"}</span></a></li>`).join("")}</ol>`).join("")}
-  <div class="links" style="margin-top:20px"><a class="lk" href="#record">寫我的學習紀錄 →</a> <button class="lk" type="button" id="mapReset">清除打勾</button></div>`};
+  <div class="links" style="margin-top:20px"><a class="lk" href="#record">寫我的學習紀錄 →</a> ${lk(CONFIG.links.learningSite)} <button class="lk" type="button" id="mapReset">清除打勾</button></div>`};
 M.map = ()=>{const b=$("#mapReset");b.addEventListener("click",()=>{if(b.dataset.c){store.set("seen",{});render("map")}else{b.dataset.c=1;b.textContent="再按一次確認清除"}})};
 const PRAC_W={sp:["很慢","慢","中速","快","很快"],tn:["很柔","柔和","中性","明亮","銳利"],dn:["很疏","稀疏","適中","飽滿","很密"]};
 V.record = ()=>{const r=store.get("rec",{}),sn=store.get("seen",{}),pr=store.get("prac",null),n=MAP_ALL.filter(k=>sn[k]).length;return `${head("","我的學習紀錄","整理今天的收穫","寫完可以列印，或在列印視窗選「另存為 PDF」，放進自己的學習歷程。內容只存在這台裝置的瀏覽器，不會上傳。",'<span class="tag n">自學</span>')}
+  <div class="card" style="margin-bottom:14px"><h3>想寫完整一點？</h3><p>「我的學習歷程檔案」是另一個網站，有基本資料、五個提問、AI 教學應用、自主學習習作、成果反思與講座回饋六個部分。</p><div class="links" style="margin-top:10px">${lk(CONFIG.links.learningSite)}</div></div>
   <div class="rec-form">
   <div class="card"><label class="rec-l" for="rname">姓名或代號<small>（只在列印時出現，可不填）</small></label><input type="text" id="rname" class="rec-in" value="${esc(r.name||"")}" autocomplete="off"></div>
   <div class="sec">我看過的頁面 <span class="note" style="font-weight:400">${n} / ${MAP_ALL.length}</span></div>

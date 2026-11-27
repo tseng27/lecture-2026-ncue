@@ -2,6 +2,10 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 11:36 Claude：工具箱「繪畫歷程記錄」改為 ATELIER
+
+- 改為「ATELIER 虛擬繪畫工作室」https://tseng27.github.io/virtual-painting-atelier/ 。
+
 ## 2026-11-27 11:34 Claude：工具箱新增「地球時區與洋流」
 
 - TOOLS 新增，連結 https://claude.ai/artifact/GWm6gm4maGgrERzy1RF7JU 。

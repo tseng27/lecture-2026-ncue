@@ -910,7 +910,8 @@ const AIJ_CATS = [
 ];
 const AIJ_SHIFTS = [["從使用 AI <b>取得答案</b>","到使用 AI <b>拓展思考</b>"],["從使用 AI <b>生成作品</b>","到使用 AI <b>實現創作理念</b>"],["從使用 AI <b>製作教材</b>","到使用 AI <b>重新設計學習</b>"],["從使用<b>現成的 AI 工具</b>","到<b>開發自己需要的教學工具</b>"],["從<b>單一 AI 的操作</b>","到<b>多 AI 協作與工作流程自動化</b>"]];
 const TOOLS = [
-  { id:"G05", st:"wip", s:"部分可用・待測", t:"AI 自學中心", d:"學生依任務自學並保存輸入、比較與輸出。", ev:"離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步尚待現版測試。" },
+  { id:"G05", st:"wip", s:"部分可用・待測", t:"AI 自學中心", d:"學生依任務自學並保存輸入、比較與輸出。", ev:"離線攝影版可見本機保存與任務流程；GAS 登入、教師後台與跨裝置同步尚待現版測試。", links:[["AI 自學中心（離線攝影版）",CONFIG.links.aiSelfStudy.url]] },
+  { id:"", st:"ok", s:"有成品", t:"音樂實驗工作站", d:"在網頁上實驗音樂與聲音創作。", ev:"架設在 Hugging Face Spaces。", links:[["音樂實驗工作站","https://huggingface.co/spaces/tseng27/music-lab-studio"]] },
   { id:"", st:"chk", s:"待核", t:"學習歷程網頁", d:"保留原始回答、比較、修正與反思。", ev:"離線版與雲端版分開，不能互相推定功能。", links:[["課程學習成果小幫手","https://claude.ai/artifact/Qqq9yufVpLh5D8tkzYHVg3"]] },
   { id:"", st:"ok", s:"有成品", t:"歐元建築立體書", d:"可翻頁、彈出的互動建築立體書。", ev:"有兩個版本：歐元上的建築、自建模型版。", links:[["歐元上的建築","https://claude.ai/artifact/ADKj8txRxCPFeGJbsPfzQ3"],["自建模型版","https://claude.ai/artifact/WPRs93aezht9BAHzvcrE7W"]] },
   { id:"", st:"ok", s:"有成品", t:"單眼相機練習場", d:"在網頁上練習光圈、快門、ISO 的操作。", ev:"自建練習頁；課堂案例另用 CameraSim。", links:[["單眼相機練習場","https://claude.ai/artifact/M8Wo1nabKWWYPZbdaruCHS"]] },

@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-27 12:10 Claude：「什麼是 AI Agent」改為給非資訊背景老師的比喻版
+
+- 百科全書 vs 有自己電腦的實習老師；四家數位助教卡（dots／Gemini Spark／Cowork・Code・Duet／Grok Bot）；老師當主管＋確認與個資提醒。
+- 使用者提供草稿中未證實或改寫處：SpaceXSI 名稱、Spark 與雲端硬碟／Chrome／行事曆整合、Claude「非常精準」、Grok Bot「像真人看畫面點滑鼠」。
+
 ## 2026-11-27 12:00 Claude：Anthropic 加入 Claude Duet
 
 - Anthropic 卡加入 Claude Duet（2026-10-21 預覽，常駐背景 agent，對應 Grok Bot／dots）；圖示暫用 Claude logo。

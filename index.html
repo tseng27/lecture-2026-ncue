@@ -1187,7 +1187,7 @@ const STEPS11 = [
   ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
 ];
 V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例</span><span>講座 14 分鐘</span>')}
-  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["law","著作權與法治"],["practice","轉譯練習"],["evidence","證據狀態"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["law","著作權與法治"],["practice","轉譯練習"],["evidence","證據狀態"],["fix","上下學期對照"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
   <div id="sbox"></div>`;
 
 const SENS_TABS = {
@@ -1262,11 +1262,20 @@ const SENS_TABS = {
     <div class="sec">分享與反思</div>
     <div class="grid g3">${["我從原畫保留了什麼？","音樂讓我產生什麼新感受？","哪個修改最能代表自己的判斷？"].map(q=>`<div class="card"><h3>${q}</h3></div>`).join("")}</div>
     <div class="q" style="margin-top:22px">生成的是素材，選擇形成作品。</div>`,
-  fix:()=>`<div class="grid g3">
-    <div class="card"><h3>色彩與聲音不是固定公式</h3><p>舊教材寫「冷色＝低音、慢、憂鬱；暖色＝高音、輕快」。改為可討論的例子，允許冷色產生明亮節奏，要求說明個人詮釋。</p></div>
-    <div class="card"><h3>鏡長依條件決定</h3><p>舊教材把 6 秒寫成 AI 影片極限，那是當時工具設定。現在依音樂與現場工具條件決定鏡長。</p></div>
-    <div class="card"><h3>不用過強的說法</h3><p>「徹底消除焦慮」「無版權疑慮」「一鍵完整 MV」改成可核對的功能、觀察與待驗證狀態。AI 生成不自動代表可以公開。</p></div>
-  </div>`
+  fix:()=>`<p style="margin-bottom:12px">同一門課跑了兩個學期。工具條件變了，課程也跟著調整。</p>
+    <div class="tbl"><table><thead><tr><th>活動</th><th>114-1 上學期</th><th>114-2 下學期</th></tr></thead><tbody>
+    <tr><td><b>鑑賞學習單</b>（Feldman 四步驟＋藝術鑑賞學伴 GPT）</td><td><span class="st ok">有</span></td><td><span class="st ok">有</span></td></tr>
+    <tr><td><b>AI 音樂</b>（Suno 把畫的感覺寫成歌）</td><td><span class="st ok">有</span></td><td><span class="st ok">有</span></td></tr>
+    <tr><td><b>名畫動起來</b>（Grok 生成動態影片、Canva 剪輯 MV）</td><td><span class="st ok">有</span></td><td><span class="st chk">取消</span>Grok 不再提供免費影片生成</td></tr>
+    <tr><td><b>藝術公仔</b>（把名畫轉化成一尊公仔，說明造型的來源）</td><td><span class="st chk">無</span></td><td><span class="st ok">新增</span></td></tr>
+    <tr><td><b>課程省思與回饋</b></td><td><span class="st ok">有</span></td><td><span class="st ok">有</span></td></tr>
+    </tbody></table></div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><span class="note">為什麼取消</span><h3>工具條件改變</h3><p>Grok 不再提供免費影片生成，下學期取消「名畫動起來」這一步；鑑賞、音樂與反思照常進行。</p></div>
+      <div class="card"><span class="note">為什麼新增</span><h3>從動起來，換成立起來</h3><p>藝術公仔讓學生把畫裡的人物、符號和顏色變成一個立體角色，例如把馬格利特《人子》的黑禮帽和青蘋果做成公仔，再說明每個造型選擇的理由。</p></div>
+    </div>
+    <div class="sec">114-1 的 Padlet 作業牆</div>
+    <figure class="stages-fig" style="margin:0"><img src="img/sensory-padlet-1141.jpg" alt="114-1 名畫動起來 Padlet：依班級分欄收集鑑賞學習、AI 音樂、名畫動起來影片與課程省思" loading="lazy" width="1920" height="1080"><figcaption class="note">114-1「名畫動起來！從〈Dust My Shoulders Off〉看藝術的故事」Padlet：鑑賞學習、AI 音樂、名畫動起來、課程省思與回饋四欄（學生姓名、座號已模糊，不公開連結）。</figcaption></figure>`
 };
 
 V.cases = ()=>`${head("","教學案例","完整課程資料庫","已實施、正在試驗與規劃中的課程分開呈現，讓課程發展的過程也能被看見。規劃中的活動不列為已完成的學生作品。",'<span class="tag r">教學</span>')}

@@ -1187,7 +1187,7 @@ const STEPS11 = [
   ["分享反思","解釋一次關鍵修改與所學","反思與同儕回饋","學生能否用自己的話說明？"]
 ];
 V.sensory = ()=>`${head("05","感官轉譯 × 藝術再創作","從觀看到再創作","一幅畫可以成為聲音的起點；聆聽之後，新的感受又可以長成新的畫面。真正的學習，是學生能說明每一次轉換的選擇。",'<span class="tag r">核心案例</span><span>講座 14 分鐘</span>')}
-  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["law","著作權與法治"],["practice","轉譯練習"],["evidence","證據狀態"],["script","現場腳本"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
+  <div class="tabs" role="tablist">${[["flow","十一步流程"],["course","課程四任務"],["law","著作權與法治"],["practice","轉譯練習"],["evidence","證據狀態"],["fix","我修正了什麼"]].map(t=>`<button class="tab" role="tab" type="button" data-stab="${t[0]}">${t[1]}</button>`).join("")}</div>
   <div id="sbox"></div>`;
 
 const SENS_TABS = {
@@ -1262,8 +1262,6 @@ const SENS_TABS = {
     <div class="sec">分享與反思</div>
     <div class="grid g3">${["我從原畫保留了什麼？","音樂讓我產生什麼新感受？","哪個修改最能代表自己的判斷？"].map(q=>`<div class="card"><h3>${q}</h3></div>`).join("")}</div>
     <div class="q" style="margin-top:22px">生成的是素材，選擇形成作品。</div>`,
-  script:()=>`<div class="ag">${[["2′","投影鑑賞原稿與異色補充的局部","問：哪些句子是學生原本的？"],["3′","用三個情緒詞展示聲音選擇","不播放整首歌；原音檔未取得就用文字與分鏡說明"],["3′","播放一段已授權、可離線的學生 MV","原稿 → 候選 → 修正版；授權未齊就改用教材流程"],["3′","聽覺再轉視覺","請聽眾用一句話說自己的畫面；《星夜》與《蓮池》狀態分開說"],["3′","比較保留、改變、理由","回到：生成的是素材，選擇形成作品"]].map(r=>`<div class="ag-row" style="grid-template-columns:50px minmax(0,1fr)"><span class="m">${r[0]}</span><span><b>${r[1]}</b><br><span class="note">${r[2]}</span></span></div>`).join("")}</div>
-    <p class="note" style="margin-top:10px">120 分鐘版在聆聽與速寫加 4 分鐘，讓台下真的畫一次。</p>`,
   fix:()=>`<div class="grid g3">
     <div class="card"><h3>色彩與聲音不是固定公式</h3><p>舊教材寫「冷色＝低音、慢、憂鬱；暖色＝高音、輕快」。改為可討論的例子，允許冷色產生明亮節奏，要求說明個人詮釋。</p></div>
     <div class="card"><h3>鏡長依條件決定</h3><p>舊教材把 6 秒寫成 AI 影片極限，那是當時工具設定。現在依音樂與現場工具條件決定鏡長。</p></div>

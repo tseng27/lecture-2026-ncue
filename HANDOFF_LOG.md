@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-28 19:05 Claude：封面海報拖鞋換成 K-Swiss 經典款
+
+- 講者：把介紹圖（IG 海報）裡的拖鞋改成 K-Swiss 經典款。img/cover-me.jpg 換成 AI 修圖版（Krea nano-banana-pro，只改鞋，文字與構圖不變）；原圖可從 git 歷史取回。
+- 是否已同步 artifact-source.html／已發布：是（只換圖檔）
+
 ## 2026-11-28 16:10 Claude：移除 GoatCounter 後台分析
 
 - 講者：「那就不用後台分析」。刪除 CONFIG.stats.goatcounter 與載入 gc.zgo.at 的程式；左下角瀏覽人次（Abacus）保留。

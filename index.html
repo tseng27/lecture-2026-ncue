@@ -714,8 +714,8 @@ const CONFIG = {
   tagline:"一位高中美術教師的 AI 創作實踐、教學探索與反思",
   place:"國立彰化師範大學", date:"2026.11.27", time:"13:10–15:00", start:"13:10", audience:"師培生・大學生・碩士班學生",
   photo:"",
-  /* 瀏覽人數：counter = 公開計數（Abacus，免帳號）；goatcounter = 後台分析代碼（講者在 goatcounter.com 註冊同名代碼後生效） */
-  stats:{ counter:"tseng27-lecture-2026-ncue/visits", goatcounter:"lecture2026ncue" },
+  /* 瀏覽人數：公開計數（Abacus，免帳號） */
+  stats:{ counter:"tseng27-lecture-2026-ncue/visits" },
   links:{
     site:     { label:"AI 教學觀察所網站", url:"https://kuocheng-art-education.tseng27.chatgpt.site" },
     fanpage:  { label:"AI 教學觀察所 Facebook", url:"https://www.facebook.com/educationforfuture/" },
@@ -2018,9 +2018,6 @@ buildStrip(); route(); tick();
  if(S.counter){let first=true;try{first=!sessionStorage.getItem("lec2:counted");sessionStorage.setItem("lec2:counted","1")}catch(e){}
   fetch("https://abacus.jasoncameron.dev/"+(first?"hit/":"get/")+S.counter).then(r=>r.json()).then(d=>{if(typeof d.value==="number"){n=d.value;el.textContent="👀 累計瀏覽 "+n.toLocaleString("zh-TW")+" 人次";vis()}}).catch(()=>{})}
  window.addEventListener("hashchange",vis);
- if(S.goatcounter){window.goatcounter={no_onload:true};const g=document.createElement("script");g.async=true;g.src="https://gc.zgo.at/count.js";g.dataset.goatcounter="https://"+S.goatcounter+".goatcounter.com/count";
-  const send=()=>{try{window.goatcounter.count({path:location.pathname+(location.hash||"#")})}catch(e){}};
-  g.onload=()=>{send();window.addEventListener("hashchange",send)};document.head.append(g)}
 })();
 </script>
 

@@ -2,6 +2,14 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-28 16:05 Claude：加上瀏覽人數與後台分析
+
+- 講者：「我想要能看到有多人瀏覽過」「可以幫我後台設置分析?」
+- index.html：CONFIG.stats（counter／goatcounter）；自由探索頁左下角淡色「👀 累計瀏覽 N 人次」（#viewCnt，講座模式隱藏、列印隱藏）。計數用 Abacus（免帳號，每個瀏覽器分頁階段只算一次）；後台分析用 GoatCounter（無 cookie），代碼 lecture2026ncue，需講者到 goatcounter.com 註冊同名代碼才開始記錄。只在 *.github.io 執行，本機與 Artifact 預覽不計數。
+- 驗證：Playwright 模擬 GitHub Pages 網址＋假計數，講座模式隱藏、#home 顯示、400px 無水平捲動；smoke-test 全 PASS。
+- 沒做完／阻礙：GoatCounter 帳號待講者註冊。
+- 是否已同步 artifact-source.html／已發布：是
+
 ## 2026-11-27 12:10 Claude：「什麼是 AI Agent」改為給非資訊背景老師的比喻版
 
 - 百科全書 vs 有自己電腦的實習老師；四家數位助教卡（dots／Gemini Spark／Cowork・Code・Duet／Grok Bot）；老師當主管＋確認與個資提醒。

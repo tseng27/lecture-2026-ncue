@@ -1,6 +1,7 @@
 # STATUS（最後更新：2026-11-26 06:35 Asia/Taipei，Claude）
 
 ## 已完成
+- 2026-11-28 16:05：自由探索頁左下角顯示累計瀏覽人次（Abacus）；後台分析 GoatCounter 代碼 lecture2026ncue，待講者註冊（Claude）。
 - 2026-11-25 21:37：主題 02 新增 R003（Facebook 貼文，因無法讀取內文而用中性標籤）；Instagram 三個帳號改為講者提供的名稱，CONFIG.links.instagram 改為個人帳號 @art27tw（Grok）。尚未推送。
 - 2026-11-25 21:35：關於我頁重排——T04 改全寬名言橫幅，公仔牆改全寬 5＋4；底部延伸連結改為 YouTube／Instagram／Facebook 三組，並填入 CONFIG.links／CONFIG.social（Grok）。尚未推送。
 - 2026-11-25 21:06：自由探索「關於我」（#home）放入 9 張 AI 公仔拍立得（講者提供，已標示為 AI 生成形象圖）；同頁標題、三張身分卡、區塊標題與四個標籤依講者原文更新（Grok）。已推送。

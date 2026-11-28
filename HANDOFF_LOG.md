@@ -2,6 +2,11 @@
 
 新紀錄加在最上方。格式見 AGENTS.md 第 8 節。任何 AI 接手前先讀最上方三筆；結束前新增一筆。
 
+## 2026-11-28 16:10 Claude：移除 GoatCounter 後台分析
+
+- 講者：「那就不用後台分析」。刪除 CONFIG.stats.goatcounter 與載入 gc.zgo.at 的程式；左下角瀏覽人次（Abacus）保留。
+- 是否已同步 artifact-source.html／已發布：是
+
 ## 2026-11-28 16:05 Claude：加上瀏覽人數與後台分析
 
 - 講者：「我想要能看到有多人瀏覽過」「可以幫我後台設置分析?」
